@@ -1,0 +1,7 @@
+/*
+!/tracker.html
+!/README.md
+!/.gitignore
+!/kit/
+*.local.json
+.env*

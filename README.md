@@ -20,4 +20,4 @@ Writing needs edit access to the artifact for the person whose Claude Code posts
 - In an existing repository: follow «Adding another project» in [`kit/README.md`](kit/README.md).
 - For Сеймур: paste [`kit/SEYMUR-PROMPT.md`](kit/SEYMUR-PROMPT.md) into Claude Code; it sets everything up and asks before each step.
 
-Requirements: Node 18+, git, Claude Code signed in to claude.ai. Screenshots use the project's own Playwright.
+Requirements: Node 18+, git, Claude Code signed in to claude.ai. Playwright is optional, only for screenshots (`report.mjs shot`).

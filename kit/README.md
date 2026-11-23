@@ -6,13 +6,16 @@ Every finished step of work in this repository is posted there as a stage: what 
 
 ## When to post
 
-- After `git push` from Claude Code. The `PostToolUse` hook in `.claude/settings.json` runs `report.mjs hook`, saves a draft to `.claude/tracker-draft.local.json` and asks you to post.
+- After `git push` from Claude Code. The `PostToolUse` hook in `.claude/settings.json` runs `report.mjs hook`: it only saves a draft with the numbers to `.claude/tracker-draft.local.json` and reminds Claude to post. The hook writes nothing to the tracker; Claude posts the stage itself with the Artifact tool (section «How to post»), without asking.
+- If the turn was interrupted after the push and nothing was posted, run `node tools/tracker/report.mjs draft` and post from that draft.
 - After a finished, verified stage without a push, or when the user asks ("отчитайся в трекер"): run `node tools/tracker/report.mjs draft` yourself.
 - Not for small edits, failed attempts or work that was not checked.
 
 ## Screenshots: before and after
 
 A change that is visible on screen must have a **before** and an **after** screenshot of the same screen, same size, same state. This is the main thing the other person looks at.
+
+`shot` needs Playwright in the repository; it is optional and used only for screenshots. Check with `npm ls playwright`; if it is missing, install it (`npm i -D playwright && npx playwright install chromium`) or take the screenshot another way.
 
 1. **Before you start** a change that will be visible, open the screen it affects and take the before shot: `node tools/tracker/report.mjs shot <url> .claude/shots/<slug>-before.png --width 390 --height 844` (add `--dark` or `--full` when that is what changes). `.claude/tracker.json` has a `preview` entry with the local address and how to start it. For a state deep inside the app, write a short Playwright script that gets there and reuse it for the after shot.
 2. **After** the change is verified, take the after shot with the same command, size and state: `.claude/shots/<slug>-after.png`.
@@ -60,7 +63,14 @@ To let Claude post stages for it from a repository:
 
 1. In the tracker open «Цели», press «Править» and copy the project key shown under the project (`Ключ проекта для Claude`, for example `p-glass-lab`). A key made from a non-Latin name is random, like `p-22dtz5`.
 2. Copy `tools/tracker/` (`report.mjs`, this README) into the repository.
-3. Create `.claude/tracker.json` with `"project": "<the key>"`, the same `"artifact"` address, and a `"preview"` entry (how to start the app locally and its address) if the project has a screen.
+3. Create `.claude/tracker.json` (drop `preview` if the project has no screen):
+   ```json
+   {
+     "project": "p-glass-lab",
+     "artifact": "https://claude.ai/code/artifact/3e6b0ef1-7a3a-43c9-8ed8-7edf927228c5",
+     "preview": { "start": "npm start", "url": "http://127.0.0.1:4173/" }
+   }
+   ```
 4. Add the push hook to `.claude/settings.json` (merge into existing `hooks` if the file has them):
    ```json
    { "hooks": { "PostToolUse": [ { "matcher": "Bash", "hooks": [
@@ -81,8 +91,10 @@ To let Claude post stages for it from a repository:
 
 ### Second person (Сеймур)
 
-Posting writes to the tracker's database with the Artifact tool as the person who runs Claude Code, so that person needs edit access: Руслан opens the tracker, Share, and gives edit rights. Without it `write_db` and `upload_asset` are refused. Claude Code must be signed in to claude.ai for the Artifact tool to exist.
+Posting writes to the tracker's database with the Artifact tool as the person who runs Claude Code, so that person needs edit access to the artifact. A GitHub invitation does not give it. Руслан has already shared the tracker with edit rights; Сеймур opens the tracker link in his own claude.ai and presses «Это я» (button in the header above the feed). If `action: "read"` on the tracker does not report «writer», `write_db` and `upload_asset` are refused: ask Руслан to open Share with edit rights.
 
-The fastest setup is the ready prompt in `kit/SEYMUR-PROMPT.md` of https://github.com/antropos17/sualver-toilet-tracker: paste it into Claude Code. It clones this repository, asks about each project separately (showcase, GitHub, tracker), installs steps 2 to 7 in the chosen repositories and changes nothing without a yes. On the page, the person presses «Это я» once so likes and comments carry their name.
+Needed on the machine: Node 18+, `gh` signed in (`gh auth login`), Claude Code signed in to claude.ai (`claude auth login`) so the Artifact tool exists.
+
+The fastest setup is the ready prompt in `kit/SEYMUR-PROMPT.md` of https://github.com/antropos17/sualver-toilet-tracker: paste it into Claude Code. It checks the tools, asks where the projects live, clones this repository, asks about each project separately (showcase, GitHub, tracker) and installs steps 2 to 7 in the chosen repositories. New repositories, publishing and setup commits happen only after a yes; posting after each push is automatic.
 
 In a stage, `group` must be one of the section ids of that project (`projects/<key>.groups`, ids look like `g1`, `g2`); an unknown id lands in «Другое». A project removed with «Убрать проект» is only hidden (`archived: true`): its posts stay in the feed and keep their colour.

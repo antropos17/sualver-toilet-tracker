@@ -21,6 +21,7 @@ Commands (each prints what it writes; add `--dry` to write nothing):
 | Take a goal | `node "<kit>/tracker.mjs" take <goalId> --person <p>` |
 | Free a goal | `node "<kit>/tracker.mjs" release <goalId>` |
 | New goal | `node "<kit>/tracker.mjs" add-goal <project> "<title>" --person <p> [--group <id>] [--take]` |
+| New project (only if missing) | `node "<kit>/tracker.mjs" add-project <key> "<name>" --person <p> --groups "g1:…,g2:…" [--repo o/r] [--color c] [--show id]` |
 | Close a goal | `node "<kit>/tracker.mjs" close <goalId> --person <p>` |
 | Post a stage (and close its goals) | `node "<kit>/tracker.mjs" stage <file.json>` |
 | Add a screenshot | `node "<kit>/tracker.mjs" upload-shot <file.png>` → prints the file name |
@@ -135,7 +136,7 @@ To let Claude post stages for it from a repository:
 1. A person presses «Беру в работу» on a showcase card. The tracker writes `claims/<card id>__<person>` and, for someone else's project, a feed post (`kind: "claim"`).
 2. The project joins the working list at once (stories, «Цели», side panels) as a placeholder «Ждёт оценки Claude». The page itself never writes `projects/<key>`. The key is the card id (`kus`, `voxel-boxing`), or `s-<id in lower case>` when the id is not a valid key.
 3. The tracker opens a ready prompt for that project (template: `kit/CLAIM-PROMPT.md`, filled with name, key, shared private repository, person, colour). It can be opened again from the card or the placeholder: «Промт для Claude».
-4. Pasted into the person's Claude Code, the prompt clones the shared private repository (no access: stop, never create a new one), assesses it, and after a yes writes `projects/<key>` (only if missing, with `show: <card id>`), goals (`tracker.mjs add-goal`) and one assessment post (`tracker.mjs stage`). Then it installs this kit as in «Adding another project».
+4. Pasted into the person's Claude Code, the prompt clones the shared private repository (no access: stop, never create a new one), assesses it, and after a yes writes `projects/<key>` with `tracker.mjs add-project` (only if missing, with `--show <card id>`), goals (`tracker.mjs add-goal`) and one assessment post (`tracker.mjs stage`). Then it installs this kit as in «Adding another project».
 
 The template is embedded in `tracker.html` (`<script id="claim-prompt">`); after editing `kit/CLAIM-PROMPT.md`, copy it there too.
 

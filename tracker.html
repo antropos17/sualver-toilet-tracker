@@ -632,41 +632,42 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 Комплект трекера: https://github.com/antropos17/sualver-toilet-tracker (папка `kit`)
 
 Правила:
-- В базу трекера пиши только инструментом Artifact: `action: "write_db"`, `url` = ссылка трекера. Никаких тестовых и пробных записей. Каждый batch сначала покажи мне и пиши после моего «да».
+- В базу трекера пиши только командами `node "<kit>/tracker.mjs" …` (`<kit>` — папка kit моего клона комплекта). Никаких тестовых и пробных записей. Каждую запись сначала покажи мне и пиши после моего «да».
+- Если комплекта или ключа на машине нет (`tracker.mjs goals {{KEY}}` пишет «нет ключа»), остановись и скажи мне: ключ передаёт Руслан лично.
 - Если репозиторий не указан или доступа к нему нет, остановись и скажи мне. Новый репозиторий не создавай.
-- Прочитай трекер (`action: "read"`). Если в ответе нет «writer», скажи: «Попроси Руслана открыть Share с правом редактирования», и жди.
 - Коммит и push только после моего «да».
 
 1. Склонируй репозиторий (`gh repo clone <владелец/название>`), прочитай README и код. Оцени коротко: что это, в каком состоянии, что делать дальше.
-2. Прочитай `projects/{{KEY}}`: `action: "read_db"`, `db_op: "get"`, `collection: "projects"`, `doc_id: "{{KEY}}"`. Если записи нет, создай её первой записью в batch из шага 3. Если есть, не перезаписывай её и бери секции из её `groups`; если в ней `archived: true`, добавь в batch `{"op":"update","collection":"projects","doc_id":"{{KEY}}","data":{"archived":false}}`.
-3. Предложи мне 2–5 секций и 5–15 целей. После «да» запиши всё одним вызовом `write_db`, `db_op: "batch"` (`<ms>` — текущее время в миллисекундах, одно на весь batch):
-   - если записи нет: `{"op":"set","collection":"projects","doc_id":"{{KEY}}","data":{"name":"{{NAME}}","repo":"<владелец/название>","color":"{{COLOR}}","groups":[{"id":"g1","name":"…"},{"id":"g2","name":"…"}],"show":"{{SHOW}}","createdAt":<ms>,"createdBy":"{{PERSON}}","archived":false}}`
-   - на каждую цель: `{"op":"set","collection":"goals","doc_id":"g-{{KEY}}-<n>","data":{"project":"{{KEY}}","group":"g1","title":"…","done":false,"removed":false,"order":<ms + n>,"createdAt":<ms>,"createdBy":"{{PERSON}}","doneAt":0,"doneBy":""}}`
-   - на каждую цель: `{"op":"set","collection":"events","doc_id":"e-<ms>-g-{{KEY}}-<n>","data":{"type":"goal_added","goalId":"g-{{KEY}}-<n>","title":"…","project":"{{KEY}}","person":"{{PERSON}}","via":"claude","at":<ms>}}`
-   - один пост с оценкой: `{"op":"set","collection":"updates","doc_id":"u-{{KEY}}-start","data":{"project":"{{KEY}}","person":"{{PERSON}}","via":"claude","group":"g1","title":"Оценка: …","items":["~ …","+ …"],"shots":[],"visual":false,"goalIds":[],"commits":[],"createdAt":<ms>}}`
-   `group` — только id из `groups`. В `items` 3–6 строк, каждая начинается с `+ `, `~ `, `! ` или `- `. В batch не больше 50 записей.
-4. Подключи push к трекеру по разделу «Adding another project» в `kit/README.md` комплекта: `kit/report.mjs` и `kit/README.md` → `tools/tracker/`; `.claude/tracker.json` = `{"project":"{{KEY}}","artifact":"{{TRACKER}}"}` (плюс `preview`, если у проекта есть экран); хук на `git push` в `.claude/settings.json`; строки `.claude/*.local.json` и `.claude/shots/` в `.gitignore`; `.claude/tracker.local.json` = `{"person":"{{PERSON}}"}`; правило из README в `CLAUDE.md` проекта. Покажи дифф и закоммить только эти файлы после моего «да».
-5. Проверка: `node tools/tracker/report.mjs draft` показывает проект `{{KEY}}` и person = `{{PERSON}}`. Пробный пост не пиши.</script>
+2. Прочитай проект в трекере: `tracker.mjs get projects {{KEY}}`. Если записи нет, создай её после шага 3 (после моего «да»): `tracker.mjs add-project {{KEY}} "{{NAME}}" --person {{PERSON}} --groups "g1:…,g2:…" --repo <владелец/название> --color {{COLOR}} --show "{{SHOW}}"`. Если есть, не перезаписывай её и бери секции из её `groups` (архивный проект та же команда вернёт в список).
+3. Предложи мне 2–5 секций и 5–15 целей. После «да» запиши:
+   - на каждую цель: `tracker.mjs add-goal {{KEY}} "<название>" --person {{PERSON}} --group <id секции>`;
+   - один пост с оценкой: файл `u-{{KEY}}-start.json` с полями `{"project":"{{KEY}}","person":"{{PERSON}}","group":"g1","title":"Оценка: …","items":["~ …","+ …"],"shots":[],"visual":false,"goalIds":[],"commits":[]}`, затем `tracker.mjs stage u-{{KEY}}-start.json`.
+   `group` — только id из `groups`. В `items` 3–6 строк, каждая начинается с `+ `, `~ `, `! ` или `- `.
+4. Подключи push к трекеру по разделу «Adding another project» в `kit/README.md` комплекта: `kit/report.mjs` и `kit/README.md` → `tools/tracker/`; `.claude/tracker.json` = `{"project":"{{KEY}}","tracker":"{{TRACKER}}"}` (плюс `preview`, если у проекта есть экран); хук на `git push` в `.claude/settings.json`; строки `.claude/*.local.json` и `.claude/shots/` в `.gitignore`; `.claude/tracker.local.json` = `{"person":"{{PERSON}}"}`; правило из README в `CLAUDE.md` проекта. Покажи дифф и закоммить только эти файлы после моего «да».
+5. Проверка: `node tools/tracker/report.mjs draft` показывает проект `{{KEY}}` и person = `{{PERSON}}`. Пробный пост не пиши.
+</script>
 <script type="text/plain" id="rules-prompt">## Трекер: кто что делает (все проекты из списка ниже)
 
-Версия правил: 1 (25.11.2026)
+Версия правил: 2 (25.11.2026)
 
 Трекер «Sualver.az + Туалет»: https://antropos17.github.io/sualver-toilet-tracker/
 В нём я ({{PERSON_NAME}}, `{{PERSON}}`) и {{OTHER_NAME}} (`{{OTHER}}`) видим, кто какую задачу взял, чтобы не делать одно и то же.
+Команды ниже: `node "<kit>/tracker.mjs" …`, где `<kit>` — папка kit моего клона antropos17/sualver-toilet-tracker.
 
 Ключи проектов в трекере: Sualver — `sual`, Смыв — `toilet`, Воксель Бокс — `voxel-boxing`,
 Кусь — `kus`, «30 дней» — `glowup`, Прототипы — `prototypes`. Для других проектов правило не действует.
 
-1. Перед началом задачи прочитай цели проекта в трекере (`read_db`, коллекция `goals`).
-   Если подходящую цель уже делает {{OTHER_NAME}} (`takenBy: "{{OTHER}}"`), остановись и скажи мне об этом.
-2. Если цель свободна, поставь на ней `takenBy: "{{PERSON}}"`. Если цели нет, создай её и сразу возьми.
+1. Перед началом задачи прочитай цели проекта: `tracker.mjs goals <проект>`.
+   Если подходящую цель уже делает {{OTHER_NAME}} («делает {{OTHER}}»), остановись и скажи мне об этом.
+2. Если цель свободна, возьми её: `tracker.mjs take <id> --person {{PERSON}}`. Если цели нет, создай и сразу возьми:
+   `tracker.mjs add-goal <проект> "<название>" --person {{PERSON}} --take`.
    Название цели короткое и понятное человеку: «Меню выбора бойца», а не имя файла.
-3. Когда задача готова и проверена, закрой цель, запиши этап в трекер и отправь пост в канал.
-4. Если задачу бросили, сними отметку с цели.
+3. Когда задача готова и проверена, запиши этап с закрытием цели (`tracker.mjs stage <файл>`, в `goalIds` — id цели) и отправь пост в канал.
+4. Если задачу бросили, сними отметку: `tracker.mjs release <id>`.
 
-Как именно писать в базу и слать пост: `README.md` в папке kit репозитория antropos17/sualver-toilet-tracker.
+Как именно писать этап, снимки и пост: `README.md` в папке kit.
 Мелкие правки (опечатка, один цвет) в трекер не пиши. Вопросы и обсуждение без правок кода тоже.
-Если инструмента Artifact в сессии нет, скажи об этом одной строкой и работай дальше.
+Если kit или ключа на машине нет (`tracker.mjs goals` пишет «нет ключа»), скажи об этом одной строкой и работай дальше.
 </script>
 <script type="text/plain" id="seymur-prompt">Привет. Я Сеймур (GitHub `seymurglv`). Подключи меня к нашему с Русланом трекеру проектов. Отвечай по-русски, коротко. Новые репозитории, публикацию, пуш и любые записи в трекер при настройке делай только после моего «да» на каждый шаг.
 
@@ -675,25 +676,29 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 
 0. Проверь окружение, на первой ошибке остановись и скажи, что сделать:
    - `node --version` не ниже 18, иначе: поставь с https://nodejs.org;
-   - `gh --version` и `gh auth status`, иначе: установи GitHub CLI и выполни `gh auth login`;
-   - есть инструмент Artifact и `action: "read"` трекера проходит, иначе: `claude auth login` с аккаунтом claude.ai.
-1. Доступ к трекеру. Приглашение на GitHub не даёт права писать в трекер. Руслан уже открыл Share с правом редактирования. Если чтение трекера не показывает «writer», скажи: «Попроси Руслана открыть Share с правом редактирования» и жди. Затем пусть я открою ссылку трекера в своём claude.ai и нажму «Это я» (кнопка в шапке над лентой).
-2. Спроси меня, где лежат мои проекты (папки, диски). По дискам вслепую не ищи. Склонируй комплект в `~/Dev/sualver-toilet-tracker` (или куда скажу) и прочитай `kit/README.md` целиком.
-3. Покажи список проектов в названных папках: папка, есть ли GitHub. По каждому отдельно спроси:
+   - `gh --version` и `gh auth status`, иначе: установи GitHub CLI и выполни `gh auth login`.
+1. Спроси меня, куда положить комплект (по умолчанию `~/Dev/sualver-toilet-tracker`). Склонируй его туда: `gh repo clone antropos17/sualver-toilet-tracker <папка>`. Дальше `<kit>` — папка `kit` этого клона.
+2. Выполни `npm install` в папке `<kit>`.
+3. Ключ доступа к базе трекера. Его передаст Руслан лично (не через git и не в чат). Попроси меня сохранить файл как `<kit>/firebase-key.json` и жди. Содержимое ключа не открывай и не печатай.
+4. Проверь: `node "<kit>/tracker.mjs" goals kus` выводит цели проекта «Кусь». Если пишет «нет ключа», вернись к шагу 3.
+5. Вход на странице: я открываю трекер и нажимаю «Войти через Google» своим Google-аккаунтом. Писать со страницы может только моя почта, которую Руслан внёс в список.
+6. Прочитай `<kit>/README.md` целиком. Спроси меня, где лежат мои проекты (папки, диски). По дискам вслепую не ищи.
+7. Покажи список проектов в названных папках: папка, есть ли GitHub. По каждому отдельно спроси:
    - показать в витрине трекера? (да/нет)
    - выложить на GitHub? (нет / приватно / публично). Перед заливкой проверь историю на секреты (`.env`, ключи, токены) и покажи, что нашёл;
    - подключить к трекеру? (да/нет)
    Делай только то, на что я ответил «да».
-4. Для каждого проекта, подключаемого к трекеру, по разделу «Adding another project» в `kit/README.md`:
+8. Для каждого проекта, подключаемого к трекеру, по разделу «Adding another project» в `<kit>/README.md`:
    - ключ: если проекта нет в трекере, я создам его сам («Цели» → «+ Проект»), ключ возьмём в «Цели» → «Править»;
    - `kit/report.mjs` и `kit/README.md` в `tools/tracker/`; `.claude/tracker.json` по образцу из README;
    - хук на `git push` в `.claude/settings.json`, строки в `.gitignore`, `.claude/tracker.local.json` = `{"person":"seymur"}`;
    - добавь в CLAUDE.md проекта правило из README. По нему Claude после push и проверенного этапа сам пишет пост со скринами «до» и «после», без вопросов.
    Покажи дифф и закоммить только эти файлы после моего «да».
-5. Скриншоты. Перед `report.mjs shot` проверь `npm ls playwright` в проекте. Нет — предложи `npm i -D playwright && npx playwright install chromium` или сними экран другим способом.
-6. Витрина: по скриншоту 1280×800 на каждый выбранный проект, скажи, где лежат. Карточку я добавлю сам: «Цели» → плашка «Витрина» → «+ Проект».
-7. Проверка: `node tools/tracker/report.mjs draft` в подключённом проекте показывает ключ, person = seymur и токены. Пробный пост не пиши.
-8. В конце напомни принять приглашения в репозитории antropos17: https://github.com/notifications.</script>
+9. Скриншоты. Перед `report.mjs shot` проверь `npm ls playwright` в проекте. Нет — предложи `npm i -D playwright && npx playwright install chromium` или сними экран другим способом. Снимки в трекер — `node "<kit>/tracker.mjs" upload-shot <файл>`.
+10. Витрина: по скриншоту 1280×800 на каждый выбранный проект, скажи, где лежат. Карточку я добавлю сам: «Цели» → плашка «Витрина» → «+ Проект».
+11. Проверка: `node tools/tracker/report.mjs draft` в подключённом проекте показывает ключ, person = seymur и токены. Пробный пост не пиши.
+12. В конце поставь правило «кто что делает» из `<kit>/RULES.md` по шагам 8–9 раздела «Adding another project».
+</script>
 
 <nav class="tabs" aria-label="Разделы"><div>
   <button type="button" data-view="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Лента</button>

@@ -8,6 +8,8 @@
 //   release <goalId>                            отпустить цель: takenBy "", takenAt 0, без события
 //   add-goal <project> "<title>" --person <p> [--group <id>] [--take]
 //                                               новая цель g-<project>-<ms> + событие goal_added (с --take сразу взять)
+//   add-project <key> "<name>" --person <p> --groups "g1:…,g2:…" [--repo o/r] [--color c] [--show id]
+//                                               новый проект (если его нет; архивный — вернуть)
 //   close <goalId> --person <p>                 закрыть цель + событие goal_done
 //   stage <file.json>                           записать этап в updates (id = поле id или имя файла) и закрыть его goalIds
 //   upload-shot <file.png> [--name <name>]      положить снимок в shots/ репозитория трекера через GitHub (gh api) и вывести имя
@@ -25,7 +27,7 @@ import { openDb, REPO } from "./fire.mjs";
 const argv = process.argv.slice(2);
 const dry = argv.includes("--dry");
 const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
-const pos = argv.filter((x, i) => !x.startsWith("--") && !(argv[i - 1] || "").match(/^--(person|group|name)$/));
+const pos = argv.filter((x, i) => !x.startsWith("--") && !(argv[i - 1] || "").match(/^--(person|group|name|groups|repo|color|show)$/));
 const [cmd, ...rest] = pos;
 const PFX = process.env.TRACKER_COLLECTION_PREFIX || "";
 const C = (name) => PFX + name;
@@ -91,6 +93,17 @@ const commands = {
     await commit(w);
     console.log("id цели: " + id);
   },
+  async "add-project"([key, name]) {
+    if (!key || !name) die('add-project <key> "<name>" --person <p> --groups "g1:Название,g2:Название" [--repo o/r] [--color c] [--show id]');
+    const p = person(), ref = getDb().collection(C("projects")).doc(key), s = await ref.get();
+    if (s.exists) {
+      if (s.get("archived")) return commit([["update", "projects", key, { archived: false }]]);
+      return console.log(`Проект ${key} уже есть, не трогаю. Секции: ${JSON.stringify(s.get("groups") || [])}`);
+    }
+    const groups = (opt("--groups") || "").split(",").map((x) => x.split(":")).filter((x) => x[0] && x[1]).map(([id, n]) => ({ id: id.trim(), name: n.trim() }));
+    if (!groups.length) die('нужны секции: --groups "g1:Название,g2:Название"');
+    await commit([["set", "projects", key, { name, repo: opt("--repo") || "", color: opt("--color") || "violet", groups, show: opt("--show") || "", createdAt: now, createdBy: p, archived: false }]]);
+  },
   async close([id]) {
     const p = person(), g = await goal(id);
     if (g.done) return console.log(`Цель ${id} уже закрыта.`);
@@ -134,7 +147,7 @@ const commands = {
 };
 
 if (!commands[cmd]) {
-  console.log(fs.readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(1, 17).map((l) => l.replace(/^\/\/ ?/, "")).join("\n"));
+  console.log(fs.readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(1, 19).map((l) => l.replace(/^\/\/ ?/, "")).join("\n"));
   process.exit(cmd ? 1 : 0);
 }
 await commands[cmd](rest);

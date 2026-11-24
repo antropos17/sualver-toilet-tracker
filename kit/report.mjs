@@ -175,7 +175,7 @@ export function buildDraft({ transcript, cwd, sinceIso, untilMs = Date.now() }) 
   return {
     project: cfg.project || null,
     person: local.person || process.env.TRACKER_PERSON || null,
-    artifact: cfg.artifact || null,
+    tracker: cfg.tracker || cfg.artifact || null,
     repo,
     branch,
     branchUrl: repo && branch ? `https://github.com/${repo}/tree/${branch}` : "",

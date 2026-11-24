@@ -129,7 +129,7 @@ To let Claude post stages for it from a repository:
    ```
 7. Check: `node tools/tracker/report.mjs draft` prints the project key, the person and token counts.
 8. Rule «кто что делает» (once per person, not per project). Read `kit/RULES.md`, fill in the placeholders for this person and show them the ready text. Only after their yes, append it as a section to their global `~/.claude/CLAUDE.md`. If the section «Трекер: кто что делает» is already there, compare it with the ready text, show the difference and replace it after a yes. Without a yes, write nothing. The same text with the person's name is in the tracker: «Профиль» → «Правила для Claude» → «Скопировать».
-9. Check the rules version. `kit/RULES.md` has the line `Версия правил: 1 (25.11.2026)`. If the line in the person's `~/.claude/CLAUDE.md` has a lower number or is missing, offer to update the section as in step 8.
+9. Check the rules version. `kit/RULES.md` has the line `Версия правил: 2 (25.11.2026)`. If the line in the person's `~/.claude/CLAUDE.md` has a lower number or is missing, offer to update the section as in step 8.
 
 ### Taking a showcase project («Беру в работу»)
 

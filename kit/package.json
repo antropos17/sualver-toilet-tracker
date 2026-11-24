@@ -1,0 +1,9 @@
+{
+  "name": "tracker-kit",
+  "private": true,
+  "type": "module",
+  "description": "Скрипты трекера: запись в Firestore ключом сервисного аккаунта",
+  "dependencies": {
+    "firebase-admin": "14.5.0"
+  }
+}

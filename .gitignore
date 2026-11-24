@@ -1,7 +1,19 @@
 /*
 !/tracker.html
+!/index.html
+!/shots/
 !/README.md
 !/.gitignore
 !/kit/
 *.local.json
 .env*
+
+# секреты: ключ сервисного аккаунта Firebase
+/kit/firebase-key.json
+/kit/*.key.json
+/kit/.env
+
+# правила Firestore и почты участников — только локально
+/kit/firestore.rules
+/kit/members.local.json
+/kit/node_modules/

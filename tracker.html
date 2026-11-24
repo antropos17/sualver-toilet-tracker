@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; font: 14px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
 <title>Sualver.az + Туалет</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,8 +177,15 @@ textarea { width: 100%; resize: vertical; }
 .cbtn[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
 .gh { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: baseline; font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 8px; }
 .gh .bar2 { grid-column: 1 / -1; }
-.goal { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: start; padding: 6px 0; }
+.goal { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 6px 0; }
+.goal .gt { overflow-wrap: anywhere; }
 .goal.done { opacity: .55; } .goal.done .gt { text-decoration: line-through; }
+/* who does a goal: a chip after the title that wraps as a whole */
+.gk { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; max-width: 100%; margin: -4px 0 -4px 6px; vertical-align: middle; font-size: 13px; color: var(--muted); }
+.gk > span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.gk .ava.sm { width: 20px; height: 20px; font-size: 11px; }
+.gkb { background: none; border: 1px solid var(--line); border-radius: 20px; padding: 0 10px; min-height: 24px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.gkb:hover { color: var(--ink); border-color: var(--ink); }
 .check { width: 24px; height: 24px; border: 2px solid var(--muted); border-radius: 6px; background: var(--surface); display: grid; place-items: center; padding: 0; transition: background .2s, border-color .2s; }
 .check[aria-pressed="true"] { background: var(--add); border-color: var(--add); }
 .check[aria-pressed="true"]::after { content: ""; width: 10px; height: 6px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
@@ -503,6 +521,8 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sdet > * { flex-shrink: 0; }
 .pmc { width: min(640px, 100%); padding: 18px; gap: 10px; }
 .pmc textarea { font: 12px/1.5 ui-monospace, Consolas, monospace; height: min(320px, 45dvh); resize: none; background: var(--sunk); border-color: transparent; }
+.rules textarea { width: 100%; font: 12px/1.5 ui-monospace, Consolas, monospace; height: min(320px, 45dvh); resize: none; background: var(--sunk); border-color: transparent; margin-top: 8px; }
+.rules .ctl { justify-content: flex-end; margin-top: 8px; } .rules .copy { min-width: 11em; min-height: 40px; }
 .pmc .ctl { justify-content: flex-end; } .pmc .btn { min-height: 40px; } .pmc .copy { min-width: 11em; }
 #pmodal .sdwrap { z-index: 26; }
 .pend { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 8px; }
@@ -567,7 +587,8 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
     <div class="aft"><button type="button" class="btn" id="n-morebtn" data-action="n-extra">Подробности и скрин</button></div>
     <div class="sec aft" id="n-extra" hidden>
       <label class="field"><span>Подробности</span><textarea id="n-more" rows="3" maxlength="800"></textarea></label>
-      <label class="field" id="n-filewrap"><span>Скрин</span><input type="file" id="n-file" accept="image/png,image/jpeg,image/webp"></label>
+      <p class="small muted" id="n-nofile">Скрин со страницы пока не загрузить: снимки добавляет сессия Claude в папку shots/ репозитория.</p>
+      <label class="field" id="n-filewrap" hidden><span>Скрин</span><input type="file" id="n-file" accept="image/png,image/jpeg,image/webp"></label>
       <div id="n-prev" hidden></div>
     </div>
     <p class="err aft" id="n-err" role="alert"></p>
@@ -626,9 +647,30 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
    `group` — только id из `groups`. В `items` 3–6 строк, каждая начинается с `+ `, `~ `, `! ` или `- `. В batch не больше 50 записей.
 4. Подключи push к трекеру по разделу «Adding another project» в `kit/README.md` комплекта: `kit/report.mjs` и `kit/README.md` → `tools/tracker/`; `.claude/tracker.json` = `{"project":"{{KEY}}","artifact":"{{TRACKER}}"}` (плюс `preview`, если у проекта есть экран); хук на `git push` в `.claude/settings.json`; строки `.claude/*.local.json` и `.claude/shots/` в `.gitignore`; `.claude/tracker.local.json` = `{"person":"{{PERSON}}"}`; правило из README в `CLAUDE.md` проекта. Покажи дифф и закоммить только эти файлы после моего «да».
 5. Проверка: `node tools/tracker/report.mjs draft` показывает проект `{{KEY}}` и person = `{{PERSON}}`. Пробный пост не пиши.</script>
+<script type="text/plain" id="rules-prompt">## Трекер: кто что делает (все проекты из списка ниже)
+
+Версия правил: 1 (25.11.2026)
+
+Трекер «Sualver.az + Туалет»: https://antropos17.github.io/sualver-toilet-tracker/
+В нём я ({{PERSON_NAME}}, `{{PERSON}}`) и {{OTHER_NAME}} (`{{OTHER}}`) видим, кто какую задачу взял, чтобы не делать одно и то же.
+
+Ключи проектов в трекере: Sualver — `sual`, Смыв — `toilet`, Воксель Бокс — `voxel-boxing`,
+Кусь — `kus`, «30 дней» — `glowup`, Прототипы — `prototypes`. Для других проектов правило не действует.
+
+1. Перед началом задачи прочитай цели проекта в трекере (`read_db`, коллекция `goals`).
+   Если подходящую цель уже делает {{OTHER_NAME}} (`takenBy: "{{OTHER}}"`), остановись и скажи мне об этом.
+2. Если цель свободна, поставь на ней `takenBy: "{{PERSON}}"`. Если цели нет, создай её и сразу возьми.
+   Название цели короткое и понятное человеку: «Меню выбора бойца», а не имя файла.
+3. Когда задача готова и проверена, закрой цель, запиши этап в трекер и отправь пост в канал.
+4. Если задачу бросили, сними отметку с цели.
+
+Как именно писать в базу и слать пост: `README.md` в папке kit репозитория antropos17/sualver-toilet-tracker.
+Мелкие правки (опечатка, один цвет) в трекер не пиши. Вопросы и обсуждение без правок кода тоже.
+Если инструмента Artifact в сессии нет, скажи об этом одной строкой и работай дальше.
+</script>
 <script type="text/plain" id="seymur-prompt">Привет. Я Сеймур (GitHub `seymurglv`). Подключи меня к нашему с Русланом трекеру проектов. Отвечай по-русски, коротко. Новые репозитории, публикацию, пуш и любые записи в трекер при настройке делай только после моего «да» на каждый шаг.
 
-Трекер: https://claude.ai/code/artifact/3e6b0ef1-7a3a-43c9-8ed8-7edf927228c5
+Трекер: https://antropos17.github.io/sualver-toilet-tracker/
 Комплект: https://github.com/antropos17/sualver-toilet-tracker
 
 0. Проверь окружение, на первой ошибке остановись и скажи, что сделать:
@@ -713,7 +755,7 @@ const HEART = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.
 const FULL = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const BUBBLE = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-4 4v-4H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
 
-const S = { showcase: [], showForm: null, claims: [], sd: null, db: null, assets: null, me: null, canWrite: true, goals: [], updates: [], events: [], comments: [], likes: [], projects: {}, people: {},
+const S = { showcase: [], showForm: null, claims: [], sd: null, db: null, assets: null, me: null, canWrite: false, user: null, goals: [], updates: [], events: [], comments: [], likes: [], projects: {}, people: {},
   got: { goals: false, updates: false }, filter: "all", view: "home", limit: 6, seen: null, newIds: new Set(),
   onlyOpen: true, editGoals: false, keep: new Set(), shown: {}, lastPct: {}, kind: "idea", nproj: "sual", file: null, sending: false, openC: new Set(), ridx: -1 };
 const $ = (id) => document.getElementById(id);
@@ -760,7 +802,7 @@ const myPerson = () => PKS.find((k) => S.people[k] && S.people[k].userId === S.m
 const initial = (k) => personName(k).slice(0, 1);
 const ava = (k, cls = "") => {
   const a = S.people[k] && S.people[k].avatar;
-  return `<span class="ava ${cls} ${esc(k in PEOPLE ? k : "")}${a ? " pic" : ""}">${a ? `<img src="/_blob/${encodeURIComponent(a)}" alt="">` : esc(k in PEOPLE ? initial(k) : "?")}</span>`;
+  return `<span class="ava ${cls} ${esc(k in PEOPLE ? k : "")}${a ? " pic" : ""}">${a ? `<img src="${shotSrc(a)}" alt="">` : esc(k in PEOPLE ? initial(k) : "?")}</span>`;
 };
 // A claim on a showcase-only project has no tracker project: no colour dot, the neutral grey cover.
 const pmark = (p) => (p ? `<i class="pm ${esc(p)}"></i>` : "");
@@ -777,7 +819,9 @@ function pairsOf(u) {
   (u.shots || []).forEach((s, i) => { const role = s.role || "after", k = s.pair ?? (s.role ? 0 : i); if (!pairs.has(k)) pairs.set(k, {}); pairs.get(k)[role] = s; });
   return [...pairs.values()];
 }
-const blob = (s) => "/_blob/" + encodeURIComponent(s.id);
+// Shots live in the repo folder shots/; a value is a file name there (old ids without extension still resolve as-is).
+const shotSrc = (v) => (/^(https?:|\/|shots\/)/.test(v) ? v : "shots/" + encodeURIComponent(v));
+const blob = (s) => shotSrc(s.id);
 // A claim post may be about a showcase project that is not a tracker project: it carries the name itself.
 const pn = (u) => u.pname || proj(u.project).name;
 const posts = () => S.updates.filter((u) => visible(u.project)).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
@@ -829,6 +873,9 @@ function lockBg() {
 }
 function renderWho() {
   const mine = myPerson();
+  if (S.db && !S.user) return put("who", `<span class="small muted">Вы смотрите как гость.</span><button type="button" class="btn" data-action="login">Войти через Google</button>`);
+  if (S.user && !S.canWrite) return put("who", `<span class="small muted">Писать в трекер могут только Руслан и Сеймур.</span><button type="button" class="btn" data-action="logout">Выйти</button>`);
+  if (S.user) return put("who", `<span class="small muted">Вы вошли: ${esc(personName(mine))}</span><button type="button" class="btn" data-action="logout">Выйти</button>`);
   const free = !mine && S.me && S.canWrite && Object.keys(S.people).length ? PKS.filter((k) => !(S.people[k] && S.people[k].userId)) : [];
   put("who", free.length ? `Это я:` + free.map((k) => `<button type="button" class="btn" data-action="iam" data-p="${k}">${esc(personName(k))}</button>`).join("") : "");
 }
@@ -1114,8 +1161,27 @@ function renderThreads() {
   });
 }
 
+// takenBy: who does an open goal now. A goal without the field, closed or taken by someone unknown is free.
+const takenBy = (g) => (!g.done && g.takenBy in PEOPLE ? g.takenBy : "");
+function takeHtml(g, can) {
+  const who = takenBy(g), me = myPerson();
+  if (g.done) return "";
+  const btn = (label) => (can ? `<button type="button" class="gkb" data-action="take" data-id="${esc(g.id)}">${label}</button>` : "");
+  if (!who) return can ? `<span class="gk">${btn("Беру")}</span>` : "";
+  const chip = `<span${g.takenAt ? ` title="Взято ${esc(baku(g.takenAt))}"` : ""}>${ava(who, "sm")}делает ${esc(personName(who))}</span>`;
+  return `<span class="gk">${chip}${who === me ? btn("Отпустить") : me ? btn("Забрать у " + esc(personGen(who))) : ""}</span>`;
+}
+// "Забрать у Сеймура": the name in the genitive for the two of us, the plain name for anyone else.
+const personGen = (k) => ({ "Руслан": "Руслана", "Сеймур": "Сеймура" })[personName(k)] || personName(k);
+// "в работе: Руслан 2, Сеймур 1" for the open goals someone took.
+function takenLine(list) {
+  const n = {};
+  for (const g of list) { const k = takenBy(g); if (k) n[k] = (n[k] || 0) + 1; }
+  const ks = PKS.filter((k) => n[k]);
+  return ks.length ? "в работе: " + ks.map((k) => `${esc(personName(k))} ${n[k]}`).join(", ") : "";
+}
 function goalRow(g, can, edit) {
-  return `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span class="gt">${esc(g.title)}</span>${edit ? `<button type="button" class="x" data-action="remove-goal" data-id="${esc(g.id)}" aria-label="Убрать цель">✕</button>` : "<span></span>"}</div>`;
+  return `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span><span class="gt">${esc(g.title)}</span>${takeHtml(g, can)}</span>${edit ? `<button type="button" class="x" data-action="remove-goal" data-id="${esc(g.id)}" aria-label="Убрать цель">✕</button>` : "<span></span>"}</div>`;
 }
 /* ---------- claims: "I take this project" ---------- */
 // One document per project and person: claims/<project>__<person> {project, person, author, at, active}.
@@ -1132,7 +1198,7 @@ const projKey = (id) => (/^[a-z][a-z0-9-]{0,40}$/.test(id) ? id : "s-" + (String
 const colorFor = (name) => { const ks = Object.keys(PALETTE); return ks[[...String(name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % ks.length]; };
 // Claims are stored by showcase id; a project made from a showcase card remembers it in `show`.
 const claimId = (k) => (S.projects[k] && S.projects[k].show) || k;
-const TRACKER_URL = "https://claude.ai/code/artifact/3e6b0ef1-7a3a-43c9-8ed8-7edf927228c5";
+const TRACKER_URL = "https://antropos17.github.io/sualver-toilet-tracker/";
 // The prompt for whoever took the project: kit/CLAIM-PROMPT.md with this project's values filled in.
 function claimPrompt(id) {
   const it = S.showcase.find((x) => x.id === id), k = it ? projKey(id) : id, me = myPerson() || claimers(id)[0] || "ruslan";
@@ -1141,6 +1207,12 @@ function claimPrompt(id) {
     REPO: repo ? `https://github.com/${repo}` : "не указан в витрине", COLOR: PALETTE[p.color] ? p.color : colorFor(it ? it.name : k), SHOW: it ? id : "" };
   return $("claim-prompt").textContent.trim().replace(/\{\{(\w+)\}\}/g, (m, n) => (n in v ? v[n] : m));
 }
+// The rule «кто что делает» for a person's own CLAUDE.md: kit/RULES.md with the names filled in.
+function rulesText(k) {
+  const o = PKS.find((x) => x !== k) || "", v = { PERSON: k, PERSON_NAME: personName(k), OTHER: o, OTHER_NAME: personName(o) };
+  return $("rules-prompt").textContent.trim().replace(/\{\{(\w+)\}\}/g, (m, n) => (n in v ? v[n] : m));
+}
+const rulesVer = () => ($("rules-prompt").textContent.match(/Версия правил: (.+)/) || [, ""])[1].trim();
 function renderPromptModal() {
   if (!S.pm) return put("pmodal", "");
   const fresh = !$("pmodal").firstChild;
@@ -1185,7 +1257,7 @@ function renderGoalsView() {
     const pr = progress(goalsOf(p)), info = proj(p), next = goalsOf(p).find((g) => !g.done);
     return `<div class="proj" data-p="${p}" ${S.got.goals && pr.total ? `data-v="${pr.pct}"` : ""}><div class="ph">${info.repo ? `<a href="https://github.com/${esc(info.repo)}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a>` : `<b>${pmark(p)}${esc(info.name)}</b>`}<span class="pct">${S.got.goals ? (pr.total ? pr.pct + "%" : "") : "…"}</span></div>
       ${S.got.goals && !pr.total ? "" : `<div class="bar2" role="img" aria-label="${pr.done} из ${pr.total} целей"><i class="${p}" style="width:${pr.pct}%"></i></div>`}
-      <p class="small muted">${info.pending ? "Ждёт оценки Claude" : S.got.goals && !pr.total ? "Целей пока нет" : `${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${next ? " · дальше: " + esc(next.title) : ""}`}</p></div>`;
+      <p class="small muted">${info.pending ? "Ждёт оценки Claude" : S.got.goals && !pr.total ? "Целей пока нет" : `${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${takenLine(goalsOf(p)) ? " · " + takenLine(goalsOf(p)) : ""}${next ? " · дальше: " + esc(next.title) : ""}`}</p></div>`;
   }).join(""));
   if (changed) document.querySelectorAll("#projects [data-v]").forEach((el) => {
     const p = el.dataset.p, to = +el.dataset.v, from = S.shown[p] ?? to;
@@ -1263,7 +1335,7 @@ function renderShowcase() {
   if (!S.got.showcase) return put("showgrid", "");
   const pal = Object.values(PALETTE);
   put("showgrid", n ? `<div class="swgrid">${showList().map((x) => {
-    const sh = x.shot ? "/_blob/" + encodeURIComponent(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "";
+    const sh = x.shot ? shotSrc(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "";
     const c = pal[[...String(x.name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % pal.length];
     const work = claimers(x.id);
     const who = `<span class="sc-own" title="${esc(personName(o))}">${ava(o, "sm")}</span>${work.length ? `<span class="sc-work" title="В работе: ${esc(work.map(personName).join(", "))}">${work.map((k) => ava(k, "sm")).join("")}в работе</span>` : ""}`;
@@ -1281,7 +1353,7 @@ const BACK = `<button type="button" class="back" data-action="back">←&nbsp;Н�
 function renderShowDetail() {
   const x = S.view === "show" && S.sd ? S.showcase.find((y) => y.id === S.sd) : null;
   if (!x) return put("sdet", "");
-  const sh = x.shot ? "/_blob/" + encodeURIComponent(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "", work = claimers(x.id);
+  const sh = x.shot ? shotSrc(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "", work = claimers(x.id);
   const pal = Object.values(PALETTE), c = pal[[...String(x.name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % pal.length];
   const can = S.canWrite && S.db, me = myPerson(), mine = can && me && (x.owner === me || x.createdBy === me);
   const links = (x.repo && /^[\w.-]+\/[\w.-]+$/.test(x.repo) ? `<a class="btn" href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub ↗</a>` : "")
@@ -1359,6 +1431,10 @@ function renderProfile() {
       ${models.map(([name, c]) => `<div class="mrow"><span>${esc(name)}</span><div class="bar2 thin"><i style="width:${(c / mmax) * 100}%;background:var(--pc)"></i></div><span>${fmtUsd(c)}</span></div>`).join("")}</div>` : ""}
     <div class="sec by-${k}"><h3>Ачивки: ${got.length} из ${ach.length}</h3>
       <div class="achgrid">${got.map((a) => `<div class="ach got"><span>✓ ${esc(a.name)}</span></div>`).join("")}${next.map((a) => `<div class="ach"><span>${esc(a.name)}</span><div class="bar2 thin"><i style="width:${(a.v / a.goal) * 100}%"></i></div><span>${a.v} из ${a.goal}</span></div>`).join("")}</div></div>
+    ${k in PEOPLE ? `<div class="sec rules"><div class="shrow"><h3>Правила для Claude</h3><span class="small muted">Версия ${esc(rulesVer())}</span></div>
+      <p class="small muted">По этому правилу Claude отмечает в «Целях», какую цель он делает, и не берёт чужую.<br>Вставьте текст в свой ~/.claude/CLAUDE.md или попросите Claude Code сделать это.</p>
+      <textarea id="rules-text" readonly aria-label="Правила для Claude">${esc(rulesText(k))}</textarea>
+      <div class="ctl"><button type="button" class="btn main copy" data-action="rules-copy" data-p="${k}">Скопировать</button></div></div>` : ""}
     <div class="sec"><h3>Комментарии к профилю</h3><div class="thread" data-thread="profile:${k}"></div></div>`);
 }
 
@@ -1380,8 +1456,8 @@ function withLikeWants(list) {
   }
   return list;
 }
-async function logEvent(type, g) {
-  try { await S.db.collection("events").add({ type, goalId: g.id, title: g.title, project: g.project, person: myPerson() || "", via: "hand", at: Date.now() }); } catch {}
+async function logEvent(type, g, extra) {
+  try { await S.db.collection("events").add({ type, goalId: g.id, title: g.title, project: g.project, person: myPerson() || "", via: "hand", at: Date.now(), ...extra }); } catch {}
 }
 /* ---------- navigation: every screen change is a history entry, so "← Назад" and the browser's Back agree ---------- */
 // Our own stack mirrors the history; if the frame refuses pushState, "← Назад" still works from it.
@@ -1418,9 +1494,9 @@ const openPost = (id) => go("post:" + id);
 
 /* ---------- first visit tour ---------- */
 const TOUR = [
-  { sel: "#who", view: "home", t: "Это я", p: "Нажмите своё имя. Тогда лайки, комментарии и посты пойдут от вас.", skip: () => !$("who").textContent.trim() },
+  { sel: "#who", view: "home", t: "Вход", p: "Войдите через Google. Писать могут Руслан и Сеймур, остальные смотрят как гость.", skip: () => !$("who").textContent.trim() },
   { sel: "#stories", view: "home", t: "Лента", p: "Claude пишет сюда пост после каждой выкладки. Подсвечены кольца проектов. Нажмите на кольцо, и в ленте останутся посты только этого проекта." },
-  { sel: '.tabs [data-view="show"]', view: "home", t: "Витрина", p: "Все наши проекты: картинка и ссылки. Цели с галочками и «Улучшить трекер» для идей по этой странице — во вкладке «Цели»." },
+  { sel: '.tabs [data-view="show"]', view: "home", t: "Витрина", p: "Все наши проекты: картинка и ссылки. Цели с галочками и отметкой, кто что делает, и «Улучшить трекер» для идей по этой странице — во вкладке «Цели»." },
   { sel: ".tabs .plus", view: "home", t: "Пост", p: "Напишите идею, баг или вопрос одной фразой. Можно приложить скрин." },
   { sel: '.tabs [data-view="me"]', view: "home", t: "Профиль", p: "Ваши посты и ачивки. Кнопка «Как пользоваться» там же запускает этот тур снова." },
   { t: "Подключите свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },
@@ -1560,6 +1636,7 @@ document.addEventListener("click", async (e) => {
   if (a === "tour-copy") return copyPrompt(b);
   if (a === "prompt") { S.pm = id; renderPromptModal(); return lockBg(); }
   if (a === "pm-close") { S.pm = null; renderPromptModal(); return lockBg(); }
+  if (a === "rules-copy") return copyText(b, rulesText(d.p), $("rules-text"));
   if (a === "pm-copy") return copyText(b, claimPrompt(S.pm), $("pm-text"));
   if (a === "trk-new") {
     S.kind = d.k; S.nproj = "tracker";
@@ -1611,6 +1688,8 @@ document.addEventListener("click", async (e) => {
     box.addEventListener("click", () => box.remove());
     return document.body.appendChild(box);
   }
+  if (a === "login") { S.api.login().catch((e) => toast(e && e.code === "auth/popup-closed-by-user" ? "Вход отменён" : e && e.code === "auth/popup-blocked" ? "Браузер не открыл окно входа. Разрешите всплывающие окна для этой страницы." : "Не получилось войти. Попробуйте ещё раз.")); return; }
+  if (a === "logout") { S.api.logout(); return; }
   if (a === "iam") { try { await S.db.doc("people/" + d.p).update({ userId: S.me }); } catch { fail(); } return; }
   if (a === "del-comment") { try { await S.db.doc("comments/" + id).delete(); } catch { fail(); } return; }
   if (a === "del-post") { if (!arm(b, "Точно удалить?")) return; try { await S.db.doc("updates/" + id).delete(); } catch { fail(); } return; }
@@ -1630,9 +1709,23 @@ document.addEventListener("click", async (e) => {
     const done = !g.done;
     g.done = done; S.keep.add(id); render();
     try {
-      await S.db.doc("goals/" + id).update(done ? { done, doneAt: Date.now(), doneBy: myPerson() || "" } : { done, doneAt: 0, doneBy: "" });
+      await S.db.doc("goals/" + id).update(done ? { done, doneAt: Date.now(), doneBy: myPerson() || "", takenBy: "", takenAt: 0 } : { done, doneAt: 0, doneBy: "" });
       await logEvent(done ? "goal_done" : "goal_reopened", g);
     } catch { g.done = !done; render(); fail(); }
+    return;
+  }
+  // "Беру" takes a free goal, "Отпустить" frees one's own, "Забрать у …" asks once more before taking someone else's.
+  if (a === "take" && g) {
+    const me = myPerson();
+    if (!me) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
+    const who = takenBy(g), was = { takenBy: g.takenBy, takenAt: g.takenAt };
+    if (who && who !== me && !arm(b, "Точно забрать?")) return;
+    const data = who === me ? { takenBy: "", takenAt: 0 } : { takenBy: me, takenAt: Date.now() };
+    Object.assign(g, data); render();
+    try {
+      await S.db.doc("goals/" + id).update(data);
+      if (data.takenBy) await logEvent("goal_taken", g, who ? { from: who } : {});
+    } catch { Object.assign(g, was); render(); fail(); }
     return;
   }
   if (a === "remove-goal" && g) {
@@ -1759,6 +1852,7 @@ $("n-send").addEventListener("click", async () => {
   const title = $("n-text").value.trim(), more = $("n-more").value.split("\n").map((x) => x.trim()).filter(Boolean);
   $("n-err").textContent = "";
   if (!S.db) { $("n-err").textContent = "Нет связи с базой трекера. Обновите страницу."; return; }
+  if (!S.canWrite) { $("n-err").textContent = "Чтобы публиковать, войдите через Google (кнопка вверху)."; return; }
   if (!title) { $("n-err").textContent = "Напишите хотя бы одну фразу."; $("n-text").focus(); return; }
   S.sending = true; $("n-send").disabled = true; $("n-send").textContent = "Публикую…";
   try {
@@ -1780,15 +1874,16 @@ function notePct() {
   }
 }
 
-(async function boot() {
-  S.onlyOpen = lsGet("st-open") !== "0";
-  render();
-  if (!window.claude || !window.claude.use) { $("status").textContent = "Откройте страницу в claude.ai."; return; }
-  const [db, user] = await Promise.all([claude.use("db"), claude.use("user")]);
-  if (!db) { $("status").textContent = "Нет доступа. Войдите в claude.ai и откройте страницу по приглашению."; return; }
-  S.db = db;
-  if (user) { S.me = await user.id(); const cw = await user.can("data.write"); S.canWrite = cw === null ? true : cw; }
-  claude.use("assets").then((a) => { S.assets = a; $("n-filewrap").hidden = !a; });
+S.onlyOpen = lsGet("st-open") !== "0";
+render();
+const noApi = setTimeout(() => { if (!S.db) $("status").textContent = "База трекера не загрузилась. Проверьте интернет и обновите страницу."; }, 15000);
+// The Firebase module at the end of the page calls this with a thin adapter (collection/doc/onSnapshot/orderBy/limit/add/set/update/delete).
+window.trackerBoot = async function boot(api) {
+  clearTimeout(noApi);
+  const db = api.db;
+  S.db = db; S.api = api;
+  // Signed in with one of the two writer emails → person key; anyone else (or nobody) reads only.
+  api.onUser((user, person) => { S.user = user; S.me = person || null; S.canWrite = !!person; render(); });
   const slow = setTimeout(() => { $("status").textContent = "Данные пока не пришли. Страница подхватит их сама."; }, 10000);
   const ok = () => { clearTimeout(slow); $("status").textContent = ""; };
   const lost = () => { $("status").textContent = "Связь прервалась. Обновите страницу."; };
@@ -1820,5 +1915,37 @@ function notePct() {
   db.collection("showcase").onSnapshot((snap) => { S.showcase = docs(snap); S.got.showcase = true; syncProjects(); render(); }, lost);
   db.collection("claims").onSnapshot((snap) => { S.claims = docs(snap); syncProjects(); render(); }, lost);
   db.collection("people").onSnapshot((snap) => { S.people = Object.fromEntries(docs(snap).map((d) => [d.id, d])); S.got.people = true; render(); }, lost);
-})();
+};
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+import { getFirestore, collection, doc, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+// Public web config of project pyos-tracker (not a secret; access is guarded by Firestore rules).
+const app = initializeApp({ apiKey: "AIzaSyCgGrlrH9Mo_L29M1r5meZhQADBvTP6xHc", authDomain: "pyos-tracker.firebaseapp.com", projectId: "pyos-tracker",
+  storageBucket: "pyos-tracker.firebasestorage.app", messagingSenderId: "388723096158", appId: "1:388723096158:web:ffe16c27aeb9a3be7352cf" });
+const fs = getFirestore(app), auth = getAuth(app);
+const coll = (name, cons = []) => ({
+  orderBy: (f, dir = "asc") => coll(name, [...cons, orderBy(f, dir)]),
+  limit: (n) => coll(name, [...cons, limit(n)]),
+  onSnapshot: (next, err) => onSnapshot(cons.length ? query(collection(fs, name), ...cons) : collection(fs, name), next, err),
+  add: (data) => addDoc(collection(fs, name), data),
+});
+const db = {
+  collection: (name) => coll(name),
+  doc: (path) => { const r = doc(fs, path); return { id: r.id, set: (d) => setDoc(r, d), update: (d) => updateDoc(r, d), delete: () => deleteDoc(r) }; },
+};
+const api = {
+  db,
+  login: () => signInWithPopup(auth, new GoogleAuthProvider()),
+  logout: () => signOut(auth),
+  // members/{email} → { person } is readable only by the owner of that email, so the page never holds the list.
+  onUser: (cb) => onAuthStateChanged(auth, async (user) => {
+    if (!user) return cb(null, null);
+    let person = null;
+    try { const m = await getDoc(doc(fs, "members", user.email || "-")); person = m.exists() && user.emailVerified ? m.data().person : null; } catch {}
+    cb(user, person);
+  }),
+};
+window.trackerBoot(api);
 </script>

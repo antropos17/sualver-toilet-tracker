@@ -16,6 +16,8 @@
   --fresh: conic-gradient(from 210deg, #ffb347, #ff5a5f, #c13584, #ffb347);
   --f: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
   --d: "Unbounded", "Golos Text", system-ui, sans-serif;
+  /* outline buttons and fields: at least 3:1 against a card in both themes */
+  --edge: color-mix(in srgb, var(--muted) 70%, var(--surface));
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -46,7 +48,7 @@ a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--lin
 button { font: inherit; color: inherit; cursor: pointer; }
 :focus-visible { outline: 2px solid var(--ruslan); outline-offset: 2px; }
 .muted { color: var(--muted); } .small { font-size: 13px; }
-.btn { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-size: 14px; font-weight: 500; transition: border-color .15s; }
+.btn { background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; padding: 6px 12px; font-size: 14px; font-weight: 500; transition: border-color .15s; }
 .btn:hover { border-color: var(--muted); }
 .btn.main { background: var(--ink); color: var(--bg); border-color: var(--ink); padding: 10px 16px; font-weight: 600; }
 .link { background: none; border: 0; padding: 0; font-weight: 600; }
@@ -120,7 +122,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .act:active svg { transform: scale(.85); }
 .act[aria-pressed="true"] { color: var(--like); }
 .act[aria-pressed="true"] svg path { fill: currentColor; }
-.act.text { font-size: 13px; padding: 6px 10px; border: 1px solid var(--line); min-height: 32px; }
+.act.text { font-size: 13px; padding: 6px 10px; border: 1px solid var(--edge); min-height: 32px; }
 .act.text.first { margin-left: auto; }
 .pbody { padding: 4px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
 .cap b { font-weight: 600; }
@@ -140,7 +142,7 @@ details[open] > summary { margin-bottom: 8px; }
 .x.armed, .armed { color: var(--rem); }
 .cform { display: flex; gap: 8px; }
 .cform input { flex: 1; min-width: 0; }
-input[type="text"], select, textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+input[type="text"], select, textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; padding: 8px 10px; }
 textarea { width: 100%; resize: vertical; }
 .mini { --pcol: var(--muted); position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px; padding: 10px; text-align: left; background: var(--cover, var(--cover-none)); color: #fff; overflow: hidden; }
 .mini b { font-size: 18px; line-height: 1.2; } .mini i { font-style: normal; font-size: 13px; line-height: 1.25; font-weight: 500; overflow-wrap: anywhere; }
@@ -173,7 +175,7 @@ textarea { width: 100%; resize: vertical; }
 .gadd input { flex: 1; min-width: 0; } .gadd select { max-width: 120px; }
 
 /* new post */
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); align-self: flex-start; }
+.seg { display: inline-flex; border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; background: var(--surface); align-self: flex-start; }
 .seg button { border: 0; background: none; padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--muted); }
 .seg button + button { border-left: 1px solid var(--line); }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
@@ -221,7 +223,7 @@ textarea { width: 100%; resize: vertical; }
 .tabs .plus svg { border-radius: 50%; width: 44px; height: 44px; padding: 9px; }
 .reels { position: fixed; inset: 0; z-index: 15; background: var(--bg); overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
 .reel { height: 100%; max-width: 520px; margin: 0 auto; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; }
-.rmedia { position: relative; flex: 1; min-height: 0; display: grid; place-items: start center; overflow: hidden; background: var(--sunk); }
+.rmedia { position: relative; flex: 1; min-height: 0; display: grid; place-items: safe center; overflow: hidden; background: var(--sunk); }
 .rmedia .shots { width: 100%; grid-template-columns: 1fr; padding-top: 20px; }
 /* a screenshot keeps at least 70% of the column width; whatever is taller than the screen is cut at the bottom */
 .rmedia .ba-frame { max-width: none; width: max(70%, min(100%, calc((100dvh - 200px) * var(--far, .46)))); }
@@ -286,7 +288,7 @@ body { background: radial-gradient(900px 420px at 50% -160px, color-mix(in srgb,
 .poster .chip, .poster .chip.up { background: rgba(0,0,0,.22); border-color: rgba(255,255,255,.4); color: #fff; }
 .mini b { font-family: var(--d); font-size: 14px; }
 .bar2 { height: 8px; border-radius: 4px; } .bar2 i { border-radius: 4px; }
-.blk h4 { font-size: 12px; line-height: 1.8; letter-spacing: .08em; text-transform: uppercase; }
+.blk h4 { font-size: 12px; line-height: 1.8; }
 .chip { background: var(--bg); }
 .tabs { background: color-mix(in srgb, var(--surface) 82%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 .check { border-radius: 8px; border-color: var(--muted); background: var(--surface); }
@@ -323,6 +325,7 @@ body { background: radial-gradient(900px 420px at 50% -160px, color-mix(in srgb,
 .aft { order: 2; }
 #n-cover.blank h2 { opacity: .6; }
 @media (max-width: 480px) { #n-send { width: 100%; } }
+#n-send:disabled { opacity: .55; cursor: progress; }
 @media (min-width: 900px) {
   body[data-screen="goals"] .shell, body[data-screen="new"] .shell { display: block; }
   body[data-screen="goals"] .side, body[data-screen="new"] .side { display: none; }
@@ -375,6 +378,7 @@ body.intro .side .card:nth-child(2) { animation-delay: .07s; } body.intro .side 
 .phd { gap: 10px; }
 /* 6: a person's story has no progress to show, so no empty grey ring */
 .story[data-view] .ring:not(.fresh) { background: none; }
+.ring.nog { background: var(--sunk); }
 .story[data-view] .ring.fresh .ava.pic { box-shadow: none; }
 .ring { transition: transform .15s, --v .6s cubic-bezier(.2,.7,.2,1); }
 /* comments */
@@ -459,7 +463,6 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sc-edit { margin: 0 -10px 0 auto; width: 40px; height: 40px; border-radius: 50%; border: 0; padding: 0; display: grid; place-items: center; background: none; color: var(--muted); transition: color .15s, background .15s; }
 .sc-edit:hover { color: var(--ink); background: var(--sunk); }
 #showctl .cbtn { min-height: 40px; padding-inline: 16px; }
-@media (min-width: 900px) { .sc-body h3 { display: block; height: 1.3em; white-space: nowrap; text-overflow: ellipsis; } }
 .sc-edit svg { width: 18px; height: 18px; }
 .sform input[type="text"] { min-height: 44px; }
 .sform .btn { min-height: 44px; }
@@ -467,7 +470,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 /* v33: a way back on every inner screen */
 .backrow { display: flex; align-items: center; gap: 12px; min-height: 44px; }
 .backrow h2 { flex: 1; min-width: 0; }
-.back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 14px 6px 10px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); font-size: 14px; font-weight: 600; flex: none; transition: border-color .15s, transform .1s; }
+.back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 14px 6px 10px; border: 1px solid var(--edge); border-radius: 20px; background: var(--surface); font-size: 14px; font-weight: 600; flex: none; transition: border-color .15s, transform .1s; }
 .back:hover { border-color: var(--muted); } .back:active { transform: scale(.97); }
 .back svg { width: 18px; height: 18px; }
 .showlinks { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
@@ -488,12 +491,13 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sc-work .ava.pic { box-shadow: none; }
 .sc-shot { cursor: pointer; }
 .sc-t { background: none; border: 0; padding: 0; font: inherit; text-align: left; width: 100%; overflow: hidden; text-overflow: ellipsis; }
-@media (min-width: 900px) { .sc-t { white-space: nowrap; } }
+.sc-t { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 /* showcase detail */
 .sdwrap { position: fixed; inset: 0; z-index: 25; display: grid; place-items: center; padding: 24px 16px; }
 .sdbg { position: absolute; inset: 0; background: rgba(8,12,12,.6); animation: fadein .2s ease-out; }
 .sdet { position: relative; width: min(760px, 100%); max-height: calc(100dvh - 48px); overflow: auto; overscroll-behavior: contain; padding: 0; gap: 0; animation: rise .22s cubic-bezier(.2,.7,.2,1); }
-.sdet .backrow { position: sticky; top: 12px; z-index: 1; height: 0; min-height: 0; align-items: flex-start; padding-left: 12px; overflow: visible; }
+.sdet .backrow { position: sticky; top: 12px; z-index: 1; height: 0; min-height: 0; align-items: flex-start; justify-content: flex-end; padding-right: 12px; overflow: visible; }
+.sdet .sdx { width: 40px; padding: 0; justify-content: center; font-size: 16px; }
 .sdet > * { flex-shrink: 0; }
 .pmc { width: min(640px, 100%); padding: 18px; gap: 10px; }
 .pmc textarea { font: 12px/1.5 ui-monospace, Consolas, monospace; height: min(320px, 45dvh); resize: none; background: var(--sunk); border-color: transparent; }
@@ -559,7 +563,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
     <div class="field"><span>Что это</span><div class="seg" id="n-kind"><button type="button" data-kind="idea" aria-pressed="true">Идея</button><button type="button" data-kind="bug" aria-pressed="false">Баг</button><button type="button" data-kind="question" aria-pressed="false">Вопрос</button></div></div>
     <div class="field"><span>Проект</span><div class="seg" id="n-proj"></div></div>
     <label class="field"><span>Коротко, одной фразой</span><input type="text" id="n-text" maxlength="120" placeholder="Например: кнопка «Ответить» слишком мелкая"></label>
-    <div class="aft"><button type="button" class="btn" id="n-morebtn" data-action="n-extra">Добавить подробности или скрин</button></div>
+    <div class="aft"><button type="button" class="btn" id="n-morebtn" data-action="n-extra">Подробности и скрин</button></div>
     <div class="sec aft" id="n-extra" hidden>
       <label class="field"><span>Подробности</span><textarea id="n-more" rows="3" maxlength="800"></textarea></label>
       <label class="field" id="n-filewrap"><span>Скрин</span><input type="file" id="n-file" accept="image/png,image/jpeg,image/webp"></label>
@@ -568,7 +572,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
     <p class="err aft" id="n-err" role="alert"></p>
     <div class="aft"><button type="button" class="btn main" id="n-send">Опубликовать</button></div>
     </div>
-    <aside class="nprev"><span class="small muted">Так пост будет выглядеть в ленте</span><div class="post" id="n-cover"></div></aside>
+    <aside class="nprev"><span class="small muted">Превью</span><div class="post" id="n-cover"></div></aside>
   </section>
 
   <section class="view" id="v-show" hidden>
@@ -580,7 +584,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   <section class="view" id="v-post" hidden></section>
   <section class="view" id="v-trk" hidden>
     <div class="backrow"><button type="button" class="back" data-action="back">←&nbsp;Назад</button><h2>Улучшить трекер</h2></div>
-    <div class="trk-lead"><p class="muted">Идеи и баги по самой странице. Удачные — в цели.</p><div class="ctl" id="trkctl"></div></div>
+    <div class="trk-lead"><p class="muted">Идеи и баги по этой странице. Удачные переносим в цели.</p><div class="ctl" id="trkctl"></div></div>
     <div class="card" id="trkgoals"></div>
     <div class="sec"><div class="feed" id="trkfeed"></div></div>
   </section>
@@ -589,7 +593,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   <section class="reels" id="v-reels" hidden></section>
   <p class="status" id="status">Загружаю…</p>
 </div>
-<aside class="side" id="side-r" aria-label="Задачи"></aside>
+<aside class="side" id="side-r" aria-label="Цели"></aside>
 </div>
 
 <div class="rback" id="rback" data-action="rclose" hidden></div>
@@ -598,7 +602,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 <div id="sdet"></div>
 <div id="pmodal"></div>
 <div class="tour" id="tour" hidden><div class="tour-hole" id="tour-hole"></div><div class="tour-card card" id="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-t"></div></div>
-<script type="text/plain" id="claim-prompt">Я {{PERSON_NAME}} (person = `{{PERSON}}`). В трекере я взял в работу проект «{{NAME}}», чей он: {{OWNER_NAME}}. Подключи его к трекеру. Отвечай по-русски, коротко.
+<script type="text/plain" id="claim-prompt">Я {{PERSON_NAME}} (person = `{{PERSON}}`). В трекере я взял в работу проект «{{NAME}}». Владелец: {{OWNER_NAME}}. Подключи его к трекеру. Отвечай по-русски, коротко.
 
 Трекер: {{TRACKER}}
 Ключ проекта в трекере: `{{KEY}}`
@@ -641,7 +645,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
    - ключ: если проекта нет в трекере, я создам его сам («Цели» → «+ Проект»), ключ возьмём в «Цели» → «Править»;
    - `kit/report.mjs` и `kit/README.md` в `tools/tracker/`; `.claude/tracker.json` по образцу из README;
    - хук на `git push` в `.claude/settings.json`, строки в `.gitignore`, `.claude/tracker.local.json` = `{"person":"seymur"}`;
-   - правило из README в CLAUDE.md проекта: после push и проверенного этапа Claude сам, без вопросов, пишет пост со скринами «до» и «после».
+   - добавь в CLAUDE.md проекта правило из README. По нему Claude после push и проверенного этапа сам пишет пост со скринами «до» и «после», без вопросов.
    Покажи дифф и закоммить только эти файлы после моего «да».
 5. Скриншоты. Перед `report.mjs shot` проверь `npm ls playwright` в проекте. Нет — предложи `npm i -D playwright && npx playwright install chromium` или сними экран другим способом.
 6. Витрина: по скриншоту 1280×800 на каждый выбранный проект, скажи, где лежат. Карточку я добавлю сам: «Цели» → плашка «Витрина» → «+ Проект».
@@ -829,7 +833,7 @@ function renderWho() {
 function renderStories() {
   put("stories", `<button type="button" class="story${S.filter === "all" ? " on" : ""}" data-filter="all" aria-pressed="${S.filter === "all"}" aria-label="Показать посты всех проектов"><span class="ring all" style="--v:${S.got.goals ? overall().pct : 0}"><b>${S.got.goals ? overall().pct + "%" : "…"}</b></span><span class="sl">Всего</span></button>` + PKEYS.map((p) => {
     const pr = progress(goalsOf(p));
-    return `<button type="button" class="story${S.filter === p ? " on" : ""}" data-filter="${p}" aria-pressed="${S.filter === p}" aria-label="${esc(proj(p).name)}: ${pr.pct}% целей закрыто. Показать только этот проект"><span class="ring ${p}" style="--v:${S.got.goals ? pr.pct : 0}"><b>${S.got.goals ? pr.pct + "%" : "…"}</b></span><span class="sl">${esc(proj(p).name)}</span></button>`;
+    return `<button type="button" class="story${S.filter === p ? " on" : ""}" data-filter="${p}" aria-pressed="${S.filter === p}" aria-label="${esc(proj(p).name)}: ${pr.total ? pr.pct + "% целей закрыто" : "целей пока нет"}. Показать только этот проект"><span class="ring ${p}${S.got.goals && !pr.total ? " nog" : ""}" style="--v:${S.got.goals ? pr.pct : 0}"><b>${S.got.goals ? (pr.total ? pr.pct + "%" : "—") : "…"}</b></span><span class="sl">${esc(proj(p).name)}</span></button>`;
   }).join("") + PKS.map((k) => `<button type="button" class="story" data-view="${k}" aria-label="Профиль: ${esc(personName(k))}"><span class="ring${S.updates.some((u) => u.person === k && isFresh(u)) ? " fresh" : ""}">${ava(k, "st")}</span><span class="sl">${esc(personName(k))}</span></button>`).join(""));
   ringsMoved();
 }
@@ -954,7 +958,7 @@ function revealPosts() {
 }
 function renderNow() {
   document.querySelectorAll("[data-pnow]").forEach((el) => {
-    const pr = progress(goalsOf(el.dataset.pnow)), txt = S.got.goals ? `сейчас ${pr.pct}% · ${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}` : "…";
+    const pr = progress(goalsOf(el.dataset.pnow)), txt = S.got.goals && !pr.total ? "Целей пока нет" : S.got.goals ? `сейчас ${pr.pct}% · ${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}` : "…";
     if (el.textContent !== txt) el.textContent = txt;
   });
   document.querySelectorAll("[data-pbar]").forEach((el) => { el.style.width = progress(goalsOf(el.dataset.pbar)).pct + "%"; });
@@ -968,8 +972,8 @@ function renderSides() {
   const can = S.canWrite && S.db;
   put("side-l", `<div class="card">${overallHtml()}</div>` + PKEYS.map((p) => {
     const all = goalsOf(p), pr = progress(all), next = all.find((g) => !g.done), n = S.updates.filter((u) => u.project === p && !u.kind).length;
-    return `<div class="card"><div class="ph"><button type="button" class="link" data-filter="${p}">${pmark(p)}${esc(proj(p).name)}</button><span class="pct">${S.got.goals ? pr.pct + "%" : "…"}</span></div>
-      <div class="bar2"><i class="${p}" style="width:${pr.pct}%"></i></div>
+    return `<div class="card"><div class="ph"><button type="button" class="link" data-filter="${p}">${pmark(p)}${esc(proj(p).name)}</button><span class="pct">${S.got.goals ? (pr.total ? pr.pct + "%" : "") : "…"}</span></div>
+      ${S.got.goals && !pr.total ? `<p class="small muted">Целей пока нет</p>` : `<div class="bar2"><i class="${p}" style="width:${pr.pct}%"></i></div>`}
       ${groupsOf(p).map((gr) => { const list = all.filter((g) => groupKey(p, g.group) === gr.id); if (!list.length) return ""; const gp = progress(list); return `<div class="mini-g"><span>${esc(gr.name)}</span><span>${gp.done}/${gp.total}</span><div class="bar2 thin"><i class="${p}" style="width:${gp.pct}%"></i></div></div>`; }).join("")}
       <p class="small muted">${n} ${plural(n, "пост", "поста", "постов")} от Claude${next ? ` · дальше: ${esc(next.title)}` : ""}</p>
       ${proj(p).repo ? `<a class="small muted" href="https://github.com/${esc(proj(p).repo)}" target="_blank" rel="noopener">github.com/${esc(proj(p).repo)}</a>` : ""}</div>`;
@@ -977,8 +981,8 @@ function renderSides() {
   const shown = (g) => !g.done || S.keep.has(g.id);
   put("side-r", (S.got.goals ? PKEYS.map((p) => {
     const open = goalsOf(p).filter(shown), left = goalsOf(p).filter((g) => !g.done).length;
-    return `<div class="card"><div class="ph"><h3>${pmark(p)}Задачи: ${esc(proj(p).name)}</h3><span class="small muted">осталось ${left}</span></div>
-      ${open.slice(0, 5).map((g) => `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span class="gt">${esc(g.title)}</span><span></span></div>`).join("") || `<p class="small muted">${goalsOf(p).length ? "Все задачи закрыты" : "Целей пока нет"}</p>`}
+    return `<div class="card"><div class="ph"><h3>${pmark(p)}Цели: ${esc(proj(p).name)}</h3><span class="small muted">осталось ${left}</span></div>
+      ${open.slice(0, 5).map((g) => `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span class="gt">${esc(g.title)}</span><span></span></div>`).join("") || `<p class="small muted">${goalsOf(p).length ? "Все цели закрыты" : "Целей пока нет"}</p>`}
       ${open.length > 5 ? `<button type="button" class="link more" data-view="goals">Ещё ${open.length - 5} во вкладке «Цели»</button>` : ""}</div>`;
   }).join("") : "") + (S.got.updates ? `<div class="card"><h3>Кто сколько сделал</h3>${peopleHtml()}</div>` : ""));
   stickSides();
@@ -1177,9 +1181,9 @@ function sbar(c, max) { return `<div class="sbar">${TK.map((t) => (c[t] ? `<i cl
 function renderGoalsView() {
   const changed = put("projects", overallHtml() + PKEYS.map((p) => {
     const pr = progress(goalsOf(p)), info = proj(p), next = goalsOf(p).find((g) => !g.done);
-    return `<div class="proj" data-p="${p}" ${S.got.goals ? `data-v="${pr.pct}"` : ""}><div class="ph">${info.repo ? `<a href="https://github.com/${esc(info.repo)}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a>` : `<b>${pmark(p)}${esc(info.name)}</b>`}<span class="pct">${S.got.goals ? pr.pct + "%" : "…"}</span></div>
-      <div class="bar2" role="img" aria-label="${pr.done} из ${pr.total} целей"><i class="${p}" style="width:${pr.pct}%"></i></div>
-      <p class="small muted">${info.pending ? "Ждёт оценки Claude" : `${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${next ? " · дальше: " + esc(next.title) : ""}`}</p></div>`;
+    return `<div class="proj" data-p="${p}" ${S.got.goals && pr.total ? `data-v="${pr.pct}"` : ""}><div class="ph">${info.repo ? `<a href="https://github.com/${esc(info.repo)}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a>` : `<b>${pmark(p)}${esc(info.name)}</b>`}<span class="pct">${S.got.goals ? (pr.total ? pr.pct + "%" : "") : "…"}</span></div>
+      ${S.got.goals && !pr.total ? "" : `<div class="bar2" role="img" aria-label="${pr.done} из ${pr.total} целей"><i class="${p}" style="width:${pr.pct}%"></i></div>`}
+      <p class="small muted">${info.pending ? "Ждёт оценки Claude" : S.got.goals && !pr.total ? "Целей пока нет" : `${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${next ? " · дальше: " + esc(next.title) : ""}`}</p></div>`;
   }).join(""));
   if (changed) document.querySelectorAll("#projects [data-v]").forEach((el) => {
     const p = el.dataset.p, to = +el.dataset.v, from = S.shown[p] ?? to;
@@ -1218,7 +1222,7 @@ function renderGoalsView() {
       if (!rows.length) { finished.push(gr.name); return ""; }
       return `<div class="gh"><span>${esc(gr.name)}</span><span>${gp.done}/${gp.total}</span><div class="bar2 thin"><i class="${p}" style="width:${gp.pct}%"></i></div></div>${rows.map(row).join("")}`;
     }).join("");
-    return `<div><div class="ph"><h3>${pmark(p)}${esc(proj(p).name)}</h3><span class="muted small">${pr.done} из ${pr.total}</span></div>${claimHtml(p)}
+    return `<div><div class="ph"><h3>${pmark(p)}${esc(proj(p).name)}</h3><span class="muted small">${pr.total ? `${pr.done} из ${pr.total}` : ""}</span></div>${claimHtml(p)}
       ${groups}
       ${proj(p).pending ? `<div class="pend"><p class="small muted">Ждёт оценки Claude: он заведёт секции и цели по промту.</p>${myPerson() && claimers(claimId(p)).includes(myPerson()) ? `<button type="button" class="cbtn" data-action="prompt" data-id="${esc(claimId(p))}">Промт для Claude</button>` : ""}</div>` : ""}
       ${!all.length && !proj(p).pending ? `<p class="small muted" style="margin-top:8px">Целей пока нет.${edit ? "" : can ? " Нажмите «Править», чтобы добавить первую." : ""}</p>` : ""}
@@ -1283,14 +1287,14 @@ function renderShowDetail() {
     + (x.url && webUrl(x.url) ? `<a class="btn" href="${esc(x.url)}" target="_blank" rel="noopener">Открыть ↗</a>` : "");
   const fresh = !$("sdet").firstChild;
   if (put("sdet", `<div class="sdwrap"><div class="sdbg" data-action="back"></div><div class="card sdet" role="dialog" aria-modal="true" aria-labelledby="sd-t">
-    <div class="backrow">${BACK}</div>
+    <div class="backrow"><button type="button" class="back sdx" data-action="back" aria-label="Закрыть">✕</button></div>
     ${sh ? `<button type="button" class="sd-shot" data-action="zoom" data-src="${sh}" aria-label="Скриншот крупно"><img src="${sh}" alt=""></button>` : `<div class="sd-shot sc-cover" style="--c1:${c[2]};--c2:${c[3]}">${esc(x.name)}</div>`}
     <div class="sd-body"><h2 id="sd-t">${esc(x.name)}</h2>
       ${x.about || x.note ? `<p class="sd-about">${esc(x.about || x.note)}</p>` : ""}
       <div class="sd-people"><div><span class="muted">Чей</span>${ava(o, "sm")}<b>${esc(personName(o))}</b></div>
         <div><span class="muted">В работе</span>${work.length ? work.map((k) => `${ava(k, "sm")}<b>${esc(personName(k))}</b>`).join("") : `<span class="muted">никто</span>`}</div></div>
       <div class="sd-acts">${claimHtml(x.id, true)}${me && work.includes(me) ? `<button type="button" class="btn" data-action="prompt" data-id="${esc(x.id)}">Промт для Claude</button>` : ""}${links}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div>
-    </div></div></div>`) && fresh) $("sdet").querySelector(".back").focus({ preventScroll: true });
+    </div></div></div>`) && fresh) $("sdet").querySelector(".sdx").focus({ preventScroll: true });
 }
 // "Improve the tracker": goals of the tracker project and the posts about it.
 function renderTrk() {
@@ -1299,7 +1303,7 @@ function renderTrk() {
   if (S.view !== "trk") return;
   const can = S.canWrite && S.db, all = goalsOf("tracker"), pr = progress(all);
   put("trkctl", can ? `<button type="button" class="btn main" data-action="trk-new" data-k="idea">+ Идея</button><button type="button" class="btn" data-action="trk-new" data-k="bug">+ Баг</button>` : "");
-  put("trkgoals", `<div class="ph"><h3>Цели</h3><span class="muted small">${pr.done} из ${pr.total}</span></div>
+  put("trkgoals", `<div class="ph"><h3>Цели</h3><span class="muted small">${pr.total ? `${pr.done} из ${pr.total}` : ""}</span></div>
     ${all.filter((g) => !g.done || S.keep.has(g.id)).map((g) => goalRow(g, can, false)).join("") || `<p class="small muted">${all.length ? "Все цели закрыты" : "Целей пока нет"}</p>`}
     ${can ? `<form class="gadd" data-form="goal" data-p="tracker"><input type="text" placeholder="Новая цель" aria-label="Новая цель"><select aria-label="Секция">${groupsOf("tracker").map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}`);
   const list = S.updates.filter((u) => u.project === "tracker" && u.kind !== "claim").sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
@@ -1365,7 +1369,7 @@ function toast(msg) {
   t.textContent = msg; t.hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 3500);
 }
-const fail = () => toast("Не сохранилось. Проверьте интернет.");
+const fail = () => toast("Не сохранилось. Проверьте интернет и повторите.");
 const likeWant = {}, likePend = {}, likeJobs = {};
 // While a like is being saved, a snapshot taken before the save must not undo what the user sees.
 function withLikeWants(list) {
@@ -1414,11 +1418,11 @@ const openPost = (id) => go("post:" + id);
 /* ---------- first visit tour ---------- */
 const TOUR = [
   { sel: "#who", view: "home", t: "Это я", p: "Нажмите своё имя. Тогда лайки, комментарии и посты пойдут от вас.", skip: () => !$("who").textContent.trim() },
-  { sel: "#stories", view: "home", t: "Лента", p: "Claude пишет сюда пост после каждого push. Кольца — проекты: нажмите, чтобы оставить в ленте один." },
-  { sel: ".showlinks", view: "goals", t: "Цели и витрина", p: "Задачи проектов с галочками. Сверху — витрина всех наших проектов и раздел, где улучшаем сам трекер." },
-  { sel: ".tabs .plus", view: "home", t: "Пост", p: "Идея, баг или вопрос — одной фразой. Можно приложить скрин." },
-  { sel: '.tabs [data-view="me"]', view: "home", t: "Профиль", p: "Ваши посты и ачивки. Там же «Как пользоваться», чтобы пройти это снова." },
-  { t: "Подключи свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },
+  { sel: "#stories", view: "home", t: "Лента", p: "Claude пишет сюда пост после каждой выкладки. Подсвечены кольца проектов. Нажмите на кольцо, и в ленте останутся посты только этого проекта." },
+  { sel: ".showlinks", view: "goals", t: "Цели и витрина", p: "Цели проектов с галочками. Сверху две плашки: «Витрина» со всеми нашими проектами и «Улучшить трекер» для идей по этой странице." },
+  { sel: ".tabs .plus", view: "home", t: "Пост", p: "Напишите идею, баг или вопрос одной фразой. Можно приложить скрин." },
+  { sel: '.tabs [data-view="me"]', view: "home", t: "Профиль", p: "Ваши посты и ачивки. Кнопка «Как пользоваться» там же запускает этот тур снова." },
+  { t: "Подключите свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },
 ];
 const T = { i: -1, steps: [] };
 function startTour() {
@@ -1753,7 +1757,7 @@ $("n-send").addEventListener("click", async () => {
   if (S.sending) return;
   const title = $("n-text").value.trim(), more = $("n-more").value.split("\n").map((x) => x.trim()).filter(Boolean);
   $("n-err").textContent = "";
-  if (!S.db) { $("n-err").textContent = "Нет связи с общими данными."; return; }
+  if (!S.db) { $("n-err").textContent = "Нет связи с базой трекера. Обновите страницу."; return; }
   if (!title) { $("n-err").textContent = "Напишите хотя бы одну фразу."; $("n-text").focus(); return; }
   S.sending = true; $("n-send").disabled = true; $("n-send").textContent = "Публикую…";
   try {

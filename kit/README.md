@@ -89,6 +89,15 @@ To let Claude post stages for it from a repository:
    ```
 7. Check: `node tools/tracker/report.mjs draft` prints the project key, the person and token counts.
 
+### Taking a showcase project («Беру в работу»)
+
+1. A person presses «Беру в работу» on a showcase card. The tracker writes `claims/<card id>__<person>` and, for someone else's project, a feed post (`kind: "claim"`).
+2. The project joins the working list at once (stories, «Цели», side panels) as a placeholder «Ждёт оценки Claude». The page itself never writes `projects/<key>`. The key is the card id (`kus`, `voxel-boxing`), or `s-<id in lower case>` when the id is not a valid key.
+3. The tracker opens a ready prompt for that project (template: `kit/CLAIM-PROMPT.md`, filled with name, key, shared private repository, person, colour). It can be opened again from the card or the placeholder: «Промт для Claude».
+4. Pasted into the person's Claude Code, the prompt clones the shared private repository (no access: stop, never create a new one), assesses it, and after a yes writes one `write_db` batch: `projects/<key>` (only if missing, with `show: <card id>`), goals with `goal_added` events, one assessment post in `updates`. Then it installs this kit as in «Adding another project».
+
+The template is embedded in `tracker.html` (`<script id="claim-prompt">`); after editing `kit/CLAIM-PROMPT.md`, copy it there too.
+
 ### Second person (Сеймур)
 
 Posting writes to the tracker's database with the Artifact tool as the person who runs Claude Code, so that person needs edit access to the artifact. A GitHub invitation does not give it. Руслан has already shared the tracker with edit rights; Сеймур opens the tracker link in his own claude.ai and presses «Это я» (button in the header above the feed). If `action: "read"` on the tracker does not report «writer», `write_db` and `upload_asset` are refused: ask Руслан to open Share with edit rights.

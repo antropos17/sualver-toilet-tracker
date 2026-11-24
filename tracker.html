@@ -495,6 +495,11 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sdet { position: relative; width: min(760px, 100%); max-height: calc(100dvh - 48px); overflow: auto; overscroll-behavior: contain; padding: 0; gap: 0; animation: rise .22s cubic-bezier(.2,.7,.2,1); }
 .sdet .backrow { position: sticky; top: 12px; z-index: 1; height: 0; min-height: 0; align-items: flex-start; padding-left: 12px; overflow: visible; }
 .sdet > * { flex-shrink: 0; }
+.pmc { width: min(640px, 100%); padding: 18px; gap: 10px; }
+.pmc textarea { font: 12px/1.5 ui-monospace, Consolas, monospace; height: min(320px, 45dvh); resize: none; background: var(--sunk); border-color: transparent; }
+.pmc .ctl { justify-content: flex-end; } .pmc .btn { min-height: 40px; } .pmc .copy { min-width: 11em; }
+#pmodal .sdwrap { z-index: 26; }
+.pend { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 8px; }
 .sd-shot { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; padding: 0; background: var(--sunk); cursor: zoom-in; overflow: hidden; }
 .sd-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .sd-shot.sc-cover { cursor: default; font-size: 24px; }
@@ -591,7 +596,31 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 <div class="sheet" id="rsheet" role="dialog" aria-labelledby="rsheet-title" hidden><div class="shrow"><h3 id="rsheet-title">Комментарии</h3><button type="button" class="btn" data-action="rclose">Закрыть</button></div><div id="rsheet-body"></div><p class="tz">Время — по Баку</p></div>
 
 <div id="sdet"></div>
+<div id="pmodal"></div>
 <div class="tour" id="tour" hidden><div class="tour-hole" id="tour-hole"></div><div class="tour-card card" id="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-t"></div></div>
+<script type="text/plain" id="claim-prompt">Я {{PERSON_NAME}} (person = `{{PERSON}}`). В трекере я взял в работу проект «{{NAME}}», чей он: {{OWNER_NAME}}. Подключи его к трекеру. Отвечай по-русски, коротко.
+
+Трекер: {{TRACKER}}
+Ключ проекта в трекере: `{{KEY}}`
+Общий приватный репозиторий: {{REPO}}
+Комплект трекера: https://github.com/antropos17/sualver-toilet-tracker (папка `kit`)
+
+Правила:
+- В базу трекера пиши только инструментом Artifact: `action: "write_db"`, `url` = ссылка трекера. Никаких тестовых и пробных записей. Каждый batch сначала покажи мне и пиши после моего «да».
+- Если репозиторий не указан или доступа к нему нет, остановись и скажи мне. Новый репозиторий не создавай.
+- Прочитай трекер (`action: "read"`). Если в ответе нет «writer», скажи: «Попроси Руслана открыть Share с правом редактирования», и жди.
+- Коммит и push только после моего «да».
+
+1. Склонируй репозиторий (`gh repo clone <владелец/название>`), прочитай README и код. Оцени коротко: что это, в каком состоянии, что делать дальше.
+2. Прочитай `projects/{{KEY}}`: `action: "read_db"`, `db_op: "get"`, `collection: "projects"`, `doc_id: "{{KEY}}"`. Если записи нет, создай её первой записью в batch из шага 3. Если есть, не перезаписывай её и бери секции из её `groups`; если в ней `archived: true`, добавь в batch `{"op":"update","collection":"projects","doc_id":"{{KEY}}","data":{"archived":false}}`.
+3. Предложи мне 2–5 секций и 5–15 целей. После «да» запиши всё одним вызовом `write_db`, `db_op: "batch"` (`<ms>` — текущее время в миллисекундах, одно на весь batch):
+   - если записи нет: `{"op":"set","collection":"projects","doc_id":"{{KEY}}","data":{"name":"{{NAME}}","repo":"<владелец/название>","color":"{{COLOR}}","groups":[{"id":"g1","name":"…"},{"id":"g2","name":"…"}],"show":"{{SHOW}}","createdAt":<ms>,"createdBy":"{{PERSON}}","archived":false}}`
+   - на каждую цель: `{"op":"set","collection":"goals","doc_id":"g-{{KEY}}-<n>","data":{"project":"{{KEY}}","group":"g1","title":"…","done":false,"removed":false,"order":<ms + n>,"createdAt":<ms>,"createdBy":"{{PERSON}}","doneAt":0,"doneBy":""}}`
+   - на каждую цель: `{"op":"set","collection":"events","doc_id":"e-<ms>-g-{{KEY}}-<n>","data":{"type":"goal_added","goalId":"g-{{KEY}}-<n>","title":"…","project":"{{KEY}}","person":"{{PERSON}}","via":"claude","at":<ms>}}`
+   - один пост с оценкой: `{"op":"set","collection":"updates","doc_id":"u-{{KEY}}-start","data":{"project":"{{KEY}}","person":"{{PERSON}}","via":"claude","group":"g1","title":"Оценка: …","items":["~ …","+ …"],"shots":[],"visual":false,"goalIds":[],"commits":[],"createdAt":<ms>}}`
+   `group` — только id из `groups`. В `items` 3–6 строк, каждая начинается с `+ `, `~ `, `! ` или `- `. В batch не больше 50 записей.
+4. Подключи push к трекеру по разделу «Adding another project» в `kit/README.md` комплекта: `kit/report.mjs` и `kit/README.md` → `tools/tracker/`; `.claude/tracker.json` = `{"project":"{{KEY}}","artifact":"{{TRACKER}}"}` (плюс `preview`, если у проекта есть экран); хук на `git push` в `.claude/settings.json`; строки `.claude/*.local.json` и `.claude/shots/` в `.gitignore`; `.claude/tracker.local.json` = `{"person":"{{PERSON}}"}`; правило из README в `CLAUDE.md` проекта. Покажи дифф и закоммить только эти файлы после моего «да».
+5. Проверка: `node tools/tracker/report.mjs draft` показывает проект `{{KEY}}` и person = `{{PERSON}}`. Пробный пост не пиши.</script>
 <script type="text/plain" id="seymur-prompt">Привет. Я Сеймур (GitHub `seymurglv`). Подключи меня к нашему с Русланом трекеру проектов. Отвечай по-русски, коротко. Новые репозитории, публикацию, пуш и любые записи в трекер при настройке делай только после моего «да» на каждый шаг.
 
 Трекер: https://claude.ai/code/artifact/3e6b0ef1-7a3a-43c9-8ed8-7edf927228c5
@@ -641,6 +670,16 @@ const TRACKER = { name: "Трекер", repo: "antropos17/sualver-toilet-tracker
 function syncProjects() {
   const own = (k) => !(k in DEFAULT_PROJECTS);
   if (!S.projects.tracker) S.projects.tracker = { ...TRACKER, virtual: true };
+  // A showcase project someone took joins the working list at once. Until Claude writes projects/<key>
+  // it is a placeholder "waiting for Claude"; the page itself never writes it.
+  for (const k of Object.keys(S.projects)) if (S.projects[k].pending) delete S.projects[k];
+  for (const c of S.got.projects ? S.claims : []) {
+    const it = c.active && S.showcase.find((x) => x.id === c.project);
+    if (!it) continue;
+    const k = projKey(it.id), prev = S.projects[k];
+    if (k in DEFAULT_PROJECTS || (prev && !prev.pending)) continue;
+    if (!prev || (c.at || 0) < prev.createdAt) S.projects[k] = { name: it.name, repo: it.repo || "", color: colorFor(it.name), groups: [], show: it.id, createdAt: c.at || 0, pending: true };
+  }
   const at = (k) => (k === "tracker" ? Infinity : S.projects[k].createdAt || 0);
   PKEYS = Object.keys(DEFAULT_PROJECTS).concat(Object.keys(S.projects).filter((k) => own(k) && S.projects[k].name && !S.projects[k].archived).sort((a, b) => at(a) - at(b)));
   const light = [], dark = [], rules = [];
@@ -750,7 +789,7 @@ let queued = false;
 function render() {
   if (queued) return;
   queued = true;
-  requestAnimationFrame(() => { queued = false; renderShell(); renderWho(); renderStories(); renderFeed(); renderNow(); renderSides(); renderGoalsView(); renderShowcase(); renderShowDetail(); renderTrk(); renderPostView(); renderProfile(); renderReels(); renderActs(); renderThreads(); renderNewForm(); renderNewPrev(); intro(); });
+  requestAnimationFrame(() => { queued = false; renderShell(); renderWho(); renderStories(); renderFeed(); renderNow(); renderSides(); renderGoalsView(); renderShowcase(); renderShowDetail(); renderPromptModal(); renderTrk(); renderPostView(); renderProfile(); renderReels(); renderActs(); renderThreads(); renderNewForm(); renderNewPrev(); intro(); });
 }
 
 function renderShell() {
@@ -776,10 +815,11 @@ function renderShell() {
 }
 // While the tour or the showcase detail is open, Tab cannot leave it: everything behind is inert.
 function lockBg() {
-  const tour = T.i >= 0, sd = S.view === "show" && !!S.sd;
-  document.querySelector(".shell").inert = tour || sd;
-  document.querySelector(".tabs").inert = S.view === "reels" || tour || sd;
-  $("sdet").inert = tour;
+  const tour = T.i >= 0, pm = !!S.pm, sd = S.view === "show" && !!S.sd;
+  document.querySelector(".shell").inert = tour || pm || sd;
+  document.querySelector(".tabs").inert = S.view === "reels" || tour || pm || sd;
+  $("sdet").inert = tour || pm;
+  $("pmodal").inert = tour;
 }
 function renderWho() {
   const mine = myPerson();
@@ -932,7 +972,7 @@ function renderSides() {
       <div class="bar2"><i class="${p}" style="width:${pr.pct}%"></i></div>
       ${groupsOf(p).map((gr) => { const list = all.filter((g) => groupKey(p, g.group) === gr.id); if (!list.length) return ""; const gp = progress(list); return `<div class="mini-g"><span>${esc(gr.name)}</span><span>${gp.done}/${gp.total}</span><div class="bar2 thin"><i class="${p}" style="width:${gp.pct}%"></i></div></div>`; }).join("")}
       <p class="small muted">${n} ${plural(n, "пост", "поста", "постов")} от Claude${next ? ` · дальше: ${esc(next.title)}` : ""}</p>
-      <a class="small muted" href="https://github.com/${esc(proj(p).repo)}" target="_blank" rel="noopener">github.com/${esc(proj(p).repo)}</a></div>`;
+      ${proj(p).repo ? `<a class="small muted" href="https://github.com/${esc(proj(p).repo)}" target="_blank" rel="noopener">github.com/${esc(proj(p).repo)}</a>` : ""}</div>`;
   }).join(""));
   const shown = (g) => !g.done || S.keep.has(g.id);
   put("side-r", (S.got.goals ? PKEYS.map((p) => {
@@ -1081,8 +1121,31 @@ const ownerOf = (key) => {
   return p && p.createdBy in PEOPLE ? p.createdBy : "ruslan";
 };
 const claimName = (key) => (S.showcase.find((x) => x.id === key) || {}).name || proj(key).name;
+// Project key for a showcase card: its id when it already looks like a key, otherwise a derived one.
+const projKey = (id) => (/^[a-z][a-z0-9-]{0,40}$/.test(id) ? id : "s-" + (String(id).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "x"));
+const colorFor = (name) => { const ks = Object.keys(PALETTE); return ks[[...String(name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % ks.length]; };
+// Claims are stored by showcase id; a project made from a showcase card remembers it in `show`.
+const claimId = (k) => (S.projects[k] && S.projects[k].show) || k;
+const TRACKER_URL = "https://claude.ai/code/artifact/3e6b0ef1-7a3a-43c9-8ed8-7edf927228c5";
+// The prompt for whoever took the project: kit/CLAIM-PROMPT.md with this project's values filled in.
+function claimPrompt(id) {
+  const it = S.showcase.find((x) => x.id === id), k = it ? projKey(id) : id, me = myPerson() || claimers(id)[0] || "ruslan";
+  const p = S.projects[k] || {}, repo = (it ? it.repo : p.repo) || "";
+  const v = { PERSON: me, PERSON_NAME: personName(me), NAME: it ? it.name : proj(k).name, OWNER_NAME: personName(ownerOf(id)), TRACKER: TRACKER_URL, KEY: k,
+    REPO: repo ? `https://github.com/${repo}` : "не указан в витрине", COLOR: PALETTE[p.color] ? p.color : colorFor(it ? it.name : k), SHOW: it ? id : "" };
+  return $("claim-prompt").textContent.trim().replace(/\{\{(\w+)\}\}/g, (m, n) => (n in v ? v[n] : m));
+}
+function renderPromptModal() {
+  if (!S.pm) return put("pmodal", "");
+  const fresh = !$("pmodal").firstChild;
+  if (put("pmodal", `<div class="sdwrap"><div class="sdbg" data-action="pm-close"></div><div class="card sdet pmc" role="dialog" aria-modal="true" aria-labelledby="pm-t">
+    <h3 id="pm-t">Промт для Claude Code</h3><p class="small muted">Вставьте в свой Claude Code. Он оценит «${esc(claimName(S.pm))}», заведёт цели и подключит push к трекеру.</p>
+    <textarea id="pm-text" readonly aria-label="Промт">${esc(claimPrompt(S.pm))}</textarea>
+    <div class="ctl"><button type="button" class="btn" data-action="pm-close">Закрыть</button><button type="button" class="btn main copy" data-action="pm-copy">Скопировать промт</button></div></div></div>`) && fresh) $("pmodal").querySelector(".copy").focus({ preventScroll: true });
+}
 // The button keeps one width for both labels and the avatars have a reserved slot, so nothing next to it moves.
 function claimHtml(key, big) {
+  key = claimId(key);
   const who = claimers(key), me = myPerson(), mine = me && who.includes(me), can = S.canWrite && S.db;
   const avs = who.map((k) => `<span title="${esc(personName(k))} в работе">${ava(k, "sm")}</span>`).join("");
   const btn = can ? `<button type="button" class="${big ? "btn" + (mine ? "" : " main") : "cbtn"} claimbtn" data-action="claim" data-id="${esc(key)}" aria-pressed="${!!mine}">${mine ? "Отпустить" : "Беру в работу"}</button>` : "";
@@ -1090,6 +1153,7 @@ function claimHtml(key, big) {
 }
 const claimBusy = new Set();
 async function claim(key) {
+  key = claimId(key);
   const me = myPerson();
   if (!me) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
   if (claimBusy.has(key)) return;
@@ -1101,19 +1165,21 @@ async function claim(key) {
     // Taking someone else's project tells everybody: a post in the feed, which every open page shows as a toast.
     if (on && ownerOf(key) !== me) {
       const sc = S.showcase.find((x) => x.id === key);
-      await S.db.collection("updates").add({ kind: "claim", project: PKEYS.includes(key) ? key : "", pname: name, show: sc ? key : "", person: me, author: S.me || "", via: "hand",
+      await S.db.collection("updates").add({ kind: "claim", project: sc ? projKey(key) : PKEYS.includes(key) ? key : "", pname: name, show: sc ? key : "", person: me, author: S.me || "", via: "hand",
         title: `Взялся за «${name}»`, items: [`Проект: ${personName(ownerOf(key))}`], shots: sc && sc.shot ? [{ id: sc.shot, role: "after", pair: 0 }] : [], visual: !!(sc && sc.shot), goalIds: [], commits: [], createdAt: now });
       toast(`Вы взялись за «${name}». ${personName(ownerOf(key))} увидит это в ленте.`);
     } else toast(on ? `Вы взялись за «${name}».` : `Вы отпустили «${name}».`);
+    // Taking a project hands over the prompt for one's own Claude Code.
+    if (on) { S.pm = key; renderPromptModal(); lockBg(); }
   } catch { fail(); } finally { claimBusy.delete(key); btns().forEach((x) => { x.disabled = false; }); }
 }
 function sbar(c, max) { return `<div class="sbar">${TK.map((t) => (c[t] ? `<i class="${t}" style="width:${(c[t] / max) * 100}%"></i>` : "")).join("")}</div>`; }
 function renderGoalsView() {
   const changed = put("projects", overallHtml() + PKEYS.map((p) => {
     const pr = progress(goalsOf(p)), info = proj(p), next = goalsOf(p).find((g) => !g.done);
-    return `<div class="proj" data-p="${p}" ${S.got.goals ? `data-v="${pr.pct}"` : ""}><div class="ph"><a href="https://github.com/${esc(info.repo)}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a><span class="pct">${S.got.goals ? pr.pct + "%" : "…"}</span></div>
+    return `<div class="proj" data-p="${p}" ${S.got.goals ? `data-v="${pr.pct}"` : ""}><div class="ph">${info.repo ? `<a href="https://github.com/${esc(info.repo)}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a>` : `<b>${pmark(p)}${esc(info.name)}</b>`}<span class="pct">${S.got.goals ? pr.pct + "%" : "…"}</span></div>
       <div class="bar2" role="img" aria-label="${pr.done} из ${pr.total} целей"><i class="${p}" style="width:${pr.pct}%"></i></div>
-      <p class="small muted">${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${next ? " · дальше: " + esc(next.title) : ""}</p></div>`;
+      <p class="small muted">${info.pending ? "Ждёт оценки Claude" : `${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${next ? " · дальше: " + esc(next.title) : ""}`}</p></div>`;
   }).join(""));
   if (changed) document.querySelectorAll("#projects [data-v]").forEach((el) => {
     const p = el.dataset.p, to = +el.dataset.v, from = S.shown[p] ?? to;
@@ -1154,10 +1220,11 @@ function renderGoalsView() {
     }).join("");
     return `<div><div class="ph"><h3>${pmark(p)}${esc(proj(p).name)}</h3><span class="muted small">${pr.done} из ${pr.total}</span></div>${claimHtml(p)}
       ${groups}
-      ${!all.length ? `<p class="small muted" style="margin-top:8px">Целей пока нет.${edit ? "" : can ? " Нажмите «Править», чтобы добавить первую." : ""}</p>` : ""}
-      ${edit ? `<p class="small muted pkey">Ключ проекта для Claude: <code>${esc(p)}</code>${p in DEFAULT_PROJECTS ? "" : ` <button type="button" class="x" data-action="proj-archive" data-id="${esc(p)}">Убрать проект</button>`}</p>` : ""}
+      ${proj(p).pending ? `<div class="pend"><p class="small muted">Ждёт оценки Claude: он заведёт секции и цели по промту.</p>${myPerson() && claimers(claimId(p)).includes(myPerson()) ? `<button type="button" class="cbtn" data-action="prompt" data-id="${esc(claimId(p))}">Промт для Claude</button>` : ""}</div>` : ""}
+      ${!all.length && !proj(p).pending ? `<p class="small muted" style="margin-top:8px">Целей пока нет.${edit ? "" : can ? " Нажмите «Править», чтобы добавить первую." : ""}</p>` : ""}
+      ${edit ? `<p class="small muted pkey">Ключ проекта для Claude: <code>${esc(p)}</code>${p in DEFAULT_PROJECTS || proj(p).pending || proj(p).virtual ? "" : ` <button type="button" class="x" data-action="proj-archive" data-id="${esc(p)}">Убрать проект</button>`}</p>` : ""}
       ${finished.length ? `<p class="small muted" style="margin-top:8px">Готово: ${esc(finished.join(", "))}</p>` : ""}
-      ${edit ? `<form class="gadd" data-form="goal" data-p="${p}"><input type="text" id="add-${p}" placeholder="Новая цель" aria-label="Новая цель"><select id="grp-${p}" aria-label="Секция">${groupsOf(p).map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}</div>`;
+      ${edit && !proj(p).pending ? `<form class="gadd" data-form="goal" data-p="${p}"><input type="text" id="add-${p}" placeholder="Новая цель" aria-label="Новая цель"><select id="grp-${p}" aria-label="Секция">${groupsOf(p).map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}</div>`;
   }).join(""));
 }
 
@@ -1222,7 +1289,7 @@ function renderShowDetail() {
       ${x.about || x.note ? `<p class="sd-about">${esc(x.about || x.note)}</p>` : ""}
       <div class="sd-people"><div><span class="muted">Чей</span>${ava(o, "sm")}<b>${esc(personName(o))}</b></div>
         <div><span class="muted">В работе</span>${work.length ? work.map((k) => `${ava(k, "sm")}<b>${esc(personName(k))}</b>`).join("") : `<span class="muted">никто</span>`}</div></div>
-      <div class="sd-acts">${claimHtml(x.id, true)}${links}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div>
+      <div class="sd-acts">${claimHtml(x.id, true)}${me && work.includes(me) ? `<button type="button" class="btn" data-action="prompt" data-id="${esc(x.id)}">Промт для Claude</button>` : ""}${links}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div>
     </div></div></div>`) && fresh) $("sdet").querySelector(".back").focus({ preventScroll: true });
 }
 // "Improve the tracker": goals of the tracker project and the posts about it.
@@ -1400,10 +1467,10 @@ function tourPlace() {
 addEventListener("resize", tourPlace);
 addEventListener("scroll", tourPlace, { passive: true });
 const PROMPT = () => $("seymur-prompt").textContent.trim();
-async function copyPrompt(btn) {
+const copyPrompt = (btn) => copyText(btn, PROMPT(), $("tour-prompt"));
+async function copyText(btn, text, ta) {
   let ok = false;
-  try { await navigator.clipboard.writeText(PROMPT()); ok = true; } catch {}
-  const ta = $("tour-prompt");
+  try { await navigator.clipboard.writeText(text); ok = true; } catch {}
   if (!ok && ta) { ta.focus(); ta.select(); try { ok = document.execCommand("copy"); } catch {} }
   btn.textContent = ok ? "Скопировано ✓" : "Выделено — Ctrl+C";
 }
@@ -1486,6 +1553,9 @@ document.addEventListener("click", async (e) => {
   if (a === "tour-next") { T.i++; return tourShow(); }
   if (a === "tour-end") return endTour();
   if (a === "tour-copy") return copyPrompt(b);
+  if (a === "prompt") { S.pm = id; renderPromptModal(); return lockBg(); }
+  if (a === "pm-close") { S.pm = null; renderPromptModal(); return lockBg(); }
+  if (a === "pm-copy") return copyText(b, claimPrompt(S.pm), $("pm-text"));
   if (a === "trk-new") {
     S.kind = d.k; S.nproj = "tracker";
     document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.kind === d.k)));
@@ -1584,7 +1654,7 @@ let reelTick = false;
 $("v-reels").addEventListener("scroll", () => { if (reelTick) return; reelTick = true; requestAnimationFrame(() => { reelTick = false; reelSync(); }); }, { passive: true });
 document.addEventListener("keydown", (e) => {
   // Tab walks in a circle inside the tour card or the showcase detail.
-  const trap = e.key === "Tab" && (T.i >= 0 ? $("tour-card") : S.view === "show" && S.sd ? $("sdet").querySelector(".sdet") : null);
+  const trap = e.key === "Tab" && (T.i >= 0 ? $("tour-card") : S.pm ? $("pmodal").querySelector(".pmc") : S.view === "show" && S.sd ? $("sdet").querySelector(".sdet") : null);
   if (trap) {
     const f = [...trap.querySelectorAll("button:not([disabled]), a[href], textarea, input")].filter((x) => x.offsetParent);
     const i = f.indexOf(document.activeElement);
@@ -1595,6 +1665,7 @@ document.addEventListener("keydown", (e) => {
     const lb = document.querySelector(".lightbox");
     if (lb) { lb.remove(); return; }
     if (T.i >= 0) return endTour();
+    if (S.pm) { S.pm = null; renderPromptModal(); return lockBg(); }
     if (S.view === "reels" && !$("rsheet").hidden) return closeSheet();
     if (S.sd || S.view === "reels") return back();
   }
@@ -1738,11 +1809,11 @@ function notePct() {
   db.collection("likes").onSnapshot((snap) => { S.likes = withLikeWants(docs(snap)); renderActs(); }, lost);
   db.collection("events").orderBy("at", "desc").limit(500).onSnapshot((snap) => { S.events = docs(snap); }, lost);
   db.collection("projects").onSnapshot((snap) => {
-    S.projects = Object.fromEntries(docs(snap).map((d) => [d.id, d]));
+    S.projects = Object.fromEntries(docs(snap).map((d) => [d.id, d])); S.got.projects = true;
     syncProjects(); render();
   }, lost);
-  db.collection("showcase").onSnapshot((snap) => { S.showcase = docs(snap); S.got.showcase = true; render(); }, lost);
-  db.collection("claims").onSnapshot((snap) => { S.claims = docs(snap); render(); }, lost);
+  db.collection("showcase").onSnapshot((snap) => { S.showcase = docs(snap); S.got.showcase = true; syncProjects(); render(); }, lost);
+  db.collection("claims").onSnapshot((snap) => { S.claims = docs(snap); syncProjects(); render(); }, lost);
   db.collection("people").onSnapshot((snap) => { S.people = Object.fromEntries(docs(snap).map((d) => [d.id, d])); S.got.people = true; render(); }, lost);
 })();
 </script>

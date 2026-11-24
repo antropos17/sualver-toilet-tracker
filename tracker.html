@@ -506,7 +506,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .pend { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 8px; }
 .sd-shot { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; padding: 0; background: var(--sunk); cursor: zoom-in; overflow: hidden; }
 .sd-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-.sd-shot.sc-cover { cursor: default; font-size: 24px; }
+.sd-shot.sc-cover { cursor: default; font-size: 24px; display: grid; place-items: center; padding: 24px 64px; background: linear-gradient(150deg, var(--c1), var(--c2)); }
 .sd-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
 .sd-body h2 { font-family: var(--d); font-size: 22px; letter-spacing: -.02em; }
 .sd-about { font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }

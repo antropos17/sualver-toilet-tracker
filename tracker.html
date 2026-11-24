@@ -464,6 +464,63 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sform input[type="text"] { min-height: 44px; }
 .sform .btn { min-height: 44px; }
 .sform .prev { width: 160px; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+/* v33: a way back on every inner screen */
+.backrow { display: flex; align-items: center; gap: 12px; min-height: 44px; }
+.backrow h2 { flex: 1; min-width: 0; }
+.back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 14px 6px 10px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); font-size: 14px; font-weight: 600; flex: none; transition: border-color .15s, transform .1s; }
+.back:hover { border-color: var(--muted); } .back:active { transform: scale(.97); }
+.back svg { width: 18px; height: 18px; }
+.showlinks { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+@media (min-width: 900px) {
+  #v-goals > .showlinks { grid-column: 1 / -1; }
+  body[data-screen="trk"] .shell { display: block; } body[data-screen="trk"] .side { display: none; }
+  body[data-screen="trk"] .shell .app { max-width: 960px; margin: 0 auto; }
+  #v-trk { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 20px 40px; align-items: start; }
+  #v-trk > .backrow, #v-trk > .trk-lead { grid-column: 1 / -1; }
+}
+.trk-lead { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.trk-lead .btn { min-height: 44px; }
+/* claims: who works on a project */
+.claim { display: flex; align-items: center; gap: 8px; margin-top: 6px; min-height: 32px; }
+.claim .avs { display: flex; gap: 4px; }
+.claimbtn { min-width: 9.4em; }
+.sc-work { position: absolute; right: 9px; bottom: 9px; display: flex; align-items: center; gap: 6px; padding: 3px 10px 3px 3px; border-radius: 20px; background: rgba(15,17,21,.78); color: #fff; font: 600 12px var(--f); }
+.sc-work .ava.pic { box-shadow: none; }
+.sc-shot { cursor: pointer; }
+.sc-t { background: none; border: 0; padding: 0; font: inherit; text-align: left; width: 100%; overflow: hidden; text-overflow: ellipsis; }
+@media (min-width: 900px) { .sc-t { white-space: nowrap; } }
+/* showcase detail */
+.sdwrap { position: fixed; inset: 0; z-index: 25; display: grid; place-items: center; padding: 24px 16px; }
+.sdbg { position: absolute; inset: 0; background: rgba(8,12,12,.6); animation: fadein .2s ease-out; }
+.sdet { position: relative; width: min(760px, 100%); max-height: calc(100dvh - 48px); overflow: auto; overscroll-behavior: contain; padding: 0; gap: 0; animation: rise .22s cubic-bezier(.2,.7,.2,1); }
+.sdet .backrow { position: sticky; top: 12px; z-index: 1; height: 0; min-height: 0; align-items: flex-start; padding-left: 12px; overflow: visible; }
+.sdet > * { flex-shrink: 0; }
+.sd-shot { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; padding: 0; background: var(--sunk); cursor: zoom-in; overflow: hidden; }
+.sd-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.sd-shot.sc-cover { cursor: default; font-size: 24px; }
+.sd-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+.sd-body h2 { font-family: var(--d); font-size: 22px; letter-spacing: -.02em; }
+.sd-about { font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+.sd-people { display: flex; gap: 10px 28px; flex-wrap: wrap; font-size: 14px; }
+.sd-people > div { display: flex; align-items: center; gap: 8px; }
+.sd-people .muted { margin-right: 2px; }
+.sd-acts { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.sd-acts .btn { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.sd-acts .sc-edit { margin: 0 0 0 auto; }
+/* first visit tour */
+.tour { position: fixed; inset: 0; z-index: 40; }
+.tour-hole { position: fixed; left: 0; top: 0; width: 0; height: 0; border-radius: 16px; box-shadow: 0 0 0 200vmax rgba(8,12,12,.62); outline: 2px solid #fff; outline-offset: 3px; pointer-events: none; }
+.tour-hole.none { outline: 0; }
+.tour-card { position: fixed; left: 0; top: 0; width: min(340px, calc(100vw - 32px)); gap: 8px; padding: 16px; box-shadow: var(--shadow); animation: fadein .18s ease-out; }
+.tour-card.wide { width: min(600px, calc(100vw - 32px)); }
+.tour-card .step { font-size: 12px; color: var(--muted); }
+.tour-card h3 { font-family: var(--d); font-size: 16px; letter-spacing: -.01em; }
+.tour-card p { font-size: 14px; line-height: 1.45; }
+.tour-card .ctl { justify-content: flex-end; margin-top: 4px; }
+.tour-card .btn { min-height: 40px; }
+.tour-card .copy { min-width: 11em; }
+.tour-card textarea { font: 12px/1.5 ui-monospace, Consolas, monospace; height: min(260px, 40dvh); resize: none; background: var(--sunk); border-color: transparent; }
+.phead .how { margin-left: auto; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
@@ -481,7 +538,10 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   </section>
 
   <section class="view" id="v-goals" hidden>
+    <div class="showlinks">
     <button type="button" class="card showlink" data-view="show"><span><b>Витрина</b><span class="small muted" id="showcount">Все проекты: картинка и ссылки</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="card showlink" data-view="trk"><span><b>Улучшить трекер</b><span class="small muted" id="trkcount">Идеи и баги по этой странице</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
     <div class="sec" id="projects"></div>
     <div class="sec"><div class="shrow"><h3>Цели</h3><div class="ctl" id="goalctl"></div></div><div id="projform"></div><div class="sec" id="goals"></div></div>
     <div class="sec"><h3>Обсуждение целей</h3><div class="thread" data-thread="section:goals"></div></div>
@@ -507,9 +567,17 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   </section>
 
   <section class="view" id="v-show" hidden>
-    <div class="shrow"><h2>Витрина</h2><div class="ctl" id="showctl"></div></div>
+    <div class="backrow"><button type="button" class="back" data-action="back">←&nbsp;Назад</button><h2>Витрина</h2><div class="ctl" id="showctl"></div></div>
     <div id="showform"></div>
     <div id="showgrid"></div>
+  </section>
+
+  <section class="view" id="v-post" hidden></section>
+  <section class="view" id="v-trk" hidden>
+    <div class="backrow"><button type="button" class="back" data-action="back">←&nbsp;Назад</button><h2>Улучшить трекер</h2></div>
+    <div class="trk-lead"><p class="muted">Идеи и баги по самой странице. Удачные — в цели.</p><div class="ctl" id="trkctl"></div></div>
+    <div class="card" id="trkgoals"></div>
+    <div class="sec"><div class="feed" id="trkfeed"></div></div>
   </section>
 
   <section class="view" id="v-profile" hidden></section>
@@ -521,6 +589,35 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 
 <div class="rback" id="rback" data-action="rclose" hidden></div>
 <div class="sheet" id="rsheet" role="dialog" aria-labelledby="rsheet-title" hidden><div class="shrow"><h3 id="rsheet-title">Комментарии</h3><button type="button" class="btn" data-action="rclose">Закрыть</button></div><div id="rsheet-body"></div><p class="tz">Время — по Баку</p></div>
+
+<div id="sdet"></div>
+<div class="tour" id="tour" hidden><div class="tour-hole" id="tour-hole"></div><div class="tour-card card" id="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-t"></div></div>
+<script type="text/plain" id="seymur-prompt">Привет. Я Сеймур (GitHub `seymurglv`). Подключи меня к нашему с Русланом трекеру проектов. Отвечай по-русски, коротко. Новые репозитории, публикацию, пуш и любые записи в трекер при настройке делай только после моего «да» на каждый шаг.
+
+Трекер: https://claude.ai/code/artifact/3e6b0ef1-7a3a-43c9-8ed8-7edf927228c5
+Комплект: https://github.com/antropos17/sualver-toilet-tracker
+
+0. Проверь окружение, на первой ошибке остановись и скажи, что сделать:
+   - `node --version` не ниже 18, иначе: поставь с https://nodejs.org;
+   - `gh --version` и `gh auth status`, иначе: установи GitHub CLI и выполни `gh auth login`;
+   - есть инструмент Artifact и `action: "read"` трекера проходит, иначе: `claude auth login` с аккаунтом claude.ai.
+1. Доступ к трекеру. Приглашение на GitHub не даёт права писать в трекер. Руслан уже открыл Share с правом редактирования. Если чтение трекера не показывает «writer», скажи: «Попроси Руслана открыть Share с правом редактирования» и жди. Затем пусть я открою ссылку трекера в своём claude.ai и нажму «Это я» (кнопка в шапке над лентой).
+2. Спроси меня, где лежат мои проекты (папки, диски). По дискам вслепую не ищи. Склонируй комплект в `~/Dev/sualver-toilet-tracker` (или куда скажу) и прочитай `kit/README.md` целиком.
+3. Покажи список проектов в названных папках: папка, есть ли GitHub. По каждому отдельно спроси:
+   - показать в витрине трекера? (да/нет)
+   - выложить на GitHub? (нет / приватно / публично). Перед заливкой проверь историю на секреты (`.env`, ключи, токены) и покажи, что нашёл;
+   - подключить к трекеру? (да/нет)
+   Делай только то, на что я ответил «да».
+4. Для каждого проекта, подключаемого к трекеру, по разделу «Adding another project» в `kit/README.md`:
+   - ключ: если проекта нет в трекере, я создам его сам («Цели» → «+ Проект»), ключ возьмём в «Цели» → «Править»;
+   - `kit/report.mjs` и `kit/README.md` в `tools/tracker/`; `.claude/tracker.json` по образцу из README;
+   - хук на `git push` в `.claude/settings.json`, строки в `.gitignore`, `.claude/tracker.local.json` = `{"person":"seymur"}`;
+   - правило из README в CLAUDE.md проекта: после push и проверенного этапа Claude сам, без вопросов, пишет пост со скринами «до» и «после».
+   Покажи дифф и закоммить только эти файлы после моего «да».
+5. Скриншоты. Перед `report.mjs shot` проверь `npm ls playwright` в проекте. Нет — предложи `npm i -D playwright && npx playwright install chromium` или сними экран другим способом.
+6. Витрина: по скриншоту 1280×800 на каждый выбранный проект, скажи, где лежат. Карточку я добавлю сам: «Цели» → плашка «Витрина» → «+ Проект».
+7. Проверка: `node tools/tracker/report.mjs draft` в подключённом проекте показывает ключ, person = seymur и токены. Пробный пост не пиши.
+8. В конце напомни принять приглашения в репозитории antropos17: https://github.com/notifications.</script>
 
 <nav class="tabs" aria-label="Разделы"><div>
   <button type="button" data-view="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Лента</button>
@@ -539,9 +636,13 @@ const PALETTE = {
   green: ["#2f7d32", "#7ed684", "#2c752f", "#17421a", "Зелёный"], gold: ["#8f6300", "#f0c14b", "#8a5f00", "#523800", "Золотой"],
   pink: ["#c2317d", "#ff8fc7", "#b62d75", "#6d1746", "Розовый"], slate: ["#4b5d73", "#a9bdd4", "#46586d", "#25303d", "Серо-синий"],
 };
+// The tracker itself is a project too: ideas and bugs about this page live there. Until projects/tracker exists these defaults are shown; the page never writes it.
+const TRACKER = { name: "Трекер", repo: "antropos17/sualver-toilet-tracker", color: "slate", groups: [{ id: "g1", name: "Интерфейс" }, { id: "g2", name: "Функции" }, { id: "g3", name: "Баги" }] };
 function syncProjects() {
   const own = (k) => !(k in DEFAULT_PROJECTS);
-  PKEYS = Object.keys(DEFAULT_PROJECTS).concat(Object.keys(S.projects).filter((k) => own(k) && S.projects[k].name && !S.projects[k].archived).sort((a, b) => (S.projects[a].createdAt || 0) - (S.projects[b].createdAt || 0)));
+  if (!S.projects.tracker) S.projects.tracker = { ...TRACKER, virtual: true };
+  const at = (k) => (k === "tracker" ? Infinity : S.projects[k].createdAt || 0);
+  PKEYS = Object.keys(DEFAULT_PROJECTS).concat(Object.keys(S.projects).filter((k) => own(k) && S.projects[k].name && !S.projects[k].archived).sort((a, b) => at(a) - at(b)));
   const light = [], dark = [], rules = [];
   for (const k of Object.keys(S.projects)) {
     if (!own(k) || !/^[a-z][a-z0-9-]*$/.test(k)) continue;
@@ -562,12 +663,12 @@ const TYPES = { "+": "add", "~": "chg", "!": "fix", "-": "rem", "−": "rem" };
 const TK = ["add", "chg", "fix", "rem"];
 const GLYPH = { add: "+", chg: "~", fix: "!", rem: "−" };
 const WORD = { add: "новое", chg: "изменено", fix: "починено", rem: "убрано" };
-const KIND = { idea: "Идея", bug: "Баг", question: "Вопрос" };
+const KIND = { idea: "Идея", bug: "Баг", question: "Вопрос", claim: "Взял в работу" };
 const HEART = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
 const FULL = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const BUBBLE = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-4 4v-4H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
 
-const S = { showcase: [], showForm: null, db: null, assets: null, me: null, canWrite: true, goals: [], updates: [], events: [], comments: [], likes: [], projects: {}, people: {},
+const S = { showcase: [], showForm: null, claims: [], sd: null, db: null, assets: null, me: null, canWrite: true, goals: [], updates: [], events: [], comments: [], likes: [], projects: {}, people: {},
   got: { goals: false, updates: false }, filter: "all", view: "home", limit: 6, seen: null, newIds: new Set(),
   onlyOpen: true, editGoals: false, keep: new Set(), shown: {}, lastPct: {}, kind: "idea", nproj: "sual", file: null, sending: false, openC: new Set(), ridx: -1 };
 const $ = (id) => document.getElementById(id);
@@ -616,7 +717,8 @@ const ava = (k, cls = "") => {
   const a = S.people[k] && S.people[k].avatar;
   return `<span class="ava ${cls} ${esc(k in PEOPLE ? k : "")}${a ? " pic" : ""}">${a ? `<img src="/_blob/${encodeURIComponent(a)}" alt="">` : esc(k in PEOPLE ? initial(k) : "?")}</span>`;
 };
-const pmark = (p) => `<i class="pm ${esc(p)}"></i>`;
+// A claim on a showcase-only project has no tracker project: no colour dot, the neutral grey cover.
+const pmark = (p) => (p ? `<i class="pm ${esc(p)}"></i>` : "");
 function groupsOf(p) { return (Array.isArray(proj(p).groups) ? proj(p).groups : []).filter((g) => g && g.id).concat([{ id: "other", name: "Другое" }]); }
 const groupKey = (p, gid) => (groupsOf(p).some((g) => g.id === gid) ? gid : "other");
 const groupName = (p, gid) => groupsOf(p).find((g) => g.id === groupKey(p, gid)).name;
@@ -631,6 +733,8 @@ function pairsOf(u) {
   return [...pairs.values()];
 }
 const blob = (s) => "/_blob/" + encodeURIComponent(s.id);
+// A claim post may be about a showcase project that is not a tracker project: it carries the name itself.
+const pn = (u) => u.pname || proj(u.project).name;
 const posts = () => S.updates.filter((u) => visible(u.project)).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 const stagesOf = (k) => S.updates.filter((u) => u.person === k && !u.kind);
 const isMine = (u) => (u.author && u.author === S.me) || (u.person && u.person === myPerson());
@@ -646,7 +750,7 @@ let queued = false;
 function render() {
   if (queued) return;
   queued = true;
-  requestAnimationFrame(() => { queued = false; renderShell(); renderWho(); renderStories(); renderFeed(); renderNow(); renderSides(); renderGoalsView(); renderShowcase(); renderProfile(); renderReels(); renderActs(); renderThreads(); renderNewForm(); renderNewPrev(); intro(); });
+  requestAnimationFrame(() => { queued = false; renderShell(); renderWho(); renderStories(); renderFeed(); renderNow(); renderSides(); renderGoalsView(); renderShowcase(); renderShowDetail(); renderTrk(); renderPostView(); renderProfile(); renderReels(); renderActs(); renderThreads(); renderNewForm(); renderNewPrev(); intro(); });
 }
 
 function renderShell() {
@@ -655,10 +759,12 @@ function renderShell() {
   document.body.dataset.screen = S.view;
   $("v-reels").hidden = !reels; document.documentElement.style.overflow = reels ? "hidden" : "";
   if (!reels) closeSheet();
-  document.querySelector(".tabs").inert = reels;
+  lockBg();
+  const one = S.view.startsWith("post:");
   $("v-home").hidden = S.view !== "home"; $("v-goals").hidden = S.view !== "goals"; $("v-new").hidden = S.view !== "new"; $("v-show").hidden = S.view !== "show"; $("v-profile").hidden = !prof;
+  $("v-trk").hidden = S.view !== "trk"; $("v-post").hidden = !one;
   if (S.prevView !== undefined && S.prevView !== S.view && !still()) {
-    const el = reels ? $("v-reels") : prof ? $("v-profile") : $("v-" + S.view);
+    const el = reels ? $("v-reels") : prof ? $("v-profile") : one ? $("v-post") : $("v-" + S.view);
     if (el) {
       const first = !entered.has(el.id); entered.add(el.id);
       el.classList.remove("enter", "first"); void el.offsetWidth; el.classList.add("enter"); if (first) { el.classList.add("first"); countRoot = el; }
@@ -666,7 +772,14 @@ function renderShell() {
     }
   }
   S.prevView = S.view;
-  document.querySelectorAll(".tabs [data-view]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.view === S.view || (b.dataset.view === "me" && prof) || (b.dataset.view === "goals" && S.view === "show"))));
+  document.querySelectorAll(".tabs [data-view]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.view === S.view || (b.dataset.view === "me" && prof) || (b.dataset.view === "goals" && (S.view === "show" || S.view === "trk")) || (b.dataset.view === "home" && one))));
+}
+// While the tour or the showcase detail is open, Tab cannot leave it: everything behind is inert.
+function lockBg() {
+  const tour = T.i >= 0, sd = S.view === "show" && !!S.sd;
+  document.querySelector(".shell").inert = tour || sd;
+  document.querySelector(".tabs").inert = S.view === "reels" || tour || sd;
+  $("sdet").inert = tour;
 }
 function renderWho() {
   const mine = myPerson();
@@ -735,7 +848,7 @@ function postHtml(u) {
   const commits = (u.commits || []).map((c) => `<a href="${esc(c.url || `https://github.com/${proj(u.project).repo}/commit/${c.sha}`)}" target="_blank" rel="noopener" title="${esc(c.subject || "")}">${esc(String(c.sha).slice(0, 7))}</a>`).join(", ");
   const cost = us.finishedAt ? [fmtTokens(us.tokens) + " токенов", fmtUsd(us.cost), (us.models || []).map((m) => m.name || m.model).join(", ")].filter(Boolean).join(" · ") : "";
   const items = u.items || [];
-  const mk = u.kind && !u.goalId && can, del = u.kind && u.author && u.author === S.me;
+  const mk = u.kind && u.kind !== "claim" && !u.goalId && can, del = u.kind && u.author && u.author === S.me;
   const name = u.person in PEOPLE ? `<button type="button" class="link" data-view="${u.person}">${esc(personName(u.person))}</button>` : "<b>Кто-то</b>";
   const closed = (u.goalIds || []).map((id) => S.goals.find((g) => g.id === id)).filter(Boolean);
   const allGoals = goalsOf(u.project).length, gain = closed.length && allGoals ? Math.max(1, Math.round((closed.length / allGoals) * 100)) : 0;
@@ -746,7 +859,7 @@ function postHtml(u) {
   const spent = us.finishedAt ? `<section class="blk"><h4>Затраты</h4><div><div class="gain"><span class="chip">${fmtMin(us.activeMin)} с Claude</span><span class="chip">${fmtUsd(us.cost)}</span><span class="chip">${fmtTokens(us.tokens)} токенов</span>${(us.models || []).map((m) => `<span class="chip">${esc(m.name || m.model)}</span>`).join("")}</div>${commits ? `<p class="small muted">Коммиты на GitHub: ${commits}</p>` : ""}</div></section>` : commits ? `<p class="small muted">Коммиты на GitHub: ${commits}</p>` : "";
   const text = u.kind && has ? items.map((t) => `<p>${esc(t)}</p>`).join("") + gainHtml(u) : "";
   return `<article class="post" id="post-${esc(u.id)}">
-    <div class="phd">${ava(u.person)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(proj(u.project).name)} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))}</span></div>
+    <div class="phd">${ava(u.person)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(pn(u))} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))}</span></div>
       ${isFresh(u) ? `<span class="chip up">новое</span>` : ""}<span class="when" title="Время по Баку">${esc(baku(u.createdAt))}</span></div>
     <div class="media${has ? " crop" : ""}">${has ? shotsHtml(u) + `<button type="button" class="uncrop" data-action="uncrop">Показать целиком</button>` : posterHtml(u, !u.kind)}</div>
     <div class="acts"><button type="button" class="act" data-like="${esc(u.id)}" aria-pressed="false" aria-label="Нравится"></button><button type="button" class="act" data-cfocus="${esc(u.id)}" aria-label="Комментировать"></button><button type="button" class="act" data-action="reel" data-id="${esc(u.id)}" aria-label="Открыть на весь экран">${FULL}</button>
@@ -778,6 +891,8 @@ function ringsMoved() {
   });
 }
 function intro() {
+  // The tour waits for the data, so every step points at something real. Shown once per browser.
+  if (!S.tourChecked && S.got.goals && S.got.updates && S.got.people) { S.tourChecked = true; if (!lsGet("st-tour")) setTimeout(() => { if (T.i < 0) startTour(); }, 600); }
   if (countRoot) { if (!still()) countUp(countRoot); countRoot = null; }
   if (S.intro || !S.got.goals || !S.got.updates || still()) return;
   S.intro = true; document.body.classList.add("intro"); countUp(document);
@@ -872,13 +987,13 @@ function reelHtml(u, i, n) {
   const details = (!u.kind && (has ? items.length : items.length > 3)) || metaLine(u);
   return `<article class="reel" id="reel-${esc(u.id)}">
     <div class="rmedia">${has ? shotsHtml(u, 1) : posterHtml(u)}</div>
-    <div class="rinfo"><div class="phd">${ava(u.person)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(proj(u.project).name)} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))} · ${esc(baku(u.createdAt))}</span></div>${isFresh(u) ? `<span class="chip up">новое</span>` : ""}<span class="when">${i + 1} из ${n}</span></div>
+    <div class="rinfo"><div class="phd">${ava(u.person)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(pn(u))} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))} · ${esc(baku(u.createdAt))}</span></div>${isFresh(u) ? `<span class="chip up">новое</span>` : ""}<span class="when">${i + 1} из ${n}</span></div>
       ${has ? `<p class="cap rclamp">${esc(u.title)}</p>` : ""}
       ${extra > 0 ? `<p class="small muted">Показана 1 из ${extra + 1} пар скринов, остальные <button type="button" class="link" data-open="${esc(u.id)}">в ленте</button></p>` : ""}
       <div class="ract"><button type="button" class="act" data-like="${esc(u.id)}" aria-pressed="false" aria-label="Нравится"></button><button type="button" class="act" data-action="rcomments" data-id="${esc(u.id)}" data-ccount="${esc(u.id)}" aria-label="Комментарии"></button>
         ${details ? `<button type="button" class="btn" data-action="rdetails" data-id="${esc(u.id)}">Правки</button>` : ""}
         ${first ? `<button type="button" class="btn" data-action="zoom" data-src="${blob(first)}">Крупно</button>` : ""}
-        <button type="button" class="btn last" data-view="home" aria-label="Закрыть рилс и вернуться в ленту">✕</button></div></div>
+        <button type="button" class="btn last" data-action="back" aria-label="Закрыть рилс и вернуться назад">✕</button></div></div>
   </article>`;
 }
 function renderReels() {
@@ -887,7 +1002,7 @@ function renderReels() {
   const changed = put("v-reels", (n ? `<div class="rprog" id="rprog">${list.map(() => "<i></i>").join("")}</div>` : "")
     + (n > 1 && !lsGet("st-rhint") ? `<div class="rhint" id="rhint">Листайте вниз ↓</div>` : "")
     + (n > 1 ? `<div class="rnav"><button type="button" class="btn" data-action="rstep" data-d="-1" aria-label="Предыдущий пост">↑</button><button type="button" class="btn" data-action="rstep" data-d="1" aria-label="Следующий пост">↓</button></div>` : "")
-    + (n ? list.map((u, i) => reelHtml(u, i, n)).join("") : `<div class="reel"><div class="rmedia"><p class="muted" style="align-self:center">Постов пока нет</p></div><div class="rinfo"><div class="ract"><button type="button" class="btn last" data-view="home">✕</button></div></div></div>`));
+    + (n ? list.map((u, i) => reelHtml(u, i, n)).join("") : `<div class="reel"><div class="rmedia"><p class="muted" style="align-self:center">Постов пока нет</p></div><div class="rinfo"><div class="ract"><button type="button" class="btn last" data-action="back" aria-label="Закрыть рилс">✕</button></div></div></div>`));
   if (changed) { S.ridx = -1; reelSync(); }
 }
 // Keeps the progress bar, the hint and the divider's short slide in step with the post on screen.
@@ -909,7 +1024,7 @@ function openSheet(title, html) {
 }
 function closeSheet() { $("rsheet").hidden = true; $("rback").hidden = true; }
 function openReels(id) {
-  S.view = "reels"; S.ridx = -1; render();
+  S.ridx = -1; go("reels");
   requestAnimationFrame(() => requestAnimationFrame(() => { const el = document.getElementById("reel-" + id); if (el) el.scrollIntoView({ block: "start" }); }));
 }
 
@@ -953,6 +1068,45 @@ function renderThreads() {
   });
 }
 
+function goalRow(g, can, edit) {
+  return `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span class="gt">${esc(g.title)}</span>${edit ? `<button type="button" class="x" data-action="remove-goal" data-id="${esc(g.id)}" aria-label="Убрать цель">✕</button>` : "<span></span>"}</div>`;
+}
+/* ---------- claims: "I take this project" ---------- */
+// One document per project and person: claims/<project>__<person> {project, person, author, at, active}.
+const claimers = (key) => S.claims.filter((c) => c.project === key && c.active && c.person in PEOPLE).map((c) => c.person);
+const ownerOf = (key) => {
+  const s = S.showcase.find((x) => x.id === key);
+  if (s && s.owner in PEOPLE) return s.owner;
+  const p = S.projects[key];
+  return p && p.createdBy in PEOPLE ? p.createdBy : "ruslan";
+};
+const claimName = (key) => (S.showcase.find((x) => x.id === key) || {}).name || proj(key).name;
+// The button keeps one width for both labels and the avatars have a reserved slot, so nothing next to it moves.
+function claimHtml(key, big) {
+  const who = claimers(key), me = myPerson(), mine = me && who.includes(me), can = S.canWrite && S.db;
+  const avs = who.map((k) => `<span title="${esc(personName(k))} в работе">${ava(k, "sm")}</span>`).join("");
+  const btn = can ? `<button type="button" class="${big ? "btn" + (mine ? "" : " main") : "cbtn"} claimbtn" data-action="claim" data-id="${esc(key)}" aria-pressed="${!!mine}">${mine ? "Отпустить" : "Беру в работу"}</button>` : "";
+  return big ? btn : `<div class="claim">${btn}<span class="avs">${avs}</span></div>`;
+}
+const claimBusy = new Set();
+async function claim(key) {
+  const me = myPerson();
+  if (!me) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
+  if (claimBusy.has(key)) return;
+  const on = !claimers(key).includes(me), name = claimName(key), now = Date.now();
+  const btns = () => document.querySelectorAll(`[data-action="claim"][data-id="${CSS.escape(key)}"]`);
+  claimBusy.add(key); btns().forEach((x) => { x.disabled = true; });
+  try {
+    await S.db.doc("claims/" + key + "__" + me).set({ project: key, person: me, author: S.me || "", at: now, active: on });
+    // Taking someone else's project tells everybody: a post in the feed, which every open page shows as a toast.
+    if (on && ownerOf(key) !== me) {
+      const sc = S.showcase.find((x) => x.id === key);
+      await S.db.collection("updates").add({ kind: "claim", project: PKEYS.includes(key) ? key : "", pname: name, show: sc ? key : "", person: me, author: S.me || "", via: "hand",
+        title: `Взялся за «${name}»`, items: [`Проект: ${personName(ownerOf(key))}`], shots: sc && sc.shot ? [{ id: sc.shot, role: "after", pair: 0 }] : [], visual: !!(sc && sc.shot), goalIds: [], commits: [], createdAt: now });
+      toast(`Вы взялись за «${name}». ${personName(ownerOf(key))} увидит это в ленте.`);
+    } else toast(on ? `Вы взялись за «${name}».` : `Вы отпустили «${name}».`);
+  } catch { fail(); } finally { claimBusy.delete(key); btns().forEach((x) => { x.disabled = false; }); }
+}
 function sbar(c, max) { return `<div class="sbar">${TK.map((t) => (c[t] ? `<i class="${t}" style="width:${(c[t] / max) * 100}%"></i>` : "")).join("")}</div>`; }
 function renderGoalsView() {
   const changed = put("projects", overallHtml() + PKEYS.map((p) => {
@@ -988,7 +1142,7 @@ function renderGoalsView() {
     </form>` : "");
   // A goal ticked in this visit stays in the list, so nothing moves under the finger.
   const shown = (g) => !S.onlyOpen || !g.done || S.keep.has(g.id);
-  const row = (g) => `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span class="gt">${esc(g.title)}</span>${edit ? `<button type="button" class="x" data-action="remove-goal" data-id="${esc(g.id)}" aria-label="Убрать цель">✕</button>` : "<span></span>"}</div>`;
+  const row = (g) => goalRow(g, can, edit);
   put("goals", PKEYS.map((p) => {
     const all = goalsOf(p), pr = progress(all), finished = [];
     const groups = groupsOf(p).map((gr) => {
@@ -998,7 +1152,7 @@ function renderGoalsView() {
       if (!rows.length) { finished.push(gr.name); return ""; }
       return `<div class="gh"><span>${esc(gr.name)}</span><span>${gp.done}/${gp.total}</span><div class="bar2 thin"><i class="${p}" style="width:${gp.pct}%"></i></div></div>${rows.map(row).join("")}`;
     }).join("");
-    return `<div><div class="ph"><h3>${pmark(p)}${esc(proj(p).name)}</h3><span class="muted small">${pr.done} из ${pr.total}</span></div>
+    return `<div><div class="ph"><h3>${pmark(p)}${esc(proj(p).name)}</h3><span class="muted small">${pr.done} из ${pr.total}</span></div>${claimHtml(p)}
       ${groups}
       ${!all.length ? `<p class="small muted" style="margin-top:8px">Целей пока нет.${edit ? "" : can ? " Нажмите «Править», чтобы добавить первую." : ""}</p>` : ""}
       ${edit ? `<p class="small muted pkey">Ключ проекта для Claude: <code>${esc(p)}</code>${p in DEFAULT_PROJECTS ? "" : ` <button type="button" class="x" data-action="proj-archive" data-id="${esc(p)}">Убрать проект</button>`}</p>` : ""}
@@ -1029,6 +1183,7 @@ function renderShowcase() {
       <label class="field"><span>Репозиторий на GitHub, если есть</span><input type="text" id="sf-repo" maxlength="100" placeholder="владелец/название" value="${it ? esc(it.repo || "") : ""}"></label>
       <label class="field"><span>Ссылка, где можно открыть, если есть</span><input type="text" inputmode="url" id="sf-url" maxlength="200" placeholder="https://…" value="${it ? esc(it.url || "") : ""}"></label>
       <label class="field"><span>Одной строкой, что это</span><input type="text" id="sf-note" maxlength="80" value="${it ? esc(it.note || "") : ""}"></label>
+      <label class="field"><span>Подробнее, до 300 знаков</span><textarea id="sf-about" rows="3" maxlength="300">${it ? esc(it.about || "") : ""}</textarea></label>
       <div class="field"><span>Чей проект</span><div class="seg">${PKS.map((k) => `<button type="button" data-sown="${k}" aria-pressed="${k === own}">${esc(personName(k))}</button>`).join("")}</div></div>
       <p class="err" id="sf-err" role="alert"></p>
       <div class="ctl"><button class="btn main">${it ? "Сохранить" : "Добавить"}</button><button type="button" class="btn" data-action="show-cancel">Отмена</button>${it ? `<button type="button" class="btn" data-action="show-del" data-id="${esc(it.id)}">Убрать</button>` : ""}</div>
@@ -1038,19 +1193,60 @@ function renderShowcase() {
   put("showgrid", n ? `<div class="swgrid">${showList().map((x) => {
     const sh = x.shot ? "/_blob/" + encodeURIComponent(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "";
     const c = pal[[...String(x.name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % pal.length];
-    const who = `<span class="sc-own" title="${esc(personName(o))}">${ava(o, "sm")}</span>`;
+    const work = claimers(x.id);
+    const who = `<span class="sc-own" title="${esc(personName(o))}">${ava(o, "sm")}</span>${work.length ? `<span class="sc-work" title="В работе: ${esc(work.map(personName).join(", "))}">${work.map((k) => ava(k, "sm")).join("")}в работе</span>` : ""}`;
     const mine = can && me && (x.owner === me || x.createdBy === me);
     return `<article class="card sc" data-sc="${esc(x.id)}">${sh
-      ? `<button type="button" class="sc-shot" data-action="zoom" data-src="${sh}" aria-label="Скриншот: ${esc(x.name)}"><img src="${sh}" alt="" loading="lazy">${who}</button>`
-      : `<div class="sc-shot sc-cover" style="--c1:${c[2]};--c2:${c[3]}"><span>${esc(x.name)}</span>${who}</div>`}
-      <div class="sc-body"><h3>${esc(x.name)}</h3><p class="sc-note">${esc(x.note || "")}</p>
+      ? `<button type="button" class="sc-shot" data-action="sdet" data-id="${esc(x.id)}" aria-label="Подробнее: ${esc(x.name)}"><img src="${sh}" alt="" loading="lazy">${who}</button>`
+      : `<button type="button" class="sc-shot sc-cover" data-action="sdet" data-id="${esc(x.id)}" aria-label="Подробнее: ${esc(x.name)}" style="--c1:${c[2]};--c2:${c[3]}"><span>${esc(x.name)}</span>${who}</button>`}
+      <div class="sc-body"><h3><button type="button" class="sc-t" data-action="sdet" data-id="${esc(x.id)}">${esc(x.name)}</button></h3><p class="sc-note">${esc(x.note || "")}</p>
       <div class="sc-links">${x.repo && /^[\w.-]+\/[\w.-]+$/.test(x.repo) ? `<a href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub</a>` : ""}${x.url && webUrl(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">Открыть</a>` : ""}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div></div></article>`;
   }).join("")}</div>` : `<div class="empty">Проектов пока нет${can ? ". Нажмите «+ Проект», чтобы добавить первый." : ""}</div>`);
 }
 
+const BACK = `<button type="button" class="back" data-action="back">←&nbsp;Назад</button>`;
+// The detail card opens over the grid, so the grid under it does not move.
+function renderShowDetail() {
+  const x = S.view === "show" && S.sd ? S.showcase.find((y) => y.id === S.sd) : null;
+  if (!x) return put("sdet", "");
+  const sh = x.shot ? "/_blob/" + encodeURIComponent(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "", work = claimers(x.id);
+  const pal = Object.values(PALETTE), c = pal[[...String(x.name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % pal.length];
+  const can = S.canWrite && S.db, me = myPerson(), mine = can && me && (x.owner === me || x.createdBy === me);
+  const links = (x.repo && /^[\w.-]+\/[\w.-]+$/.test(x.repo) ? `<a class="btn" href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub ↗</a>` : "")
+    + (x.url && webUrl(x.url) ? `<a class="btn" href="${esc(x.url)}" target="_blank" rel="noopener">Открыть ↗</a>` : "");
+  const fresh = !$("sdet").firstChild;
+  if (put("sdet", `<div class="sdwrap"><div class="sdbg" data-action="back"></div><div class="card sdet" role="dialog" aria-modal="true" aria-labelledby="sd-t">
+    <div class="backrow">${BACK}</div>
+    ${sh ? `<button type="button" class="sd-shot" data-action="zoom" data-src="${sh}" aria-label="Скриншот крупно"><img src="${sh}" alt=""></button>` : `<div class="sd-shot sc-cover" style="--c1:${c[2]};--c2:${c[3]}">${esc(x.name)}</div>`}
+    <div class="sd-body"><h2 id="sd-t">${esc(x.name)}</h2>
+      ${x.about || x.note ? `<p class="sd-about">${esc(x.about || x.note)}</p>` : ""}
+      <div class="sd-people"><div><span class="muted">Чей</span>${ava(o, "sm")}<b>${esc(personName(o))}</b></div>
+        <div><span class="muted">В работе</span>${work.length ? work.map((k) => `${ava(k, "sm")}<b>${esc(personName(k))}</b>`).join("") : `<span class="muted">никто</span>`}</div></div>
+      <div class="sd-acts">${claimHtml(x.id, true)}${links}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div>
+    </div></div></div>`) && fresh) $("sdet").querySelector(".back").focus({ preventScroll: true });
+}
+// "Improve the tracker": goals of the tracker project and the posts about it.
+function renderTrk() {
+  const n = S.updates.filter((u) => u.project === "tracker" && u.kind !== "claim").length;
+  $("trkcount").textContent = n ? n + " " + plural(n, "пост", "поста", "постов") + " с идеями и багами" : "Идеи и баги по этой странице";
+  if (S.view !== "trk") return;
+  const can = S.canWrite && S.db, all = goalsOf("tracker"), pr = progress(all);
+  put("trkctl", can ? `<button type="button" class="btn main" data-action="trk-new" data-k="idea">+ Идея</button><button type="button" class="btn" data-action="trk-new" data-k="bug">+ Баг</button>` : "");
+  put("trkgoals", `<div class="ph"><h3>Цели</h3><span class="muted small">${pr.done} из ${pr.total}</span></div>
+    ${all.filter((g) => !g.done || S.keep.has(g.id)).map((g) => goalRow(g, can, false)).join("") || `<p class="small muted">${all.length ? "Все цели закрыты" : "Целей пока нет"}</p>`}
+    ${can ? `<form class="gadd" data-form="goal" data-p="tracker"><input type="text" placeholder="Новая цель" aria-label="Новая цель"><select aria-label="Секция">${groupsOf("tracker").map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}`);
+  const list = S.updates.filter((u) => u.project === "tracker" && u.kind !== "claim").sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  put("trkfeed", list.length ? list.map((u) => postHtml(u).replace('id="post-', 'id="trk-')).join("") : `<div class="empty">Пока пусто. Нажмите «+ Идея» или «+ Баг».</div>`);
+}
+// One post on its own screen, opened from a profile or from reels.
+function renderPostView() {
+  if (!S.view.startsWith("post:")) return;
+  const u = S.updates.find((x) => x.id === S.view.slice(5));
+  put("v-post", `<div class="backrow">${BACK}</div>` + (u ? postHtml(u).replace('id="post-', 'id="one-') : `<div class="empty">${S.got.updates ? "Пост удалён." : "Загружаю…"}</div>`));
+}
 function personStats(k) {
   const ups = stagesOf(k);
-  const s = { n: ups.length, ba: 0, min: 0, tokens: 0, cost: 0, fix: 0, add: 0, night: 0, streak: 0, models: {}, ideas: S.updates.filter((u) => u.person === k && u.kind).length,
+  const s = { n: ups.length, ba: 0, min: 0, tokens: 0, cost: 0, fix: 0, add: 0, night: 0, streak: 0, models: {}, ideas: S.updates.filter((u) => u.person === k && u.kind && u.kind !== "claim").length,
     done: S.goals.filter((g) => g.done && !g.removed && g.doneBy === k).length };
   const days = new Set();
   for (const u of ups) {
@@ -1080,8 +1276,9 @@ function renderProfile() {
   const ach = ACH.map(([name, fn, goal]) => ({ name, v: Math.min(fn(st), goal), goal }));
   const got = ach.filter((a) => a.v >= a.goal), next = ach.filter((a) => a.v < a.goal).sort((a, b) => b.v / b.goal - a.v / a.goal).slice(0, 3);
   const models = Object.entries(st.models).sort((a, b) => b[1] - a[1]), mmax = Math.max(0.01, ...models.map((m) => m[1]));
-  put("v-profile", `<div class="phead by-${k}">${ava(k, "big")}
-      <div><h2>${esc(personName(k))}</h2>${myPerson() ? `<p class="small muted">${k === myPerson() ? "Это вы" : "Напарник"}</p>` : ""}</div>
+  const free = !myPerson() && S.me && S.canWrite && S.people[k] && !S.people[k].userId;
+  put("v-profile", `<div class="backrow">${BACK}<button type="button" class="link more how" data-action="tour">Как пользоваться</button></div><div class="phead by-${k}">${ava(k, "big")}
+      <div><h2>${esc(personName(k))}</h2>${myPerson() ? `<p class="small muted">${k === myPerson() ? "Это вы" : "Напарник"}</p>` : free ? `<button type="button" class="btn" data-action="iam" data-p="${k}">Это я</button>` : ""}</div>
       <div class="pstats"><div><b>${all.length}</b><span>${plural(all.length, "пост", "поста", "постов")}</span></div><div><b>${total(sum)}</b><span>${plural(total(sum), "правка", "правки", "правок")}</span></div><div><b>${st.done}</b><span>${plural(st.done, "цель", "цели", "целей")}</span></div></div></div>
     ${all.length ? `<div class="pgrid">${all.map((u) => { const pr = pairsOf(u)[0], sh = pr && (pr.after || pr.before); return `<button type="button" class="ptile" data-open="${esc(u.id)}" aria-label="${esc(u.title)}">${sh ? `<img src="${blob(sh)}" alt="" loading="lazy"><span class="cap2">${pmark(u.project)}${esc(u.title)}</span>` : miniHtml(u)}</button>`; }).join("")}</div>` : `<div class="empty">${esc(personName(k))} пока ничего не публиковал</div>`}
     ${total(sum) ? `<div class="sec"><h3>Что сделано</h3><div class="pills">${pills(sum)}</div><div class="sec">${PKEYS.filter((p) => byProj[p]).map((p) => `<div class="prow"><span class="pn">${pmark(p)}${esc(proj(p).name)}</span>${sbar(byProj[p], max)}</div>`).join("")}</div></div>` : ""}
@@ -1114,13 +1311,101 @@ function withLikeWants(list) {
 async function logEvent(type, g) {
   try { await S.db.collection("events").add({ type, goalId: g.id, title: g.title, project: g.project, person: myPerson() || "", via: "hand", at: Date.now() }); } catch {}
 }
-function setView(v) { S.view = v; render(); scrollTo(0, 0); }
-function openPost(id) {
-  S.view = "home"; S.filter = "all";
-  const i = posts().findIndex((u) => u.id === id);
-  if (i >= S.limit) S.limit = i + 1;
-  render();
-  requestAnimationFrame(() => requestAnimationFrame(() => { const el = document.getElementById("post-" + id); if (el) el.scrollIntoView({ block: "start" }); }));
+/* ---------- navigation: every screen change is a history entry, so "← Назад" and the browser's Back agree ---------- */
+// Our own stack mirrors the history; if the frame refuses pushState, "← Назад" still works from it.
+const NAV = { ok: true, stack: [] };
+const parentOf = (v) => (v === "show" || v === "trk" ? "goals" : "home");
+function go(v, sd = null) {
+  if (v === S.view && (sd || null) === (S.sd || null)) return;
+  const cur = { v: S.view, sd: S.sd || null, y: scrollY };
+  NAV.stack.push(cur);
+  if (NAV.ok) try { history.replaceState({ ...cur, n: NAV.stack.length - 1 }, ""); history.pushState({ v, sd, n: NAV.stack.length }, ""); } catch { NAV.ok = false; }
+  const same = v === S.view;
+  S.view = v; S.sd = sd; render();
+  if (!same) scrollTo(0, 0);
+}
+function apply(st) {
+  const same = st.v === S.view;
+  S.view = st.v || "home"; S.sd = st.sd || null; closeSheet(); render();
+  if (!same) requestAnimationFrame(() => requestAnimationFrame(() => scrollTo(0, st.y || 0)));
+}
+function back() {
+  if (!NAV.stack.length) { apply({ v: parentOf(S.view) }); return; }
+  if (NAV.ok) history.back(); else apply(NAV.stack.pop());
+}
+addEventListener("popstate", (e) => {
+  const st = e.state;
+  if (T.i >= 0) endTour();
+  if (!st || !st.v) return;
+  NAV.stack.length = Math.min(NAV.stack.length, st.n || 0);
+  apply(st);
+});
+try { history.replaceState({ v: "home", sd: null, n: 0 }, ""); } catch { NAV.ok = false; }
+const setView = (v) => go(v);
+const openPost = (id) => go("post:" + id);
+
+/* ---------- first visit tour ---------- */
+const TOUR = [
+  { sel: "#who", view: "home", t: "Это я", p: "Нажмите своё имя. Тогда лайки, комментарии и посты пойдут от вас.", skip: () => !$("who").textContent.trim() },
+  { sel: "#stories", view: "home", t: "Лента", p: "Claude пишет сюда пост после каждого push. Кольца — проекты: нажмите, чтобы оставить в ленте один." },
+  { sel: ".showlinks", view: "goals", t: "Цели и витрина", p: "Задачи проектов с галочками. Сверху — витрина всех наших проектов и раздел, где улучшаем сам трекер." },
+  { sel: ".tabs .plus", view: "home", t: "Пост", p: "Идея, баг или вопрос — одной фразой. Можно приложить скрин." },
+  { sel: '.tabs [data-view="me"]', view: "home", t: "Профиль", p: "Ваши посты и ачивки. Там же «Как пользоваться», чтобы пройти это снова." },
+  { t: "Подключи свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },
+];
+const T = { i: -1, steps: [] };
+function startTour() {
+  if (S.view === "reels") apply({ v: "home" });
+  T.steps = TOUR.filter((s) => !s.skip || !s.skip()); T.i = 0; T.back = S.view;
+  $("tour").hidden = false; lockBg(); tourShow();
+}
+function endTour() {
+  $("tour").hidden = true; T.i = -1; lsSet("st-tour", "1"); lockBg();
+  if (S.view !== T.back) { S.view = T.back; render(); scrollTo(0, 0); }
+}
+function tourShow() {
+  const s = T.steps[T.i], last = T.i === T.steps.length - 1, card = $("tour-card");
+  if (s.view && S.view !== s.view) { S.view = s.view; render(); }
+  card.classList.toggle("wide", last);
+  card.innerHTML = `<span class="step">${T.i + 1} из ${T.steps.length}</span><h3 id="tour-t">${esc(s.t)}</h3><p>${esc(s.p)}</p>`
+    + (last ? `<textarea id="tour-prompt" readonly aria-label="Промт для Claude Code">${esc(PROMPT())}</textarea><div class="ctl"><button type="button" class="btn" data-action="tour-end">Готово</button><button type="button" class="btn main copy" data-action="tour-copy">Скопировать промт</button></div>`
+      : `<div class="ctl"><button type="button" class="btn" data-action="tour-end">Пропустить</button><button type="button" class="btn main" data-action="tour-next">Дальше</button></div>`);
+  card.style.animation = "none"; void card.offsetWidth; card.style.animation = "";
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const el = s.sel && document.querySelector(s.sel);
+    if (el && getComputedStyle(el).position !== "fixed" && !el.closest(".tabs")) el.scrollIntoView({ block: "center" });
+    tourPlace();
+    (card.querySelector(".btn.main") || card).focus({ preventScroll: true });
+  }));
+}
+// The hole and the card are placed with transform only; the page under them never moves.
+function tourPlace() {
+  if (T.i < 0) return;
+  const s = T.steps[T.i], el = s.sel && document.querySelector(s.sel), hole = $("tour-hole"), card = $("tour-card");
+  const cw = card.offsetWidth, ch = card.offsetHeight, W = innerWidth, H = innerHeight;
+  if (!el) {
+    hole.classList.add("none"); hole.style.width = hole.style.height = "0px"; hole.style.transform = `translate(${W / 2}px, ${H / 2}px)`;
+    card.style.transform = `translate(${Math.round((W - cw) / 2)}px, ${Math.max(16, Math.round((H - ch) / 2))}px)`;
+    return;
+  }
+  const r = el.getBoundingClientRect(), pad = 6;
+  if (!r.width && !r.height) { hole.classList.add("none"); hole.style.width = hole.style.height = "0px"; card.style.transform = `translate(${Math.round((W - cw) / 2)}px, ${Math.max(16, Math.round((H - ch) / 2))}px)`; return; }
+  hole.classList.remove("none");
+  hole.style.width = r.width + pad * 2 + "px"; hole.style.height = r.height + pad * 2 + "px";
+  hole.style.transform = `translate(${r.left - pad}px, ${r.top - pad}px)`;
+  const below = r.bottom + pad + 14, y = below + ch < H - 16 ? below : Math.max(16, r.top - pad - 14 - ch);
+  const x = Math.max(16, Math.min(W - cw - 16, r.left + r.width / 2 - cw / 2));
+  card.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
+}
+addEventListener("resize", tourPlace);
+addEventListener("scroll", tourPlace, { passive: true });
+const PROMPT = () => $("seymur-prompt").textContent.trim();
+async function copyPrompt(btn) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(PROMPT()); ok = true; } catch {}
+  const ta = $("tour-prompt");
+  if (!ok && ta) { ta.focus(); ta.select(); try { ok = document.execCommand("copy"); } catch {} }
+  btn.textContent = ok ? "Скопировано ✓" : "Выделено — Ctrl+C";
 }
 function arm(b, label) {
   if (b.classList.contains("armed")) return true;
@@ -1166,15 +1451,17 @@ document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-action],[data-filter],[data-view],[data-open],[data-like],[data-cfocus],[data-kind],[data-nproj],[data-sw],[data-sown]");
   if (!b) return;
   const d = b.dataset;
-  if (d.view === "reels") { S.view = "reels"; S.ridx = -1; render(); requestAnimationFrame(() => { $("v-reels").scrollTop = 0; reelSync(); }); return; }
-  if (d.view) return setView(d.view === "me" ? "p:" + (myPerson() || "ruslan") : d.view in PEOPLE ? "p:" + d.view : d.view);
+  if (d.view === "reels") { S.ridx = -1; go("reels"); requestAnimationFrame(() => { $("v-reels").scrollTop = 0; reelSync(); }); return; }
+  // Before "Это я" the profile tab opens the one person not yet taken, not someone else's profile.
+  const freeP = () => { const f = PKS.filter((k) => !(S.people[k] && S.people[k].userId)); return f.length === 1 ? f[0] : "ruslan"; };
+  if (d.view) return setView(d.view === "me" ? "p:" + (myPerson() || freeP()) : d.view in PEOPLE ? "p:" + d.view : d.view);
   if (d.filter) { S.filter = d.filter; S.limit = 6; return render(); }
   if (d.open) return openPost(d.open);
   if (d.sown) { b.parentNode.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); return; }
   if (d.sw) { b.parentNode.querySelectorAll(".sw").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); return; }
   if (d.kind) { S.kind = d.kind; document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); renderNewPrev(); return; }
   if (d.nproj) { S.nproj = d.nproj; document.querySelectorAll("#n-proj button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); renderNewPrev(); return; }
-  if (d.cfocus) { S.openC.add("update:" + d.cfocus); renderThreads(); const inp = document.querySelector(`#post-${CSS.escape(d.cfocus)} .cform input`); if (inp) inp.focus(); return; }
+  if (d.cfocus) { S.openC.add("update:" + d.cfocus); renderThreads(); const inp = b.closest(".post").querySelector(".cform input"); if (inp) inp.focus(); return; }
   if (d.like) {
     if (!S.db || !S.me) return;
     const id = d.like, mine = S.likes.some((l) => l.target === id && l.author === S.me);
@@ -1192,6 +1479,19 @@ document.addEventListener("click", async (e) => {
     return;
   }
   const a = d.action, id = d.id, g = id && S.goals.find((x) => x.id === id);
+  if (a === "back") return back();
+  if (a === "sdet") return go("show", id);
+  if (a === "claim") return claim(id);
+  if (a === "tour") return startTour();
+  if (a === "tour-next") { T.i++; return tourShow(); }
+  if (a === "tour-end") return endTour();
+  if (a === "tour-copy") return copyPrompt(b);
+  if (a === "trk-new") {
+    S.kind = d.k; S.nproj = "tracker";
+    document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.kind === d.k)));
+    go("new"); renderNewPrev(); requestAnimationFrame(() => $("n-text").focus());
+    return;
+  }
   if (a === "more") { S.limit += 6; return render(); }
   if (a === "reel") return openReels(id);
   if (a === "rcomments") {
@@ -1215,6 +1515,7 @@ document.addEventListener("click", async (e) => {
   if (a === "goals-edit") { S.editGoals = !S.editGoals; return render(); }
   if (a === "proj-new") { S.projForm = !S.projForm; render(); if (S.projForm) requestAnimationFrame(() => requestAnimationFrame(() => { const n = $("pf-name"); if (n) n.focus(); })); return; }
   if (a === "show-new" || a === "show-cancel" || a === "show-edit") {
+    if (S.sd) { S.sd = null; try { history.replaceState({ v: S.view, sd: null, n: NAV.stack.length }, ""); } catch {} }
     S.showForm = a === "show-edit" ? id : a === "show-new" && S.showForm !== "new" ? "new" : null; last.delete("showform"); render();
     if (S.showForm) requestAnimationFrame(() => requestAnimationFrame(() => { const n = $("sf-name"); if (n) { scrollTo(0, 0); n.focus({ preventScroll: true }); } }));
     return;
@@ -1282,8 +1583,22 @@ $("v-reels").addEventListener("wheel", (e) => {
 let reelTick = false;
 $("v-reels").addEventListener("scroll", () => { if (reelTick) return; reelTick = true; requestAnimationFrame(() => { reelTick = false; reelSync(); }); }, { passive: true });
 document.addEventListener("keydown", (e) => {
+  // Tab walks in a circle inside the tour card or the showcase detail.
+  const trap = e.key === "Tab" && (T.i >= 0 ? $("tour-card") : S.view === "show" && S.sd ? $("sdet").querySelector(".sdet") : null);
+  if (trap) {
+    const f = [...trap.querySelectorAll("button:not([disabled]), a[href], textarea, input")].filter((x) => x.offsetParent);
+    const i = f.indexOf(document.activeElement);
+    if (f.length) { e.preventDefault(); f[(i < 0 ? 0 : i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus(); }
+    return;
+  }
+  if (e.key === "Escape") {
+    const lb = document.querySelector(".lightbox");
+    if (lb) { lb.remove(); return; }
+    if (T.i >= 0) return endTour();
+    if (S.view === "reels" && !$("rsheet").hidden) return closeSheet();
+    if (S.sd || S.view === "reels") return back();
+  }
   if (S.view !== "reels") return;
-  if (e.key === "Escape") { if (!$("rsheet").hidden) closeSheet(); else setView("home"); return; }
   if (!$("rsheet").hidden || (e.target.closest && e.target.closest("input,textarea"))) return;
   if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); reelStep(1); }
   if (e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); reelStep(-1); }
@@ -1301,7 +1616,7 @@ document.addEventListener("submit", async (e) => {
   }
   if (f.dataset.form === "show") {
     const sid = f.dataset.id, it = S.showcase.find((x) => x.id === sid), err = $("sf-err"), btn = f.querySelector(".btn.main");
-    const name = $("sf-name").value.trim(), repo = cleanRepo($("sf-repo").value), url = $("sf-url").value.trim(), note = $("sf-note").value.trim().slice(0, 80);
+    const name = $("sf-name").value.trim(), repo = cleanRepo($("sf-repo").value), url = $("sf-url").value.trim(), note = $("sf-note").value.trim().slice(0, 80), about = $("sf-about").value.trim().slice(0, 300);
     const own = f.querySelector('[data-sown][aria-pressed="true"]'), file = $("sf-file").files[0];
     err.textContent = "";
     if (!name) { err.textContent = "Напишите название проекта."; $("sf-name").focus(); return; }
@@ -1311,7 +1626,7 @@ document.addEventListener("submit", async (e) => {
     if (S.sending) return;
     S.sending = true; btn.disabled = true;
     try {
-      const data = { name, owner: own ? own.dataset.sown : myPerson() || "ruslan", shot: it ? it.shot || "" : "", repo, url, note };
+      const data = { name, owner: own ? own.dataset.sown : myPerson() || "ruslan", shot: it ? it.shot || "" : "", repo, url, note, about };
       if (file && S.assets) data.shot = (await S.assets.upload(file)).id;
       if (it) await S.db.doc("showcase/" + sid).update(data);
       else { const now = Date.now(); await S.db.collection("showcase").add({ ...data, order: now, createdAt: now, createdBy: myPerson() || "" }); }
@@ -1338,10 +1653,10 @@ document.addEventListener("submit", async (e) => {
     } catch { fail(); }
     return;
   }
-  const p = f.dataset.p, inp = $("add-" + p), title = inp.value.trim();
+  const p = f.dataset.p, inp = f.querySelector("input"), title = inp.value.trim();
   if (!title) return;
   const now = Date.now();
-  const data = { project: p, group: $("grp-" + p).value, title, done: false, removed: false, order: now, createdAt: now, createdBy: myPerson() || "", doneAt: 0, doneBy: "" };
+  const data = { project: p, group: f.querySelector("select").value, title, done: false, removed: false, order: now, createdAt: now, createdBy: myPerson() || "", doneAt: 0, doneBy: "" };
   inp.value = "";
   try { const ref = await S.db.collection("goals").add(data); await logEvent("goal_added", { id: ref.id, ...data }); } catch { inp.value = title; fail(); }
 });
@@ -1409,7 +1724,10 @@ function notePct() {
     if (!S.seen) { const st = lsGet("st-seen"); S.seen = new Set(st === null ? S.updates.map((u) => u.id) : st.split(",")); }
     for (const u of S.updates) if (!S.seen.has(u.id)) { S.newIds.add(u.id); S.seen.add(u.id); }
     lsSet("st-seen", [...S.seen].join(","));
-    if (!first) { const add = snap.docChanges().find((c) => c.type === "added" && !isMine(c.doc.data())); if (add) toast("Новый пост: " + add.doc.data().title); }
+    if (!first) {
+      const add = snap.docChanges().find((c) => c.type === "added" && !isMine(c.doc.data()));
+      if (add) { const u = add.doc.data(); toast(u.kind === "claim" ? `${personName(u.person)} взялся за «${u.pname || proj(u.project).name}»` : "Новый пост: " + u.title); }
+    }
     first = false; S.got.updates = true; ok(); render();
   }, lost);
   db.collection("comments").orderBy("at", "asc").limit(1000).onSnapshot((snap) => {
@@ -1419,8 +1737,12 @@ function notePct() {
   }, lost);
   db.collection("likes").onSnapshot((snap) => { S.likes = withLikeWants(docs(snap)); renderActs(); }, lost);
   db.collection("events").orderBy("at", "desc").limit(500).onSnapshot((snap) => { S.events = docs(snap); }, lost);
-  db.collection("projects").onSnapshot((snap) => { S.projects = Object.fromEntries(docs(snap).map((d) => [d.id, d])); syncProjects(); render(); }, lost);
+  db.collection("projects").onSnapshot((snap) => {
+    S.projects = Object.fromEntries(docs(snap).map((d) => [d.id, d]));
+    syncProjects(); render();
+  }, lost);
   db.collection("showcase").onSnapshot((snap) => { S.showcase = docs(snap); S.got.showcase = true; render(); }, lost);
-  db.collection("people").onSnapshot((snap) => { S.people = Object.fromEntries(docs(snap).map((d) => [d.id, d])); render(); }, lost);
+  db.collection("claims").onSnapshot((snap) => { S.claims = docs(snap); render(); }, lost);
+  db.collection("people").onSnapshot((snap) => { S.people = Object.fromEntries(docs(snap).map((d) => [d.id, d])); S.got.people = true; render(); }, lost);
 })();
 </script>

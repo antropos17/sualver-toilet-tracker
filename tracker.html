@@ -218,22 +218,24 @@ textarea { width: 100%; resize: vertical; }
 .ba-range:focus-visible ~ .ba-handle { outline: 3px solid var(--ruslan); outline-offset: 2px; }
 
 /* reels: one post per screen, the scroll snaps */
-.tabs div { grid-template-columns: repeat(5, 1fr); }
+/* six tabs, the plus stays in the middle: 2 wide columns left, 3 narrower right, same total width */
+.tabs div { grid-template-columns: repeat(2, 3fr) auto repeat(3, 2fr); }
 .tabs button[aria-current="true"]::after { content: ""; width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
 .tabs .plus svg { border-radius: 50%; width: 44px; height: 44px; padding: 9px; }
-.reels { position: fixed; inset: 0; z-index: 15; background: var(--bg); overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
+/* reels stop above the tab bar (74px with the active dot), so the bar stays visible and usable */
+.reels { position: fixed; inset: 0 0 calc(74px + env(safe-area-inset-bottom, 0px)); z-index: 15; background: var(--bg); overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
 .reel { height: 100%; max-width: 520px; margin: 0 auto; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; }
 .rmedia { position: relative; flex: 1; min-height: 0; display: grid; place-items: safe center; overflow: hidden; background: var(--sunk); }
 .rmedia .shots { width: 100%; grid-template-columns: 1fr; padding-top: 20px; }
 /* a screenshot keeps at least 70% of the column width; whatever is taller than the screen is cut at the bottom */
-.rmedia .ba-frame { max-width: none; width: max(70%, min(100%, calc((100dvh - 200px) * var(--far, .46)))); }
-.rmedia .single { width: max(70%, min(100%, calc((100dvh - 200px) * .46))); max-width: none; cursor: default; }
+.rmedia .ba-frame { max-width: none; width: max(70%, min(100%, calc((100dvh - 274px) * var(--far, .46)))); }
+.rmedia .single { width: max(70%, min(100%, calc((100dvh - 274px) * .46))); max-width: none; cursor: default; }
 .rmedia .zoom { display: none; }
 .rmedia .poster { width: 100%; height: 100%; justify-content: flex-start; padding: 48px 24px 24px; gap: 20px; }
 .rmedia .poster h2 { font-size: 34px; line-height: 1.12; }
 .rmedia .poster ul { font-size: 20px; gap: 14px; }
 .rmedia .poster p { font-size: 19px; }
-.rinfo { flex: none; padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 8px; background: var(--surface); border-top: 1px solid var(--line); }
+.rinfo { flex: none; padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 8px; background: var(--surface); border-top: 1px solid var(--line); }
 .rinfo .phd { padding: 0; }
 .ract { display: flex; align-items: center; gap: 6px; }
 .ract .btn { min-height: 40px; }
@@ -242,7 +244,7 @@ textarea { width: 100%; resize: vertical; }
 .rprog { position: fixed; top: calc(8px + env(safe-area-inset-top, 0px)); left: max(12px, calc(50% - 248px)); right: max(12px, calc(50% - 248px)); z-index: 16; display: flex; gap: 4px; pointer-events: none; }
 .rprog i { flex: 1; height: 4px; border-radius: 2px; background: rgba(127,127,127,.45); }
 .rprog i.on { background: var(--ink); }
-.rhint { position: fixed; left: 50%; bottom: calc(170px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 16; padding: 8px 16px; border-radius: 20px; background: rgba(15,17,21,.82); color: #fff; font-size: 14px; font-weight: 600; pointer-events: none; animation: bob 1.2s ease-in-out infinite; }
+.rhint { position: fixed; left: 50%; bottom: calc(244px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 16; padding: 8px 16px; border-radius: 20px; background: rgba(15,17,21,.82); color: #fff; font-size: 14px; font-weight: 600; pointer-events: none; animation: bob 1.2s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translate(-50%, 6px); } }
 .rnav { position: fixed; top: 50%; left: calc(50% + 276px); z-index: 16; display: none; flex-direction: column; gap: 8px; transform: translateY(-50%); }
 .rnav .btn { width: 44px; height: 44px; padding: 0; font-size: 18px; }
@@ -473,7 +475,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 14px 6px 10px; border: 1px solid var(--edge); border-radius: 20px; background: var(--surface); font-size: 14px; font-weight: 600; flex: none; transition: border-color .15s, transform .1s; }
 .back:hover { border-color: var(--muted); } .back:active { transform: scale(.97); }
 .back svg { width: 18px; height: 18px; }
-.showlinks { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.showlinks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
 @media (min-width: 900px) {
   #v-goals > .showlinks { grid-column: 1 / -1; }
   body[data-screen="trk"] .shell { display: block; } body[data-screen="trk"] .side { display: none; }
@@ -548,7 +550,6 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 
   <section class="view" id="v-goals" hidden>
     <div class="showlinks">
-    <button type="button" class="card showlink" data-view="show"><span><b>Витрина</b><span class="small muted" id="showcount">Все проекты: картинка и ссылки</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button type="button" class="card showlink" data-view="trk"><span><b>Улучшить трекер</b><span class="small muted" id="trkcount">Идеи и баги по этой странице</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
     <div class="sec" id="projects"></div>
@@ -656,6 +657,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   <button type="button" data-view="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Лента</button>
   <button type="button" data-view="reels"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 9v6l4.5-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Рилс</button>
   <button type="button" class="plus" data-view="new" aria-label="Новый пост"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  <button type="button" data-view="show"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Витрина</button>
   <button type="button" data-view="goals"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Цели</button>
   <button type="button" data-view="me"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 20c1.2-3.6 4-5 7.5-5s6.3 1.4 7.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Профиль</button>
 </div></nav>
@@ -815,13 +817,13 @@ function renderShell() {
     }
   }
   S.prevView = S.view;
-  document.querySelectorAll(".tabs [data-view]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.view === S.view || (b.dataset.view === "me" && prof) || (b.dataset.view === "goals" && (S.view === "show" || S.view === "trk")) || (b.dataset.view === "home" && one))));
+  document.querySelectorAll(".tabs [data-view]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.view === S.view || (b.dataset.view === "me" && prof) || (b.dataset.view === "goals" && S.view === "trk") || (b.dataset.view === "home" && one))));
 }
 // While the tour or the showcase detail is open, Tab cannot leave it: everything behind is inert.
 function lockBg() {
   const tour = T.i >= 0, pm = !!S.pm, sd = S.view === "show" && !!S.sd;
   document.querySelector(".shell").inert = tour || pm || sd;
-  document.querySelector(".tabs").inert = S.view === "reels" || tour || pm || sd;
+  document.querySelector(".tabs").inert = tour || pm || sd;
   $("sdet").inert = tour || pm;
   $("pmodal").inert = tour;
 }
@@ -1239,7 +1241,6 @@ const cleanRepo = (v) => v.trim().replace(/^https?:\/\/github\.com\//, "").repla
 const showList = () => S.showcase.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 function renderShowcase() {
   const n = S.showcase.length;
-  $("showcount").textContent = n ? n + " " + plural(n, "проект", "проекта", "проектов") + " с картинками и ссылками" : "Все проекты: картинка и ссылки";
   if (S.view !== "show") return;
   const can = S.canWrite && S.db, me = myPerson();
   const it = S.showForm && S.showForm !== "new" ? S.showcase.find((x) => x.id === S.showForm) : null;
@@ -1385,7 +1386,7 @@ async function logEvent(type, g) {
 /* ---------- navigation: every screen change is a history entry, so "← Назад" and the browser's Back agree ---------- */
 // Our own stack mirrors the history; if the frame refuses pushState, "← Назад" still works from it.
 const NAV = { ok: true, stack: [] };
-const parentOf = (v) => (v === "show" || v === "trk" ? "goals" : "home");
+const parentOf = (v) => (v === "trk" ? "goals" : "home");
 function go(v, sd = null) {
   if (v === S.view && (sd || null) === (S.sd || null)) return;
   const cur = { v: S.view, sd: S.sd || null, y: scrollY };
@@ -1419,7 +1420,7 @@ const openPost = (id) => go("post:" + id);
 const TOUR = [
   { sel: "#who", view: "home", t: "Это я", p: "Нажмите своё имя. Тогда лайки, комментарии и посты пойдут от вас.", skip: () => !$("who").textContent.trim() },
   { sel: "#stories", view: "home", t: "Лента", p: "Claude пишет сюда пост после каждой выкладки. Подсвечены кольца проектов. Нажмите на кольцо, и в ленте останутся посты только этого проекта." },
-  { sel: ".showlinks", view: "goals", t: "Цели и витрина", p: "Цели проектов с галочками. Сверху две плашки: «Витрина» со всеми нашими проектами и «Улучшить трекер» для идей по этой странице." },
+  { sel: '.tabs [data-view="show"]', view: "home", t: "Витрина", p: "Все наши проекты: картинка и ссылки. Цели с галочками и «Улучшить трекер» для идей по этой странице — во вкладке «Цели»." },
   { sel: ".tabs .plus", view: "home", t: "Пост", p: "Напишите идею, баг или вопрос одной фразой. Можно приложить скрин." },
   { sel: '.tabs [data-view="me"]', view: "home", t: "Профиль", p: "Ваши посты и ачивки. Кнопка «Как пользоваться» там же запускает этот тур снова." },
   { t: "Подключите свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },

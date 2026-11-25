@@ -28,7 +28,7 @@ img { max-width: 100%; }
   --f: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
   --d: "Unbounded", "Golos Text", system-ui, sans-serif;
   /* outline buttons and fields: at least 3:1 against a card in both themes */
-  --edge: color-mix(in srgb, var(--muted) 70%, var(--surface));
+  --edge: color-mix(in srgb, var(--muted) 80%, var(--surface));
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -58,6 +58,7 @@ h3 { font-size: 16px; font-weight: 600; }
 a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--line); }
 button { font: inherit; color: inherit; cursor: pointer; }
 :focus-visible { outline: 2px solid var(--ruslan); outline-offset: 2px; }
+.seg button:focus-visible { outline-offset: -3px; }
 .muted { color: var(--muted); } .small { font-size: 13px; }
 .btn { background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; padding: 6px 12px; font-size: 14px; font-weight: 500; transition: border-color .15s; }
 .btn:hover { border-color: var(--muted); }
@@ -76,20 +77,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* top bar, stories, tab bar */
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.logo { background: none; border: 0; padding: 0; font-size: 20px; font-weight: 600; }
 .who { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
-.stories { display: flex; gap: 14px; overflow-x: auto; padding: 4px 2px 8px; scrollbar-width: none; }
+.stories { display: flex; gap: 4px; justify-content: space-between; overflow-x: auto; padding: 4px 2px 8px; scrollbar-width: none; }
 .story { background: none; border: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; width: 72px; flex: none; }
 .ring { --pcol: var(--line); width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--pcol) calc(var(--v, 100) * 1%), var(--sunk) 0); transition: transform .15s; }
 .ring.all { --pcol: var(--ink); } .ring.sual { --pcol: var(--sual); } .ring.toilet { --pcol: var(--toilet); } .ring.fresh { --pcol: var(--like); }
-.ring b { width: 58px; height: 58px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; font-size: 15px; font-weight: 600; }
+.ring b { border-radius: 50%; background: var(--bg); display: grid; place-items: center; font-weight: 600; }
 .story:hover .ring { transform: scale(1.05); }
-.story.on .ring { outline: 2px solid var(--ink); outline-offset: 2px; }
 .sl { font-size: 12px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .story.on .sl { font-weight: 600; }
 .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--surface); border-top: 1px solid var(--line); padding: 6px max(16px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
-.tabs div { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
-.tabs button { background: none; border: 0; padding: 6px 0; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; color: var(--muted); }
+.tabs div { max-width: 520px; margin: 0 auto; display: grid; }
+.tabs button { background: none; border: 0; padding: 6px 0; display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--muted); }
 .tabs button[aria-current="true"] { color: var(--ink); font-weight: 600; }
 .tabs svg { width: 24px; height: 24px; }
 
@@ -99,6 +98,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 .phd { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 14px; }
 .phd .who2 { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; min-width: 0; }
+.phd .who2 { flex: 1; min-width: 0; } .post .phd .who2 .small { max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .phd .when { margin-left: auto; color: var(--muted); font-size: 13px; white-space: nowrap; }
 .media { background: var(--sunk); }
 .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; align-items: start; }
@@ -110,15 +110,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .mark { position: absolute; transform: translate(-50%, -50%); border: 3px solid #ff3b30; outline: 2px solid #fff; border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
 @keyframes pulse { 50% { transform: translate(-50%, -50%) scale(1.1); opacity: .65; } }
 .ba-line { position: absolute; top: 0; bottom: 0; left: calc(var(--x) * 1%); width: 2px; margin-left: -1px; background: #fff; outline: 1px solid rgba(0,0,0,.45); pointer-events: none; }
-.ba-line::after { content: "↔"; position: absolute; top: 50%; left: 50%; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%; background: #fff; color: #14171c; border: 1px solid rgba(0,0,0,.45); display: grid; place-items: center; font-size: 16px; }
 .ba-tag { position: absolute; top: 8px; font-size: 13px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(15,17,21,.75); color: #fff; pointer-events: none; }
 .ba-tag.l { left: 8px; } .ba-tag.r { right: 8px; }
 .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
 .zoom { position: absolute; right: 8px; bottom: 8px; width: 36px; height: 36px; border: 0; border-radius: 6px; background: rgba(15,17,21,.78); color: #fff; font-size: 18px; }
 .single { display: block; width: 100%; max-width: var(--mw, 100%); margin: 0 auto; cursor: zoom-in; }
-.poster { --pcol: var(--muted); padding: 28px 20px; display: flex; flex-direction: column; gap: 16px; background: var(--cover, var(--cover-none)); color: #fff; }
+.poster { --pcol: var(--muted); padding: 24px 14px; display: flex; flex-direction: column; gap: 16px; background: var(--cover, var(--cover-none)); color: #fff; }
 .poster.sual, .mini.sual { --cover: var(--cover-sual); } .poster.toilet, .mini.toilet { --cover: var(--cover-toilet); }
-.poster h2 { font-size: 26px; line-height: 1.18; }
 .poster ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.35; }
 .poster li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; }
 .poster p { font-size: 17px; }
@@ -127,14 +125,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .gain { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
 .chip.up { border-color: var(--add); color: var(--add); }
-.acts { display: flex; align-items: center; gap: 4px; padding: 6px 8px 0; }
+.acts { display: flex; align-items: center; gap: 4px; padding: 6px 8px 0 3px; }
 .act { background: none; border: 0; padding: 6px; min-height: 40px; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; border-radius: 8px; }
 .act svg { width: 24px; height: 24px; transition: transform .15s; }
+.act > span { min-width: 2ch; }
 .act:active svg { transform: scale(.85); }
 .act[aria-pressed="true"] { color: var(--like); }
 .act[aria-pressed="true"] svg path { fill: currentColor; }
 .act.text { font-size: 13px; padding: 6px 10px; border: 1px solid var(--edge); min-height: 32px; }
 .act.text.first { margin-left: auto; }
+.single[height] { height: auto; }
+/* someone else's comment not seen yet: a dot on the bubble, in the author's colour */
+.act.unread { position: relative; }
+.act.unread::after { content: ""; position: absolute; left: 25px; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--dc, var(--like)); pointer-events: none; }
 .pbody { padding: 4px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
 .cap b { font-weight: 600; }
 .pills { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -142,8 +145,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .pill.add { --pc: var(--add); } .pill.chg { --pc: var(--chg); } .pill.fix { --pc: var(--fix); } .pill.rem { --pc: var(--rem); }
 .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
 .items li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
-details > summary { cursor: pointer; font-size: 13px; color: var(--muted); }
-details[open] > summary { margin-bottom: 8px; }
+details > summary { cursor: pointer; font-size: 13px; color: var(--muted); padding-block: 10px; margin-block: -10px; }
+details[open] > summary { margin-bottom: -2px; }
 .thread { display: flex; flex-direction: column; gap: 8px; }
 .clist { display: flex; flex-direction: column; gap: 6px; }
 .clist:empty { display: none; }
@@ -151,25 +154,27 @@ details[open] > summary { margin-bottom: 8px; }
 .cm p { overflow-wrap: anywhere; } .cm b { font-weight: 600; } .cm time { color: var(--muted); font-size: 12px; margin-left: 6px; }
 .x { background: none; border: 0; color: var(--muted); font-size: 13px; padding: 0 6px; min-width: 28px; }
 .x.armed, .armed { color: var(--rem); }
-.cform { display: flex; gap: 8px; }
-.cform input { flex: 1; min-width: 0; }
+.goal .x { min-width: 40px; min-height: 40px; display: grid; place-items: center; margin: -8px -6px -8px 0; }
 input[type="text"], select, textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; padding: 8px 10px; }
+input::placeholder, textarea::placeholder { color: var(--muted); opacity: 1; }
+input[type="file"] { font: inherit; font-size: 14px; color: var(--muted); min-height: 44px; }
+input[type="file"]::file-selector-button { font: inherit; font-weight: 500; color: var(--ink); background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; padding: 10px 12px; margin-right: 12px; cursor: pointer; }
 textarea { width: 100%; resize: vertical; }
 .mini { --pcol: var(--muted); position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px; padding: 10px; text-align: left; background: var(--cover, var(--cover-none)); color: #fff; overflow: hidden; }
-.mini b { font-size: 18px; line-height: 1.2; } .mini i { font-style: normal; font-size: 13px; line-height: 1.25; font-weight: 500; overflow-wrap: anywhere; }
+.mini b { line-height: 1.2; } .mini i { font-style: normal; font-size: 13px; line-height: 1.25; font-weight: 500; overflow-wrap: anywhere; }
 
 /* goals tab */
 .proj { display: flex; flex-direction: column; gap: 6px; }
 .ph { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .ph a { font-weight: 600; text-decoration: none; }
-.pct { font-size: 26px; line-height: 1; font-weight: 600; }
-.bar2 { height: 10px; background: var(--sunk); border-radius: 5px; overflow: hidden; }
-.bar2 i { display: block; height: 100%; border-radius: 5px; background: var(--ink); transition: width .4s; }
+.pct { line-height: 1; font-weight: 600; }
+.bar2 { background: var(--sunk); overflow: hidden; }
+.bar2 i { display: block; height: 100%; background: var(--ink); transition: width .4s; }
 .bar2 i.sual { background: var(--sual); } .bar2 i.toilet { background: var(--toilet); }
 .bar2.thin { height: 6px; }
 .prow { display: flex; flex-direction: column; gap: 6px; }
 .pn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
-.sbar { display: flex; height: 16px; background: var(--sunk); border-radius: 4px; overflow: hidden; }
+.sbar { display: flex; gap: 2px; height: 16px; background: var(--sunk); border-radius: 4px; overflow: hidden; }
 .sbar i { display: block; height: 100%; transform-origin: left; animation: grow .5s ease-out; }
 @keyframes grow { from { transform: scaleX(0); } }
 .sbar .add { background: var(--add); } .sbar .chg { background: var(--chg); } .sbar .fix { background: var(--fix); } .sbar .rem { background: var(--rem); }
@@ -179,18 +184,20 @@ textarea { width: 100%; resize: vertical; }
 .gh .bar2 { grid-column: 1 / -1; }
 .goal { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 6px 0; }
 .goal .gt { overflow-wrap: anywhere; }
-.goal.done { opacity: .55; } .goal.done .gt { text-decoration: line-through; }
+.goal.done { opacity: 1; } .goal.done .gt { color: var(--muted); text-decoration: line-through; }
 /* who does a goal: a chip after the title that wraps as a whole */
-.gk { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; max-width: 100%; margin: -4px 0 -4px 6px; vertical-align: middle; font-size: 13px; color: var(--muted); }
+.gk { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; max-width: 100%; margin: -4px 0; vertical-align: middle; font-size: 13px; color: var(--muted); }
 .gk > span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .gk .ava.sm { width: 20px; height: 20px; font-size: 11px; }
-.gkb { background: none; border: 1px solid var(--line); border-radius: 20px; padding: 0 10px; min-height: 24px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.gkb { background: none; border: 1px solid var(--edge); border-radius: 20px; padding: 0 10px; min-height: 24px; font-size: 12px; color: var(--muted); white-space: nowrap; position: relative; }
+.gkb::before { content: ""; position: absolute; inset: -6px -4px; }
 .gkb:hover { color: var(--ink); border-color: var(--ink); }
-.check { width: 24px; height: 24px; border: 2px solid var(--muted); border-radius: 6px; background: var(--surface); display: grid; place-items: center; padding: 0; transition: background .2s, border-color .2s; }
+.check { width: 24px; height: 24px; border: 2px solid var(--muted); background: var(--surface); display: grid; place-items: center; padding: 0; }
 .check[aria-pressed="true"] { background: var(--add); border-color: var(--add); }
-.check[aria-pressed="true"]::after { content: ""; width: 10px; height: 6px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
+.check[aria-pressed="true"]::after { content: ""; width: 10px; height: 6px; border: 2px solid var(--surface); border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
 .gadd { display: flex; gap: 8px; margin-top: 8px; }
 .gadd input { flex: 1; min-width: 0; } .gadd select { max-width: 120px; }
+.gadd input, .gadd select, .gadd .btn { min-height: 44px; } .gadd .btn { min-width: 44px; }
 
 /* new post */
 .seg { display: inline-flex; border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; background: var(--surface); align-self: flex-start; }
@@ -209,11 +216,12 @@ textarea { width: 100%; resize: vertical; }
 .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 .ptile { position: relative; aspect-ratio: 1; border: 0; padding: 0; background: var(--surface); overflow: hidden; border-radius: 4px; }
 .ptile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.ptile .cap2 { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 6px; font-size: 11px; font-weight: 500; background: rgba(15,17,21,.78); color: #fff; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ptile .cap2 { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 6px; font-weight: 500; background: rgba(15,17,21,.78); color: #fff; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
 .tile b { display: block; font-size: 17px; line-height: 1.2; font-weight: 600; } .tile span { font-size: 12px; color: var(--muted); }
-.mrow { display: grid; grid-template-columns: 80px 1fr auto; gap: 8px; align-items: center; font-size: 13px; }
+.mrow { display: grid; grid-template-columns: 120px 1fr auto; gap: 8px; align-items: center; font-size: 13px; }
+.mrow > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .by-ruslan { --pc: var(--ruslan); } .by-seymur { --pc: var(--seymur); }
 .achgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
 .ach { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px; display: flex; flex-direction: column; gap: 6px; color: var(--muted); }
@@ -226,7 +234,7 @@ textarea { width: 100%; resize: vertical; }
 .media.fits .uncrop, .media.open .uncrop { display: none; }
 .bar:has(.who:empty) { display: none; }
 .tabs button { font-size: 12px; }
-.tabs .plus svg { width: 38px; height: 38px; padding: 7px; border-radius: 12px; background: var(--ink); color: var(--bg); }
+.tabs .plus svg { background: var(--ink); color: var(--bg); }
 .tabs .plus { gap: 0; justify-content: center; }
 .ptile .cap2 { font-size: 12px; }
 /* before/after divider: dragged by its handle only, so a vertical swipe on the picture still scrolls */
@@ -238,7 +246,8 @@ textarea { width: 100%; resize: vertical; }
 /* reels: one post per screen, the scroll snaps */
 /* six tabs, the plus stays in the middle: 2 wide columns left, 3 narrower right, same total width */
 .tabs div { grid-template-columns: repeat(2, 3fr) auto repeat(3, 2fr); }
-.tabs button[aria-current="true"]::after { content: ""; width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.tabs button::after { content: ""; width: 4px; height: 4px; border-radius: 50%; }
+.tabs button[aria-current="true"]::after { background: currentColor; }
 .tabs .plus svg { border-radius: 50%; width: 44px; height: 44px; padding: 9px; }
 /* reels stop above the tab bar (74px with the active dot), so the bar stays visible and usable */
 .reels { position: fixed; inset: 0 0 calc(74px + env(safe-area-inset-bottom, 0px)); z-index: 15; background: var(--bg); overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
@@ -250,19 +259,20 @@ textarea { width: 100%; resize: vertical; }
 .rmedia .single { width: max(70%, min(100%, calc((100dvh - 274px) * .46))); max-width: none; cursor: default; }
 .rmedia .zoom { display: none; }
 .rmedia .poster { width: 100%; height: 100%; justify-content: flex-start; padding: 48px 24px 24px; gap: 20px; }
-.rmedia .poster h2 { font-size: 34px; line-height: 1.12; }
 .rmedia .poster ul { font-size: 20px; gap: 14px; }
 .rmedia .poster p { font-size: 19px; }
 .rinfo { flex: none; padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 8px; background: var(--surface); border-top: 1px solid var(--line); }
 .rinfo .phd { padding: 0; }
 .ract { display: flex; align-items: center; gap: 6px; }
 .ract .btn { min-height: 40px; }
-.ract .last { margin-left: auto; }
+.ract > .act:first-child { margin-left: -11px; }
+.ract .last { margin-left: auto; width: 40px; padding: 0; flex: none; }
+@media (max-width: 480px) { .ract { gap: 4px; } }
 .rclamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .rprog { position: fixed; top: calc(8px + env(safe-area-inset-top, 0px)); left: max(12px, calc(50% - 248px)); right: max(12px, calc(50% - 248px)); z-index: 16; display: flex; gap: 4px; pointer-events: none; }
 .rprog i { flex: 1; height: 4px; border-radius: 2px; background: rgba(127,127,127,.45); }
 .rprog i.on { background: var(--ink); }
-.rhint { position: fixed; left: 50%; bottom: calc(244px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 16; padding: 8px 16px; border-radius: 20px; background: rgba(15,17,21,.82); color: #fff; font-size: 14px; font-weight: 600; pointer-events: none; animation: bob 1.2s ease-in-out infinite; }
+.rhint { position: fixed; left: 50%; bottom: calc(270px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 16; padding: 8px 16px; border-radius: 20px; background: rgba(15,17,21,.82); color: #fff; font-size: 14px; font-weight: 600; pointer-events: none; animation: bob 1.2s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translate(-50%, 6px); } }
 .rnav { position: fixed; top: 50%; left: calc(50% + 276px); z-index: 16; display: none; flex-direction: column; gap: 8px; transform: translateY(-50%); }
 .rnav .btn { width: 44px; height: 44px; padding: 0; font-size: 18px; }
@@ -270,32 +280,34 @@ textarea { width: 100%; resize: vertical; }
 .rback { position: fixed; inset: 0; z-index: 16; background: rgba(10,12,15,.55); }
 .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 17; max-width: 520px; margin: 0 auto; max-height: 70%; overflow: auto; background: var(--surface); border: 1px solid var(--line); border-bottom: 0; border-radius: 16px 16px 0 0; padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 12px; animation: rise .2s ease-out; }
 #rsheet-body { display: flex; flex-direction: column; gap: 10px; }
+.sheet .shrow .btn { min-height: 40px; }
 /* post blocks */
 .blk { display: grid; grid-template-columns: 92px 1fr; gap: 6px 12px; padding-top: 10px; border-top: 1px solid var(--line); }
 .blk h4 { margin: 0; font-size: 13px; line-height: 1.5; font-weight: 600; color: var(--muted); }
 .blk > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.plus { color: var(--add); font-weight: 600; }
-.big { font-size: 18px; font-weight: 600; }
+.blk .plus { color: var(--add); font-weight: 600; }
+.blk .big { font-weight: 600; }
 @media (max-width: 480px) { .blk { grid-template-columns: 1fr; gap: 4px; } }
 /* projects and tasks next to the feed on a wide screen */
 .side { display: none; }
 .ov { display: flex; flex-direction: column; gap: 6px; }
-.ov .pct { font-size: 34px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
 .card h3 { font-size: 15px; }
+.card > a.small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mini-g { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 13px; color: var(--muted); }
 .mini-g .bar2 { grid-column: 1 / -1; }
-.side .goal { padding: 4px 0; font-size: 14px; }
+.side .goal { padding: 4px 0; font-size: 14px; grid-template-columns: 28px minmax(0, 1fr); }
+.side .goal > span:empty { display: none; }
 @media (min-width: 1180px) {
-  .shell { display: grid; grid-template-columns: 300px minmax(0, 520px) 320px; gap: 32px; justify-content: center; align-items: start; }
+  .shell { display: grid; grid-template-columns: minmax(240px, 300px) 520px minmax(240px, 300px); gap: 32px; justify-content: center; align-items: start; }
   .shell .app { margin: 0; }
+  #side-l { grid-column: 1; grid-row: 1; } .shell > .app { grid-column: 2; grid-row: 1; } #side-r { grid-column: 3; grid-row: 1; }
   .side { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 12px; padding-block: 12px; }
-  body[data-screen="goals"] .side, body[data-screen="new"] .side { visibility: hidden; }
 }
 /* look: display face for numbers and covers, soft depth, brand-coloured covers */
 body { background: radial-gradient(900px 420px at 50% -160px, color-mix(in srgb, var(--toilet) 12%, var(--bg)), var(--bg)) no-repeat var(--bg); }
-.pct, .ring b, .pstats b, .tile b, .big, .logo { font-family: var(--d); letter-spacing: -.02em; }
-.pct { font-size: 22px; } .ov .pct { font-size: 30px; } .big { font-size: 16px; }
+.pct, .ring b, .pstats b, .tile b, .blk .big { font-family: var(--d); letter-spacing: -.02em; }
+.pct { font-size: 22px; } .ov .pct { font-size: 30px; } .blk .big { font-size: 16px; }
 .ring b { width: 56px; height: 56px; font-size: 12px; }
 .ring.fresh { background: var(--fresh); }
 .ring.fresh .ava { outline: 3px solid var(--bg); }
@@ -313,6 +325,7 @@ body { background: radial-gradient(900px 420px at 50% -160px, color-mix(in srgb,
 .tabs { background: color-mix(in srgb, var(--surface) 82%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 .check { border-radius: 8px; border-color: var(--muted); background: var(--surface); }
 .check:hover { border-color: var(--ink); }
+.check:disabled { cursor: default; } .check:disabled:hover { border-color: var(--muted); }
 .ava { background-image: linear-gradient(140deg, rgba(255,255,255,.22), rgba(0,0,0,.12)); }
 /* critique of the new look */
 .story.on .ring { outline: 0; }
@@ -320,12 +333,13 @@ body { background: radial-gradient(900px 420px at 50% -160px, color-mix(in srgb,
 .story { padding-bottom: 10px; } .story.on { padding-bottom: 0; }
 .more { align-self: flex-start; font-size: 13px; color: var(--muted); font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
 .blk { grid-template-columns: 108px 1fr; }
+@media (max-width: 480px) { .blk { grid-template-columns: 1fr; } }
 .rmedia .poster .gain { margin-top: auto; margin-bottom: 116px; gap: 8px; align-items: center; }
 .rmedia .poster .gain .chip { font-size: 15px; padding: 6px 14px; }
 .rmedia .poster .gain .chip.up { flex-basis: 100%; background: none; border: 0; padding: 0; font-family: var(--d); font-size: 30px; line-height: 1.15; letter-spacing: -.02em; }
 @media (max-width: 480px) {
   .poster h2 { font-size: 18px; } .rmedia .poster h2 { font-size: 22px; }
-  .stories { gap: 10px; } .story { width: 62px; }
+  .stories { gap: 10px; justify-content: flex-start; } .story { width: 62px; }
   .ring { width: 60px; height: 60px; } .ring b { width: 50px; height: 50px; font-size: 11px; } .ring .ava.st { width: 50px; height: 50px; font-size: 21px; }
 }
 /* profile, goals and the post form */
@@ -338,22 +352,26 @@ body { background: radial-gradient(900px 420px at 50% -160px, color-mix(in srgb,
 .seg button { min-height: 44px; } #v-new .btn { min-height: 44px; } #v-new input[type="text"] { min-height: 44px; }
 #n-proj button[data-nproj="sual"][aria-pressed="true"] { background: #c44318; color: #fff; }
 #n-proj button[data-nproj="toilet"][aria-pressed="true"] { background: #1a7a71; color: #fff; }
-.tabs .plus[aria-current="true"]::after { display: none; }
+.tabs .plus[aria-current="true"]::after { background: none; }
 .tabs .plus[aria-current="true"] svg { outline: 2px solid var(--ink); outline-offset: 2px; }
 .nform { display: contents; }
 .nprev { display: flex; flex-direction: column; gap: 8px; }
+#n-cover .poster { padding: 28px 20px; }
 .aft { order: 2; }
+.aft:has(> [hidden]:only-child) { display: none; }
+#n-err { min-height: 1.45em; }
 #n-cover.blank h2 { opacity: .6; }
 @media (max-width: 480px) { #n-send { width: 100%; } }
-#n-send:disabled { opacity: .55; cursor: progress; }
+#n-send:disabled { opacity: .55; cursor: progress; } #n-send:disabled:not(.busy) { cursor: not-allowed; }
+#projform:empty { display: none; }
+@media (max-width: 899px) { #goals > div + div { margin-top: 12px; } }
 @media (min-width: 900px) {
   body[data-screen="goals"] .shell, body[data-screen="new"] .shell { display: block; }
   body[data-screen="goals"] .side, body[data-screen="new"] .side { display: none; }
   body[data-screen="goals"] .shell .app, body[data-screen="new"] .shell .app { max-width: 960px; margin: 0 auto; }
   #v-goals { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; align-items: start; }
   #v-goals > *, #projects > *, #goals > * { min-width: 0; }
-  #goals .gadd { flex-wrap: wrap; } #goals .gadd input { flex: 1 1 100%; }
-  #v-goals > .sec:nth-child(-n+2) { grid-column: 1 / -1; }
+  #v-goals > .sec:nth-child(-n+3) { grid-column: 1 / -1; }
   #projects { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 40px; }
   #projects > .ov { grid-column: 1 / -1; }
   #goals { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 40px; align-items: start; }
@@ -387,6 +405,7 @@ body.intro .side .card:nth-child(2) { animation-delay: .07s; } body.intro .side 
 .tabs button[aria-current="true"]::after { animation: dot .25s cubic-bezier(.3,1.5,.5,1); }
 .check { transition: background .2s, border-color .2s, transform .15s; }
 .check:active { transform: scale(.9); }
+.check:disabled:active { transform: none; } .btn:disabled, .cbtn:disabled { opacity: .55; cursor: default; }
 .check[aria-pressed="true"]::after { animation: fadein .2s ease-out; }
 .btn, .cbtn, .seg button { transition: background .15s, color .15s, border-color .15s, transform .1s; }
 .btn:active, .cbtn:active { transform: scale(.97); }
@@ -403,19 +422,20 @@ body.intro .side .card:nth-child(2) { animation-delay: .07s; } body.intro .side 
 .ring { transition: transform .15s, --v .6s cubic-bezier(.2,.7,.2,1); }
 /* comments */
 .thread { gap: 10px; }
+.pbody > .thread:has(> .clist:empty):not(:has(.cform:not([hidden]))) { display: none; }
+.post .thread:has(.cm, .cform:not([hidden])) { padding-top: 10px; border-top: 1px solid var(--line); }
 .clist { gap: 10px; }
-.cm { grid-template-columns: 24px minmax(0, 1fr) auto; gap: 10px; align-items: start; }
+.cm { grid-template-columns: 24px minmax(0, max-content) 40px; justify-content: start; gap: 10px; align-items: start; }
 .cm .ava { margin-top: 4px; }
-.cb { justify-self: start; max-width: 100%; background: var(--bg); border-radius: 4px 14px 14px 14px; padding: 7px 12px 8px; display: flex; flex-direction: column; gap: 1px; }
-.post .cb, .sheet .cb, .card .cb { background: var(--sunk); }
+.cb { justify-self: start; max-width: 100%; border-radius: 4px 14px 14px 14px; padding: 7px 12px 8px; display: flex; flex-direction: column; gap: 1px; }
 .ch { display: flex; align-items: baseline; gap: 8px; font-size: 13px; }
-.cm .ch time { margin: 0; font-size: 12px; color: var(--muted); }
+.cm .ch time { margin: 0; font-size: 13px; color: var(--muted); }
 .cm p { font-size: 15px; line-height: 1.4; }
 .cm.in { animation: rise .3s cubic-bezier(.2,.7,.2,1) both; }
-.cm .x { min-height: 32px; align-self: center; opacity: .6; } .cm .x:hover, .cm .x.armed { opacity: 1; }
+.cm .x { align-self: center; } .cm .x:hover, .cm .x.armed { opacity: 1; }
 .cform { display: grid; grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; align-items: center; }
 .cform input[type="text"] { min-height: 40px; border-radius: 20px; padding: 8px 16px; background: var(--bg); }
-.post .cform input[type="text"], .sheet .cform input[type="text"] { background: var(--sunk); border-color: transparent; }
+.post .cform input[type="text"], .sheet .cform input[type="text"] { background: var(--sunk); border-color: var(--edge); }
 .cform input[type="text"]:focus-visible { outline-offset: 0; }
 .csend { width: 40px; height: 40px; border: 0; border-radius: 50%; padding: 9px; background: var(--ink); color: var(--bg); display: grid; place-items: center; transition: opacity .15s, transform .1s; }
 .csend svg { width: 22px; height: 22px; }
@@ -423,7 +443,6 @@ body.intro .side .card:nth-child(2) { animation-delay: .07s; } body.intro .side 
 .cform input:placeholder-shown + .csend { opacity: .35; }
 .thread:not([data-thread^="update:"]) .clist:empty { display: block; }
 .thread:not([data-thread^="update:"]) .clist:empty::before { content: "Пока тихо. Напишите первым."; font-size: 13px; color: var(--muted); }
-.phd .when { font-size: 12px; }
 /* statistic bars grow once, not every time a hidden block is shown again */
 .sbar i { animation: none; }
 body.intro .sbar i, .view.first .sbar i { animation: grow .5s ease-out; }
@@ -434,13 +453,14 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .cm .x { min-width: 40px; min-height: 40px; opacity: 1; font-size: 14px; }
 .cm p a { text-decoration-color: currentColor; overflow-wrap: anywhere; }
 .cform input[type="text"]::placeholder { color: var(--muted); opacity: 1; }
-.cform input[type="text"] { background: var(--sunk); border-color: transparent; }
+.cform input[type="text"] { background: var(--sunk); border-color: var(--edge); }
 .tz { font-size: 12px; color: var(--muted); text-align: center; }
 /* projects can be added */
 .seg { flex-wrap: wrap; }
 .pform { gap: 14px; max-width: 520px; }
 .pform input[type="text"] { min-height: 44px; }
 .pform input[aria-invalid="true"] { border-color: var(--rem); }
+#projform .pform > .field + .field { margin-top: 22px; }
 .pform .ferr { margin-top: -10px; min-height: 18px; font-size: 13px; line-height: 18px; color: var(--rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
 .sw { width: 40px; height: 40px; border-radius: 50%; border: 0; padding: 0; background: var(--c); box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px transparent; transition: box-shadow .15s, transform .1s; }
@@ -452,7 +472,9 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .pkey .x { min-height: 32px; text-decoration: underline; text-underline-offset: 3px; }
 .status { font-size: 13px; color: var(--muted); }
 .empty { padding: 24px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); font-size: 14px; text-align: center; }
-.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; z-index: 20; max-width: calc(100% - 32px); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; z-index: 35; width: max-content; max-width: min(480px, calc(100vw - 32px)); pointer-events: none; }
+.toast[data-open], .toast[data-view] { pointer-events: auto; cursor: pointer; }
+.unb { padding: 0 0 0 4px; min-width: 0; min-height: 32px; margin: -6.5px 0; text-decoration: underline; text-underline-offset: 3px; }
 .lightbox { position: fixed; inset: 0; z-index: 30; background: rgba(10,12,15,.92); display: grid; place-items: start center; padding: 16px; cursor: zoom-out; overflow: auto; }
 .lightbox img { max-width: min(100%, 900px); }
 /* showcase: every project as the same tile */
@@ -461,7 +483,6 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .showlink b { font-family: var(--d); font-size: 14px; font-weight: 600; display: block; }
 .showlink svg { width: 20px; height: 20px; flex: none; color: var(--muted); }
 @media (min-width: 900px) {
-  #v-goals > .showlink { grid-column: 1 / -1; }
   body[data-screen="show"] .shell { display: block; }
   body[data-screen="show"] .side { display: none; }
   body[data-screen="show"] .shell .app { max-width: 960px; margin: 0 auto; }
@@ -471,25 +492,29 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sc { position: relative; padding: 0; gap: 0; overflow: hidden; min-width: 0; }
 .sc-shot { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; padding: 0; background: var(--sunk); cursor: zoom-in; overflow: hidden; }
 .sc-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.sc-cover { cursor: default; display: grid; place-items: center; padding: 12px 12px 34px; background: linear-gradient(150deg, var(--c1), var(--c2)); color: #fff; font-family: var(--d); font-size: 14px; font-weight: 600; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
+.sc-cover { display: grid; place-items: center; padding: 12px 12px 34px; background: linear-gradient(150deg, var(--c1), var(--c2)); color: #fff; font-family: var(--d); font-size: 14px; font-weight: 600; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
 .sc-own { position: absolute; left: 9px; bottom: 9px; display: flex; }
 .sc-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding: 10px 12px 2px; }
-.sc-body h3 { font-family: var(--d); font-size: 13px; line-height: 1.3; font-weight: 600; letter-spacing: -.01em; height: 2.6em; overflow: hidden; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.sc-body h3 { font-family: var(--d); font-size: 14px; line-height: 1.3; font-weight: 600; letter-spacing: -.01em; height: 2.6em; overflow: hidden; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+@media (max-width: 480px) { .sc-body h3 { font-size: 13px; } }
 .sc-note { font-size: 13px; line-height: 1.35; color: var(--muted); height: 4.05em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 @media (min-width: 900px) { .sc-note { height: 2.7em; -webkit-line-clamp: 2; } }
 .sc-links { display: flex; gap: 16px; min-height: 40px; align-items: center; margin-top: auto; }
 .sc-links a { min-height: 40px; display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
 .sc-links a:hover { text-decoration-color: var(--ink); }
-.sc-edit { margin: 0 -10px 0 auto; width: 40px; height: 40px; border-radius: 50%; border: 0; padding: 0; display: grid; place-items: center; background: none; color: var(--muted); transition: color .15s, background .15s; }
+.sc-edit { flex: none; margin: 0 -10px 0 auto; width: 40px; height: 40px; border-radius: 50%; border: 0; padding: 0; display: grid; place-items: center; background: none; color: var(--muted); transition: color .15s, background .15s; }
 .sc-edit:hover { color: var(--ink); background: var(--sunk); }
 #showctl .cbtn { min-height: 40px; padding-inline: 16px; }
 .sc-edit svg { width: 18px; height: 18px; }
 .sform input[type="text"] { min-height: 44px; }
 .sform .btn { min-height: 44px; }
+.sform .err:empty { display: none; }
+#showform:empty { display: none; }
 .sform .prev { width: 160px; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 /* v33: a way back on every inner screen */
 .backrow { display: flex; align-items: center; gap: 12px; min-height: 44px; }
 .backrow h2 { flex: 1; min-width: 0; }
+.backrow .how { align-self: center; min-height: 40px; display: inline-flex; align-items: center; }
 .back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 14px 6px 10px; border: 1px solid var(--edge); border-radius: 20px; background: var(--surface); font-size: 14px; font-weight: 600; flex: none; transition: border-color .15s, transform .1s; }
 .back:hover { border-color: var(--muted); } .back:active { transform: scale(.97); }
 .back svg { width: 18px; height: 18px; }
@@ -512,6 +537,8 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .sc-shot { cursor: pointer; }
 .sc-t { background: none; border: 0; padding: 0; font: inherit; text-align: left; width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .sc-t { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sc-shot:focus-visible { outline: none; } .sc-shot:focus-visible::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--ruslan); pointer-events: none; z-index: 1; }
+.sc-t:focus-visible { outline-offset: -2px; border-radius: 4px; } .sc-body h3 { overflow: clip; overflow-clip-margin: 4px; }
 /* showcase detail */
 .sdwrap { position: fixed; inset: 0; z-index: 25; display: grid; place-items: center; padding: 24px 16px; }
 .sdbg { position: absolute; inset: 0; background: rgba(8,12,12,.6); animation: fadein .2s ease-out; }
@@ -552,11 +579,16 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .tour-card .copy { min-width: 11em; }
 .tour-card textarea { font: 12px/1.5 ui-monospace, Consolas, monospace; height: min(260px, 40dvh); resize: none; background: var(--sunk); border-color: transparent; }
 .phead .how { margin-left: auto; }
+@media (hover: hover) {
+  .act:hover { background: var(--sunk); } .cbtn:hover { border-color: var(--ink); }
+  .seg button[aria-pressed="false"]:hover, .tabs button:hover { color: var(--ink); }
+  .zoom:hover, .uncrop:hover { background: rgba(15,17,21,.92); }
+  .btn.main:hover { background: color-mix(in srgb, var(--ink) 85%, var(--bg)); }
+}
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
 <div class="shell">
-<aside class="side" id="side-l" aria-label="Проекты"></aside>
 <div class="app">
   <header class="bar">
     <div class="who" id="who"></div>
@@ -583,7 +615,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
     <div class="nform">
     <div class="field"><span>Что это</span><div class="seg" id="n-kind"><button type="button" data-kind="idea" aria-pressed="true">Идея</button><button type="button" data-kind="bug" aria-pressed="false">Баг</button><button type="button" data-kind="question" aria-pressed="false">Вопрос</button></div></div>
     <div class="field"><span>Проект</span><div class="seg" id="n-proj"></div></div>
-    <label class="field"><span>Коротко, одной фразой</span><input type="text" id="n-text" maxlength="120" placeholder="Например: кнопка «Ответить» слишком мелкая"></label>
+    <label class="field"><span>Коротко, одной фразой</span><input type="text" id="n-text" maxlength="120" placeholder="Например: кнопка «Ответить» слишком мелкая" aria-describedby="n-err"><p class="err" id="n-err" role="alert"></p></label>
     <div class="aft"><button type="button" class="btn" id="n-morebtn" data-action="n-extra">Подробности и скрин</button></div>
     <div class="sec aft" id="n-extra" hidden>
       <label class="field"><span>Подробности</span><textarea id="n-more" rows="3" maxlength="800"></textarea></label>
@@ -591,7 +623,6 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
       <label class="field" id="n-filewrap" hidden><span>Скрин</span><input type="file" id="n-file" accept="image/png,image/jpeg,image/webp"></label>
       <div id="n-prev" hidden></div>
     </div>
-    <p class="err aft" id="n-err" role="alert"></p>
     <div class="aft"><button type="button" class="btn main" id="n-send">Опубликовать</button></div>
     </div>
     <aside class="nprev"><span class="small muted">Превью</span><div class="post" id="n-cover"></div></aside>
@@ -615,11 +646,12 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   <section class="reels" id="v-reels" hidden></section>
   <p class="status" id="status">Загружаю…</p>
 </div>
+<aside class="side" id="side-l" aria-label="Проекты"></aside>
 <aside class="side" id="side-r" aria-label="Цели"></aside>
 </div>
 
 <div class="rback" id="rback" data-action="rclose" hidden></div>
-<div class="sheet" id="rsheet" role="dialog" aria-labelledby="rsheet-title" hidden><div class="shrow"><h3 id="rsheet-title">Комментарии</h3><button type="button" class="btn" data-action="rclose">Закрыть</button></div><div id="rsheet-body"></div><p class="tz">Время — по Баку</p></div>
+<div class="sheet" id="rsheet" role="dialog" aria-modal="true" aria-labelledby="rsheet-title" hidden><div class="shrow"><h3 id="rsheet-title">Комментарии</h3><button type="button" class="btn" data-action="rclose">Закрыть</button></div><div id="rsheet-body"></div><p class="tz">Время — по Баку</p></div>
 
 <div id="sdet"></div>
 <div id="pmodal"></div>
@@ -695,7 +727,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
    - добавь в CLAUDE.md проекта правило из README. По нему Claude после push и проверенного этапа сам пишет пост со скринами «до» и «после», без вопросов.
    Покажи дифф и закоммить только эти файлы после моего «да».
 9. Скриншоты. Перед `report.mjs shot` проверь `npm ls playwright` в проекте. Нет — предложи `npm i -D playwright && npx playwright install chromium` или сними экран другим способом. Снимки в трекер — `node "<kit>/tracker.mjs" upload-shot <файл>`.
-10. Витрина: по скриншоту 1280×800 на каждый выбранный проект, скажи, где лежат. Карточку я добавлю сам: «Цели» → плашка «Витрина» → «+ Проект».
+10. Витрина: по скриншоту 1280×800 на каждый выбранный проект, скажи, где лежат. Карточку я добавлю сам: вкладка «Витрина» внизу → «+ В витрину».
 11. Проверка: `node tools/tracker/report.mjs draft` в подключённом проекте показывает ключ, person = seymur и токены. Пробный пост не пиши.
 12. В конце поставь правило «кто что делает» из `<kit>/RULES.md` по шагам 8–9 раздела «Adding another project».
 </script>
@@ -759,10 +791,11 @@ const KIND = { idea: "Идея", bug: "Баг", question: "Вопрос", claim:
 const HEART = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
 const FULL = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const BUBBLE = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-4 4v-4H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
+const LINK = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 const S = { showcase: [], showForm: null, claims: [], sd: null, db: null, assets: null, me: null, canWrite: false, user: null, goals: [], updates: [], events: [], comments: [], likes: [], projects: {}, people: {},
   got: { goals: false, updates: false }, filter: "all", view: "home", limit: 6, seen: null, newIds: new Set(),
-  onlyOpen: true, editGoals: false, keep: new Set(), shown: {}, lastPct: {}, kind: "idea", nproj: "sual", file: null, sending: false, openC: new Set(), ridx: -1 };
+  onlyOpen: true, editGoals: false, keep: new Set(), myTicks: new Set(), shown: {}, kind: "idea", nproj: "sual", file: null, sending: false, openC: new Set(), ridx: -1 };
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const lsGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
@@ -830,8 +863,11 @@ const blob = (s) => shotSrc(s.id);
 // A claim post may be about a showcase project that is not a tracker project: it carries the name itself.
 const pn = (u) => u.pname || proj(u.project).name;
 const posts = () => S.updates.filter((u) => visible(u.project)).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-const stagesOf = (k) => S.updates.filter((u) => u.person === k && !u.kind);
+const stagesOf = (k) => S.updates.filter((u) => whoOf(u) === k && !u.kind);
 const isMine = (u) => (u.author && u.author === S.me) || (u.person && u.person === myPerson());
+// A record written before "Это я" has no person: its author's later binding names it.
+const whoOf = (x) => (x.person in PEOPLE ? x.person : PKS.find((k) => S.people[k] && S.people[k].userId && S.people[k].userId === x.author) || "");
+const unbound = () => !myPerson() && PKS.some((k) => !(S.people[k] && S.people[k].userId));
 const isFresh = (u) => S.newIds.has(u.id) && !isMine(u);
 const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 function tween(ms, fn) { const t0 = performance.now(); const step = (t) => { const k = Math.min(1, (t - t0) / ms); fn(1 - Math.pow(1 - k, 3)); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }
@@ -844,7 +880,30 @@ let queued = false;
 function render() {
   if (queued) return;
   queued = true;
-  requestAnimationFrame(() => { queued = false; renderShell(); renderWho(); renderStories(); renderFeed(); renderNow(); renderSides(); renderGoalsView(); renderShowcase(); renderShowDetail(); renderPromptModal(); renderTrk(); renderPostView(); renderProfile(); renderReels(); renderActs(); renderThreads(); renderNewForm(); renderNewPrev(); intro(); });
+  requestAnimationFrame(() => { queued = false; const dr = grabDrafts(); renderShell(); renderWho(); renderStories(); renderFeed(); renderSides(); renderGoalsView(); renderShowcase(); renderShowDetail(); renderPromptModal(); renderTrk(); renderPostView(); renderProfile(); renderNow(); renderReels(); renderActs(); renderThreads(); putDrafts(dr); renderNewForm(); renderNewPrev(); intro(); });
+}
+// What one has typed survives a field rebuilt by someone else's change, with the focus and the caret.
+const FIELDS = 'input[type="text"], textarea, select';
+const fieldKey = (el) => el.id || (el.closest("[data-thread]") ? "th:" + el.closest("[data-thread]").dataset.thread + ":" + ((el.closest("article") || {}).id || "") : el.closest("form") && el.closest("form").dataset.p ? "f:" + el.closest("form").dataset.p + ":" + el.tagName : "");
+const dirty = (el) => (el.tagName === "SELECT" ? el.selectedIndex > 0 && !el.options[el.selectedIndex].defaultSelected : el.value !== el.defaultValue);
+function grabDrafts() {
+  const m = new Map(), act = document.activeElement;
+  m.old = new Set(document.querySelectorAll(FIELDS));
+  m.old.forEach((el) => {
+    const k = fieldKey(el);
+    if (!k || el.readOnly || !(dirty(el) || el === act) || (m.has(k) && el !== act)) return;
+    m.set(k, { el, v: el.value, f: el === act, s: el === act && el.selectionStart, e: el === act && el.selectionEnd });
+  });
+  return m;
+}
+function putDrafts(m) {
+  if (!m.size) return;
+  document.querySelectorAll(FIELDS).forEach((el) => {
+    const d = m.get(fieldKey(el));
+    if (!d || d.el.isConnected || m.old.has(el) || el.readOnly) return;
+    if (el.value !== d.v) el.value = d.v;
+    if (d.f && el.offsetParent && (document.activeElement === document.body || !document.activeElement)) { el.focus({ preventScroll: true }); if (d.s !== null && el.setSelectionRange) try { el.setSelectionRange(d.s, d.e); } catch {} }
+  });
 }
 
 function renderShell() {
@@ -866,7 +925,11 @@ function renderShell() {
     }
   }
   S.prevView = S.view;
-  document.querySelectorAll(".tabs [data-view]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.view === S.view || (b.dataset.view === "me" && prof) || (b.dataset.view === "goals" && S.view === "trk") || (b.dataset.view === "home" && one))));
+  // Once bound, the profile tab shows one's own avatar instead of the generic icon.
+  const tb = document.querySelector('.tabs [data-view="me"]'), mp = myPerson(), pa = mp ? ava(mp, "sm") : "";
+  if (tb._p === undefined) { tb._p = ""; tb._svg = tb.firstElementChild.outerHTML; }
+  if (tb._p !== pa) { tb._p = pa; tb.firstElementChild.outerHTML = pa || tb._svg; if (mp) tb.setAttribute("aria-label", "Профиль: " + personName(mp)); else tb.removeAttribute("aria-label"); }
+  document.querySelectorAll(".tabs [data-view]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.view === S.view || (b.dataset.view === "me" && prof && (!myPerson() || S.view === "p:" + myPerson())) || (b.dataset.view === "goals" && S.view === "trk") || (b.dataset.view === "home" && one))));
 }
 // While the tour or the showcase detail is open, Tab cannot leave it: everything behind is inert.
 function lockBg() {
@@ -898,16 +961,20 @@ function itemsHtml(items) {
 }
 function shotsHtml(u, max) {
   const pct = (v) => Math.max(0, Math.min(100, Number(v) || 0));
-  return `<div class="shots">${pairsOf(u).slice(0, max || 9).map((p) => {
+  // Sizes stored with a shot (w, h) reserve its place before the picture loads; the load handler then changes nothing.
+  const arOf = (s) => (+s.w > 0 && +s.h > 0 ? +s.w / +s.h : 0), ps = pairsOf(u).slice(0, max || 9);
+  const bars = ps.filter((p) => p.before && p.after).map((p) => Math.min(arOf(p.before), arOf(p.after))), far = bars.length && Math.min(...bars);
+  return `<div class="shots"${far ? ` data-far="${far}" style="--far:${far};--mw:${far < 1 ? "430px" : "100%"}"` : ""}>${ps.map((p) => {
     if (p.before && p.after) {
       const marks = (p.after.marks || []).map((m) => `<span class="mark" style="left:${pct(m.x)}%;top:${pct(m.y)}%;width:${pct(m.w)}%;height:${pct(m.h)}%"></span>`).join("");
-      return `<figure><div class="ba-frame"><div class="ba-box"><img class="ba-before" src="${blob(p.before)}" alt="Было" loading="lazy"><div class="ba-side"><img class="ba-after" src="${blob(p.after)}" alt="Стало" loading="lazy"></div><div class="marks">${marks}</div>
+      const bar = Math.min(arOf(p.before), arOf(p.after));
+      return `<figure><div class="ba-frame"><div class="ba-box"${bar ? ` data-ar="${bar}" style="--ar:${bar};--aar:${arOf(p.after)}"` : ""}><img class="ba-before" src="${blob(p.before)}" alt="Было" loading="lazy"><div class="ba-side"><img class="ba-after" src="${blob(p.after)}" alt="Стало" loading="lazy"></div><div class="marks">${marks}</div>
         <span class="ba-line"></span><span class="ba-handle" aria-hidden="true">↔</span><span class="ba-tag l">было</span><span class="ba-tag r">стало</span>
         <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Сдвиньте, чтобы сравнить было и стало">
         <button type="button" class="zoom" data-action="zoom" data-src="${blob(p.after)}" aria-label="Открыть «стало» крупно">⤢</button></div></div></figure>`;
     }
-    const s = p.after || p.before;
-    return `<img class="single" src="${blob(s)}" alt="${esc(u.title)}" loading="lazy" data-action="zoom" data-src="${blob(s)}">`;
+    const s = p.after || p.before, ar = arOf(s);
+    return `<img class="single" src="${blob(s)}" alt="${esc(u.title)}" loading="lazy" data-action="zoom" data-src="${blob(s)}"${ar ? ` width="${+s.w}" height="${+s.h}" style="--mw:${ar < 1 ? "430px" : "100%"}"` : ""}>`;
   }).join("")}</div>`;
 }
 // What the post gave: share of the project's goals it closed, the goals themselves, time spent.
@@ -930,13 +997,20 @@ function posterHtml(u, plain) {
 }
 function renderNewForm() {
   put("n-proj", PKEYS.map((p) => `<button type="button" data-nproj="${esc(p)}" aria-pressed="${S.nproj === p}">${esc(proj(p).name)}</button>`).join(""));
+  document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.kind === S.kind)));
+  $("n-send").disabled = !(S.canWrite && S.db) || !!S.sending;
 }
 function renderNewPrev() {
   const title = $("n-text").value.trim(), more = $("n-more").value.split("\n").map((x) => x.trim()).filter(Boolean);
   put("n-cover", posterHtml({ kind: S.kind, project: S.nproj, title: title || "Ваша фраза появится здесь", items: more.slice(0, 3) }, true));
   $("n-cover").classList.toggle("blank", !title);
 }
-addEventListener("input", (e) => { if (e.target.id === "n-text" || e.target.id === "n-more") renderNewPrev(); });
+addEventListener("input", (e) => {
+  if (e.target.id !== "n-text" && e.target.id !== "n-more") return;
+  if (e.target.id === "n-text") e.target.removeAttribute("aria-invalid");
+  renderNewPrev(); saveDraft();
+});
+const saveDraft = () => lsSet("st-draft", JSON.stringify({ t: $("n-text").value, m: $("n-more").value, k: S.kind, p: S.nproj }));
 function miniHtml(u) {
   const c = counts(u);
   return `<span class="mini ${esc(u.project)}"><b>${u.kind ? esc(KIND[u.kind] || "") : TK.filter((t) => c[t]).map((t) => GLYPH[t] + c[t]).join(" ")}</b><i>${esc(u.title)}</i></span>`;
@@ -947,7 +1021,7 @@ function postHtml(u) {
   const cost = us.finishedAt ? [fmtTokens(us.tokens) + " токенов", fmtUsd(us.cost), (us.models || []).map((m) => m.name || m.model).join(", ")].filter(Boolean).join(" · ") : "";
   const items = u.items || [];
   const mk = u.kind && u.kind !== "claim" && !u.goalId && can, del = u.kind && u.author && u.author === S.me;
-  const name = u.person in PEOPLE ? `<button type="button" class="link" data-view="${u.person}">${esc(personName(u.person))}</button>` : "<b>Кто-то</b>";
+  const who = whoOf(u), name = who ? `<button type="button" class="link" data-view="${who}">${esc(personName(who))}</button>` : "<b>Кто-то</b>";
   const closed = (u.goalIds || []).map((id) => S.goals.find((g) => g.id === id)).filter(Boolean);
   const allGoals = goalsOf(u.project).length, gain = closed.length && allGoals ? Math.max(1, Math.round((closed.length / allGoals) * 100)) : 0;
   const c = counts(u), shown = has ? items.slice(0, 3) : [], rest = items.slice(3);
@@ -957,14 +1031,14 @@ function postHtml(u) {
   const spent = us.finishedAt ? `<section class="blk"><h4>Затраты</h4><div><div class="gain"><span class="chip">${fmtMin(us.activeMin)} с Claude</span><span class="chip">${fmtUsd(us.cost)}</span><span class="chip">${fmtTokens(us.tokens)} токенов</span>${(us.models || []).map((m) => `<span class="chip">${esc(m.name || m.model)}</span>`).join("")}</div>${commits ? `<p class="small muted">Коммиты на GitHub: ${commits}</p>` : ""}</div></section>` : commits ? `<p class="small muted">Коммиты на GitHub: ${commits}</p>` : "";
   const text = u.kind && has ? items.map((t) => `<p>${esc(t)}</p>`).join("") + gainHtml(u) : "";
   return `<article class="post" id="post-${esc(u.id)}">
-    <div class="phd">${ava(u.person)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(pn(u))} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))}</span></div>
+    <div class="phd">${ava(who)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(pn(u))} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))}</span></div>
       ${isFresh(u) ? `<span class="chip up">новое</span>` : ""}<span class="when" title="Время по Баку">${esc(baku(u.createdAt))}</span></div>
     <div class="media${has ? " crop" : ""}">${has ? shotsHtml(u) + `<button type="button" class="uncrop" data-action="uncrop">Показать целиком</button>` : posterHtml(u, !u.kind)}</div>
-    <div class="acts"><button type="button" class="act" data-like="${esc(u.id)}" aria-pressed="false" aria-label="Нравится"></button><button type="button" class="act" data-cfocus="${esc(u.id)}" aria-label="Комментировать"></button><button type="button" class="act" data-action="reel" data-id="${esc(u.id)}" aria-label="Открыть на весь экран">${FULL}</button>
+    <div class="acts"><button type="button" class="act" data-like="${esc(u.id)}" aria-pressed="false" aria-label="Нравится"></button><button type="button" class="act" data-cfocus="${esc(u.id)}" aria-label="Комментировать"></button><button type="button" class="act" data-action="reel" data-id="${esc(u.id)}" aria-label="Открыть на весь экран">${FULL}</button><button type="button" class="act" data-action="plink" data-id="${esc(u.id)}" aria-label="Скопировать ссылку на пост" title="Ссылка">${LINK}</button>
       ${mk ? `<button type="button" class="act text first" data-action="mkgoal" data-id="${esc(u.id)}">В цели</button>` : ""}
       ${del ? `<button type="button" class="act text${mk ? "" : " first"}" data-action="del-post" data-id="${esc(u.id)}">Удалить</button>` : ""}</div>
     <div class="pbody">
-      ${has ? `<p class="cap"><b>${esc(u.person in PEOPLE ? personName(u.person) : "Кто-то")}</b> ${esc(u.title)}</p>` : ""}
+      ${has ? `<p class="cap"><b>${esc(who ? personName(who) : "Кто-то")}</b> ${esc(u.title)}</p>` : ""}
       ${text}${done}${prog}${spent}
       <div class="thread" data-thread="update:${esc(u.id)}"></div>
     </div>
@@ -989,6 +1063,7 @@ function ringsMoved() {
   });
 }
 function intro() {
+  openHash();
   // The tour waits for the data, so every step points at something real. Shown once per browser.
   if (!S.tourChecked && S.got.goals && S.got.updates && S.got.people) { S.tourChecked = true; if (!lsGet("st-tour")) setTimeout(() => { if (T.i < 0) startTour(); }, 600); }
   if (countRoot) { if (!still()) countUp(countRoot); countRoot = null; }
@@ -1020,7 +1095,7 @@ function renderNow() {
 function overall() { return progress(PKEYS.flatMap((p) => goalsOf(p))); }
 function overallHtml() {
   const o = overall();
-  return `<div class="ov"><div class="ph"><h3>Общий прогресс</h3><span class="pct">${S.got.goals ? o.pct + "%" : "…"}</span></div><div class="bar2"><i style="width:${o.pct}%"></i></div><p class="small muted">${o.done} из ${o.total} ${plural(o.total, "цели", "целей", "целей")} по ${PKEYS.length} ${plural(PKEYS.length, "проекту", "проектам", "проектам")}</p></div>`;
+  return `<div class="ov"><div class="ph"><h3>Общий прогресс</h3><span class="pct">${S.got.goals ? o.pct + "%" : "…"}</span></div><div class="bar2"><i style="width:${o.pct}%"></i></div><p class="small muted">${S.got.goals ? `${o.done} из ${o.total} ${plural(o.total, "цели", "целей", "целей")} по ${PKEYS.length} ${plural(PKEYS.length, "проекту", "проектам", "проектам")}` : "…"}</p></div>`;
 }
 function renderSides() {
   const can = S.canWrite && S.db;
@@ -1029,13 +1104,13 @@ function renderSides() {
     return `<div class="card"><div class="ph"><button type="button" class="link" data-filter="${p}">${pmark(p)}${esc(proj(p).name)}</button><span class="pct">${S.got.goals ? (pr.total ? pr.pct + "%" : "") : "…"}</span></div>
       ${S.got.goals && !pr.total ? `<p class="small muted">Целей пока нет</p>` : `<div class="bar2"><i class="${p}" style="width:${pr.pct}%"></i></div>`}
       ${groupsOf(p).map((gr) => { const list = all.filter((g) => groupKey(p, g.group) === gr.id); if (!list.length) return ""; const gp = progress(list); return `<div class="mini-g"><span>${esc(gr.name)}</span><span>${gp.done}/${gp.total}</span><div class="bar2 thin"><i class="${p}" style="width:${gp.pct}%"></i></div></div>`; }).join("")}
-      <p class="small muted">${n} ${plural(n, "пост", "поста", "постов")} от Claude${next ? ` · дальше: ${esc(next.title)}` : ""}</p>
-      ${proj(p).repo ? `<a class="small muted" href="https://github.com/${esc(proj(p).repo)}" target="_blank" rel="noopener">github.com/${esc(proj(p).repo)}</a>` : ""}</div>`;
+      <p class="small muted">${S.got.updates ? `${n} ${plural(n, "пост", "поста", "постов")} от Claude` : "…"}${next ? ` · дальше: ${esc(next.title)}` : ""}</p>
+      ${proj(p).repo ? `<a class="small muted" href="https://github.com/${esc(proj(p).repo)}" target="_blank" rel="noopener" title="github.com/${esc(proj(p).repo)}">github.com/${esc(proj(p).repo)}</a>` : ""}</div>`;
   }).join(""));
   const shown = (g) => !g.done || S.keep.has(g.id);
   put("side-r", (S.got.goals ? PKEYS.map((p) => {
     const open = goalsOf(p).filter(shown), left = goalsOf(p).filter((g) => !g.done).length;
-    return `<div class="card"><div class="ph"><h3>${pmark(p)}Цели: ${esc(proj(p).name)}</h3><span class="small muted">осталось ${left}</span></div>
+    return `<div class="card"><div class="ph"><h3>${pmark(p)}Цели: ${esc(proj(p).name)}</h3>${goalsOf(p).length ? `<span class="small muted">осталось ${left}</span>` : ""}</div>
       ${open.slice(0, 5).map((g) => `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span class="gt">${esc(g.title)}</span><span></span></div>`).join("") || `<p class="small muted">${goalsOf(p).length ? "Все цели закрыты" : "Целей пока нет"}</p>`}
       ${open.length > 5 ? `<button type="button" class="link more" data-view="goals">Ещё ${open.length - 5} во вкладке «Цели»</button>` : ""}</div>`;
   }).join("") : "") + (S.got.updates ? `<div class="card"><h3>Кто сколько сделал</h3>${peopleHtml()}</div>` : ""));
@@ -1059,15 +1134,39 @@ function peopleHtml() {
     : `<p class="small muted pn">${ava(k, "sm")}${esc(personName(k))} пока ничего не публиковал</p>`).join("")
     + (cnt ? `<p class="small muted">Всего: ${cnt} ${plural(cnt, "пост", "поста", "постов")} от Claude · ${fmtMin(min)} с Claude · ${fmtUsd(cost)} по ценам API</p>` : "");
 }
-function nudge() {
+function nudge(els) {
   if (still()) return;
-  const boxes = [...$("feed").querySelectorAll(".ba-box")];
+  const boxes = els.flatMap((el) => [...el.querySelectorAll(".ba-box")]);
   if (boxes.length) tween(700, (k) => { const x = 85 - 35 * k; boxes.forEach((b) => { if (b.isConnected) { b.style.setProperty("--x", x); b.querySelector(".ba-range").value = x; } }); });
 }
 function renderFeed() {
   const list = posts(), n = list.length;
-  if (!S.got.updates || !n) return put("feed", `<div class="empty">${S.got.updates ? "Постов пока нет. Claude добавит первый после пуша, а идею или баг можно написать самому через «Пост»." : "Загружаю посты…"}</div>`);
-  if (put("feed", list.slice(0, S.limit).map(postHtml).join("") + (n > S.limit ? `<button type="button" class="btn" data-action="more">Показать ещё ${n - S.limit}</button>` : ""))) nudge();
+  if (!S.got.updates || !n) return put("feed", `<div class="empty">${S.got.updates ? "Постов пока нет. Claude добавит первый после пуша. Идею или баг можно написать самому: кнопка + внизу." : "Загружаю посты…"}</div>`);
+  // Only a post whose markup changed is rebuilt: open details, uncropped pictures and drafts in the others stay.
+  const box = $("feed"), keep = new Set(), fresh = [];
+  const anchor = scrollY > 0 ? [...box.querySelectorAll(".post")].find((el) => el.getBoundingClientRect().bottom > 0) : null, aid = anchor && anchor.id, top0 = anchor && anchor.getBoundingClientRect().top;
+  last.delete("feed");
+  // While one reads further down, a new post on top does not push the last shown one out of the feed.
+  if (anchor) { const ids = new Set([...box.querySelectorAll(".post")].map((el) => el.id)); S.limit = Math.max(S.limit, list.findLastIndex((u) => ids.has("post-" + u.id)) + 1); }
+  let prev = null;
+  for (const u of list.slice(0, S.limit)) {
+    const html = postHtml(u);
+    let el = document.getElementById("post-" + u.id);
+    if (!el || el._h !== html) { const t = document.createElement("template"); t.innerHTML = html; const nu = t.content.firstElementChild; nu._h = html; if (el) el.replaceWith(nu); el = nu; fresh.push(nu); }
+    const at = prev ? prev.nextElementSibling : box.firstElementChild;
+    if (at !== el) box.insertBefore(el, at);
+    keep.add(el); prev = el;
+  }
+  let more = box.querySelector(':scope > [data-action="more"]');
+  if (n > S.limit) {
+    if (!more) { more = document.createElement("button"); more.type = "button"; more.className = "btn"; more.dataset.action = "more"; }
+    if (more.textContent !== "Показать ещё " + (n - S.limit)) more.textContent = "Показать ещё " + (n - S.limit);
+    if (box.lastElementChild !== more) box.appendChild(more);
+    keep.add(more);
+  }
+  [...box.children].forEach((el) => { if (!keep.has(el)) el.remove(); });
+  if (fresh.length) nudge(fresh);
+  if (aid && document.getElementById(aid)) { const dy = document.getElementById(aid).getBoundingClientRect().top - top0; if (Math.abs(dy) >= 1) scrollBy({ top: dy, behavior: "instant" }); }
   revealPosts();
 }
 
@@ -1081,14 +1180,14 @@ function metaLine(u) {
 function reelHtml(u, i, n) {
   const has = (u.shots || []).length > 0, pairs = pairsOf(u), extra = pairs.length - 1, items = u.items || [];
   const first = pairs[0] && (pairs[0].after || pairs[0].before);
-  const name = u.person in PEOPLE ? `<button type="button" class="link" data-view="${u.person}">${esc(personName(u.person))}</button>` : "<b>Кто-то</b>";
+  const who = whoOf(u), name = who ? `<button type="button" class="link" data-view="${who}">${esc(personName(who))}</button>` : "<b>Кто-то</b>";
   const details = (!u.kind && (has ? items.length : items.length > 3)) || metaLine(u);
   return `<article class="reel" id="reel-${esc(u.id)}">
     <div class="rmedia">${has ? shotsHtml(u, 1) : posterHtml(u)}</div>
-    <div class="rinfo"><div class="phd">${ava(u.person)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(pn(u))} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))} · ${esc(baku(u.createdAt))}</span></div>${isFresh(u) ? `<span class="chip up">новое</span>` : ""}<span class="when">${i + 1} из ${n}</span></div>
+    <div class="rinfo"><div class="phd">${ava(who)}<div class="who2">${name}<span class="small muted">${pmark(u.project)}${esc(pn(u))} · ${esc(u.kind ? KIND[u.kind] || "Пост" : groupName(u.project, u.group))} · ${esc(baku(u.createdAt))}</span></div>${isFresh(u) ? `<span class="chip up">новое</span>` : ""}<span class="when">${i + 1} из ${n}</span></div>
       ${has ? `<p class="cap rclamp">${esc(u.title)}</p>` : ""}
       ${extra > 0 ? `<p class="small muted">Показана 1 из ${extra + 1} пар скринов, остальные <button type="button" class="link" data-open="${esc(u.id)}">в ленте</button></p>` : ""}
-      <div class="ract"><button type="button" class="act" data-like="${esc(u.id)}" aria-pressed="false" aria-label="Нравится"></button><button type="button" class="act" data-action="rcomments" data-id="${esc(u.id)}" data-ccount="${esc(u.id)}" aria-label="Комментарии"></button>
+      <div class="ract"><button type="button" class="act" data-like="${esc(u.id)}" aria-pressed="false" aria-label="Нравится"></button><button type="button" class="act" data-action="rcomments" data-id="${esc(u.id)}" data-ccount="${esc(u.id)}" aria-label="Комментарии"></button><button type="button" class="act" data-action="plink" data-id="${esc(u.id)}" aria-label="Скопировать ссылку на пост" title="Ссылка">${LINK}</button>
         ${details ? `<button type="button" class="btn" data-action="rdetails" data-id="${esc(u.id)}">Правки</button>` : ""}
         ${first ? `<button type="button" class="btn" data-action="zoom" data-src="${blob(first)}">Крупно</button>` : ""}
         <button type="button" class="btn last" data-action="back" aria-label="Закрыть рилс и вернуться назад">✕</button></div></div>
@@ -1097,11 +1196,16 @@ function reelHtml(u, i, n) {
 function renderReels() {
   if (S.view !== "reels") return;
   const list = posts().slice(0, 40), n = list.length;
+  // A new post above does not swap the reel one is watching.
+  const box = $("v-reels"), cur = box.querySelectorAll(".reel")[Math.round(box.scrollTop / (box.clientHeight || 1))], cid = cur && cur.id;
+  const fa = document.activeElement, fr = fa && fa !== box && box.contains(fa) && fa.closest(".reel"), fsel = fr && (fa.dataset.like ? "[data-like]" : fa.dataset.action ? `[data-action="${fa.dataset.action}"]` : null);
   const changed = put("v-reels", (n ? `<div class="rprog" id="rprog">${list.map(() => "<i></i>").join("")}</div>` : "")
     + (n > 1 && !lsGet("st-rhint") ? `<div class="rhint" id="rhint">Листайте вниз ↓</div>` : "")
     + (n > 1 ? `<div class="rnav"><button type="button" class="btn" data-action="rstep" data-d="-1" aria-label="Предыдущий пост">↑</button><button type="button" class="btn" data-action="rstep" data-d="1" aria-label="Следующий пост">↓</button></div>` : "")
     + (n ? list.map((u, i) => reelHtml(u, i, n)).join("") : `<div class="reel"><div class="rmedia"><p class="muted" style="align-self:center">Постов пока нет</p></div><div class="rinfo"><div class="ract"><button type="button" class="btn last" data-action="back" aria-label="Закрыть рилс">✕</button></div></div></div>`));
-  if (changed) { S.ridx = -1; reelSync(); }
+  if (changed) { const el = cid && document.getElementById(cid); if (el) box.scrollTop = el.offsetTop; S.ridx = -1; reelSync();
+    if (fsel) { const t = document.getElementById(fr.id); refocus(t && t.querySelector(fsel)); }
+    if (S.retSh && !S.retSh.isConnected && S.retSh.dataset && S.retSh.dataset.id) S.retSh = box.querySelector(`[data-action="${S.retSh.dataset.action}"][data-id="${CSS.escape(S.retSh.dataset.id)}"]`); }
 }
 // Keeps the progress bar, the hint and the divider's short slide in step with the post on screen.
 function reelSync() {
@@ -1116,35 +1220,56 @@ function reelSync() {
   const bx = box.querySelectorAll(".reel")[idx] && box.querySelectorAll(".reel")[idx].querySelector(".ba-box");
   if (bx && !still()) tween(700, (k) => { const x = 85 - 35 * k; if (bx.isConnected) { bx.style.setProperty("--x", x); bx.querySelector(".ba-range").value = x; } });
 }
+// A closed window hands the focus back to the button that opened it.
+const refocus = (el) => { if (el && el.isConnected) el.focus({ preventScroll: true }); };
 function openSheet(title, html) {
+  if ($("rsheet").hidden) S.retSh = document.activeElement;
   $("rsheet-title").textContent = title; $("rsheet-body").innerHTML = html;
   $("rsheet").hidden = false; $("rback").hidden = false;
 }
-function closeSheet() { $("rsheet").hidden = true; $("rback").hidden = true; }
+function closeSheet() { const was = !$("rsheet").hidden; $("rsheet").hidden = true; $("rback").hidden = true; if (was) { refocus(S.retSh); S.retSh = null; } }
 function openReels(id) {
   S.ridx = -1; go("reels");
   requestAnimationFrame(() => requestAnimationFrame(() => { const el = document.getElementById("reel-" + id); if (el) el.scrollIntoView({ block: "start" }); }));
 }
 
+// Comments seen per thread (st-cseen: thread → time of the newest one shown). On a first visit everything counts as read.
+const cseen = (() => { try { const v = JSON.parse(lsGet("st-cseen")); if (v && typeof v === "object") return v; } catch {} const v = { "*": Date.now() }; lsSet("st-cseen", JSON.stringify(v)); return v; })();
+// A thread is seen while it is on screen: under a post in the feed, on the post screen, in the reels sheet.
+const seenIO = "IntersectionObserver" in window ? new IntersectionObserver((es) => { for (const e of es) e.target._vis = e.isIntersecting; markSeen(); }) : null;
+function markSeen() {
+  let ch = false;
+  document.querySelectorAll('[data-thread^="update:"]').forEach((el) => {
+    if (!el._vis || !el.getClientRects().length) return;
+    const t = el.dataset.thread, at = S.comments.reduce((m, c) => (c.target === t && c.author !== S.me && !(c.person && c.person === myPerson()) ? Math.max(m, c.at || 0) : m), 0);
+    if (at > (cseen[t] || 0)) { cseen[t] = at; ch = true; }
+  });
+  if (ch) { lsSet("st-cseen", JSON.stringify(cseen)); renderActs(); }
+}
 // Likes and comment counts are patched in place, the posts themselves are not re-rendered.
 function renderActs() {
-  const lk = {}, cm = {};
+  const lk = {}, cm = {}, other = {};
   for (const l of S.likes) (lk[l.target] = lk[l.target] || []).push(l);
-  for (const c of S.comments) cm[c.target] = (cm[c.target] || 0) + 1;
+  for (const c of S.comments) { cm[c.target] = (cm[c.target] || 0) + 1; if (c.author !== S.me && !(c.person && c.person === myPerson()) && (c.at || 0) >= ((other[c.target] || {}).at || 0)) other[c.target] = c; }
   document.querySelectorAll("[data-like]").forEach((b) => {
-    const arr = lk[b.dataset.like] || [], mine = arr.some((l) => l.author === S.me), key = arr.length + "|" + mine;
+    const arr = lk[b.dataset.like] || [], mine = arr.some((l) => l.author === S.me), who = arr.map((l) => (whoOf(l) ? personName(whoOf(l)) : "Кто-то")).join(", "), key = arr.length + "|" + mine + "|" + who;
+    b.disabled = !S.canWrite;
     if (b._k === key) return;
     b._k = key; b.innerHTML = `${HEART}<span>${arr.length}</span>`; b.setAttribute("aria-pressed", String(mine));
-    b.title = arr.map((l) => (l.person in PEOPLE ? personName(l.person) : "Кто-то")).join(", ");
+    b.title = who;
   });
   document.querySelectorAll("[data-cfocus],[data-ccount]").forEach((b) => {
-    const n = cm["update:" + (b.dataset.cfocus || b.dataset.ccount)] || 0;
+    const t = "update:" + (b.dataset.cfocus || b.dataset.ccount), n = cm[t] || 0, o = other[t], un = !!o && (o.at || 0) > Math.max(cseen[t] || 0, cseen["*"] || 0);
+    if (b.classList.contains("unread") !== un) b.classList.toggle("unread", un);
+    if (un) b.style.setProperty("--dc", whoOf(o) ? `var(--${whoOf(o)})` : "var(--like)");
+    if (b.dataset.cfocus) b.disabled = !(S.canWrite && S.db);
     if (b._k === n) return;
     b._k = n; b.innerHTML = `${BUBBLE}<span>${n}</span>`;
   });
 }
 // Comment threads: the list is refreshed in place, the input is built once.
 function renderThreads() {
+  const ref = S.view === "home" && scrollY > 0 ? ((document.activeElement && document.activeElement.closest("#feed .post")) || [...document.querySelectorAll("#feed .post")].find((p) => p.getBoundingClientRect().top >= 0)) : null, y0 = ref && ref.getBoundingClientRect().top;
   const by = {};
   for (const c of S.comments) (by[c.target] = by[c.target] || []).push(c);
   document.querySelectorAll("[data-thread]").forEach((el) => {
@@ -1154,7 +1279,7 @@ function renderThreads() {
       el.innerHTML = `<div class="clist"></div>${S.canWrite && S.db ? `<form class="cform" data-form="comment" data-t="${esc(t)}"><input type="text" maxlength="500" placeholder="Написать комментарий…" aria-label="Комментарий"><button class="csend" aria-label="Отправить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></form>` : ""}`;
       el._last = null;
     }
-    const html = (by[t] || []).slice().sort((a, b) => (a.at || 0) - (b.at || 0)).map((c) => `<div class="cm${c.author && c.author === S.me ? " mine" : ""} by-${esc(c.person in PEOPLE ? c.person : "")}">${ava(c.person, "sm")}<div class="cb"><span class="ch"><b>${esc(c.person in PEOPLE ? personName(c.person) : "Кто-то")}</b><time title="Время по Баку">${esc(baku(c.at))}</time></span><p>${linkify(c.text)}</p></div>${c.author && c.author === S.me ? `<button type="button" class="x" data-action="del-comment" data-id="${esc(c.id)}" aria-label="Удалить комментарий">✕</button>` : "<span></span>"}</div>`).join("");
+    const html = (by[t] || []).slice().sort((a, b) => (a.at || 0) - (b.at || 0)).map((c) => `<div class="cm${c.author && c.author === S.me ? " mine" : ""} by-${esc(whoOf(c))}">${ava(whoOf(c), "sm")}<div class="cb"><span class="ch"><b>${esc(whoOf(c) ? personName(whoOf(c)) : "Кто-то")}</b><time title="Время по Баку">${esc(baku(c.at))}</time></span><p>${linkify(c.text)}</p></div>${c.author && c.author === S.me ? `<button type="button" class="x" data-action="del-comment" data-id="${esc(c.id)}" aria-label="Удалить комментарий">✕</button>` : "<span></span>"}</div>`).join("");
     if (el._last !== html) {
       const n = (by[t] || []).length, grew = el._last !== null && n > (el._n || 0);
       el._last = html; el._n = n; el.firstChild.innerHTML = html;
@@ -1163,7 +1288,10 @@ function renderThreads() {
     // Under a post the input appears once there is a comment or the comment icon was tapped.
     const form = el.querySelector(".cform");
     if (form && t.startsWith("update:")) form.hidden = !(by[t] || []).length && !S.openC.has(t);
+    if (seenIO && !el._io && t.startsWith("update:")) { el._io = true; seenIO.observe(el); }
   });
+  markSeen();
+  if (ref && ref.isConnected) { const dy = ref.getBoundingClientRect().top - y0; if (Math.abs(dy) >= 1) scrollBy({ top: dy, behavior: "instant" }); }
 }
 
 // takenBy: who does an open goal now. A goal without the field, closed or taken by someone unknown is free.
@@ -1186,7 +1314,7 @@ function takenLine(list) {
   return ks.length ? "в работе: " + ks.map((k) => `${esc(personName(k))} ${n[k]}`).join(", ") : "";
 }
 function goalRow(g, can, edit) {
-  return `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span><span class="gt">${esc(g.title)}</span>${takeHtml(g, can)}</span>${edit ? `<button type="button" class="x" data-action="remove-goal" data-id="${esc(g.id)}" aria-label="Убрать цель">✕</button>` : "<span></span>"}</div>`;
+  return `<div class="goal${g.done ? " done" : ""}"><button type="button" class="check" data-action="toggle" data-id="${esc(g.id)}" aria-pressed="${!!g.done}" aria-label="${esc(g.title)}" ${can ? "" : "disabled"}></button><span><span class="gt">${esc(g.title)}</span> ${takeHtml(g, can)}</span>${edit ? `<button type="button" class="x" data-action="remove-goal" data-id="${esc(g.id)}" aria-label="Убрать цель">✕</button>` : "<span></span>"}</div>`;
 }
 /* ---------- claims: "I take this project" ---------- */
 // One document per project and person: claims/<project>__<person> {project, person, author, at, active}.
@@ -1219,8 +1347,9 @@ function rulesText(k) {
 }
 const rulesVer = () => ($("rules-prompt").textContent.match(/Версия правил: (.+)/) || [, ""])[1].trim();
 function renderPromptModal() {
-  if (!S.pm) return put("pmodal", "");
+  if (!S.pm) { if (put("pmodal", "")) { refocus(S.retPm); S.retPm = null; } return; }
   const fresh = !$("pmodal").firstChild;
+  if (fresh) S.retPm = document.activeElement;
   if (put("pmodal", `<div class="sdwrap"><div class="sdbg" data-action="pm-close"></div><div class="card sdet pmc" role="dialog" aria-modal="true" aria-labelledby="pm-t">
     <h3 id="pm-t">Промт для Claude Code</h3><p class="small muted">Вставьте в свой Claude Code. Он оценит «${esc(claimName(S.pm))}», заведёт цели и подключит push к трекеру.</p>
     <textarea id="pm-text" readonly aria-label="Промт">${esc(claimPrompt(S.pm))}</textarea>
@@ -1304,10 +1433,10 @@ function renderGoalsView() {
     return `<div><div class="ph"><h3>${pmark(p)}${esc(proj(p).name)}</h3><span class="muted small">${pr.total ? `${pr.done} из ${pr.total}` : ""}</span></div>${claimHtml(p)}
       ${groups}
       ${proj(p).pending ? `<div class="pend"><p class="small muted">Ждёт оценки Claude: он заведёт секции и цели по промту.</p>${myPerson() && claimers(claimId(p)).includes(myPerson()) ? `<button type="button" class="cbtn" data-action="prompt" data-id="${esc(claimId(p))}">Промт для Claude</button>` : ""}</div>` : ""}
-      ${!all.length && !proj(p).pending ? `<p class="small muted" style="margin-top:8px">Целей пока нет.${edit ? "" : can ? " Нажмите «Править», чтобы добавить первую." : ""}</p>` : ""}
+      ${!all.length && !proj(p).pending ? `<p class="small muted" style="margin-top:8px">Целей пока нет.</p>` : ""}
       ${edit ? `<p class="small muted pkey">Ключ проекта для Claude: <code>${esc(p)}</code>${p in DEFAULT_PROJECTS || proj(p).pending || proj(p).virtual ? "" : ` <button type="button" class="x" data-action="proj-archive" data-id="${esc(p)}">Убрать проект</button>`}</p>` : ""}
       ${finished.length ? `<p class="small muted" style="margin-top:8px">Готово: ${esc(finished.join(", "))}</p>` : ""}
-      ${edit && !proj(p).pending ? `<form class="gadd" data-form="goal" data-p="${p}"><input type="text" id="add-${p}" placeholder="Новая цель" aria-label="Новая цель"><select id="grp-${p}" aria-label="Секция">${groupsOf(p).map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}</div>`;
+      ${can && !proj(p).pending ? `<form class="gadd" data-form="goal" data-p="${p}"><input type="text" id="add-${p}" placeholder="Новая цель" aria-label="Новая цель"><select id="grp-${p}" aria-label="Секция">${groupsOf(p).map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}</div>`;
   }).join(""));
 }
 
@@ -1322,10 +1451,10 @@ function renderShowcase() {
   const can = S.canWrite && S.db, me = myPerson();
   const it = S.showForm && S.showForm !== "new" ? S.showcase.find((x) => x.id === S.showForm) : null;
   if (S.showForm && S.showForm !== "new" && !it) S.showForm = null;
-  put("showctl", can ? `<button type="button" class="cbtn" data-action="show-new" aria-pressed="${S.showForm === "new"}">+ Проект</button>` : "");
-  const own = it ? it.owner : me || "ruslan";
+  put("showctl", can ? `<button type="button" class="cbtn" data-action="show-new" aria-pressed="${S.showForm === "new"}">+ В витрину</button>` : "");
+  const free = PKS.filter((k) => !(S.people[k] && S.people[k].userId)), own = it ? it.owner : me || (free.length === 1 ? free[0] : "");
   put("showform", can && S.showForm ? `<form class="pform sform card" data-form="show" data-id="${it ? esc(it.id) : ""}">
-      <h3>${it ? "Править проект" : "Новый проект"}</h3>
+      <h3>${it ? "Править проект" : "Новая карточка витрины"}</h3>
       <label class="field"><span>Название</span><input type="text" id="sf-name" maxlength="40" value="${it ? esc(it.name) : ""}"></label>
       <label class="field" ${S.assets ? "" : "hidden"}><span>Скриншот${it && it.shot ? " — выберите файл, чтобы заменить" : ""}</span><input type="file" id="sf-file" accept="image/png,image/jpeg,image/webp"></label>
       <div id="sf-prev" hidden></div>
@@ -1357,13 +1486,17 @@ const BACK = `<button type="button" class="back" data-action="back">←&nbsp;Н�
 // The detail card opens over the grid, so the grid under it does not move.
 function renderShowDetail() {
   const x = S.view === "show" && S.sd ? S.showcase.find((y) => y.id === S.sd) : null;
-  if (!x) return put("sdet", "");
+  if (!x) {
+    if (put("sdet", "") && S.retSd) { const id = S.retSd; S.retSd = null; refocus(document.querySelector(`#showgrid [data-action="sdet"][data-id="${CSS.escape(id)}"]`)); }
+    return;
+  }
   const sh = x.shot ? shotSrc(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "", work = claimers(x.id);
   const pal = Object.values(PALETTE), c = pal[[...String(x.name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % pal.length];
   const can = S.canWrite && S.db, me = myPerson(), mine = can && me && (x.owner === me || x.createdBy === me);
   const links = (x.repo && /^[\w.-]+\/[\w.-]+$/.test(x.repo) ? `<a class="btn" href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub ↗</a>` : "")
     + (x.url && webUrl(x.url) ? `<a class="btn" href="${esc(x.url)}" target="_blank" rel="noopener">Открыть ↗</a>` : "");
   const fresh = !$("sdet").firstChild;
+  if (fresh) S.retSd = x.id;
   if (put("sdet", `<div class="sdwrap"><div class="sdbg" data-action="back"></div><div class="card sdet" role="dialog" aria-modal="true" aria-labelledby="sd-t">
     <div class="backrow"><button type="button" class="back sdx" data-action="back" aria-label="Закрыть">✕</button></div>
     ${sh ? `<button type="button" class="sd-shot" data-action="zoom" data-src="${sh}" aria-label="Скриншот крупно"><img src="${sh}" alt=""></button>` : `<div class="sd-shot sc-cover" style="--c1:${c[2]};--c2:${c[3]}">${esc(x.name)}</div>`}
@@ -1395,7 +1528,7 @@ function renderPostView() {
 }
 function personStats(k) {
   const ups = stagesOf(k);
-  const s = { n: ups.length, ba: 0, min: 0, tokens: 0, cost: 0, fix: 0, add: 0, night: 0, streak: 0, models: {}, ideas: S.updates.filter((u) => u.person === k && u.kind && u.kind !== "claim").length,
+  const s = { n: ups.length, ba: 0, min: 0, tokens: 0, cost: 0, fix: 0, add: 0, night: 0, streak: 0, models: {}, ideas: S.updates.filter((u) => whoOf(u) === k && u.kind && u.kind !== "claim").length,
     done: S.goals.filter((g) => g.done && !g.removed && g.doneBy === k).length };
   const days = new Set();
   for (const u of ups) {
@@ -1418,7 +1551,7 @@ const ACH = [
 ];
 function renderProfile() {
   if (!S.view.startsWith("p:")) return;
-  const k = S.view.slice(2), all = S.updates.filter((u) => u.person === k).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  const k = S.view.slice(2), all = S.updates.filter((u) => whoOf(u) === k).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   const sum = zero(), byProj = {};
   for (const u of stagesOf(k)) { const c = counts(u); byProj[u.project] = byProj[u.project] || zero(); for (const t of TK) { sum[t] += c[t]; byProj[u.project][t] += c[t]; } }
   const st = personStats(k), max = Math.max(1, ...Object.values(byProj).map(total));
@@ -1427,7 +1560,7 @@ function renderProfile() {
   const models = Object.entries(st.models).sort((a, b) => b[1] - a[1]), mmax = Math.max(0.01, ...models.map((m) => m[1]));
   const free = !myPerson() && S.me && S.canWrite && S.people[k] && !S.people[k].userId;
   put("v-profile", `<div class="backrow">${BACK}<button type="button" class="link more how" data-action="tour">Как пользоваться</button></div><div class="phead by-${k}">${ava(k, "big")}
-      <div><h2>${esc(personName(k))}</h2>${myPerson() ? `<p class="small muted">${k === myPerson() ? "Это вы" : "Напарник"}</p>` : free ? `<button type="button" class="btn" data-action="iam" data-p="${k}">Это я</button>` : ""}</div>
+      <div><h2>${esc(personName(k))}</h2>${myPerson() ? `<p class="small muted">${k === myPerson() ? `Это вы${S.canWrite && S.db && !S.user ? ` · <button type="button" class="x unb" data-action="unbind">Это не я</button>` : ""}` : "Напарник"}</p>` : free ? `<button type="button" class="btn" data-action="iam" data-p="${k}">Это я</button>` : ""}</div>
       <div class="pstats"><div><b>${all.length}</b><span>${plural(all.length, "пост", "поста", "постов")}</span></div><div><b>${total(sum)}</b><span>${plural(total(sum), "правка", "правки", "правок")}</span></div><div><b>${st.done}</b><span>${plural(st.done, "цель", "цели", "целей")}</span></div></div></div>
     ${all.length ? `<div class="pgrid">${all.map((u) => { const pr = pairsOf(u)[0], sh = pr && (pr.after || pr.before); return `<button type="button" class="ptile" data-open="${esc(u.id)}" aria-label="${esc(u.title)}">${sh ? `<img src="${blob(sh)}" alt="" loading="lazy"><span class="cap2">${pmark(u.project)}${esc(u.title)}</span>` : miniHtml(u)}</button>`; }).join("")}</div>` : `<div class="empty">${esc(personName(k))} пока ничего не публиковал</div>`}
     ${total(sum) ? `<div class="sec"><h3>Что сделано</h3><div class="pills">${pills(sum)}</div><div class="sec">${PKEYS.filter((p) => byProj[p]).map((p) => `<div class="prow"><span class="pn">${pmark(p)}${esc(proj(p).name)}</span>${sbar(byProj[p], max)}</div>`).join("")}</div></div>` : ""}
@@ -1444,13 +1577,37 @@ function renderProfile() {
 }
 
 /* ---------- actions ---------- */
-let toastTimer;
-function toast(msg) {
-  let t = document.querySelector(".toast");
-  if (!t) { t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
-  t.textContent = msg; t.hidden = false;
-  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 3500);
+// Two toasts at once are shown one after another, each for at least 1.2 s; ms = 0 keeps one on screen.
+let toastTimer, toastAt = 0;
+const toastQ = [];
+// to: "update:<id>" or "profile:<k>" — a click on the toast (or Enter on it) opens that post or profile.
+function toast(msg, ms = 3500, to = "") {
+  const wait = toastAt + 1200 - Date.now();
+  if (toastQ.length || wait > 0) { if (toastQ.push([msg, ms, to]) === 1) setTimeout(toastNext, Math.max(0, wait)); return; }
+  showToast(msg, ms, to);
 }
+function toastNext() { const [m, ms, to] = toastQ.shift(); if (ms || $("status").textContent === m) showToast(m, ms, to); if (toastQ.length) setTimeout(toastNext, 1200); }
+function toastTo(t, to) {
+  const [k, id] = [to.slice(0, to.indexOf(":")), to.slice(to.indexOf(":") + 1)];
+  delete t.dataset.open; delete t.dataset.view;
+  if (k === "update" && id) t.dataset.open = id; else if (k === "profile" && id in PEOPLE) t.dataset.view = id;
+  const on = !!(t.dataset.open || t.dataset.view);
+  if (on) { t.setAttribute("role", "button"); t.tabIndex = 0; } else { t.setAttribute("role", "status"); t.removeAttribute("tabindex"); }
+}
+function showToast(msg, ms, to = "") {
+  let t = document.querySelector(".toast");
+  if (!t) { t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.setAttribute("aria-live", "polite"); document.body.appendChild(t); }
+  t.textContent = msg; t.hidden = false; t._s = ms ? "" : msg; toastAt = Date.now(); toastTo(t, to);
+  clearTimeout(toastTimer); if (ms) toastTimer = setTimeout(() => { const s = $("status").textContent; toastTo(t, ""); if (s && S.db) { t.textContent = s; t._s = s; } else t.hidden = true; }, ms);
+}
+// A lost connection or late data also stays on screen as a toast; it goes when the data comes.
+new MutationObserver(() => {
+  const s = $("status").textContent, t = document.querySelector(".toast");
+  if (s && S.db) { if (!(t && !t.hidden && t._s === s) && !toastQ.some((q) => q[0] === s)) toast(s, 0); } else if (!s && t && t._s && !t.hidden) { t.hidden = true; t._s = ""; }
+}).observe($("status"), { childList: true, characterData: true, subtree: true });
+// "Руслан → «Пост»: текст" for a comment that someone else wrote.
+const commentNote = (c) => { const t = String(c.target || ""), u = t.startsWith("update:") && S.updates.find((x) => x.id === t.slice(7)), k = t.startsWith("profile:") ? t.slice(8) : "";
+  return personName(whoOf(c)) + " → " + (u ? `«${u.title}»` : k === myPerson() ? "ваш профиль" : k ? "профиль " + personGen(k) : "комментарий") + ": " + String(c.text).slice(0, 50); };
 const fail = () => toast("Не сохранилось. Проверьте интернет и повторите.");
 const likeWant = {}, likePend = {}, likeJobs = {};
 // While a like is being saved, a snapshot taken before the save must not undo what the user sees.
@@ -1489,6 +1646,7 @@ function back() {
 addEventListener("popstate", (e) => {
   const st = e.state;
   if (T.i >= 0) endTour();
+  const lb = document.querySelector(".lightbox"); if (lb) lb.remove();
   if (!st || !st.v) return;
   NAV.stack.length = Math.min(NAV.stack.length, st.n || 0);
   apply(st);
@@ -1504,24 +1662,26 @@ const TOUR = [
   { sel: '.tabs [data-view="show"]', view: "home", t: "Витрина", p: "Все наши проекты: картинка и ссылки. Цели с галочками и отметкой, кто что делает, и «Улучшить трекер» для идей по этой странице — во вкладке «Цели»." },
   { sel: ".tabs .plus", view: "home", t: "Пост", p: "Напишите идею, баг или вопрос одной фразой. Можно приложить скрин." },
   { sel: '.tabs [data-view="me"]', view: "home", t: "Профиль", p: "Ваши посты и ачивки. Кнопка «Как пользоваться» там же запускает этот тур снова." },
-  { t: "Подключите свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },
+  { skip: () => myPerson() === "ruslan", t: "Подключите свой Claude Code", p: "Скопируйте и вставьте в Claude Code. Он спросит, какие проекты подключить, и ничего не сделает без вашего «да»." },
 ];
 const T = { i: -1, steps: [] };
 function startTour() {
   if (S.view === "reels") apply({ v: "home" });
-  T.steps = TOUR.filter((s) => !s.skip || !s.skip()); T.i = 0; T.back = S.view;
+  T.steps = TOUR.filter((s) => !s.skip || !s.skip()); T.i = 0; T.back = S.view; T.ret = document.activeElement;
   $("tour").hidden = false; lockBg(); tourShow();
 }
 function endTour() {
   $("tour").hidden = true; T.i = -1; lsSet("st-tour", "1"); lockBg();
   if (S.view !== T.back) { S.view = T.back; render(); scrollTo(0, 0); }
+  refocus(T.ret); T.ret = null;
 }
 function tourShow() {
-  const s = T.steps[T.i], last = T.i === T.steps.length - 1, card = $("tour-card");
+  const s = T.steps[T.i], last = T.i === T.steps.length - 1, card = $("tour-card"), prompt = last && !s.sel;
   if (s.view && S.view !== s.view) { S.view = s.view; render(); }
-  card.classList.toggle("wide", last);
+  card.classList.toggle("wide", prompt);
   card.innerHTML = `<span class="step">${T.i + 1} из ${T.steps.length}</span><h3 id="tour-t">${esc(s.t)}</h3><p>${esc(s.p)}</p>`
-    + (last ? `<textarea id="tour-prompt" readonly aria-label="Промт для Claude Code">${esc(PROMPT())}</textarea><div class="ctl"><button type="button" class="btn" data-action="tour-end">Готово</button><button type="button" class="btn main copy" data-action="tour-copy">Скопировать промт</button></div>`
+    + (last && s.sel ? `<div class="ctl"><button type="button" class="btn main" data-action="tour-end">Готово</button></div>`
+      : prompt ? `<textarea id="tour-prompt" readonly aria-label="Промт для Claude Code">${esc(PROMPT())}</textarea><div class="ctl"><button type="button" class="btn" data-action="tour-end">Готово</button><button type="button" class="btn main copy" data-action="tour-copy">Скопировать промт</button></div>`
       : `<div class="ctl"><button type="button" class="btn" data-action="tour-end">Пропустить</button><button type="button" class="btn main" data-action="tour-next">Дальше</button></div>`);
   card.style.animation = "none"; void card.offsetWidth; card.style.animation = "";
   requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -1544,8 +1704,9 @@ function tourPlace() {
   const r = el.getBoundingClientRect(), pad = 6;
   if (!r.width && !r.height) { hole.classList.add("none"); hole.style.width = hole.style.height = "0px"; card.style.transform = `translate(${Math.round((W - cw) / 2)}px, ${Math.max(16, Math.round((H - ch) / 2))}px)`; return; }
   hole.classList.remove("none");
-  hole.style.width = r.width + pad * 2 + "px"; hole.style.height = r.height + pad * 2 + "px";
-  hole.style.transform = `translate(${r.left - pad}px, ${r.top - pad}px)`;
+  const top = r.top - pad, bot = Math.min(r.bottom + pad, H - 6);
+  hole.style.width = r.width + pad * 2 + "px"; hole.style.height = bot - top + "px";
+  hole.style.transform = `translate(${r.left - pad}px, ${top}px)`;
   const below = r.bottom + pad + 14, y = below + ch < H - 16 ? below : Math.max(16, r.top - pad - 14 - ch);
   const x = Math.max(16, Math.min(W - cw - 16, r.left + r.width / 2 - cw / 2));
   card.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
@@ -1560,6 +1721,23 @@ async function copyText(btn, text, ta) {
   if (!ok && ta) { ta.focus(); ta.select(); try { ok = document.execCommand("copy"); } catch {} }
   btn.textContent = ok ? "Скопировано ✓" : "Выделено — Ctrl+C";
 }
+// A post's link is the tracker's own address with #post-<id>: the page itself lives in a frame with another address.
+async function copyLink(btn, id) {
+  const url = TRACKER_URL + "#post-" + encodeURIComponent(id);
+  let ok = false;
+  try { await navigator.clipboard.writeText(url); ok = true; } catch {}
+  if (!ok) { const ta = document.createElement("textarea"); ta.value = url; ta.readOnly = true; ta.style.cssText = "position:fixed;top:0;left:0;opacity:0"; document.body.appendChild(ta); ta.select(); try { ok = document.execCommand("copy"); } catch {} ta.remove(); refocus(btn); }
+  toast(ok ? "Ссылка скопирована" : "Не скопировалось: " + url, ok ? 2000 : 6000);
+}
+// #post-<id> in the address opens that post once the posts are here; an unknown id leaves the feed as it is.
+const hashPost = () => { const m = /^#post-(.+)$/.exec(location.hash); try { return m ? decodeURIComponent(m[1]) : ""; } catch { return ""; } };
+S.hash = hashPost();
+function openHash() {
+  if (!S.hash || !S.got.updates) return;
+  const id = S.hash; S.hash = "";
+  if (S.updates.some((u) => u.id === id) && S.view !== "post:" + id) openPost(id);
+}
+addEventListener("hashchange", () => { S.hash = hashPost(); openHash(); });
 function arm(b, label) {
   if (b.classList.contains("armed")) return true;
   const old = b.textContent; b.classList.add("armed"); b.textContent = label;
@@ -1591,11 +1769,11 @@ document.addEventListener("load", (e) => {
   const box = img.closest(".ba-box");
   if (!box) return;
   // Before and after share one scale (same width, top-aligned); the taller of the two sets the box.
-  const bar = Math.min(ar, +box.dataset.ar || Infinity);
+  const ims = [...box.querySelectorAll("img")], bar = ims.every((i) => i.naturalWidth) ? Math.min(...ims.map((i) => i.naturalWidth / i.naturalHeight)) : Math.min(ar, +box.dataset.ar || Infinity);
   box.dataset.ar = bar; box.style.setProperty("--ar", String(bar));
   if (img.classList.contains("ba-after")) box.style.setProperty("--aar", String(ar));
   // Every pair of a post sits in a frame of the same size: the tallest one sets it.
-  const shots = img.closest(".shots"), far = Math.min(bar, +shots.dataset.far || Infinity);
+  const shots = img.closest(".shots"), far = Math.min(...[...shots.querySelectorAll(".ba-box")].map((b) => +b.dataset.ar || Infinity));
   shots.dataset.far = far; shots.style.setProperty("--far", String(far)); shots.style.setProperty("--mw", far < 1 ? "430px" : "100%");
   fits(img);
 }, true);
@@ -1604,19 +1782,29 @@ document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-action],[data-filter],[data-view],[data-open],[data-like],[data-cfocus],[data-kind],[data-nproj],[data-sw],[data-sown]");
   if (!b) return;
   const d = b.dataset;
+  if (b.classList.contains("toast")) { b.hidden = true; document.querySelector(".lightbox")?.remove(); }
   if (d.view === "reels") { S.ridx = -1; go("reels"); requestAnimationFrame(() => { $("v-reels").scrollTop = 0; reelSync(); }); return; }
   // Before "Это я" the profile tab opens the one person not yet taken, not someone else's profile.
   const freeP = () => { const f = PKS.filter((k) => !(S.people[k] && S.people[k].userId)); return f.length === 1 ? f[0] : "ruslan"; };
-  if (d.view) return setView(d.view === "me" ? "p:" + (myPerson() || freeP()) : d.view in PEOPLE ? "p:" + d.view : d.view);
+  if (d.view) {
+    const target = d.view === "me" ? "p:" + (myPerson() || freeP()) : d.view in PEOPLE ? "p:" + d.view : d.view;
+    // The feed tab always shows every project: a story picked earlier does not stay on silently.
+    if (b.closest(".tabs") && target === "home" && S.filter !== "all") { S.filter = "all"; S.limit = 6; if (target === S.view) scrollTo(0, 0); render(); }
+    // Tapping the tab of the screen one is on scrolls it back to the top.
+    if (b.closest(".tabs") && target === S.view && !S.sd) { scrollTo({ top: 0, behavior: still() ? "auto" : "smooth" }); return; }
+    setView(target);
+    if (target === "new") { S.newFrom = null; requestAnimationFrame(() => $("n-text").focus({ preventScroll: true })); }
+    return;
+  }
   if (d.filter) { S.filter = d.filter; S.limit = 6; return render(); }
   if (d.open) return openPost(d.open);
   if (d.sown) { b.parentNode.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); return; }
   if (d.sw) { b.parentNode.querySelectorAll(".sw").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); return; }
-  if (d.kind) { S.kind = d.kind; document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); renderNewPrev(); return; }
-  if (d.nproj) { S.nproj = d.nproj; document.querySelectorAll("#n-proj button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); renderNewPrev(); return; }
+  if (d.kind) { S.kind = d.kind; document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); renderNewPrev(); saveDraft(); return; }
+  if (d.nproj) { S.nproj = d.nproj; document.querySelectorAll("#n-proj button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); renderNewPrev(); saveDraft(); return; }
   if (d.cfocus) { S.openC.add("update:" + d.cfocus); renderThreads(); const inp = b.closest(".post").querySelector(".cform input"); if (inp) inp.focus(); return; }
   if (d.like) {
-    if (!S.db || !S.me) return;
+    if (!S.db || !S.me || !S.canWrite) return;
     const id = d.like, mine = S.likes.some((l) => l.target === id && l.author === S.me);
     // Shown at once. Writes to one like go strictly one after another and each writes the latest wish,
     // so a slow "remove" can never land after a newer "like".
@@ -1626,7 +1814,7 @@ document.addEventListener("click", async (e) => {
     if (!mine && !still()) { b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop"); }
     likeJobs[id] = (likeJobs[id] || Promise.resolve()).then(async () => {
       const ref = S.db.doc("likes/" + id + "__" + S.me);
-      try { if (likeWant[id]) await ref.set({ target: id, author: S.me, person: myPerson() || "", at: Date.now() }); else await ref.delete(); } catch { fail(); }
+      try { if (likeWant[id]) await ref.set({ target: id, author: S.me, person: myPerson() || "", at: Date.now() }); else await ref.delete(); } catch { likeWant[id] = mine; S.likes = withLikeWants(S.likes); renderActs(); fail(); }
       if (--likePend[id] === 0) { delete likeWant[id]; delete likePend[id]; }
     });
     return;
@@ -1634,7 +1822,7 @@ document.addEventListener("click", async (e) => {
   const a = d.action, id = d.id, g = id && S.goals.find((x) => x.id === id);
   if (a === "back") return back();
   if (a === "sdet") return go("show", id);
-  if (a === "claim") return claim(id);
+  if (a === "claim") { const who = claimers(claimId(id)), me = myPerson(); if (me && !who.includes(me) && who.length && !arm(b, "Тоже беру?")) return; return claim(id); }
   if (a === "tour") return startTour();
   if (a === "tour-next") { T.i++; return tourShow(); }
   if (a === "tour-end") return endTour();
@@ -1644,13 +1832,14 @@ document.addEventListener("click", async (e) => {
   if (a === "rules-copy") return copyText(b, rulesText(d.p), $("rules-text"));
   if (a === "pm-copy") return copyText(b, claimPrompt(S.pm), $("pm-text"));
   if (a === "trk-new") {
-    S.kind = d.k; S.nproj = "tracker";
+    S.kind = d.k; S.nproj = "tracker"; S.newFrom = "trk";
     document.querySelectorAll("#n-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.kind === d.k)));
     go("new"); renderNewPrev(); requestAnimationFrame(() => $("n-text").focus());
     return;
   }
   if (a === "more") { S.limit += 6; return render(); }
   if (a === "reel") return openReels(id);
+  if (a === "plink") return copyLink(b, id);
   if (a === "rcomments") {
     S.openC.add("update:" + id);
     openSheet("Комментарии", `<div class="thread" data-thread="update:${esc(id)}"></div>`);
@@ -1690,15 +1879,21 @@ document.addEventListener("click", async (e) => {
   if (a === "zoom") {
     const box = document.createElement("div");
     box.className = "lightbox"; box.innerHTML = `<img src="${d.src}" alt="Скриншот">`;
-    box.addEventListener("click", () => box.remove());
-    return document.body.appendChild(box);
+    box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Скриншот"); box.tabIndex = -1; box._ret = document.activeElement;
+    box.addEventListener("click", () => { box.remove(); refocus(box._ret); });
+    document.body.appendChild(box); box.focus();
+    return;
   }
   if (a === "login") { S.api.login().catch((e) => toast(e && e.code === "auth/popup-closed-by-user" ? "Вход отменён" : e && e.code === "auth/popup-blocked" ? "Браузер не открыл окно входа. Разрешите всплывающие окна для этой страницы." : "Не получилось войти. Попробуйте ещё раз.")); return; }
   if (a === "logout") { S.api.logout(); return; }
-  if (a === "iam") { try { await S.db.doc("people/" + d.p).update({ userId: S.me }); } catch { fail(); } return; }
-  if (a === "del-comment") { try { await S.db.doc("comments/" + id).delete(); } catch { fail(); } return; }
+  if (a === "iam") { if (!arm(b, "Точно " + personName(d.p) + "?")) return; try { await S.db.doc("people/" + d.p).update({ userId: S.me }); } catch { fail(); } return; }
+  if (a === "unbind") { const me = myPerson(); if (!me) return; b.style.minWidth = b.getBoundingClientRect().width + "px"; if (!arm(b, "Точно?")) return; try { await S.db.doc("people/" + me).update({ userId: "" }); } catch { fail(); } return; }
+  if (a === "del-comment") {
+    if (!arm(b, "Да?")) { b.setAttribute("aria-label", "Нажмите ещё раз, чтобы удалить"); setTimeout(() => b.setAttribute("aria-label", "Удалить комментарий"), 3000); return; }
+    try { await S.db.doc("comments/" + id).delete(); } catch { fail(); } return; }
   if (a === "del-post") { if (!arm(b, "Точно удалить?")) return; try { await S.db.doc("updates/" + id).delete(); } catch { fail(); } return; }
   if (a === "mkgoal") {
+    if (unbound()) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
     const u = S.updates.find((x) => x.id === id);
     if (!u) return;
     const now = Date.now(), data = { project: u.project, group: groupsOf(u.project)[0].id, title: u.title, done: false, removed: false, order: now, createdAt: now, createdBy: myPerson() || "", doneAt: 0, doneBy: "", fromPost: id };
@@ -1711,12 +1906,13 @@ document.addEventListener("click", async (e) => {
     return;
   }
   if (a === "toggle" && g) {
+    if (unbound()) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
     const done = !g.done;
-    g.done = done; S.keep.add(id); render();
+    g.done = done; S.keep.add(id); S.myTicks.add(id); render();
     try {
       await S.db.doc("goals/" + id).update(done ? { done, doneAt: Date.now(), doneBy: myPerson() || "", takenBy: "", takenAt: 0 } : { done, doneAt: 0, doneBy: "" });
       await logEvent(done ? "goal_done" : "goal_reopened", g);
-    } catch { g.done = !done; render(); fail(); }
+    } catch { g.done = !done; S.myTicks.delete(id); render(); fail(); }
     return;
   }
   // "Беру" takes a free goal, "Отпустить" frees one's own, "Забрать у …" asks once more before taking someone else's.
@@ -1734,7 +1930,7 @@ document.addEventListener("click", async (e) => {
     return;
   }
   if (a === "remove-goal" && g) {
-    if (!arm(b, "убрать?")) return;
+    if (!arm(b, "Убрать?")) return;
     try { await S.db.doc("goals/" + id).update({ removed: true, removedAt: Date.now() }); await logEvent("goal_removed", g); } catch { fail(); }
   }
 });
@@ -1753,11 +1949,14 @@ $("v-reels").addEventListener("wheel", (e) => {
   reelBusy = Date.now() + 600;
   reelStep(e.deltaY > 0 ? 1 : -1);
 }, { passive: false });
+$("stories").addEventListener("wheel", e => { const el = e.currentTarget, max = el.scrollWidth - el.clientWidth; if (max <= 0 || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; const nx = Math.max(0, Math.min(max, el.scrollLeft + e.deltaY)); if (nx === el.scrollLeft) return; el.scrollLeft = nx; e.preventDefault(); }, { passive: false });
 let reelTick = false;
 $("v-reels").addEventListener("scroll", () => { if (reelTick) return; reelTick = true; requestAnimationFrame(() => { reelTick = false; reelSync(); }); }, { passive: true });
 document.addEventListener("keydown", (e) => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("toast")) { e.preventDefault(); e.target.click(); return; }
   // Tab walks in a circle inside the tour card or the showcase detail.
-  const trap = e.key === "Tab" && (T.i >= 0 ? $("tour-card") : S.pm ? $("pmodal").querySelector(".pmc") : S.view === "show" && S.sd ? $("sdet").querySelector(".sdet") : null);
+  if (e.key === "Tab" && document.querySelector(".lightbox")) { e.preventDefault(); return; }
+  const trap = e.key === "Tab" && (T.i >= 0 ? $("tour-card") : S.pm ? $("pmodal").querySelector(".pmc") : S.view === "reels" && !$("rsheet").hidden ? $("rsheet") : S.view === "show" && S.sd ? $("sdet").querySelector(".sdet") : null);
   if (trap) {
     const f = [...trap.querySelectorAll("button:not([disabled]), a[href], textarea, input")].filter((x) => x.offsetParent);
     const i = f.indexOf(document.activeElement);
@@ -1766,7 +1965,7 @@ document.addEventListener("keydown", (e) => {
   }
   if (e.key === "Escape") {
     const lb = document.querySelector(".lightbox");
-    if (lb) { lb.remove(); return; }
+    if (lb) { lb.remove(); refocus(lb._ret); return; }
     if (T.i >= 0) return endTour();
     if (S.pm) { S.pm = null; renderPromptModal(); return lockBg(); }
     if (S.view === "reels" && !$("rsheet").hidden) return closeSheet();
@@ -1784,6 +1983,7 @@ document.addEventListener("submit", async (e) => {
   if (f.dataset.form === "comment") {
     const box = f.querySelector("input"), text = box.value.trim();
     if (!text) return;
+    if (unbound()) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
     box.value = "";
     try { await S.db.collection("comments").add({ target: f.dataset.t, person: myPerson() || "", author: S.me || "", text, at: Date.now() }); } catch { box.value = text; fail(); }
     return;
@@ -1794,6 +1994,7 @@ document.addEventListener("submit", async (e) => {
     const own = f.querySelector('[data-sown][aria-pressed="true"]'), file = $("sf-file").files[0];
     err.textContent = "";
     if (!name) { err.textContent = "Напишите название проекта."; $("sf-name").focus(); return; }
+    if (!own) { err.textContent = "Выберите, чей проект."; return; }
     if (repo && !/^[\w.-]+\/[\w.-]+$/.test(repo)) { err.textContent = "Репозиторий пишется как владелец/название, например antropos17/sual-az."; return; }
     if (url && !webUrl(url)) { err.textContent = "Ссылка должна начинаться с https:// и открываться из интернета."; return; }
     if (file && file.size > 15 * 1024 * 1024) { err.textContent = "Файл больше 15 МБ, сожмите его."; return; }
@@ -1823,12 +2024,13 @@ document.addEventListener("submit", async (e) => {
     const groups = [...new Set($("pf-groups").value.split(",").map((x) => x.trim()).filter(Boolean))].slice(0, 8).map((n, i) => ({ id: "g" + (i + 1), name: n }));
     try {
       await S.db.doc("projects/" + id).set({ name, repo, color: sw ? sw.dataset.sw : "violet", groups, createdAt: Date.now(), createdBy: myPerson() || "" });
-      S.projForm = false; toast(`Проект «${name}» добавлен. Цели — через «Править».`); render();
+      S.projForm = false; toast(`Проект «${name}» добавлен.`); render();
     } catch { fail(); }
     return;
   }
   const p = f.dataset.p, inp = f.querySelector("input"), title = inp.value.trim();
   if (!title) return;
+  if (unbound()) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
   const now = Date.now();
   const data = { project: p, group: f.querySelector("select").value, title, done: false, removed: false, order: now, createdAt: now, createdBy: myPerson() || "", doneAt: 0, doneBy: "" };
   inp.value = "";
@@ -1846,7 +2048,7 @@ document.addEventListener("change", (e) => {
 $("n-file").addEventListener("change", (e) => {
   const f = e.target.files[0]; S.file = null; $("n-prev").hidden = true; $("n-err").textContent = "";
   if (!f) return;
-  if (f.size > 15 * 1024 * 1024) { $("n-err").textContent = "Файл больше 15 МБ, сожмите его."; e.target.value = ""; return; }
+  if (f.size > 15 * 1024 * 1024) { toast("Файл больше 15 МБ, сожмите его."); e.target.value = ""; return; }
   S.file = f;
   const img = document.createElement("img");
   img.className = "prev"; img.alt = "Выбранный скрин"; img.src = URL.createObjectURL(f);
@@ -1856,31 +2058,44 @@ $("n-send").addEventListener("click", async () => {
   if (S.sending) return;
   const title = $("n-text").value.trim(), more = $("n-more").value.split("\n").map((x) => x.trim()).filter(Boolean);
   $("n-err").textContent = "";
-  if (!S.db) { $("n-err").textContent = "Нет связи с базой трекера. Обновите страницу."; return; }
+  if (!S.db) { toast("Нет связи с базой трекера. Обновите страницу."); return; }
   if (!S.canWrite) { $("n-err").textContent = "Чтобы публиковать, войдите через Google (кнопка вверху)."; return; }
-  if (!title) { $("n-err").textContent = "Напишите хотя бы одну фразу."; $("n-text").focus(); return; }
-  S.sending = true; $("n-send").disabled = true; $("n-send").textContent = "Публикую…";
+  if (!title) { $("n-err").textContent = "Напишите хотя бы одну фразу."; $("n-text").setAttribute("aria-invalid", "true"); $("n-text").focus(); return; }
+  if (unbound()) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
+  S.sending = true; $("n-send").disabled = true; $("n-send").classList.add("busy"); $("n-send").textContent = "Публикую…";
   try {
     const shots = [];
-    if (S.file && S.assets) { const r = await S.assets.upload(S.file); shots.push({ id: r.id, type: r.contentType, role: "after", pair: 0 }); }
+    // The picture's size goes with it, so the post keeps its place while the picture loads (w, h).
+    const pv = $("n-prev").querySelector("img"), wh = pv && pv.naturalWidth ? { w: pv.naturalWidth, h: pv.naturalHeight } : {};
+    if (S.file && S.assets) { const r = await S.assets.upload(S.file); shots.push({ id: r.id, type: r.contentType, role: "after", pair: 0, ...wh }); }
     await S.db.collection("updates").add({ kind: S.kind, project: S.nproj, person: myPerson() || "", author: S.me || "", via: "hand", title, items: more, shots, visual: shots.length > 0, goalIds: [], commits: [], createdAt: Date.now() });
     $("n-text").value = ""; $("n-more").value = ""; $("n-file").value = ""; $("n-prev").hidden = true; S.file = null; $("n-extra").hidden = true; $("n-morebtn").hidden = false;
-    S.filter = "all"; setView("home"); toast("Опубликовано");
+    lsSet("st-draft", "");
+    const fromTrk = S.newFrom === "trk"; S.newFrom = null; S.kind = "idea"; S.nproj = PKEYS[0]; renderNewForm();
+    if (fromTrk) back(); else { S.filter = "all"; try { history.replaceState({ v: "home", sd: null, n: NAV.stack.length }, ""); } catch {} S.view = "home"; render(); scrollTo(0, 0); }
+    toast("Опубликовано");
   } catch (err) {
-    $("n-err").textContent = err && err.code === "too_large" ? "Файл слишком большой." : "Не опубликовалось. Проверьте интернет и нажмите ещё раз.";
-  } finally { S.sending = false; $("n-send").disabled = false; $("n-send").textContent = "Опубликовать"; }
+    toast(err && err.code === "too_large" ? "Файл слишком большой." : "Не опубликовалось. Проверьте интернет и нажмите ещё раз.");
+  } finally { S.sending = false; $("n-send").disabled = !(S.canWrite && S.db); $("n-send").classList.remove("busy"); $("n-send").textContent = "Опубликовать"; }
 });
+$("n-text").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.isComposing) { e.preventDefault(); $("n-send").click(); } });
+// An unsent post survives a reload.
+try { const dr = JSON.parse(lsGet("st-draft") || "null"); if (dr) { $("n-text").value = dr.t || ""; $("n-more").value = dr.m || ""; if (dr.m) { $("n-extra").hidden = false; $("n-morebtn").hidden = true; } if (dr.k) S.kind = dr.k; if (dr.p) S.nproj = dr.p; } } catch {}
 
+// The other one's tick is told by name, one's own is not; a goal the other closed stays in the "only open" list, so rows do not jump.
 function notePct() {
-  for (const p of PKEYS) {
-    const now = progress(goalsOf(p)).pct, before = S.lastPct[p];
-    if (before !== undefined && before !== now) toast(`${proj(p).name}: ${before}% → ${now}%`);
-    S.lastPct[p] = now;
-  }
+  const was = S.wasDone, now = new Map(S.goals.filter((g) => !g.removed).map((g) => [g.id, !!g.done]));
+  S.wasDone = now;
+  if (!was) return;
+  for (const g of S.goals) if (g.done && was.get(g.id) === false) S.keep.add(g.id);
+  const other = S.goals.filter((g) => was.has(g.id) && now.has(g.id) && was.get(g.id) !== now.get(g.id) && !S.myTicks.delete(g.id)), g = other[0];
+  if (!g) return;
+  const tail = (other.length > 1 ? ` и ещё ${other.length - 1}` : "") + ` · ${proj(g.project).name} ${progress(goalsOf(g.project)).pct}%`;
+  toast(g.done ? `${personName(g.doneBy)} закрыл «${g.title}»${tail}` : `Снова открыта «${g.title}»${tail}`);
 }
 
 S.onlyOpen = lsGet("st-open") !== "0";
-render();
+syncProjects(); render();
 const noApi = setTimeout(() => { if (!S.db) $("status").textContent = "База трекера не загрузилась. Проверьте интернет и обновите страницу."; }, 15000);
 // The Firebase module at the end of the page calls this with a thin adapter (collection/doc/onSnapshot/orderBy/limit/add/set/update/delete).
 window.trackerBoot = async function boot(api) {
@@ -1902,13 +2117,13 @@ window.trackerBoot = async function boot(api) {
     lsSet("st-seen", [...S.seen].join(","));
     if (!first) {
       const add = snap.docChanges().find((c) => c.type === "added" && !isMine(c.doc.data()));
-      if (add) { const u = add.doc.data(); toast(u.kind === "claim" ? `${personName(u.person)} взялся за «${u.pname || proj(u.project).name}»` : "Новый пост: " + u.title); }
+      if (add) { const u = add.doc.data(); toast(u.kind === "claim" ? `${personName(u.person)} взялся за «${u.pname || proj(u.project).name}»` : personName(whoOf(u)) + ": " + u.title, 3500, "update:" + add.doc.id); }
     }
     first = false; S.got.updates = true; ok(); render();
   }, lost);
   db.collection("comments").orderBy("at", "asc").limit(1000).onSnapshot((snap) => {
     S.comments = docs(snap);
-    if (!firstC) { const add = snap.docChanges().find((c) => c.type === "added" && c.doc.data().author !== S.me); if (add) toast("Новый комментарий: " + String(add.doc.data().text).slice(0, 60)); }
+    if (!firstC) { const add = snap.docChanges().find((c) => c.type === "added" && c.doc.data().author !== S.me); if (add) toast(commentNote(add.doc.data()), 3500, add.doc.data().target); }
     firstC = false; render();
   }, lost);
   db.collection("likes").onSnapshot((snap) => { S.likes = withLikeWants(docs(snap)); renderActs(); }, lost);

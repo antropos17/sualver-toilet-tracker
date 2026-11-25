@@ -2,7 +2,7 @@
 // Запись в трекер «Sualver.az + Туалет» (Firestore) ключом сервисного аккаунта. Вызывается из любого проекта
 // по абсолютному пути: node "<путь к kit>/tracker.mjs" <команда> …
 //
-//   goals <project> [--all]                     открытые цели проекта (с --all и закрытые): id, раздел, кто делает
+//   goals <project> [--all]                     ссылки проекта и его открытые цели (с --all и закрытые): id, раздел, кто делает
 //   get <collection> <id>                       документ как JSON (например projects/<project> → groups)
 //   take <goalId> --person <p>                  взять цель: takenBy/takenAt + событие goal_taken
 //   release <goalId>                            отпустить цель: takenBy "", takenAt 0, без события
@@ -10,6 +10,10 @@
 //                                               новая цель g-<project>-<ms> + событие goal_added (с --take сразу взять)
 //   add-project <key> "<name>" --person <p> --groups "g1:…,g2:…" [--repo o/r] [--color c] [--show id]
 //                                               новый проект (если его нет; архивный — вернуть)
+//   projects                                    все проекты: ключ, название, ссылки GitHub и «Играть»
+//   set-links <project> [--repo o/r] [--demo https://…] [--private|--public]
+//                                               поставить проекту ссылки (пустое значение "" убирает ссылку;
+//                                               --private: репозиторий закрытый, ссылку GitHub нигде не показывать)
 //   close <goalId> --person <p>                 закрыть цель + событие goal_done
 //   stage <file.json>                           записать этап в updates (id = поле id или имя файла) и закрыть его goalIds
 //   upload-shot <file.png> [--name <name>]      положить снимок в shots/ репозитория трекера через GitHub (gh api) и вывести имя
@@ -27,7 +31,7 @@ import { openDb, REPO } from "./fire.mjs";
 const argv = process.argv.slice(2);
 const dry = argv.includes("--dry");
 const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
-const pos = argv.filter((x, i) => !x.startsWith("--") && !(argv[i - 1] || "").match(/^--(person|group|name|groups|repo|color|show)$/));
+const pos = argv.filter((x, i) => !x.startsWith("--") && !(argv[i - 1] || "").match(/^--(person|group|name|groups|repo|demo|color|show)$/));
 const [cmd, ...rest] = pos;
 const PFX = process.env.TRACKER_COLLECTION_PREFIX || "";
 const C = (name) => PFX + name;
@@ -55,6 +59,8 @@ async function goal(id) {
   if (!s.exists) die(`нет цели ${id}`);
   return { id, ...s.data() };
 }
+const links = (p) => [p.repo ? "GitHub https://github.com/" + p.repo + (p.repoPrivate ? " (закрытый, не показывается)" : "") : "", p.demo ? "Играть " + p.demo : ""].filter(Boolean).join(" · ");
+const linksLine = (p) => "Ссылки: " + (links(p) || "нет");
 const ev = (type, g, p, at, suffix = "") => ["set", "events", `e-${at}-${g.id}${suffix}`, { type, goalId: g.id, title: g.title, project: g.project, person: p, via: "claude", at }];
 
 const commands = {
@@ -64,6 +70,8 @@ const commands = {
     const all = argv.includes("--all");
     const list = snap.docs.map((d) => ({ id: d.id, ...d.data() })).filter((g) => !g.removed && (all || !g.done))
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    const ps = await getDb().collection(C("projects")).doc(project).get();
+    if (ps.exists) console.log(linksLine(ps.data()));
     if (!list.length) return console.log(`У проекта ${project} нет ${all ? "" : "открытых "}целей.`);
     for (const g of list) console.log(`${g.id}\t${g.group || "-"}\t${g.done ? "готово" : g.takenBy ? "делает " + g.takenBy : "свободна"}\t${g.title}`);
   },
@@ -103,6 +111,33 @@ const commands = {
     const groups = (opt("--groups") || "").split(",").map((x) => x.split(":")).filter((x) => x[0] && x[1]).map(([id, n]) => ({ id: id.trim(), name: n.trim() }));
     if (!groups.length) die('нужны секции: --groups "g1:Название,g2:Название"');
     await commit([["set", "projects", key, { name, repo: opt("--repo") || "", color: opt("--color") || "violet", groups, show: opt("--show") || "", createdAt: now, createdBy: p, archived: false }]]);
+  },
+  async projects() {
+    const snap = await getDb().collection(C("projects")).get();
+    for (const d of snap.docs) { const p = d.data(); console.log(`${d.id}\t${p.name || "-"}${p.archived ? " (убран)" : ""}\t${links(p) || "ссылок нет"}`); }
+  },
+  async "set-links"([key]) {
+    const repo = opt("--repo"), demo = opt("--demo");
+    const priv = argv.includes("--private") ? true : argv.includes("--public") ? false : undefined;
+    if (!key || (repo === undefined && demo === undefined && priv === undefined)) die('set-links <project> [--repo владелец/название] [--demo https://…] [--private|--public] (пустое "" убирает ссылку)');
+    const data = {};
+    if (repo !== undefined) {
+      const r = repo.trim().replace(/^https?:\/\/github\.com\//i, "").replace(/\.git$/, "").replace(/\/+$/, "");
+      if (r && !/^[\w-]+\/[\w.-]+$/.test(r)) die("--repo пишется как владелец/название");
+      data.repo = r;
+    }
+    if (demo !== undefined) {
+      const u = demo.trim();
+      let ok = !u;
+      try { const x = new URL(u); ok ||= x.protocol === "https:" && x.hostname.includes("."); } catch {}
+      if (!ok) die("--demo должен быть полным адресом https://…");
+      data.demo = u;
+    }
+    if (priv !== undefined) data.repoPrivate = priv;
+    const s = await getDb().collection(C("projects")).doc(key).get();
+    if (!s.exists) die(`нет проекта ${key} (список: projects)`);
+    await commit([["update", "projects", key, data]]);
+    console.log(linksLine({ ...s.data(), ...data }));
   },
   async close([id]) {
     const p = person(), g = await goal(id);
@@ -147,7 +182,7 @@ const commands = {
 };
 
 if (!commands[cmd]) {
-  console.log(fs.readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(1, 19).map((l) => l.replace(/^\/\/ ?/, "")).join("\n"));
+  console.log(fs.readFileSync(new URL(import.meta.url), "utf8").split("\n").slice(1).filter((l, i, a) => a.slice(0, i + 1).every((x) => x.startsWith("//"))).map((l) => l.replace(/^\/\/ ?/, "")).join("\n"));
   process.exit(cmd ? 1 : 0);
 }
 await commands[cmd](rest);

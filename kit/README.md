@@ -22,11 +22,17 @@ Commands (each prints what it writes; add `--dry` to write nothing):
 | Free a goal | `node "<kit>/tracker.mjs" release <goalId>` |
 | New goal | `node "<kit>/tracker.mjs" add-goal <project> "<title>" --person <p> [--group <id>] [--take]` |
 | New project (only if missing) | `node "<kit>/tracker.mjs" add-project <key> "<name>" --person <p> --groups "g1:…,g2:…" [--repo o/r] [--color c] [--show id]` |
+| All projects and their links | `node "<kit>/tracker.mjs" projects` |
+| Set project links | `node "<kit>/tracker.mjs" set-links <project> [--repo o/r] [--demo https://…] [--private|--public]` (`""` removes a link) |
 | Close a goal | `node "<kit>/tracker.mjs" close <goalId> --person <p>` |
 | Post a stage (and close its goals) | `node "<kit>/tracker.mjs" stage <file.json>` |
 | Add a screenshot | `node "<kit>/tracker.mjs" upload-shot <file.png>` → prints the file name |
 
 Every finished step of work in this repository is posted there as a stage: what changed (diff-style lines), before and after screenshots, the GitHub commits, models, tokens, API-equivalent cost and time. The people only look at the page; Claude does all the posting. The page draws a timeline with a slider, a graph of changes per person, and a breakdown per section and per person by change type.
+
+### Project links: GitHub and «Играть»
+
+A project document (`projects/<key>`) has two optional links: `repo` (`owner/name` on GitHub) and `demo` (the full `https://…` address of a playable demo). They live only there. Stages never copy them: the page, the Telegram post (`post.mjs`) and the evening digest (`digest.mjs`) read them from the project each time, so a changed link shows up everywhere at once. Under every post in the feed the page draws «GitHub ↗» and «Играть ↗» for the links that exist, and nothing when there are none. Set them with `tracker.mjs set-links <project> --repo o/r --demo https://…` (an empty value `""` removes a link; `projects` and `goals` print the current ones) or on the page: «Цели» → «Править» → the link fields under the project key. A private repository opens only for people with access: mark it with `set-links <project> --private` (`--public` undoes it). That sets `repoPrivate: true`; `repo` stays for commit links, but the «GitHub» link is hidden under posts, in the side column, in «Цели», in the Telegram post and in the digest, while «Играть» still shows. On the page the same switch is the box «Репозиторий закрытый» in the link form.
 
 ## When to post
 

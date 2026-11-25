@@ -480,6 +480,13 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .pkey { margin-top: 8px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .pkey code { font: 600 12px ui-monospace, Consolas, monospace; background: var(--sunk); padding: 2px 6px; border-radius: 4px; color: var(--ink); }
 .pkey .x { min-height: 32px; text-decoration: underline; text-underline-offset: 3px; }
+/* Project links (GitHub, playable demo) under a post and in the project edit form. */
+.plinks { display: flex; flex-wrap: wrap; gap: 0 16px; margin-block: -10px; font-size: 13px; }
+.plinks a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; color: var(--muted); font-weight: 500; }
+.plinks a:hover { color: var(--ink); }
+.gadd.lform { flex-wrap: wrap; } .lpriv { flex: 1 1 100%; display: flex; align-items: center; gap: 8px; min-height: 44px; } .lform .lpriv input { flex: none; width: 20px; height: 20px; min-height: 0; margin: 0; padding: 0; } .lform input { flex: 1 1 180px; }
+.lform input[aria-invalid="true"] { border-color: var(--rem); }
+.lerr { font-size: 13px; color: var(--rem); margin-top: 4px; } .lerr:empty { display: none; }
 .status { font-size: 13px; color: var(--muted); }
 .empty { padding: 24px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); font-size: 14px; text-align: center; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; z-index: 35; width: max-content; max-width: min(480px, calc(100vw - 32px)); pointer-events: none; }
@@ -1058,7 +1065,7 @@ function postHtml(u) {
       ${del ? `<button type="button" class="act text${mk ? "" : " first"}" data-action="del-post" data-id="${esc(u.id)}">Удалить</button>` : ""}</div>
     <div class="pbody">
       ${has ? `<p class="cap"><b>${esc(who ? personName(who) : "Кто-то")}</b> ${esc(u.title)}</p>` : ""}
-      ${text}${done}${prog}${spent}
+      ${text}${done}${prog}${spent}${linksHtml(u.project)}
       <div class="thread" data-thread="update:${esc(u.id)}"></div>
     </div>
   </article>`;
@@ -1124,7 +1131,7 @@ function renderSides() {
       ${S.got.goals && !pr.total ? `<p class="small muted">Целей пока нет</p>` : `<div class="bar2"><i class="${p}" style="width:${pr.pct}%"></i></div>`}
       ${groupsOf(p).map((gr) => { const list = all.filter((g) => groupKey(p, g.group) === gr.id); if (!list.length) return ""; const gp = progress(list); return `<div class="mini-g"><span>${esc(gr.name)}</span><span>${gp.done}/${gp.total}</span><div class="bar2 thin"><i class="${p}" style="width:${gp.pct}%"></i></div></div>`; }).join("")}
       <p class="small muted">${S.got.updates ? `${n} ${plural(n, "пост", "поста", "постов")} от Claude` : "…"}${next ? ` · дальше: ${esc(next.title)}` : ""}</p>
-      ${proj(p).repo ? `<a class="small muted" href="https://github.com/${esc(proj(p).repo)}" target="_blank" rel="noopener" title="github.com/${esc(proj(p).repo)}">github.com/${esc(proj(p).repo)}</a>` : ""}</div>`;
+      ${repoOf(p) ? `<a class="small muted" href="https://github.com/${esc(repoOf(p))}" target="_blank" rel="noopener" title="github.com/${esc(repoOf(p))}">github.com/${esc(repoOf(p))}</a>` : ""}${demoOf(p) ? `<a class="small muted" href="${esc(demoOf(p))}" target="_blank" rel="noopener" title="${esc(demoOf(p))}">Играть ↗</a>` : ""}</div>`;
   }).join(""));
   const shown = (g) => !g.done || S.keep.has(g.id);
   put("side-r", (S.got.goals ? PKEYS.map((p) => {
@@ -1408,7 +1415,7 @@ function sbar(c, max) { return `<div class="sbar">${TK.map((t) => (c[t] ? `<i cl
 function renderGoalsView() {
   const changed = put("projects", overallHtml() + PKEYS.map((p) => {
     const pr = progress(goalsOf(p)), info = proj(p), next = goalsOf(p).find((g) => !g.done);
-    return `<div class="proj" data-p="${p}" ${S.got.goals && pr.total ? `data-v="${pr.pct}"` : ""}><div class="ph">${info.repo ? `<a href="https://github.com/${esc(info.repo)}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a>` : `<b>${pmark(p)}${esc(info.name)}</b>`}<span class="pct">${S.got.goals ? (pr.total ? pr.pct + "%" : "") : "…"}</span></div>
+    return `<div class="proj" data-p="${p}" ${S.got.goals && pr.total ? `data-v="${pr.pct}"` : ""}><div class="ph">${repoOf(p) ? `<a href="https://github.com/${esc(repoOf(p))}" target="_blank" rel="noopener">${pmark(p)}${esc(info.name)}</a>` : `<b>${pmark(p)}${esc(info.name)}</b>`}<span class="pct">${S.got.goals ? (pr.total ? pr.pct + "%" : "") : "…"}</span></div>
       ${S.got.goals && !pr.total ? "" : `<div class="bar2" role="img" aria-label="${pr.done} из ${pr.total} целей"><i class="${p}" style="width:${pr.pct}%"></i></div>`}
       <p class="small muted">${info.pending ? "Ждёт оценки Claude" : S.got.goals && !pr.total ? "Целей пока нет" : `${pr.done} из ${pr.total} ${plural(pr.total, "цели", "целей", "целей")}${takenLine(goalsOf(p)) ? " · " + takenLine(goalsOf(p)) : ""}${next ? " · дальше: " + esc(next.title) : ""}`}</p></div>`;
   }).join(""));
@@ -1433,6 +1440,8 @@ function renderGoalsView() {
       <p class="ferr" id="pf-name-err" role="alert"></p>
       <label class="field"><span>Репозиторий на GitHub, если есть</span><input type="text" id="pf-repo" maxlength="100" placeholder="владелец/название" aria-describedby="pf-repo-err"></label>
       <p class="ferr" id="pf-repo-err" role="alert"></p>
+      <label class="field"><span>Ссылка на демо, если есть</span><input type="text" id="pf-demo" maxlength="300" inputmode="url" placeholder="https://…" aria-describedby="pf-demo-err"></label>
+      <p class="ferr" id="pf-demo-err" role="alert"></p>
       <div class="field"><span>Цвет</span><div class="swatches">${Object.keys(PALETTE).map((k, i) => `<button type="button" class="sw" data-sw="${k}" aria-pressed="${i === 0}" aria-label="${PALETTE[k][4]}" style="--c:${PALETTE[k][2]}"></button>`).join("")}</div></div>
       <label class="field"><span>Секции через запятую</span><input type="text" id="pf-groups" maxlength="200" value="Интерфейс, Функции, Проверки"></label>
       <div class="ctl"><button class="btn main">Создать проект</button><button type="button" class="btn" data-action="proj-new">Отмена</button></div>
@@ -1453,7 +1462,7 @@ function renderGoalsView() {
       ${groups}
       ${proj(p).pending ? `<div class="pend"><p class="small muted">Ждёт оценки Claude: он заведёт секции и цели по промту.</p>${myPerson() && claimers(claimId(p)).includes(myPerson()) ? `<button type="button" class="cbtn" data-action="prompt" data-id="${esc(claimId(p))}">Промт для Claude</button>` : ""}</div>` : ""}
       ${!all.length && !proj(p).pending ? `<p class="small muted" style="margin-top:8px">Целей пока нет.</p>` : ""}
-      ${edit ? `<p class="small muted pkey">Ключ проекта для Claude: <code>${esc(p)}</code>${p in DEFAULT_PROJECTS || proj(p).pending || proj(p).virtual ? "" : ` <button type="button" class="x" data-action="proj-archive" data-id="${esc(p)}">Убрать проект</button>`}</p>` : ""}
+      ${edit ? `<p class="small muted pkey">Ключ проекта для Claude: <code>${esc(p)}</code>${p in DEFAULT_PROJECTS || proj(p).pending || proj(p).virtual ? "" : ` <button type="button" class="x" data-action="proj-archive" data-id="${esc(p)}">Убрать проект</button>`}</p>${proj(p).pending || proj(p).virtual ? "" : `<form class="gadd lform" data-form="links" data-p="${esc(p)}"><input type="text" id="lr-${esc(p)}" name="repo" maxlength="100" placeholder="GitHub: владелец/название" aria-label="Репозиторий на GitHub, если есть" value="${esc(proj(p).repo || "")}"><input type="text" id="ld-${esc(p)}" name="demo" maxlength="300" inputmode="url" placeholder="Ссылка на демо, если есть" aria-label="Ссылка на демо, если есть" value="${esc(proj(p).demo || "")}"><label class="lpriv small muted"><input type="checkbox" name="priv" ${proj(p).repoPrivate ? "checked" : ""}> Репозиторий закрытый: ссылку GitHub не показывать</label><button class="btn">Сохранить ссылки</button></form><p class="lerr" role="alert"></p>`}` : ""}
       ${finished.length ? `<p class="small muted" style="margin-top:8px">Готово: ${esc(finished.join(", "))}</p>` : ""}
       ${can && !proj(p).pending ? `<form class="gadd" data-form="goal" data-p="${p}"><input type="text" id="add-${p}" placeholder="Новая цель" aria-label="Новая цель"><select id="grp-${p}" aria-label="Секция">${groupsOf(p).map((g) => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join("")}</select><button class="btn" aria-label="Добавить">+</button></form>` : ""}</div>`;
   }).join(""));
@@ -1463,6 +1472,16 @@ function renderGoalsView() {
 // A link is shown only when it opens from the internet: https and not a local address.
 const webUrl = (u) => { try { const x = new URL(u); return x.protocol === "https:" && x.hostname.includes(".") && !/^(127\.|10\.|192\.168\.|0\.0\.0\.0)/.test(x.hostname); } catch { return false; } };
 const cleanRepo = (v) => v.trim().replace(/^https?:\/\/github\.com\//, "").replace(/\.git$/, "").replace(/\/+$/, "");
+// Project links live only in projects/<key> (repo, demo), so every post shows the current ones.
+const demoOf = (p) => { const d = proj(p).demo || ""; return d && webUrl(d) ? d : ""; };
+// A closed repository (repoPrivate) keeps repo for commits but shows no GitHub link: it would open as 404 for others.
+const repoOf = (p) => (proj(p).repoPrivate ? "" : proj(p).repo || "");
+const demoErr = (v) => !v ? "" : !/^https:\/\//i.test(v) ? "Ссылка на демо должна начинаться с https://" : !webUrl(v) ? "Это не похоже на адрес сайта в интернете." : "";
+function linksHtml(p) {
+  const repo = /^[\w.-]+\/[\w.-]+$/.test(repoOf(p)) ? repoOf(p) : "", demo = demoOf(p);
+  if (!repo && !demo) return "";
+  return `<p class="plinks">${repo ? `<a href="https://github.com/${esc(repo)}" target="_blank" rel="noopener" title="github.com/${esc(repo)}">GitHub ↗</a>` : ""}${demo ? `<a href="${esc(demo)}" target="_blank" rel="noopener" title="${esc(demo)}">Играть ↗</a>` : ""}</p>`;
+}
 const showList = () => S.showcase.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 function renderShowcase() {
   const n = S.showcase.length;
@@ -2036,15 +2055,29 @@ document.addEventListener("submit", async (e) => {
     if (!name) return bad("pf-name", "Напишите название.");
     if (PKEYS.some((p) => proj(p).name.toLowerCase() === name.toLowerCase())) return bad("pf-name", "Такой проект уже есть.");
     if (repo && !/^[\w-]+\/[\w.-]+$/.test(repo)) return bad("pf-repo", "Формат: владелец/название");
+    const demo = $("pf-demo").value.trim();
+    $("pf-demo").removeAttribute("aria-invalid"); $("pf-demo-err").textContent = "";
+    if (demoErr(demo)) return bad("pf-demo", demoErr(demo));
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 24);
     let id = "p-" + (slug || Math.random().toString(36).slice(2, 8));
     while (S.projects[id]) id += Math.random().toString(36).slice(2, 4);
     const sw = f.querySelector('.sw[aria-pressed="true"]');
     const groups = [...new Set($("pf-groups").value.split(",").map((x) => x.trim()).filter(Boolean))].slice(0, 8).map((n, i) => ({ id: "g" + (i + 1), name: n }));
     try {
-      await S.db.doc("projects/" + id).set({ name, repo, color: sw ? sw.dataset.sw : "violet", groups, createdAt: Date.now(), createdBy: myPerson() || "" });
+      await S.db.doc("projects/" + id).set({ name, repo, ...(demo ? { demo } : {}), color: sw ? sw.dataset.sw : "violet", groups, createdAt: Date.now(), createdBy: myPerson() || "" });
       S.projForm = false; toast(`Проект «${name}» добавлен.`); render();
     } catch { fail(); }
+    return;
+  }
+  if (f.dataset.form === "links") {
+    const p = f.dataset.p, ri = f.elements.repo, di = f.elements.demo, err = f.nextElementSibling;
+    const repo = cleanRepo(ri.value), demo = di.value.trim();
+    const bad = (el, text) => { el.setAttribute("aria-invalid", "true"); err.textContent = text; el.focus(); };
+    for (const el of [ri, di]) el.removeAttribute("aria-invalid");
+    err.textContent = "";
+    if (repo && !/^[\w-]+\/[\w.-]+$/.test(repo)) return bad(ri, "Репозиторий пишется как владелец/название.");
+    if (demoErr(demo)) return bad(di, demoErr(demo));
+    try { await S.db.doc("projects/" + p).update({ repo, demo, repoPrivate: f.elements.priv.checked }); toast("Ссылки проекта сохранены."); } catch { fail(); }
     return;
   }
   const p = f.dataset.p, inp = f.querySelector("input"), title = inp.value.trim();

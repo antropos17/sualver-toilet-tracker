@@ -6,6 +6,8 @@
 //   get <collection> <id>                       документ как JSON (например projects/<project> → groups)
 //   take <goalId> --person <p>                  взять цель: takenBy/takenAt + событие goal_taken
 //   release <goalId>                            отпустить цель: takenBy "", takenAt 0, без события
+//   rename <goalId> "<title>" --person <p> [--group <id>]
+//                                               новое название (и раздел) цели, без события; чужую или закрытую не трогает
 //   add-goal <project> "<title>" --person <p> [--group <id>] [--take]
 //                                               новая цель g-<project>-<ms> + событие goal_added (с --take сразу взять)
 //   add-project <key> "<name>" --person <p> --groups "g1:…,g2:…" [--repo o/r] [--color c] [--show id]
@@ -90,6 +92,18 @@ const commands = {
   async release([id]) {
     await goal(id);
     await commit([["update", "goals", id, { takenBy: "", takenAt: 0 }]]);
+  },
+  async rename([id, title]) {
+    if (!id || !title?.trim()) die('rename <goalId> "<title>" --person <p> [--group <id>]');
+    const p = person(), g = await goal(id), group = opt("--group"), data = { title: title.trim() };
+    if (g.done) die(`цель ${id} уже закрыта, не переименовываю`);
+    if (g.takenBy && g.takenBy !== p) die(`цель ${id} делает ${g.takenBy}. Не переименовываю — спроси пользователя.`);
+    if (group !== undefined) {
+      const ps = await getDb().collection(C("projects")).doc(g.project).get();
+      if (!(ps.get("groups") || []).some((x) => x.id === group)) die(`у проекта ${g.project} нет раздела ${group}`);
+      data.group = group;
+    }
+    await commit([["update", "goals", id, data]]);
   },
   async "add-goal"([project, title]) {
     if (!project || !title) die('add-goal <project> "<title>" --person <p>');

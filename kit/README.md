@@ -20,6 +20,7 @@ Commands (each prints what it writes; add `--dry` to write nothing):
 | A document, e.g. sections | `node "<kit>/tracker.mjs" get projects <project>` |
 | Take a goal | `node "<kit>/tracker.mjs" take <goalId> --person <p>` |
 | Free a goal | `node "<kit>/tracker.mjs" release <goalId>` |
+| Rename a goal (no event) | `node "<kit>/tracker.mjs" rename <goalId> "<title>" --person <p> [--group <id>]` |
 | New goal | `node "<kit>/tracker.mjs" add-goal <project> "<title>" --person <p> [--group <id>] [--take]` |
 | New project (only if missing) | `node "<kit>/tracker.mjs" add-project <key> "<name>" --person <p> --groups "g1:…,g2:…" [--repo o/r] [--color c] [--show id]` |
 | All projects and their links | `node "<kit>/tracker.mjs" projects` |

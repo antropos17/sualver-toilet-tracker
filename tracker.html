@@ -116,6 +116,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
 .zoom { position: absolute; right: 8px; bottom: 8px; width: 36px; height: 36px; border: 0; border-radius: 6px; background: rgba(15,17,21,.78); color: #fff; font-size: 18px; }
 .single { display: block; width: 100%; max-width: var(--mw, 100%); margin: 0 auto; cursor: zoom-in; }
+.scap { max-width: var(--mw, 100%); margin: 0 auto; padding: 8px 12px 6px; font-size: 13px; line-height: 1.4; color: var(--muted); text-wrap: pretty; }
 .poster { --pcol: var(--muted); padding: 24px 14px; display: flex; flex-direction: column; gap: 16px; background: var(--cover, var(--cover-none)); color: #fff; }
 .poster.sual, .mini.sual { --cover: var(--cover-sual); } .poster.toilet, .mini.toilet { --cover: var(--cover-toilet); }
 .poster ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.35; }
@@ -1032,18 +1033,20 @@ function shotsHtml(u, max) {
   const pct = (v) => Math.max(0, Math.min(100, Number(v) || 0));
   // Sizes stored with a shot (w, h) reserve its place before the picture loads; the load handler then changes nothing.
   const arOf = (s) => (+s.w > 0 && +s.h > 0 ? +s.w / +s.h : 0), ps = pairsOf(u).slice(0, max || 9);
+  // What a screenshot shows, above it (a folded post still shows it): the caption of the "after" shot, else of the single one.
+  const cap = (p) => { const c = (p.after && p.after.caption) || (p.before && p.before.caption) || ""; return c ? `<figcaption class="scap">${esc(c)}</figcaption>` : ""; };
   const bars = ps.filter((p) => p.before && p.after).map((p) => Math.min(arOf(p.before), arOf(p.after))), far = bars.length && Math.min(...bars);
   return `<div class="shots"${far ? ` data-far="${far}" style="--far:${far};--mw:${far < 1 ? "430px" : "100%"}"` : ""}>${ps.map((p) => {
     if (p.before && p.after) {
       const marks = (p.after.marks || []).map((m) => `<span class="mark" style="left:${pct(m.x)}%;top:${pct(m.y)}%;width:${pct(m.w)}%;height:${pct(m.h)}%"></span>`).join("");
       const bar = Math.min(arOf(p.before), arOf(p.after));
-      return `<figure><div class="ba-frame"><div class="ba-box"${bar ? ` data-ar="${bar}" style="--ar:${bar};--aar:${arOf(p.after)}"` : ""}><img class="ba-before" src="${blob(p.before)}" alt="Было" loading="lazy"><div class="ba-side"><img class="ba-after" src="${blob(p.after)}" alt="Стало" loading="lazy"></div><div class="marks">${marks}</div>
+      return `<figure>${cap(p)}<div class="ba-frame"><div class="ba-box"${bar ? ` data-ar="${bar}" style="--ar:${bar};--aar:${arOf(p.after)}"` : ""}><img class="ba-before" src="${blob(p.before)}" alt="Было" loading="lazy"><div class="ba-side"><img class="ba-after" src="${blob(p.after)}" alt="Стало" loading="lazy"></div><div class="marks">${marks}</div>
         <span class="ba-line"></span><span class="ba-handle" aria-hidden="true">↔</span><span class="ba-tag l">было</span><span class="ba-tag r">стало</span>
         <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Сдвиньте, чтобы сравнить было и стало">
         <button type="button" class="zoom" data-action="zoom" data-src="${blob(p.after)}" aria-label="Открыть «стало» крупно">⤢</button></div></div></figure>`;
     }
-    const s = p.after || p.before, ar = arOf(s);
-    return `<img class="single" src="${blob(s)}" alt="${esc(u.title)}" loading="lazy" data-action="zoom" data-src="${blob(s)}"${ar ? ` width="${+s.w}" height="${+s.h}" style="--mw:${ar < 1 ? "430px" : "100%"}"` : ""}>`;
+    const s = p.after || p.before, ar = arOf(s), c = cap(p);
+    return `${c ? "<figure>" + c : ""}<img class="single" src="${blob(s)}" alt="${esc(u.title)}" loading="lazy" data-action="zoom" data-src="${blob(s)}"${ar ? ` width="${+s.w}" height="${+s.h}" style="--mw:${ar < 1 ? "430px" : "100%"}"` : ""}>${c ? "</figure>" : ""}`;
   }).join("")}</div>`;
 }
 // What the post gave: share of the project's goals it closed, the goals themselves, time spent.

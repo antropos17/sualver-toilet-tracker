@@ -77,6 +77,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* top bar, stories, tab bar */
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.snd { display: inline-flex; align-items: center; justify-content: center; padding: 6px; margin-left: auto; color: var(--muted); } .snd svg { width: 20px; height: 20px; } .snd[aria-pressed="true"] { color: var(--ink); } .snd[aria-pressed="true"] .s0, .snd[aria-pressed="false"] .s1 { display: none; }
 .who { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
 .stories { display: flex; gap: 4px; justify-content: space-between; overflow-x: auto; padding: 4px 2px 8px; scrollbar-width: none; }
 .story { background: none; border: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; width: 72px; flex: none; }
@@ -610,7 +611,8 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
   .post p.small a { line-height: 32px; } /* commit hashes: wrapped lines sit 32px apart, so tap zones do not overlap */
   .post p.small a::before { content: ""; position: absolute; inset: -8px -3px; }
   .zoom::before { content: ""; position: absolute; inset: -4px; }
-  [data-action="login"] { min-height: 40px; }
+  [data-action="login"], .snd { min-height: 40px; min-width: 40px; }
+  .bar, .who { flex-wrap: nowrap; } .who { min-width: 0; } .who .btn { flex: none; } /* the sound switch stays on the line */
   .sc-body h3 { overflow: visible; }
   .sc-t { min-height: 42px; padding-top: 12px; margin-top: -12px; }
 }
@@ -621,6 +623,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 <div class="app">
   <header class="bar">
     <div class="who" id="who"></div>
+    <button type="button" class="btn snd" id="snd" aria-pressed="false" aria-label="Звуки интерфейса"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path class="s1" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="s0" d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
   </header>
 
   <section class="view" id="v-home">
@@ -829,6 +832,43 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const lsGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
 const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch {} };
+/* ---------- sounds: off by default, the choice is kept in localStorage ---------- */
+// Tick, Whisk, Latch, Paid and Perk from the free Bencho sounds (https://bencho.dev/sounds, sounds/sounds.ts of
+// https://github.com/cabralorenzo/bencho), made with Web Audio, no files. MIT License, Copyright (c) 2026 Lorenzo Cabra;
+// full text: https://github.com/cabralorenzo/bencho/blob/main/LICENSE (Bencho's cuelume-based sounds by Daniel Belyi are not used here).
+const SND = {
+  tick: [{ hz: 196, to: 130, ms: 150, gain: 0.07, cut: 900 }], // a button
+  whisk: [{ hz: 124, to: 65, ms: 130, gain: 0.067, cut: 560, atk: 50 }], // a tab or a filter
+  latch: [{ hz: 256, ms: 90, gain: 0.058, wave: "square", cut: 2400, atk: 10 }], // a goal taken
+  paid: [{ hz: 587, ms: 170, gain: 0.05, cut: 2600, atk: 5 }, { hz: 880, ms: 460, gain: 0.046, cut: 2800, atk: 6, at: 95 }, { hz: 1760, ms: 300, gain: 0.009, atk: 8, at: 100 }], // a goal closed, a post published
+  perk: [{ hz: 330, ms: 360, gain: 0.053, cut: 560, atk: 90 }], // someone else's post: the toast
+};
+let sndOn = lsGet("st-sound") === "1", sndCtx = null;
+// The AudioContext is made only by a click (gesture) with the sound on; without Web Audio the page stays silent.
+function play(name, gesture) {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!sndOn || !AC || !(sndCtx || gesture)) return;
+  try {
+    const c = (sndCtx ||= new AC());
+    if (c.state === "suspended") c.resume().catch(() => {});
+    for (const n of SND[name]) {
+      const t0 = c.currentTime + 0.005 + (n.at || 0) / 1000, t1 = t0 + n.ms / 1000, o = c.createOscillator(), g = c.createGain();
+      o.type = n.wave || "sine"; o.frequency.setValueAtTime(n.hz, t0);
+      if (n.to) o.frequency.exponentialRampToValueAtTime(n.to, t1);
+      g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(n.gain, t0 + Math.min((n.atk ?? 4) / 1000, (n.ms / 1000) * 0.6)); g.gain.exponentialRampToValueAtTime(0.0001, t1);
+      let tail = o;
+      if (n.cut) { const f = c.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = n.cut; o.connect(f); tail = f; }
+      tail.connect(g).connect(c.destination); o.start(t0); o.stop(t1 + 0.02);
+    }
+  } catch {}
+}
+$("snd").setAttribute("aria-pressed", String(sndOn));
+$("snd").addEventListener("click", () => { sndOn = !sndOn; lsSet("st-sound", sndOn ? "1" : "0"); $("snd").setAttribute("aria-pressed", String(sndOn)); play("tick", true); });
+// Taking a goal, closing it and publishing make their own sounds where they happen.
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("button,[data-view],[data-filter]");
+  if (b && b.id !== "snd" && !b.matches('[data-action="take"],[data-action="toggle"],#n-send')) play(b.dataset.view || b.dataset.filter ? "whisk" : "tick", true);
+}, true);
 
 function plural(n, one, few, many) {
   const a = Math.abs(n) % 100, b = a % 10;
@@ -1956,7 +1996,7 @@ document.addEventListener("click", async (e) => {
   if (a === "toggle" && g) {
     if (unbound()) { toast("Сначала нажмите «Это я» вверху ленты."); return; }
     const done = !g.done;
-    g.done = done; S.keep.add(id); S.myTicks.add(id); render();
+    g.done = done; S.keep.add(id); S.myTicks.add(id); render(); play(done ? "paid" : "tick", true);
     try {
       await S.db.doc("goals/" + id).update(done ? { done, doneAt: Date.now(), doneBy: myPerson() || "", takenBy: "", takenAt: 0 } : { done, doneAt: 0, doneBy: "" });
       await logEvent(done ? "goal_done" : "goal_reopened", g);
@@ -1970,7 +2010,7 @@ document.addEventListener("click", async (e) => {
     const who = takenBy(g), was = { takenBy: g.takenBy, takenAt: g.takenAt };
     if (who && who !== me && !arm(b, "Точно забрать?")) return;
     const data = who === me ? { takenBy: "", takenAt: 0 } : { takenBy: me, takenAt: Date.now() };
-    Object.assign(g, data); render();
+    Object.assign(g, data); render(); play(data.takenBy ? "latch" : "tick", true);
     try {
       await S.db.doc("goals/" + id).update(data);
       if (data.takenBy) await logEvent("goal_taken", g, who ? { from: who } : {});
@@ -2135,7 +2175,7 @@ $("n-send").addEventListener("click", async () => {
     lsSet("st-draft", "");
     const fromTrk = S.newFrom === "trk"; S.newFrom = null; S.kind = "idea"; S.nproj = PKEYS[0]; renderNewForm();
     if (fromTrk) back(); else { S.filter = "all"; try { history.replaceState({ v: "home", sd: null, n: NAV.stack.length }, ""); } catch {} S.view = "home"; render(); scrollTo(0, 0); }
-    toast("Опубликовано");
+    toast("Опубликовано"); play("paid", true);
   } catch (err) {
     toast(err && err.code === "too_large" ? "Файл слишком большой." : "Не опубликовалось. Проверьте интернет и нажмите ещё раз.");
   } finally { S.sending = false; $("n-send").disabled = !(S.canWrite && S.db); $("n-send").classList.remove("busy"); $("n-send").textContent = "Опубликовать"; }
@@ -2180,7 +2220,7 @@ window.trackerBoot = async function boot(api) {
     lsSet("st-seen", [...S.seen].join(","));
     if (!first) {
       const add = snap.docChanges().find((c) => c.type === "added" && !isMine(c.doc.data()));
-      if (add) { const u = add.doc.data(); toast(u.kind === "claim" ? `${personName(u.person)} взялся за «${u.pname || proj(u.project).name}»` : personName(whoOf(u)) + ": " + u.title, 3500, "update:" + add.doc.id); }
+      if (add) { const u = add.doc.data(); play("perk"); toast(u.kind === "claim" ? `${personName(u.person)} взялся за «${u.pname || proj(u.project).name}»` : personName(whoOf(u)) + ": " + u.title, 3500, "update:" + add.doc.id); }
     }
     if (!snap.metadata.fromCache) first = false; S.got.updates = true; ok(); render();
   }, lost);

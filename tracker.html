@@ -2171,7 +2171,8 @@ window.trackerBoot = async function boot(api) {
   const lost = () => { $("status").textContent = "Связь прервалась. Обновите страницу."; };
   const docs = (snap) => snap.docs.map((d) => ({ id: d.id, ...d.data() }));
   let first = true, firstC = true;
-  db.collection("goals").onSnapshot((snap) => { S.goals = docs(snap); S.got.goals = true; ok(); notePct(); render(); }, lost);
+  // With the disk cache the first snapshot may come from the cache: toasts wait for the server one, so a return visit does not toast old news.
+  db.collection("goals").onSnapshot((snap) => { S.goals = docs(snap); S.got.goals = true; ok(); if (!snap.metadata.fromCache) notePct(); render(); }, lost);
   db.collection("updates").orderBy("createdAt", "desc").limit(300).onSnapshot((snap) => {
     S.updates = docs(snap);
     if (!S.seen) { const st = lsGet("st-seen"); S.seen = new Set(st === null ? S.updates.map((u) => u.id) : st.split(",")); }
@@ -2181,15 +2182,15 @@ window.trackerBoot = async function boot(api) {
       const add = snap.docChanges().find((c) => c.type === "added" && !isMine(c.doc.data()));
       if (add) { const u = add.doc.data(); toast(u.kind === "claim" ? `${personName(u.person)} взялся за «${u.pname || proj(u.project).name}»` : personName(whoOf(u)) + ": " + u.title, 3500, "update:" + add.doc.id); }
     }
-    first = false; S.got.updates = true; ok(); render();
+    if (!snap.metadata.fromCache) first = false; S.got.updates = true; ok(); render();
   }, lost);
   db.collection("comments").orderBy("at", "asc").limit(1000).onSnapshot((snap) => {
     S.comments = docs(snap);
     if (!firstC) { const add = snap.docChanges().find((c) => c.type === "added" && c.doc.data().author !== S.me); if (add) toast(commentNote(add.doc.data()), 3500, add.doc.data().target); }
-    firstC = false; render();
+    if (!snap.metadata.fromCache) firstC = false; render();
   }, lost);
   db.collection("likes").onSnapshot((snap) => { S.likes = withLikeWants(docs(snap)); renderActs(); }, lost);
-  db.collection("events").orderBy("at", "desc").limit(500).onSnapshot((snap) => { S.events = docs(snap); }, lost);
+  db.collection("events").orderBy("at", "desc").limit(50).onSnapshot((snap) => { S.events = docs(snap); }, lost);
   db.collection("projects").onSnapshot((snap) => {
     S.projects = Object.fromEntries(docs(snap).map((d) => [d.id, d])); S.got.projects = true;
     syncProjects(); render();
@@ -2201,12 +2202,16 @@ window.trackerBoot = async function boot(api) {
 </script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-import { getFirestore, collection, doc, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+import { getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager, collection, doc, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
 // Public web config of project pyos-tracker (not a secret; access is guarded by Firestore rules).
 const app = initializeApp({ apiKey: "AIzaSyCgGrlrH9Mo_L29M1r5meZhQADBvTP6xHc", authDomain: "pyos-tracker.firebaseapp.com", projectId: "pyos-tracker",
   storageBucket: "pyos-tracker.firebasestorage.app", messagingSenderId: "388723096158", appId: "1:388723096158:web:ffe16c27aeb9a3be7352cf" });
-const fs = getFirestore(app), auth = getAuth(app);
+// Disk cache shared by all tabs: a repeat visit reads only what changed. Where storage is refused (private window) Firestore
+// falls back to memory on its own; if setup throws, the page works as before without a cache.
+let fs;
+try { fs = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) }); } catch { fs = getFirestore(app); }
+const auth = getAuth(app);
 const coll = (name, cons = []) => ({
   orderBy: (f, dir = "asc") => coll(name, [...cons, orderBy(f, dir)]),
   limit: (n) => coll(name, [...cons, limit(n)]),

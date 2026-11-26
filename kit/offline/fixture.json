@@ -1,0 +1,5168 @@
+{
+ "claims": {
+  "kus__seymur": {
+   "active": true,
+   "at": 1795557481306,
+   "author": "u_seymur",
+   "person": "seymur",
+   "project": "kus"
+  },
+  "voxel-boxing__seymur": {
+   "active": true,
+   "at": 1795556465217,
+   "author": "u_seymur",
+   "person": "seymur",
+   "project": "voxel-boxing"
+  },
+  "ztm-slot__ruslan": {
+   "active": false,
+   "at": 1795486150579,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "project": "ztm-slot"
+  }
+ },
+ "comments": {
+  "13rvc801lcywirp5ejhr": {
+   "at": 1795555315184,
+   "author": "u_seymur",
+   "person": "",
+   "target": "profile:seymur",
+   "text": "пупырка"
+  },
+  "21mhluae4lgcfx2tq0ei": {
+   "at": 1795223173752,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "update:sual-ruslan-a1eb929",
+   "text": "ввв"
+  },
+  "4nf5qavjxwx6p5w4ad0o": {
+   "at": 1795558017959,
+   "author": "u_seymur",
+   "person": "seymur",
+   "target": "update:u-qaqas-clean-plate",
+   "text": "Ролики уже выставляешь?"
+  },
+  "635pcc2fq4fhi38el2pt": {
+   "at": 1795556584524,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "update:sagvfoe1ocm1dtdn0zfl",
+   "text": "Ебашь бро ебашь"
+  },
+  "ejck74zpbqn0c2his2ay": {
+   "at": 1795228619292,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "update:sual-ruslan-34b4bd3",
+   "text": "апапв"
+  },
+  "wg6mm2fcfs601531k79d": {
+   "at": 1795225226742,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "update:u-toilet-trap",
+   "text": "Хумарит брат"
+  }
+ },
+ "events": {
+  "08m5corzkvhctz32uudf": {
+   "at": 1795217128380,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "1swkqjfvf6jfvstz40vs": {
+   "at": 1795217810601,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "2y8246ejqx9uno85zg81": {
+   "at": 1795489076226,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "33cvx4ddzrt932ul28ys": {
+   "at": 1795215797161,
+   "goalId": "s09",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Проверить на настоящем iPhone / Safari",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "40t4u5ftbgiawrm56on4": {
+   "at": 1795225240044,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "4omynr3h9a8b9vjwbkh2": {
+   "at": 1795224225871,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "6eeqe2a479bxezn5jjk4": {
+   "at": 1795217812947,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "6khw95f9cnup8emw5poi": {
+   "at": 1795217253135,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "6qs0u5gl7o52u8gbav4n": {
+   "at": 1795489076500,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "6yclbz1ecq4nvldl6y8g": {
+   "at": 1795213879225,
+   "goalId": "s12",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Скрыть мусорные тестовые ответы под демо-вопросами",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "7899pb544v5ralxyaru5": {
+   "at": 1795489078279,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "7bdk7xa5v19rynzahdgp": {
+   "at": 1795217127558,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "7dx552s01trr7jioq3h3": {
+   "at": 1795217126924,
+   "goalId": "s04",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Живой режим выглядит как демо",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "7rtf9dm72wtdso1z5s1q": {
+   "at": 1795225234751,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "8vyz5t1235mqpgvjdouk": {
+   "at": 1795225241843,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "9za870ncwj0m8verblkj": {
+   "at": 1795217813521,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "a8653m0qbi0kmych6mdb": {
+   "at": 1795217251514,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "atzc83pfch6s9fhggozr": {
+   "at": 1795489075681,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "d7xnhxqaimc58oy1k8ce": {
+   "at": 1795217809956,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "d8zu7dwjbceyyrl8b214": {
+   "at": 1795214329581,
+   "goalId": "s10",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Почта на хостинге",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "e-1795000000000-s01": {
+   "at": 1795000001000,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s02": {
+   "at": 1795000002000,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s03": {
+   "at": 1795000003000,
+   "goalId": "s03",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Страница «Tənzimləmələr» и меню аватара",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s04": {
+   "at": 1795000004000,
+   "goalId": "s04",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Живой режим выглядит как демо",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s05": {
+   "at": 1795000005000,
+   "goalId": "s05",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Ветка work/sualver-next на GitHub + npm run sync",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s06": {
+   "at": 1795000006000,
+   "goalId": "s06",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "«AI yekun» в живом режиме",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s07": {
+   "at": 1795000007000,
+   "goalId": "s07",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Убрать тестовые записи «Resilience QA…» из «Yeni»",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s08": {
+   "at": 1795000008000,
+   "goalId": "s08",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Поправить фразу «oxu rahatlığını» на странице аккаунта",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s09": {
+   "at": 1795000009000,
+   "goalId": "s09",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Проверить на настоящем iPhone / Safari",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s10": {
+   "at": 1795000010000,
+   "goalId": "s10",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Почта на хостинге",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-s11": {
+   "at": 1795000011000,
+   "goalId": "s11",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Внешняя резервная копия базы",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t01": {
+   "at": 1795000001000,
+   "goalId": "t01",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Аудит интерфейса: 20 находок",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t02": {
+   "at": 1795000002000,
+   "goalId": "t02",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "«Смыв» и улучшения всегда в экране телефона",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t03": {
+   "at": 1795000003000,
+   "goalId": "t03",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Единая шкала шрифтов и DESIGN.md",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t04": {
+   "at": 1795000004000,
+   "goalId": "t04",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Таблички прогресса на боковых полях сцены",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t05": {
+   "at": 1795000005000,
+   "goalId": "t05",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: правки 1–7",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t06": {
+   "at": 1795000006000,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t07": {
+   "at": 1795000007000,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t08": {
+   "at": 1795000008000,
+   "goalId": "t08",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Проверить порт и бруски для тележек",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t09": {
+   "at": 1795000009000,
+   "goalId": "t09",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Ветка «Меньше ручной работы» первой",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t10": {
+   "at": 1795000010000,
+   "goalId": "t10",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Safari и Firefox",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795000000000-t11": {
+   "at": 1795000011000,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795046000000-s01": {
+   "at": 1795046000000,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795050000000-s02": {
+   "at": 1795050000000,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795075000000-s03": {
+   "at": 1795075000000,
+   "goalId": "s03",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Страница «Tənzimləmələr» и меню аватара",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795110000000-t01": {
+   "at": 1795110000000,
+   "goalId": "t01",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Аудит интерфейса: 20 находок",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795140000000-t02": {
+   "at": 1795140000000,
+   "goalId": "t02",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "«Смыв» и улучшения всегда в экране телефона",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795155000000-t03": {
+   "at": 1795155000000,
+   "goalId": "t03",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Единая шкала шрифтов и DESIGN.md",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795160000000-s04": {
+   "at": 1795160000000,
+   "goalId": "s04",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Живой режим выглядит как демо",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795161000000-t04": {
+   "at": 1795161000000,
+   "goalId": "t04",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Таблички прогресса на боковых полях сцены",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795210978536-t05": {
+   "at": 1795210978536,
+   "goalId": "t05",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: правки 1–7",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795211028250-s05": {
+   "at": 1795211028250,
+   "goalId": "s05",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Ветка work/sualver-next на GitHub + npm run sync",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795213313742-s06": {
+   "at": 1795213313742,
+   "goalId": "s06",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "«AI yekun» в живом режиме",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795213313742-s07": {
+   "at": 1795213313742,
+   "goalId": "s07",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Убрать тестовые записи «Resilience QA…» из «Yeni»",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795213313742-s08": {
+   "at": 1795213313742,
+   "goalId": "s08",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Поправить фразу «oxu rahatlığını» на странице аккаунта",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795213313742-s12": {
+   "at": 1795213313742,
+   "goalId": "s12",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Скрыть мусорные тестовые ответы под демо-вопросами",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795214400000-s12": {
+   "at": 1795214400000,
+   "goalId": "s12",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Скрыть мусорные тестовые ответы под демо-вопросами",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795223790786-t08": {
+   "at": 1795223790786,
+   "goalId": "t08",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Проверить порт и бруски для тележек",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795292257300-t06": {
+   "at": 1795292257300,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795329700000-t12": {
+   "at": 1795329700000,
+   "goalId": "t12",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Подписи на рисунке на 375×667 не мельче 8 px",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795332500000-t12": {
+   "at": 1795332500000,
+   "goalId": "t12",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Подписи на рисунке на 375×667 не мельче 8 px",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795556155314-s-tg-autopost": {
+   "at": 1795556155314,
+   "goalId": "s-tg-autopost",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Бот сам публикует этапы из трекера в Telegram-канал и вечернюю сводку",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795556996107-g-1795556996107-kus": {
+   "at": 1795556996107,
+   "goalId": "g-1795556996107-kus",
+   "person": "ruslan",
+   "project": "kus",
+   "title": "Шкала серии: правки после приёмки",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795557271912-g-glowup-1795557271912-t": {
+   "at": 1795557271912,
+   "goalId": "g-glowup-1795557271912",
+   "person": "ruslan",
+   "project": "glowup",
+   "title": "День 9",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795557271912-g-glowup-1795557271912": {
+   "at": 1795557271912,
+   "goalId": "g-glowup-1795557271912",
+   "person": "ruslan",
+   "project": "glowup",
+   "title": "День 9",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015501-g-voxel-boxing-1795558015501-a": {
+   "at": 1795558015501,
+   "goalId": "g-voxel-boxing-1795558015501",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Бой в Unity: удары, здоровье, нокдаун и нокаут",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015501-g-voxel-boxing-1795558015501-t": {
+   "at": 1795558015521,
+   "goalId": "g-voxel-boxing-1795558015501",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Бой в Unity: удары, здоровье, нокдаун и нокаут",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015502-g-voxel-boxing-1795558015502-a": {
+   "at": 1795558015502,
+   "goalId": "g-voxel-boxing-1795558015502",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Соперники из генератора: 8+ бойцов и лестница",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015502-g-voxel-boxing-1795558015502-t": {
+   "at": 1795558015522,
+   "goalId": "g-voxel-boxing-1795558015502",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Соперники из генератора: 8+ бойцов и лестница",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015503-g-voxel-boxing-1795558015503-a": {
+   "at": 1795558015503,
+   "goalId": "g-voxel-boxing-1795558015503",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Рефери: отсчёт, остановка боя, рука победителю",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015503-g-voxel-boxing-1795558015503-t": {
+   "at": 1795558015523,
+   "goalId": "g-voxel-boxing-1795558015503",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Рефери: отсчёт, остановка боя, рука победителю",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015504-g-voxel-boxing-1795558015504-a": {
+   "at": 1795558015504,
+   "goalId": "g-voxel-boxing-1795558015504",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "После победы: аплодисменты, пояс, награда",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015504-g-voxel-boxing-1795558015504-t": {
+   "at": 1795558015524,
+   "goalId": "g-voxel-boxing-1795558015504",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "После победы: аплодисменты, пояс, награда",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015505-g-voxel-boxing-1795558015505-a": {
+   "at": 1795558015505,
+   "goalId": "g-voxel-boxing-1795558015505",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Эффекты ударов: стоп-кадр, тряска, брызги, надписи, добивание",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015505-g-voxel-boxing-1795558015505-t": {
+   "at": 1795558015525,
+   "goalId": "g-voxel-boxing-1795558015505",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Эффекты ударов: стоп-кадр, тряска, брызги, надписи, добивание",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015506-g-voxel-boxing-1795558015506-a": {
+   "at": 1795558015506,
+   "goalId": "g-voxel-boxing-1795558015506",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Игрок: профиль, улучшения, разные перчатки, сохранение",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015506-g-voxel-boxing-1795558015506-t": {
+   "at": 1795558015526,
+   "goalId": "g-voxel-boxing-1795558015506",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Игрок: профиль, улучшения, разные перчатки, сохранение",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015507-g-voxel-boxing-1795558015507-a": {
+   "at": 1795558015507,
+   "goalId": "g-voxel-boxing-1795558015507",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Меню: режимы, выбор соперника, магазин, настройки, пауза",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015507-g-voxel-boxing-1795558015507-t": {
+   "at": 1795558015527,
+   "goalId": "g-voxel-boxing-1795558015507",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Меню: режимы, выбор соперника, магазин, настройки, пауза",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015508-g-voxel-boxing-1795558015508-a": {
+   "at": 1795558015508,
+   "goalId": "g-voxel-boxing-1795558015508",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Замер на телефоне: сборка под Android и кадр удара",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015508-g-voxel-boxing-1795558015508-t": {
+   "at": 1795558015528,
+   "goalId": "g-voxel-boxing-1795558015508",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Замер на телефоне: сборка под Android и кадр удара",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558015509-g-voxel-boxing-1795558015509-a": {
+   "at": 1795558015509,
+   "goalId": "g-voxel-boxing-1795558015509",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Вид повреждений: кровь ветвями и мышцы на культе",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015510-g-voxel-boxing-1795558015510-a": {
+   "at": 1795558015510,
+   "goalId": "g-voxel-boxing-1795558015510",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Переломы костей головы",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558015511-g-voxel-boxing-1795558015511-a": {
+   "at": 1795558015511,
+   "goalId": "g-voxel-boxing-1795558015511",
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "title": "Разные лица соперников: тон кожи и волосы",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558600001-g-prototypes-1795558600001-t": {
+   "at": 1795558600002,
+   "goalId": "g-prototypes-1795558600001",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: проверка на живом телефоне",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795558600001-g-prototypes-1795558600001": {
+   "at": 1795558600001,
+   "goalId": "g-prototypes-1795558600001",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: проверка на живом телефоне",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558600003-g-prototypes-1795558600003": {
+   "at": 1795558600003,
+   "goalId": "g-prototypes-1795558600003",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: аукцион при продаже ковра",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558600004-g-prototypes-1795558600004": {
+   "at": 1795558600004,
+   "goalId": "g-prototypes-1795558600004",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: скорость станка растёт с множителем продаж",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795558897946-g-glowup-1795557271912": {
+   "at": 1795558897946,
+   "goalId": "g-glowup-1795557271912",
+   "person": "ruslan",
+   "project": "glowup",
+   "title": "День 9",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795559000002-g-prototypes-1795559000001": {
+   "at": 1795559000002,
+   "goalId": "g-prototypes-1795559000001",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: стена мастера с проданными коврами",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795559339717-g-glowup-1795559339717-t": {
+   "at": 1795559339717,
+   "goalId": "g-glowup-1795559339717",
+   "person": "ruslan",
+   "project": "glowup",
+   "title": "День 10",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795559339717-g-glowup-1795559339717": {
+   "at": 1795559339717,
+   "goalId": "g-glowup-1795559339717",
+   "person": "ruslan",
+   "project": "glowup",
+   "title": "День 10",
+   "type": "goal_added",
+   "via": "claude"
+  },
+  "e-1795560000001-g-prototypes-1795558600003-t": {
+   "at": 1795560000001,
+   "goalId": "g-prototypes-1795558600003",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: аукцион при продаже ковра",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "e-1795560800001-g-prototypes-1795558600003": {
+   "at": 1795560800001,
+   "goalId": "g-prototypes-1795558600003",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: аукцион при продаже ковра",
+   "type": "goal_done",
+   "via": "claude"
+  },
+  "e-1795562000001-g-prototypes-1795558600004-t": {
+   "at": 1795562000001,
+   "goalId": "g-prototypes-1795558600004",
+   "person": "ruslan",
+   "project": "prototypes",
+   "title": "Ковёр: скорость станка растёт с множителем продаж",
+   "type": "goal_taken",
+   "via": "claude"
+  },
+  "gwd0p3djgg7sgrqv37tz": {
+   "at": 1795468953000,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "h7m0cnxmltxqlcmvezfo": {
+   "at": 1795217124357,
+   "goalId": "s04",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Живой режим выглядит как демо",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "ih46y84i4sjfhw5bni9z": {
+   "at": 1795217125592,
+   "goalId": "s04",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Живой режим выглядит как демо",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "iviyxc6v59iiigck95c9": {
+   "at": 1795217252855,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "j7bv25kpzyw0o4j5x5x6": {
+   "at": 1795489077656,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "kuk6ux3iqveu0qpg6gtr": {
+   "at": 1795225236097,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "kxv5chkr4vwnnjtjiij4": {
+   "at": 1795213876167,
+   "goalId": "s11",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Внешняя резервная копия базы",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "kzu1gc8mg2932cs9vk7n": {
+   "at": 1795225236678,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "l3jk0jpryg0cm4vasfx4": {
+   "at": 1795217247133,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "l3zh8zpc3jo2xirn7amd": {
+   "at": 1795489072759,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "mpbgai2yq8ib2pmm00vr": {
+   "at": 1795225235519,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "n7k791yoeayc9xgx2gsf": {
+   "at": 1795217811197,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "occeas3qhkvj25n2i6ag": {
+   "at": 1795217814510,
+   "goalId": "t08",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Проверить порт и бруски для тележек",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "perkhqzsuq2cnffn8gzu": {
+   "at": 1795217815080,
+   "goalId": "t08",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Проверить порт и бруски для тележек",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "q21nxsi41gluxhfache9": {
+   "at": 1795217250235,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "q44vu0ufiy5oyingqgky": {
+   "at": 1795225239202,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "qfh5gvh7c7emq024n6ft": {
+   "at": 1795489074520,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "qwnirw01ixew57j1omj0": {
+   "at": 1795213873716,
+   "goalId": "s09",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Проверить на настоящем iPhone / Safari",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "r3cxfseivr0hdhy27wmu": {
+   "at": 1795217811797,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "r6ynkqxfn11ksm05i87u": {
+   "at": 1795489073940,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "r7g1c8hzdju20dx5z6pe": {
+   "at": 1795489077986,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "r9sz7ni466os2asio4a0": {
+   "at": 1795489077354,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "si1pqyu6m45ki4lof2pf": {
+   "at": 1795217247805,
+   "goalId": "t11",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Маленький экран 320×568",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "u502rfjfangvohnz3wyi": {
+   "at": 1795489076774,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "vc5wa04013680h9ztv4v": {
+   "at": 1795224226632,
+   "goalId": "s01",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Светлая тема: шапка и белые карточки в ленте",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "vs0apmqhdnz7guilawfg": {
+   "at": 1795468953600,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "xcr7jlhpfzc06i7qxn31": {
+   "at": 1795225239774,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "xge5jqee0wzqmi5rhahv": {
+   "at": 1795225242524,
+   "goalId": "t06",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Критика интерфейса: находки 8–10",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "ycpf4d07j3ndl4eiiyvh": {
+   "at": 1795215797756,
+   "goalId": "s12",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Скрыть мусорные тестовые ответы под демо-вопросами",
+   "type": "goal_done",
+   "via": "hand"
+  },
+  "ym78ley0fx4r2lh9vd31": {
+   "at": 1795489073320,
+   "goalId": "t07",
+   "person": "ruslan",
+   "project": "toilet",
+   "title": "Пройти игру глазами и пальцем на телефоне",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "yov77cia344dqj87vxal": {
+   "at": 1795213875376,
+   "goalId": "s09",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Проверить на настоящем iPhone / Safari",
+   "type": "goal_reopened",
+   "via": "hand"
+  },
+  "zlivp70mkh5ffszki254": {
+   "at": 1795225238620,
+   "goalId": "s02",
+   "person": "ruslan",
+   "project": "sual",
+   "title": "Карточки в треде вопроса",
+   "type": "goal_done",
+   "via": "hand"
+  }
+ },
+ "goals": {
+  "g-1795556996107-kus": {
+   "createdAt": 1795556996107,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g1",
+   "order": 1795556996107,
+   "project": "kus",
+   "removed": false,
+   "takenBy": "ruslan",
+   "title": "Шкала серии: правки после приёмки"
+  },
+  "g-glowup-1795557271912": {
+   "createdAt": 1795557271912,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795558897946,
+   "doneBy": "ruslan",
+   "group": "g2",
+   "order": 1795557271912,
+   "project": "glowup",
+   "removed": false,
+   "takenAt": 0,
+   "takenBy": "",
+   "title": "День 9"
+  },
+  "g-glowup-1795559339717": {
+   "createdAt": 1795559339717,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795559339717,
+   "project": "glowup",
+   "removed": false,
+   "takenAt": 1795559339717,
+   "takenBy": "ruslan",
+   "title": "День 10"
+  },
+  "g-prototypes-1795558600001": {
+   "createdAt": 1795558600001,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g1",
+   "order": 1795558600001,
+   "project": "prototypes",
+   "removed": false,
+   "takenAt": 1795558600001,
+   "takenBy": "ruslan",
+   "title": "Ковёр: проверка на живом телефоне"
+  },
+  "g-prototypes-1795558600003": {
+   "createdAt": 1795558600003,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795560800001,
+   "doneBy": "ruslan",
+   "group": "g1",
+   "order": 1795558600003,
+   "project": "prototypes",
+   "removed": false,
+   "takenAt": 0,
+   "takenBy": "",
+   "title": "Ковёр: аукцион при продаже ковра"
+  },
+  "g-prototypes-1795558600004": {
+   "createdAt": 1795558600004,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g1",
+   "order": 1795558600004,
+   "project": "prototypes",
+   "removed": false,
+   "takenAt": 1795562000001,
+   "takenBy": "ruslan",
+   "title": "Ковёр: скорость станка растёт с множителем продаж"
+  },
+  "g-prototypes-1795559000001": {
+   "createdAt": 1795559000001,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795559000002,
+   "doneBy": "ruslan",
+   "group": "g1",
+   "order": 1795559000001,
+   "project": "prototypes",
+   "removed": false,
+   "takenAt": 0,
+   "takenBy": "",
+   "title": "Ковёр: стена мастера с проданными коврами"
+  },
+  "g-voxel-boxing-1795558015501": {
+   "createdAt": 1795558015501,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015501,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015501,
+   "takenBy": "ruslan",
+   "title": "Бой в Unity: удары, здоровье, нокдаун и нокаут"
+  },
+  "g-voxel-boxing-1795558015502": {
+   "createdAt": 1795558015502,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015502,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015502,
+   "takenBy": "ruslan",
+   "title": "Соперники из генератора: 8+ бойцов и лестница"
+  },
+  "g-voxel-boxing-1795558015503": {
+   "createdAt": 1795558015503,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015503,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015503,
+   "takenBy": "ruslan",
+   "title": "Рефери: отсчёт, остановка боя, рука победителю"
+  },
+  "g-voxel-boxing-1795558015504": {
+   "createdAt": 1795558015504,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015504,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015504,
+   "takenBy": "ruslan",
+   "title": "После победы: аплодисменты, пояс, награда"
+  },
+  "g-voxel-boxing-1795558015505": {
+   "createdAt": 1795558015505,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015505,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015505,
+   "takenBy": "ruslan",
+   "title": "Эффекты ударов: стоп-кадр, тряска, брызги, надписи, добивание"
+  },
+  "g-voxel-boxing-1795558015506": {
+   "createdAt": 1795558015506,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015506,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015506,
+   "takenBy": "ruslan",
+   "title": "Игрок: профиль, улучшения, разные перчатки, сохранение"
+  },
+  "g-voxel-boxing-1795558015507": {
+   "createdAt": 1795558015507,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g1",
+   "order": 1795558015507,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015507,
+   "takenBy": "ruslan",
+   "title": "Меню: режимы, выбор соперника, магазин, настройки, пауза"
+  },
+  "g-voxel-boxing-1795558015508": {
+   "createdAt": 1795558015508,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015508,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 1795558015508,
+   "takenBy": "ruslan",
+   "title": "Замер на телефоне: сборка под Android и кадр удара"
+  },
+  "g-voxel-boxing-1795558015509": {
+   "createdAt": 1795558015509,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015509,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 0,
+   "takenBy": "",
+   "title": "Вид повреждений: кровь ветвями и мышцы на культе"
+  },
+  "g-voxel-boxing-1795558015510": {
+   "createdAt": 1795558015510,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015510,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 0,
+   "takenBy": "",
+   "title": "Переломы костей головы"
+  },
+  "g-voxel-boxing-1795558015511": {
+   "createdAt": 1795558015511,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "g2",
+   "order": 1795558015511,
+   "project": "voxel-boxing",
+   "removed": false,
+   "takenAt": 0,
+   "takenBy": "",
+   "title": "Разные лица соперников: тон кожи и волосы"
+  },
+  "s-tg-autopost": {
+   "createdAt": 1795556155314,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "launch",
+   "order": 1795556155314,
+   "project": "sual",
+   "removed": false,
+   "title": "Бот сам публикует этапы из трекера в Telegram-канал и вечернюю сводку"
+  },
+  "s01": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "ui",
+   "order": 1,
+   "project": "sual",
+   "removed": false,
+   "title": "Светлая тема: шапка и белые карточки в ленте"
+  },
+  "s02": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "ui",
+   "order": 2,
+   "project": "sual",
+   "removed": false,
+   "title": "Карточки в треде вопроса"
+  },
+  "s03": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795075000000,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 3,
+   "project": "sual",
+   "removed": false,
+   "title": "Страница «Tənzimləmələr» и меню аватара"
+  },
+  "s04": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "ui",
+   "order": 4,
+   "project": "sual",
+   "removed": false,
+   "title": "Живой режим выглядит как демо"
+  },
+  "s05": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795211028250,
+   "doneBy": "ruslan",
+   "group": "launch",
+   "order": 5,
+   "project": "sual",
+   "removed": false,
+   "title": "Ветка work/sualver-next на GitHub + npm run sync"
+  },
+  "s06": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795213313742,
+   "doneBy": "ruslan",
+   "group": "features",
+   "order": 6,
+   "project": "sual",
+   "removed": false,
+   "title": "«AI yekun» в живом режиме"
+  },
+  "s07": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795213313742,
+   "doneBy": "ruslan",
+   "group": "features",
+   "order": 7,
+   "project": "sual",
+   "removed": false,
+   "title": "Убрать тестовые записи «Resilience QA…» из «Yeni»"
+  },
+  "s08": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795213313742,
+   "doneBy": "ruslan",
+   "group": "features",
+   "order": 8,
+   "project": "sual",
+   "removed": false,
+   "title": "Поправить фразу «oxu rahatlığını» на странице аккаунта"
+  },
+  "s09": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795215796860,
+   "doneBy": "ruslan",
+   "group": "checks",
+   "order": 9,
+   "project": "sual",
+   "removed": false,
+   "title": "Проверить на настоящем iPhone / Safari"
+  },
+  "s10": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795214329304,
+   "doneBy": "ruslan",
+   "group": "launch",
+   "order": 10,
+   "project": "sual",
+   "removed": false,
+   "title": "Почта на хостинге"
+  },
+  "s11": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795213875848,
+   "doneBy": "ruslan",
+   "group": "launch",
+   "order": 11,
+   "project": "sual",
+   "removed": false,
+   "title": "Внешняя резервная копия базы"
+  },
+  "s12": {
+   "createdAt": 1795213313742,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795215797324,
+   "doneBy": "ruslan",
+   "group": "features",
+   "order": 1795213313742,
+   "project": "sual",
+   "removed": false,
+   "title": "Скрыть мусорные тестовые ответы под демо-вопросами"
+  },
+  "t01": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795110000000,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 1,
+   "project": "toilet",
+   "removed": false,
+   "title": "Аудит интерфейса: 20 находок"
+  },
+  "t02": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795140000000,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 2,
+   "project": "toilet",
+   "removed": false,
+   "title": "«Смыв» и улучшения всегда в экране телефона"
+  },
+  "t03": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795155000000,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 3,
+   "project": "toilet",
+   "removed": false,
+   "title": "Единая шкала шрифтов и DESIGN.md"
+  },
+  "t04": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795161000000,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 4,
+   "project": "toilet",
+   "removed": false,
+   "title": "Таблички прогресса на боковых полях сцены"
+  },
+  "t05": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795210978536,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 5,
+   "project": "toilet",
+   "removed": false,
+   "title": "Критика интерфейса: правки 1–7"
+  },
+  "t06": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795292257300,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 6,
+   "project": "toilet",
+   "removed": false,
+   "title": "Критика интерфейса: находки 8–10"
+  },
+  "t07": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "checks",
+   "order": 7,
+   "project": "toilet",
+   "removed": false,
+   "title": "Пройти игру глазами и пальцем на телефоне"
+  },
+  "t08": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795223790786,
+   "doneBy": "ruslan",
+   "group": "game",
+   "order": 8,
+   "project": "toilet",
+   "removed": false,
+   "title": "Проверить порт и бруски для тележек"
+  },
+  "t09": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "game",
+   "order": 9,
+   "project": "toilet",
+   "removed": false,
+   "title": "Ветка «Меньше ручной работы» первой"
+  },
+  "t10": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "checks",
+   "order": 10,
+   "project": "toilet",
+   "removed": false,
+   "title": "Safari и Firefox"
+  },
+  "t11": {
+   "createdAt": 1795000000000,
+   "createdBy": "ruslan",
+   "done": false,
+   "doneAt": 0,
+   "doneBy": "",
+   "group": "ui",
+   "order": 11,
+   "project": "toilet",
+   "removed": false,
+   "title": "Маленький экран 320×568"
+  },
+  "t12": {
+   "createdAt": 1795329700000,
+   "createdBy": "ruslan",
+   "done": true,
+   "doneAt": 1795332500000,
+   "doneBy": "ruslan",
+   "group": "ui",
+   "order": 1795329700000,
+   "project": "toilet",
+   "removed": false,
+   "title": "Подписи на рисунке на 375×667 не мельче 8 px"
+  }
+ },
+ "likes": {
+  "5pinvppvt35cc95e8zls__u_ruslan": {
+   "at": 1795557488215,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "5pinvppvt35cc95e8zls"
+  },
+  "sagvfoe1ocm1dtdn0zfl__u_ruslan": {
+   "at": 1795556490259,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "sagvfoe1ocm1dtdn0zfl"
+  },
+  "sual-ruslan-34b4bd3__u_ruslan": {
+   "at": 1795227365704,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "sual-ruslan-34b4bd3"
+  },
+  "u-toilet-label-callouts__u_ruslan": {
+   "at": 1795332206361,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "u-toilet-label-callouts"
+  },
+  "u-toilet-trap__u_ruslan": {
+   "at": 1795226961325,
+   "author": "u_ruslan",
+   "person": "ruslan",
+   "target": "u-toilet-trap"
+  }
+ },
+ "people": {
+  "ruslan": {
+   "avatar": "b34c18f3ba300a6fbefa576b25789e4f.jpg",
+   "name": "Руслан",
+   "userId": "u_ruslan"
+  },
+  "seymur": {
+   "avatar": "d46b0e880d266fc1b2d4f48ad5195321.jpg",
+   "name": "Сеймур",
+   "userId": "u_seymur"
+  }
+ },
+ "projects": {
+  "glowup": {
+   "archived": false,
+   "color": "green",
+   "createdAt": 1795556400002,
+   "createdBy": "ruslan",
+   "groups": [
+    {
+     "id": "g1",
+     "name": "Интерфейс"
+    },
+    {
+     "id": "g2",
+     "name": "Игра"
+    },
+    {
+     "id": "g3",
+     "name": "Баги"
+    }
+   ],
+   "name": "30 дней",
+   "repo": "antropos17/glowup",
+   "show": "glowup"
+  },
+  "kus": {
+   "archived": false,
+   "color": "gold",
+   "createdAt": 1795556400001,
+   "createdBy": "ruslan",
+   "groups": [
+    {
+     "id": "g1",
+     "name": "Интерфейс"
+    },
+    {
+     "id": "g2",
+     "name": "Игра"
+    },
+    {
+     "id": "g3",
+     "name": "Баги"
+    }
+   ],
+   "name": "Кусь",
+   "repo": "antropos17/kus-io",
+   "show": "kus"
+  },
+  "prototypes": {
+   "archived": false,
+   "color": "blue",
+   "createdAt": 1795556400003,
+   "createdBy": "ruslan",
+   "groups": [
+    {
+     "id": "g1",
+     "name": "Ковёр"
+    },
+    {
+     "id": "g2",
+     "name": "Другие прототипы"
+    }
+   ],
+   "name": "Прототипы",
+   "repo": ""
+  },
+  "qaqas": {
+   "archived": false,
+   "color": "pink",
+   "createdAt": 1795557400000,
+   "createdBy": "ruslan",
+   "groups": [
+    {
+     "id": "g1",
+     "name": "Рисовка"
+    },
+    {
+     "id": "g2",
+     "name": "Серии"
+    },
+    {
+     "id": "g3",
+     "name": "Сборка"
+    }
+   ],
+   "name": "Qaqaş Zaur",
+   "repo": "",
+   "show": "qaqas"
+  },
+  "sual": {
+   "aim": "Запустить Sualver.az на хостинге: домен, регистрация, почта",
+   "groups": [
+    {
+     "id": "ui",
+     "name": "Интерфейс"
+    },
+    {
+     "id": "features",
+     "name": "Функции и тексты"
+    },
+    {
+     "id": "launch",
+     "name": "Запуск"
+    },
+    {
+     "id": "checks",
+     "name": "Проверки на устройствах"
+    }
+   ],
+   "name": "Sualver.az",
+   "repo": "antropos17/sual-az"
+  },
+  "toilet": {
+   "aim": "Игру на телефоне можно пройти пальцем от первого смыва до порта",
+   "groups": [
+    {
+     "id": "ui",
+     "name": "Интерфейс"
+    },
+    {
+     "id": "game",
+     "name": "Игра"
+    },
+    {
+     "id": "checks",
+     "name": "Проверки на устройствах"
+    }
+   ],
+   "name": "Туалет",
+   "repo": "antropos17/waterworks-idle"
+  },
+  "tracker": {
+   "archived": true,
+   "color": "slate",
+   "createdAt": 1795478329464,
+   "createdBy": "ruslan",
+   "groups": [
+    {
+     "id": "g1",
+     "name": "Интерфейс"
+    },
+    {
+     "id": "g2",
+     "name": "Функции"
+    },
+    {
+     "id": "g3",
+     "name": "Баги"
+    }
+   ],
+   "name": "Трекер",
+   "repo": "antropos17/sualver-toilet-tracker"
+  },
+  "voxel-boxing": {
+   "archived": false,
+   "color": "pink",
+   "createdAt": 1795556400000,
+   "createdBy": "ruslan",
+   "groups": [
+    {
+     "id": "g1",
+     "name": "Интерфейс"
+    },
+    {
+     "id": "g2",
+     "name": "Игра"
+    },
+    {
+     "id": "g3",
+     "name": "Баги"
+    }
+   ],
+   "name": "Воксель Бокс",
+   "repo": "antropos17/voxel-boxing",
+   "show": "voxel-boxing"
+  }
+ },
+ "showcase": {
+  "aegis": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "AEGIS",
+   "note": "Наблюдение за ИИ-агентами на компьютере",
+   "order": 11,
+   "owner": "ruslan",
+   "repo": "antropos17/Aegis",
+   "shot": "d9b1f0c09d37ba837c4c835431644c10.jpg",
+   "url": "https://antropos17.github.io/Aegis/"
+  },
+  "ai-github": {
+   "createdAt": 1795469342860,
+   "createdBy": "ruslan",
+   "name": "AI GitHub",
+   "note": "Каталог агентов и симуляция их работы",
+   "order": 15,
+   "owner": "ruslan",
+   "repo": "antropos17/ai-github",
+   "shot": "7ada540ded1b26320165391d81556442.png",
+   "url": ""
+  },
+  "blockout": {
+   "createdAt": 1795469342860,
+   "createdBy": "ruslan",
+   "name": "Блокаут",
+   "note": "Черновик шота серыми формами по описанию",
+   "order": 16,
+   "owner": "ruslan",
+   "repo": "antropos17/blockout",
+   "shot": "d23161a96ce5eb99afcab86765515f09.png",
+   "url": "https://antropos17.github.io/blockout/"
+  },
+  "bronestekla": {
+   "createdAt": 1795468942777,
+   "createdBy": "ruslan",
+   "name": "Бронестёкла",
+   "note": "Стёкла Mercedes: от обычного до мегаброни",
+   "order": 13,
+   "owner": "ruslan",
+   "repo": "antropos17/bronestekla",
+   "shot": "3a62dae5832bcdae3040fa386604e28c.png",
+   "url": "https://antropos17.github.io/bronestekla/"
+  },
+  "final-svalka": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Final Svalka",
+   "note": "Слот про свалку: чини дом, строй район",
+   "order": 10,
+   "owner": "ruslan",
+   "repo": "antropos17/final-svalka",
+   "shot": "187b3ca4b45a2e297a380e293950844e.jpg",
+   "url": "https://antropos17.github.io/final-svalka/"
+  },
+  "gif-cinema": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "GIF Cinema Studio",
+   "note": "Короткие фильмы из GIF от GPT, экспорт в MP4",
+   "order": 12,
+   "owner": "ruslan",
+   "repo": "antropos17/chatgpt-gif-cinema",
+   "shot": "89adc2a3ba85b2de78ae134e2b257888.jpg",
+   "url": ""
+  },
+  "glowup": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Glowup",
+   "note": "30 дней, чтобы привести себя в порядок",
+   "order": 6,
+   "owner": "ruslan",
+   "repo": "antropos17/glowup",
+   "shot": "0fb306e8721f7b07751944667d3b6753.jpg",
+   "url": "https://antropos17.github.io/glowup/"
+  },
+  "kus": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Кусь",
+   "note": "Браузерная io-игра про сладости, ПК и телефон",
+   "order": 4,
+   "owner": "ruslan",
+   "repo": "antropos17/kus-io",
+   "shot": "269dfb8fcf9b4fc04e8e6a380a269b23.jpg",
+   "url": "https://antropos17.github.io/kus-io/"
+  },
+  "last-piston": {
+   "createdAt": 1795469056652,
+   "createdBy": "ruslan",
+   "name": "Last Piston",
+   "note": "Моторный стенд: износ, поломки, заклинивание",
+   "order": 14,
+   "owner": "ruslan",
+   "repo": "antropos17/last-piston",
+   "shot": "cd62d414a7dfea41d6eaa1cd1c4504c2.png",
+   "url": "https://antropos17.github.io/last-piston/"
+  },
+  "race-slot": {
+   "createdAt": 1795469342860,
+   "createdBy": "ruslan",
+   "name": "Race Slot",
+   "note": "Гонка-слот: модули, сектора, записи заездов",
+   "order": 20,
+   "owner": "ruslan",
+   "repo": "antropos17/race-slot",
+   "shot": "01342e20b185cc82f5ddfbf6d2d52567.png",
+   "url": "https://antropos17.github.io/race-slot/"
+  },
+  "spr": {
+   "createdAt": 1795469342860,
+   "createdBy": "ruslan",
+   "name": "Персона / SPR",
+   "note": "Реестр синтетических персон с паспортами",
+   "order": 19,
+   "owner": "ruslan",
+   "repo": "antropos17/sythetic-persona-registry-SPR",
+   "shot": "d22afe892b5cb189b9d1290efab3c46e.png",
+   "url": "https://antropos17.github.io/sythetic-persona-registry-SPR/site/"
+  },
+  "studio-plan": {
+   "createdAt": 1795469342860,
+   "createdBy": "ruslan",
+   "name": "План YouTube-студии",
+   "note": "Студия на двоих: каналы, бюджет, доска",
+   "order": 18,
+   "owner": "ruslan",
+   "repo": "antropos17/youtube-studio-plan",
+   "shot": "cb7f52b8b9ff5933ecbf2e33b4e3514d.png",
+   "url": "https://antropos17.github.io/youtube-studio-plan/"
+  },
+  "sual": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Sualver.az",
+   "note": "Вопросы и ответы на азербайджанском · приватный",
+   "order": 1,
+   "owner": "ruslan",
+   "repo": "antropos17/sual-az",
+   "shot": "8da756901af2b77c9e637e64d52e2565.jpg",
+   "url": ""
+  },
+  "suno-player": {
+   "createdAt": 1795469342860,
+   "createdBy": "ruslan",
+   "name": "Suno Player",
+   "note": "Личная медиатека треков из Suno",
+   "order": 17,
+   "owner": "ruslan",
+   "repo": "antropos17/suno-player",
+   "shot": "9cd269ff67afdacba0225199add0e8a2.png",
+   "url": ""
+  },
+  "suspension-lab": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Suspension Lab",
+   "note": "2D-езда по Баку: подвеска, шины, гараж",
+   "order": 8,
+   "owner": "ruslan",
+   "repo": "antropos17/suspension-lab",
+   "shot": "7a99e992eee0b732dc0b643a5eeaa778.jpg",
+   "url": "https://antropos17.github.io/suspension-lab/"
+  },
+  "td-genmod": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "td-genmod",
+   "note": "ИИ делает объекты для Teardown · приватный",
+   "order": 7,
+   "owner": "ruslan",
+   "repo": "antropos17/td-genmod",
+   "shot": "5d0b94c526670f8804c192a4080d6457.jpg",
+   "url": ""
+  },
+  "toilet": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Туалет",
+   "note": "Идл про канализацию города · приватный",
+   "order": 9,
+   "owner": "ruslan",
+   "repo": "antropos17/waterworks-idle",
+   "shot": "e895ceba28c05d7c30870a8ed44818bd.jpg",
+   "url": ""
+  },
+  "voxel-boxing": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Voxel Boxing",
+   "note": "Воксельный бокс с разрушаемым соперником",
+   "order": 5,
+   "owner": "ruslan",
+   "repo": "antropos17/voxel-boxing",
+   "shot": "3695b066a0bb00748f6f9496762a962a.jpg",
+   "url": "https://antropos17.github.io/voxel-boxing/"
+  },
+  "ztm-main": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Zero to Millionaire (demo 1)",
+   "note": "Пиксельный слот про комнату и миллион, Unity",
+   "order": 3,
+   "owner": "ruslan",
+   "repo": "antropos17/zero-to-millionaire-unity",
+   "shot": "55744ad4e8b4ed002a98118540e2a117.jpg",
+   "url": "https://antropos17.github.io/zero-to-millionaire-unity/"
+  },
+  "ztm-slot": {
+   "createdAt": 1795470000000,
+   "createdBy": "ruslan",
+   "name": "Zero to Millionaire FINAL",
+   "note": "Слот-идл: копишь миллион к 65 годам",
+   "order": 2,
+   "owner": "ruslan",
+   "repo": "antropos17/zero-to-millionaire",
+   "shot": "e8dee5cc7bd20dab97c685cfecfbb754.jpg",
+   "url": "https://antropos17.github.io/zero-to-millionaire/"
+  }
+ },
+ "updates": {
+  "5pinvppvt35cc95e8zls": {
+   "author": "u_seymur",
+   "commits": [],
+   "createdAt": 1795557481306,
+   "goalIds": [],
+   "items": [
+    "Проект: Руслан"
+   ],
+   "kind": "claim",
+   "person": "seymur",
+   "pname": "Кусь",
+   "project": "kus",
+   "shots": [
+    {
+     "id": "269dfb8fcf9b4fc04e8e6a380a269b23.jpg",
+     "pair": 0,
+     "role": "after"
+    }
+   ],
+   "show": "kus",
+   "title": "Взялся за «Кусь»",
+   "via": "hand",
+   "visual": true
+  },
+  "sagvfoe1ocm1dtdn0zfl": {
+   "author": "u_seymur",
+   "commits": [],
+   "createdAt": 1795556465217,
+   "goalIds": [],
+   "items": [
+    "Проект: Руслан"
+   ],
+   "kind": "claim",
+   "person": "seymur",
+   "pname": "Voxel Boxing",
+   "project": "voxel-boxing",
+   "shots": [
+    {
+     "id": "3695b066a0bb00748f6f9496762a962a.jpg",
+     "pair": 0,
+     "role": "after"
+    }
+   ],
+   "show": "voxel-boxing",
+   "title": "Взялся за «Voxel Boxing»",
+   "via": "hand",
+   "visual": true
+  },
+  "sual-ruslan-34b4bd3": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "34b4bd3d2f956e76aa31b01eeb29b27505b355e2",
+     "subject": "perf: load the RU/EN catalogue only when another language is shown",
+     "url": "https://github.com/antropos17/sual-az/commit/34b4bd3d2f956e76aa31b01eeb29b27505b355e2"
+    }
+   ],
+   "createdAt": 1795227048163,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "~ Русский и английский словари загружаются только при выборе языка: код страницы на азербайджанском 713 КБ вместо 896 КБ",
+    "~ Загрузка на слабом телефоне: страница готова за 3,6 с вместо 4,5 с при одинаковых условиях",
+    "! При старте на русском выбранное сообщество больше не уезжает за край ленты"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Переводы грузятся по требованию",
+   "usage": {
+    "activeMin": 21,
+    "allPriced": true,
+    "cost": 3.2,
+    "finishedAt": 1795227033260,
+    "models": [
+     {
+      "cacheRead": 11429188,
+      "cacheWrite": 51209,
+      "cost": 3.2,
+      "input": 104,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 25065,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 48,
+      "tokens": 11505566
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795222629125,
+    "tokens": 11505566,
+    "wallMin": 73
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "sual-ruslan-45b0b03": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "45b0b03b7cb1692526ecd8e45d9b9fa7650212ab",
+     "subject": "style: audit pass over the live interface and its copy",
+     "url": "https://github.com/antropos17/sual-az/commit/45b0b03b7cb1692526ecd8e45d9b9fa7650212ab"
+    }
+   ],
+   "createdAt": 1795313759212,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "! Карточка с ответами больше не зовёт написать «первый» ответ",
+    "! Пустые сообщения получили отступ и одно пустое состояние вместо двух",
+    "~ У людей не показываются технические ники и пустая подпись",
+    "~ Русский интерфейс целиком на «вы»",
+    "~ Настройки везде называются одинаково",
+    "~ «О сайте» рассказывает о сайте, вход с одним заголовком",
+    "~ Жалоба в треде стала тихой кнопкой, пустые блоки справа скрыты",
+    "! Вернулись 16 исправленных азербайджанских формулировок, пропавших после ускорения",
+    "- Из словаря убраны 74 неиспользуемые строки"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [
+    {
+     "caption": "Сообщения, 390×844",
+     "id": "77dea0710cfca9775a6c09c39c00f196.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Сообщения, 390×844",
+     "id": "5b540f10e0b0b2a709dca8917e278a66.png",
+     "marks": [
+      {
+       "h": 26,
+       "w": 58,
+       "x": 30,
+       "y": 47
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Карточка с ответами, 390×844",
+     "id": "0305b61e045d0e593b6c6774f8886b2c.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Карточка с ответами, 390×844",
+     "id": "4cbad16fd76468ca55be284509b3cd9b.png",
+     "marks": [
+      {
+       "h": 9,
+       "w": 86,
+       "x": 47,
+       "y": 85
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Люди, 390×844",
+     "id": "7cc256f0b4b72d878ccc5730799f5666.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Люди, 390×844",
+     "id": "584f3d1bd12083a7b23e39d2cc3cb307.png",
+     "marks": [
+      {
+       "h": 24,
+       "w": 96,
+       "x": 50,
+       "y": 50
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Обход интерфейса и текстов: убрали лишнее",
+   "usage": {
+    "activeMin": 70,
+    "allPriced": true,
+    "cost": 30.09,
+    "finishedAt": 1795313721828,
+    "models": [
+     {
+      "cacheRead": 97385733,
+      "cacheWrite": 304884,
+      "cost": 30.09,
+      "input": 426,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 143393,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 191,
+      "tokens": 97834436
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795307903455,
+    "tokens": 97834436,
+    "wallMin": 97
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "sual-ruslan-73ccde9": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "73ccde966dcea2646de04d32b8f06dd8357df70b",
+     "subject": "tools: docker-up.ps1 restarts a hung Docker Desktop for local Supabase",
+     "url": "https://github.com/antropos17/sual-az/commit/73ccde966dcea2646de04d32b8f06dd8357df70b"
+    }
+   ],
+   "goalIds": [],
+   "group": "launch",
+   "items": [
+    "! Docker после перезагрузки ждал нажатия в окне сорвавшегося обновления и не запускал базу — переустановка убрала эту запись",
+    "~ Программа Docker перенесена с C: на X:, данные и база на месте (171 вопрос, все тома), на C: освободилось около 3 ГБ",
+    "+ Команда, которая сама поднимает зависший Docker за полминуты, не трогая базу",
+    "~ Синхронизация живого сайта подсказывает эту команду, если релиз не отвечает"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Docker перенесён на X: и больше не зависает после перезагрузки",
+   "usage": {
+    "activeMin": 41,
+    "allPriced": true,
+    "cost": 4.93,
+    "finishedAt": 1795295912190,
+    "models": [
+     {
+      "cacheRead": 14385742,
+      "cacheWrite": 167481,
+      "cost": 4.93,
+      "input": 136,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 35860,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 63,
+      "tokens": 14589219
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795293458520,
+    "tokens": 14589219,
+    "wallMin": 41
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "sual-ruslan-a1eb929": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "a1eb9296e2da1b465f0eb10bcbd4250298842574",
+     "subject": "perf: minify the classic script and drop repeated main-thread work",
+     "url": "https://github.com/antropos17/sual-az/commit/a1eb9296e2da1b465f0eb10bcbd4250298842574"
+    }
+   ],
+   "createdAt": 1795222449648,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "~ Загрузка на слабом телефоне: страница «висит» 3,5 с вместо 7,8 с, готова к 2,7 с вместо 6,4 с",
+    "~ Ввод в поиск подвисает на 1,4 с вместо 2,2 с, возврат в ленту — около 0,4 с вместо 1,1 с",
+    "~ Код интерфейса сжимается при сборке: 1,18 МБ → 915 КБ",
+    "! Лента не перерисовывается заново, если данные не изменились",
+    "! На азербайджанском сайт не тратит время на перевод страницы"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Сайт меньше подвисает",
+   "usage": {
+    "activeMin": 42,
+    "allPriced": true,
+    "cost": 9.99,
+    "finishedAt": 1795222426843,
+    "models": [
+     {
+      "cacheRead": 32308921,
+      "cacheWrite": 262977,
+      "cost": 9.99,
+      "input": 258,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 71091,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 124,
+      "tokens": 32643247
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795217585480,
+    "tokens": 32643247,
+    "wallMin": 81
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "sual-ruslan-c9d1196": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "c9d11965c93f7c8f8730d6488fe85ae592275cb5",
+     "subject": "style: answer form keeps photo and link buttons in the format row",
+     "url": "https://github.com/antropos17/sual-az/commit/c9d11965c93f7c8f8730d6488fe85ae592275cb5"
+    }
+   ],
+   "createdAt": 1795307919647,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "~ Кнопки фото и ссылки переехали в строку формата текста, рядом с предпросмотром",
+    "~ Строка про лимиты фото появляется только после выбора фото",
+    "~ Форма на телефоне стала ниже: 373 px вместо 471",
+    "~ Фото и ссылки к ответу работают как раньше, форма вопроса не менялась"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [
+    {
+     "caption": "Форма ответа, живой сайт, 390×844",
+     "id": "3857e22dc9bcda0d0394bbba7e5b4e1d.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Форма ответа, живой сайт, 390×844",
+     "id": "ff554cef5b9a611a32a3cac0dd9c7866.png",
+     "marks": [
+      {
+       "h": 7,
+       "w": 28,
+       "x": 58,
+       "y": 68
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Форма ответа стала компактнее",
+   "usage": {
+    "activeMin": 24,
+    "allPriced": true,
+    "cost": 10.81,
+    "finishedAt": 1795307883792,
+    "models": [
+     {
+      "cacheRead": 24465213,
+      "cacheWrite": 75848,
+      "cost": 6.1,
+      "input": 184,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 29862,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 80,
+      "tokens": 24571107
+     },
+     {
+      "cacheRead": 49931,
+      "cacheWrite": 291970,
+      "cost": 4.71,
+      "input": 2,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 722,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 1,
+      "tokens": 342625
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795302348424,
+    "tokens": 24913732,
+    "wallMin": 92
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "sual-ruslan-d1635ec": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "d1635ec8b239d7d331b3bf42827ae64bae87d07d",
+     "subject": "test: e2e specs take the origin from the Playwright baseURL instead of 4175",
+     "url": "https://github.com/antropos17/sual-az/commit/d1635ec8b239d7d331b3bf42827ae64bae87d07d"
+    }
+   ],
+   "createdAt": 1795292628881,
+   "goalIds": [],
+   "group": "checks",
+   "items": [
+    "~ Тесты браузера больше не привязаны к одному адресу: проверку можно гонять на любой свежей сборке",
+    "+ Полный прогон после ускорений сайта: 1461 из 1461 без падений"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Все автотесты зелёные",
+   "usage": {
+    "activeMin": 10,
+    "allPriced": true,
+    "cost": 3.46,
+    "finishedAt": 1795292612695,
+    "models": [
+     {
+      "cacheRead": 5231561,
+      "cacheWrite": 288809,
+      "cost": 3.46,
+      "input": 40,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 5319,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 17,
+      "tokens": 5525729
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795228284452,
+    "tokens": 5525729,
+    "wallMin": 1072
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "u-glowup-day-9": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "86952a0b92af60b1ce3d4ceb392f75d26af10bd7",
+     "subject": "Merge Day 9: the pass ran out",
+     "url": "https://github.com/antropos17/glowup/commit/86952a0b92af60b1ce3d4ceb392f75d26af10bd7"
+    },
+    {
+     "sha": "dec2862e1438e8162842f65a5ed66a394fa36f88",
+     "subject": "Write Day 9 «Абонемент кончился», the second day past the demo",
+     "url": "https://github.com/antropos17/glowup/commit/dec2862e1438e8162842f65a5ed66a394fa36f88"
+    }
+   ],
+   "createdAt": 1795558897946,
+   "goalIds": [
+    "g-glowup-1795557271912"
+   ],
+   "group": "g2",
+   "items": [
+    "+ День 9: абонемент в зал кончается, продлить или бегать с Витей",
+    "+ 18 новых карточек, всего в игре 203",
+    "+ Новая строка статуса в чате, 10 вариантов",
+    "~ Подработка доступна и на девятый день",
+    "~ Демо по-прежнему кончается на дне 7, тесты 136 из 136"
+   ],
+   "person": "ruslan",
+   "project": "glowup",
+   "shots": [],
+   "title": "День 9 «Абонемент кончился»: второй день после демо",
+   "usage": {
+    "activeMin": 9,
+    "allPriced": true,
+    "cost": 2.62,
+    "finishedAt": 1795558884973,
+    "models": [
+     {
+      "cacheRead": 3121341,
+      "cacheWrite": 91961,
+      "cost": 2.62,
+      "input": 62,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 13056,
+      "priced": true,
+      "purpose": "главный чат: задание исполнителю, сверка, запись этапа",
+      "replies": 26,
+      "tokens": 3226420
+     }
+    ],
+    "sessionId": "bdd57187-c024-466a-9f12-0f2ac7b2fbde",
+    "startedAt": 1795556941442,
+    "tokens": 3226420,
+    "wallMin": 32
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "u-prototypes-kover-auktsion": {
+   "branch": "master",
+   "commits": [
+    {
+     "sha": "ad39ea12af991eb1ee8e4d071aed5c2a46fdf8d0",
+     "subject": "Auction on carpet sale: rising bid x0.7-x1.5 with take-or-wait, buyers may leave, wall tag shows the sale bid",
+     "url": ""
+    },
+    {
+     "sha": "2cd5bf89c31e1d2b31c687e6dade1c49bb24dcd8",
+     "subject": "Progress step 9: sale auction; balance table, acceptance numbers and shots 46-50",
+     "url": ""
+    },
+    {
+     "sha": "1973b7ef68b60dcee52ae0b2ba807843c9e87e99",
+     "subject": "Connect the project to the shared tracker",
+     "url": ""
+    }
+   ],
+   "createdAt": 1795560800002,
+   "goalIds": [
+    "g-prototypes-1795558600003"
+   ],
+   "group": "g1",
+   "items": [
+    "+ Аукцион при продаже: ставка за 10 секунд растёт от ×0,7 до ×1,5 обычной прибавки",
+    "+ Кнопка с молотком «Забрать» продаёт ковёр по текущей ставке",
+    "+ Покупатели могут уйти на любом шаге, тогда ковёр уходит по ×0,7",
+    "+ На стене мастера у ковра подпись, за сколько он ушёл",
+    "~ Окно продажи показывает диапазон будущего дохода вместо одной цифры",
+    "~ Закрыть страницу посреди аукциона нельзя с выгодой: ковёр уйдёт по минимуму"
+   ],
+   "person": "ruslan",
+   "project": "prototypes",
+   "shots": [
+    {
+     "caption": "Окно продажи, 390×844",
+     "id": "93d8e4acca27ce9bc068f3fd88b2ae33.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Окно продажи, 390×844",
+     "id": "fa8a81f255bcccb7b1680653e130c606.png",
+     "marks": [
+      {
+       "h": 36,
+       "w": 90,
+       "x": 50,
+       "y": 43
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Ковёр: продажа стала аукционом, забрать ставку сейчас или ждать",
+   "usage": {
+    "activeMin": 9,
+    "allPriced": true,
+    "cost": 2.14,
+    "finishedAt": 1795559590346,
+    "models": [
+     {
+      "cacheRead": 2497952,
+      "cacheWrite": 41986,
+      "cost": 1.79,
+      "input": 42,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 15473,
+      "priced": true,
+      "purpose": "главный чат: выбор варианта, задание и приёмка",
+      "replies": 19,
+      "tokens": 2555453
+     },
+     {
+      "cacheRead": 775054,
+      "cacheWrite": 84637,
+      "cost": 0.35,
+      "input": 22,
+      "model": "claude-sonnet-5-5",
+      "name": "Sonnet 5.5",
+      "output": 6218,
+      "priced": true,
+      "purpose": "субагент: снимки до и после",
+      "replies": 11,
+      "tokens": 865931
+     }
+    ],
+    "sessionId": "8bf2b3ed-d072-4254-9b53-59f1192415c9",
+    "startedAt": 1795558485114,
+    "tokens": 3421384,
+    "wallMin": 18
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-prototypes-kover-stena": {
+   "branch": "master",
+   "commits": [
+    {
+     "sha": "30c99c40e5b326cf54c6df3e49178159ed9d94ae",
+     "subject": "Master's wall: sold carpets kept with a compact pattern, price tag (rows + 10 x gold rows) x colours, wall screen and button",
+     "url": ""
+    },
+    {
+     "sha": "c81b8009d92f12a54109bf9497cecaa576cc26af",
+     "subject": "Whole-coin upgrade prices (min 1), one-line length caption at 390 px, fixed header height with a two-line rate",
+     "url": ""
+    },
+    {
+     "sha": "a7d4aea065e76dbf7fc5f0b958c254ea3eba1d8e",
+     "subject": "Progress step 8: master's wall; acceptance numbers and shots 40-45",
+     "url": ""
+    },
+    {
+     "sha": "8127ab32cdc093c6a6e6795f2d2d2cd4f831432c",
+     "subject": "Progress step 7: whole-coin prices, one-line length caption, fixed header height; acceptance numbers and shots 35-39",
+     "url": ""
+    },
+    {
+     "sha": "385d752a3d922271422f8c22ff28d8e21bfef84c",
+     "subject": "Ignore .claude/launch.json",
+     "url": ""
+    },
+    {
+     "sha": "323b5f268857517efcd03aaa58eedad05c100215",
+     "subject": "Ignore two stray mp3 files in the root",
+     "url": ""
+    },
+    {
+     "sha": "8b1bda306da203e9101323292366d099fcfe423c",
+     "subject": "Ignore Nazijan.mp3 and the ACE Studio installer in the root",
+     "url": ""
+    }
+   ],
+   "createdAt": 1795559000003,
+   "goalIds": [
+    "g-prototypes-1795559000001"
+   ],
+   "group": "g1",
+   "items": [
+    "+ Стена мастера: каждый проданный ковёр остаётся с узором, длиной и ярлыком",
+    "+ Ярлык считается от рядов, золотых рядов и числа красок",
+    "+ Кнопка «Стена мастера» на главном экране после первой продажи",
+    "! Цена улучшения больше не падает до нуля при большом множителе",
+    "! Шапка не меняет высоту на больших числах, доход и цена ряда в две строки",
+    "~ Подпись длины ковра помещается в одну строку на узком экране"
+   ],
+   "person": "ruslan",
+   "project": "prototypes",
+   "shots": [
+    {
+     "caption": "Главный экран, 390×844",
+     "id": "94f33faa39bc5e86d5d39db8c1a51723.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Главный экран, 390×844",
+     "id": "b9b01d0d4a7296fed2b9b973e45c5f89.png",
+     "marks": [
+      {
+       "h": 6,
+       "w": 32,
+       "x": 18,
+       "y": 14
+      },
+      {
+       "h": 6,
+       "w": 24,
+       "x": 80,
+       "y": 3
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Стена мастера, 390×844 (нового экрана раньше не было)",
+     "id": "82910851977c94b3c1a358a2fb88cea3.png",
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Ковёр: проданные ковры теперь висят на стене мастера с ярлыками",
+   "usage": {
+    "activeMin": 22,
+    "allPriced": true,
+    "cost": 8.38,
+    "finishedAt": 1795558484238,
+    "models": [
+     {
+      "cacheRead": 8378424,
+      "cacheWrite": 305123,
+      "cost": 8.15,
+      "input": 156,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 39727,
+      "priced": true,
+      "purpose": "главный чат: задания исполнителям и приёмка",
+      "replies": 62,
+      "tokens": 8723430
+     },
+     {
+      "cacheRead": 212908,
+      "cacheWrite": 74909,
+      "cost": 0.23,
+      "input": 8,
+      "model": "claude-sonnet-5-5",
+      "name": "Sonnet 5.5",
+      "output": 1809,
+      "priced": true,
+      "purpose": "субагент: обновление карточки проекта",
+      "replies": 4,
+      "tokens": 289634
+     }
+    ],
+    "sessionId": "8bf2b3ed-d072-4254-9b53-59f1192415c9",
+    "startedAt": 1795494082566,
+    "tokens": 9013064,
+    "wallMin": 1073
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-qaqas-clean-plate": {
+   "branch": "",
+   "commits": [],
+   "createdAt": 1795557400001,
+   "goalIds": [],
+   "group": "g1",
+   "items": [
+    "+ Режим чистого кадра: сцена без счётчиков, субтитров и плашек, чтобы видеомодель не коверкала азербайджанские буквы",
+    "+ Чистый кадр сцены «машина завелась, дым» из второй серии для пробы «картинка в видео»",
+    "+ Промпт листа персонажа Заура: четыре ракурса в рост, шесть эмоций, две позы",
+    "~ Стиль рисовки выбран: плоский 2D с толстым контуром, как в готовых сценах",
+    "~ Обычный рендер обеих серий не изменился: листы по 15 кадров до и после совпали"
+   ],
+   "person": "ruslan",
+   "project": "qaqas",
+   "shots": [
+    {
+     "caption": "Сцена «машина завелась», 30-я секунда второй серии: кадр серии и чистый кадр для Seedance, 1080×1920",
+     "id": "059fa7bc3e35cd7b0ef9114e0279e1bc.jpg",
+     "pair": 0,
+     "role": "before",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "Сцена «машина завелась», 30-я секунда второй серии: кадр серии и чистый кадр для Seedance, 1080×1920",
+     "id": "c600a32820fb0de42899ea279e5746e3.png",
+     "marks": [
+      {
+       "h": 9,
+       "w": 96,
+       "x": 50,
+       "y": 11
+      },
+      {
+       "h": 10,
+       "w": 58,
+       "x": 50,
+       "y": 22
+      },
+      {
+       "h": 8,
+       "w": 16,
+       "x": 50,
+       "y": 66
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Qaqaş Zaur: чистый кадр сцены для Seedance и промпт листа персонажа",
+   "usage": {
+    "activeMin": 12,
+    "allPriced": true,
+    "cost": 2.36,
+    "finishedAt": 1795556976871,
+    "models": [
+     {
+      "cacheRead": 1997434,
+      "cacheWrite": 92165,
+      "cost": 2.36,
+      "input": 38,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 12203,
+      "priced": true,
+      "purpose": "режим чистого кадра, проверка кадров, промпты",
+      "replies": 17,
+      "tokens": 2101840
+     }
+    ],
+    "sessionId": "583a17f4-d29c-471e-b607-5b3166826fc5",
+    "startedAt": 1795556259638,
+    "tokens": 2101840,
+    "wallMin": 12
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-qaqas-ten-looks": {
+   "branch": "",
+   "commits": [],
+   "createdAt": 1795559848363,
+   "goalIds": [],
+   "group": "g1",
+   "items": [
+    "+ Десять рисовок с нуля, у каждой свой Заур, двор и атмосфера; сюжет один: Заур заводит «семёрку»",
+    "+ 1 резиновый мультфильм 1930-х, 2 бумажная аппликация, 3 ночной неон, 4 пиксель-арт, 5 маркер в тетради",
+    "+ 6 плакат, 7 объёмная под 3D, 8 пластилин, 9 акварель, 10 комикс",
+    "- Проба через Seedance и фильтры поверх старых сцен: отказались, рисуем кодом",
+    "~ Осталось выбрать одну рисовку и перевести на неё обе серии"
+   ],
+   "person": "ruslan",
+   "project": "qaqas",
+   "shots": [
+    {
+     "caption": "1. Резиновый мультфильм 1930-х, кадр на 3,2 с, 1080×1920",
+     "id": "efbe176177ab5dc33c0f5fe274c90259.jpg",
+     "pair": 0,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "2. Бумажная аппликация, кадр на 3,2 с, 1080×1920",
+     "id": "e4a21ae4c697a3b43aaf7d7956ad5a02.jpg",
+     "pair": 1,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "3. Неон, ночной Баку, кадр на 3,2 с, 1080×1920",
+     "id": "82daec84b9fba732787219c8a9d27998.jpg",
+     "pair": 2,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "4. Пиксель-арт, кадр на 3,2 с, 1080×1920",
+     "id": "90ac8e8d96e50e7e5db341c809e7b5a4.jpg",
+     "pair": 3,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "5. Маркер в тетради, кадр на 3,2 с, 1080×1920",
+     "id": "13727245d98a5f4df802586d288167ce.jpg",
+     "pair": 4,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "6. Плакат, кадр на 3,2 с, 1080×1920",
+     "id": "23c4477d9fc6f203feca0df92408dcfd.jpg",
+     "pair": 5,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "7. Объёмная под 3D, кадр на 3,2 с, 1080×1920",
+     "id": "0aa08931b0744767093a7e93ce1ce429.jpg",
+     "pair": 6,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "8. Пластилин, кадр на 3,2 с, 1080×1920",
+     "id": "5554ee07644d6690bd434e81acdba52b.jpg",
+     "pair": 7,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "9. Акварель, кадр на 3,2 с, 1080×1920",
+     "id": "a8c4167a45443fea512e3f4982405df9.jpg",
+     "pair": 8,
+     "role": "after",
+     "type": "image/jpeg"
+    },
+    {
+     "caption": "10. Комикс, кадр на 3,2 с, 1080×1920",
+     "id": "420e174207db63f4b6efc64f97054b2f.jpg",
+     "pair": 9,
+     "role": "after",
+     "type": "image/jpeg"
+    }
+   ],
+   "title": "Qaqaş Zaur: десять рисовок с нуля на выбор, каждая клипом на 5 секунд",
+   "usage": {
+    "activeMin": 47,
+    "allPriced": true,
+    "cost": 45.06,
+    "finishedAt": 1795559806787,
+    "models": [
+     {
+      "cacheRead": 7168044,
+      "cacheWrite": 103931,
+      "cost": 4.88,
+      "input": 106,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 44629,
+      "priced": true,
+      "purpose": "задания исполнителям, общий рендер, проверка кадров",
+      "replies": 37,
+      "tokens": 7316710
+     },
+     {
+      "cacheRead": 8620226,
+      "cacheWrite": 220679,
+      "cost": 5.35,
+      "input": 92,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 126123,
+      "priced": true,
+      "purpose": "рисовка: комикс",
+      "replies": 46,
+      "tokens": 8967120
+     },
+     {
+      "cacheRead": 6890990,
+      "cacheWrite": 250031,
+      "cost": 4.8,
+      "input": 80,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 108615,
+      "priced": true,
+      "purpose": "рисовка: ночной неоновый Баку",
+      "replies": 40,
+      "tokens": 7249716
+     },
+     {
+      "cacheRead": 6340551,
+      "cacheWrite": 238428,
+      "cost": 4.47,
+      "input": 80,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 100456,
+      "priced": true,
+      "purpose": "рисовка: бумажная аппликация",
+      "replies": 40,
+      "tokens": 6679515
+     },
+     {
+      "cacheRead": 6299177,
+      "cacheWrite": 213721,
+      "cost": 4.47,
+      "input": 72,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 106901,
+      "priced": true,
+      "purpose": "рисовка: объёмная под 3D",
+      "replies": 36,
+      "tokens": 6619871
+     },
+     {
+      "cacheRead": 7058694,
+      "cacheWrite": 183127,
+      "cost": 4.05,
+      "input": 94,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 86314,
+      "priced": true,
+      "purpose": "рисовка: пластилиновая",
+      "replies": 46,
+      "tokens": 7328229
+     },
+     {
+      "cacheRead": 3921839,
+      "cacheWrite": 232763,
+      "cost": 3.86,
+      "input": 50,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 95784,
+      "priced": true,
+      "purpose": "рисовка: пиксель-арт 16 бит",
+      "replies": 25,
+      "tokens": 4250436
+     },
+     {
+      "cacheRead": 3772648,
+      "cacheWrite": 230554,
+      "cost": 3.65,
+      "input": 52,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 87242,
+      "priced": true,
+      "purpose": "рисовка: маркер в тетради",
+      "replies": 26,
+      "tokens": 4090496
+     },
+     {
+      "cacheRead": 5082750,
+      "cacheWrite": 223912,
+      "cost": 3.58,
+      "input": 72,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 71939,
+      "priced": true,
+      "purpose": "рисовка: плакатная геометрия",
+      "replies": 36,
+      "tokens": 5378673
+     },
+     {
+      "cacheRead": 3333977,
+      "cacheWrite": 218698,
+      "cost": 3.32,
+      "input": 48,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 77899,
+      "priced": true,
+      "purpose": "рисовка: резиновый мультфильм 1930-х",
+      "replies": 24,
+      "tokens": 3630622
+     },
+     {
+      "cacheRead": 2441527,
+      "cacheWrite": 134033,
+      "cost": 2.63,
+      "input": 38,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 73437,
+      "priced": true,
+      "purpose": "рисовка: акварель",
+      "replies": 19,
+      "tokens": 2649035
+     }
+    ],
+    "sessionId": "583a17f4-d29c-471e-b607-5b3166826fc5",
+    "startedAt": 1795556983396,
+    "tokens": 64160423,
+    "wallMin": 47
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-sual-ai-yekun-conclusion": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "2c99655e75176314b303e63aefdce3393d45a41f",
+     "subject": "feat: «AI yekun» on live cards gives one short conclusion written in advance",
+     "url": "https://github.com/antropos17/sual-az/commit/2c99655e75176314b303e63aefdce3393d45a41f"
+    }
+   ],
+   "createdAt": 1795214816732,
+   "goalIds": [],
+   "group": "features",
+   "items": [
+    "~ По нажатию на бота открывается одна-две строки вывода: о чём ответы и что вышло",
+    "- Три цитаты из ответов убраны, остались вывод и ссылка «Söhbətə keç»",
+    "~ Пометка под выводом мельче и тише самого вывода",
+    "+ Выводы написаны заранее для двух демо-вопросов, где есть ответы",
+    "- Ещё один мусорный тестовый ответ скрыт под вопросом про бухгалтера"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [
+    {
+     "caption": "Карточка PASHA Bank, «Yekun» открыт, 390 px",
+     "id": "c6f5743088a051c4ef49cf697f9659c0.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Карточка PASHA Bank, «Yekun» открыт, 390 px",
+     "id": "ea58f7d22ae8e149ef19a318548520b2.png",
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "«AI yekun» в живой ленте даёт один короткий вывод вместо цитат",
+   "usage": {
+    "activeMin": 19,
+    "allPriced": true,
+    "cost": 2.34,
+    "finishedAt": 1795214779712,
+    "models": [
+     {
+      "cacheRead": 8052566,
+      "cacheWrite": 42395,
+      "cost": 2.34,
+      "input": 92,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 19325,
+      "priced": true,
+      "purpose": "выводы, вёрстка и проверки",
+      "replies": 43,
+      "tokens": 8114378
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795213648136,
+    "tokens": 8114378,
+    "wallMin": 19
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-sual-feed-exit-perf": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "966e921af28e591e2882f546101a66f07b82632a",
+     "subject": "perf: departing cards adopt one parsed stylesheet instead of copying all CSS",
+     "url": "https://github.com/antropos17/sual-az/commit/966e921af28e591e2882f546101a66f07b82632a"
+    }
+   ],
+   "createdAt": 1795217381349,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "! Поиск и смена ленты больше не замирают: было три паузы до 86 мс, стала одна на 50 мс или ни одной",
+    "! При загрузке блокировки сократились с 468 и 256 мс до 252 и 194 мс",
+    "~ Уходящие карточки гаснут на общем заранее разобранном стиле вместо копии всего CSS",
+    "~ В первые доли секунды после открытия уходящая карточка исчезает без затухания"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Лента меньше подвисает при поиске и при загрузке",
+   "usage": {
+    "activeMin": 11,
+    "allPriced": true,
+    "cost": 2.38,
+    "finishedAt": 1795217365816,
+    "models": [
+     {
+      "cacheRead": 8695753,
+      "cacheWrite": 34056,
+      "cost": 2.38,
+      "input": 84,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 18205,
+      "priced": true,
+      "purpose": "замеры, исправление и тесты",
+      "replies": 37,
+      "tokens": 8748098
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795215035650,
+    "tokens": 8748098,
+    "wallMin": 39
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "u-sual-sync": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "90ad0409c64f13a06eb3da713f457711123a9bda",
+     "subject": "docs: record the sync command, the published branch and the Docker restart fix [skip ci]",
+     "url": "https://github.com/antropos17/sual-az/commit/90ad0409c64f13a06eb3da713f457711123a9bda"
+    },
+    {
+     "sha": "16af7d0fabc6ffcf32b04494b809a24f14460460",
+     "subject": "chore: one command brings both local sites up to date [skip ci]",
+     "url": "https://github.com/antropos17/sual-az/commit/16af7d0fabc6ffcf32b04494b809a24f14460460"
+    }
+   ],
+   "createdAt": 1795211028250,
+   "goalIds": [
+    "s05"
+   ],
+   "group": "launch",
+   "items": [
+    "+ npm run sync: после правки сам пересобирает и обновляет сайт на 4180",
+    "~ ветка work/sualver-next отправлена на GitHub, PR пока не открыт",
+    "+ тред как в демо: сортировка «Ən faydalı» и поиск в строке «Cavablar»"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Ветка на GitHub и команда npm run sync",
+   "usage": {
+    "activeMin": 17,
+    "allPriced": true,
+    "cost": 8.01,
+    "finishedAt": 1795211028250,
+    "models": [
+     {
+      "cacheRead": 14016559,
+      "cacheWrite": 253231,
+      "cost": 8.01,
+      "input": 134,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 28925,
+      "priced": true,
+      "purpose": "команда sync и документация",
+      "replies": 58,
+      "tokens": 14298849
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795194438856,
+    "tokens": 14298849,
+    "wallMin": 276
+   },
+   "via": "claude"
+  },
+  "u-sual-telegram-channel": {
+   "branch": "",
+   "commits": [],
+   "createdAt": 1795556155314,
+   "goalIds": [],
+   "group": "launch",
+   "items": [
+    "+ Канал @pyOS_V2 и чат при нём: в канале посты, в чате разговор и комментарии к постам",
+    "+ Разделы канала по хештегам: #sualver #туалет #трекер #витрина #github, оглавление закреплено",
+    "! Темы в чате Telegram не разрешает, если чат привязан к каналу, поэтому разделы сделаны хештегами",
+    "~ Бот сам ставит описания и закрепы и при повторном запуске ничего не дублирует"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [],
+   "title": "Telegram-канал и чат для нас готовы",
+   "usage": {
+    "activeMin": 5,
+    "allPriced": true,
+    "cost": 1.89,
+    "finishedAt": 1795556136122,
+    "models": [
+     {
+      "cacheRead": 3326335,
+      "cacheWrite": 99184,
+      "cost": 1.89,
+      "input": 60,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 21517,
+      "priced": true,
+      "purpose": "настройка канала и чата ботом",
+      "replies": 28,
+      "tokens": 3447096
+     }
+    ],
+    "sessionId": "be3af19f-07a2-4069-a438-95192b877069",
+    "startedAt": 1795554418581,
+    "tokens": 3447096,
+    "wallMin": 29
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "u-sual-yekun-live": {
+   "branch": "work/sualver-next",
+   "commits": [
+    {
+     "sha": "c46add1",
+     "subject": "feat: live feed shows a «Yekun» digest of the most useful answers behind a quiet round helper"
+    },
+    {
+     "sha": "93fdcbf",
+     "subject": "docs: record hidden test questions, demo answer votes and the account phrase [skip ci]"
+    },
+    {
+     "sha": "ab4754b",
+     "subject": "fix: account sign-in panel names «Tənzimləmələr» instead of reading comfort [skip ci]"
+    },
+    {
+     "sha": "90ad040",
+     "subject": "docs: record the sync command, the published branch and the Docker restart fix [skip ci]"
+    },
+    {
+     "sha": "16af7d0",
+     "subject": "chore: one command brings both local sites up to date [skip ci]"
+    },
+    {
+     "sha": "80960db",
+     "subject": "docs: record the live discussion layout and six-worker flakiness [skip ci]"
+    },
+    {
+     "sha": "8d5646e",
+     "subject": "fix: live discussion follows the sample layout [skip ci]"
+    },
+    {
+     "sha": "33711c8",
+     "subject": "docs: record the live interface parity work and Playwright worker setting [skip ci]"
+    },
+    {
+     "sha": "de60743",
+     "subject": "fix: live cards arrive on scroll, sort pill and thread votes match the sample [skip ci]"
+    },
+    {
+     "sha": "c98f69c",
+     "subject": "feat: live feed matches the sample layout and never opens empty [skip ci]"
+    },
+    {
+     "sha": "f36fd09",
+     "subject": "feat: show responders and experience count on live feed cards [skip ci]"
+    },
+    {
+     "sha": "ef3ef15",
+     "subject": "feat: name settings «Tənzimləmələr» and open an account menu from the avatar [skip ci]"
+    },
+    {
+     "sha": "1e0b8ec",
+     "subject": "fix: lock the page under the menu sheet without a phantom scrollbar gutter [skip ci]"
+    },
+    {
+     "sha": "f97c49e",
+     "subject": "merge: UI slop cleanup from claude/unslop-ui-731c59 [skip ci]"
+    },
+    {
+     "sha": "067e710",
+     "subject": "fix: menu sheet backdrop, one-time vote pop and narrow-window action row [skip ci]"
+    },
+    {
+     "sha": "40b368b",
+     "subject": "style: delete rules for removed medallion, art-note and collection-grid [skip ci]"
+    },
+    {
+     "sha": "39d27a9",
+     "subject": "style: use motion tokens and drop decorative hover lift in community-refresh [skip ci]"
+    },
+    {
+     "sha": "f71bf56",
+     "subject": "style: remove filler copy, fake numbering and decorative accent icons [skip ci]"
+    },
+    {
+     "sha": "3b1cbf6",
+     "subject": "chore: add gestures skill to project skills [skip ci]"
+    },
+    {
+     "sha": "ca7f619",
+     "subject": "feat: shared downward swipe for share sheet, toast and phone post menu [skip ci]"
+    },
+    {
+     "sha": "98c930a",
+     "subject": "fix: keep the focused ask field visible when similar questions appear [skip ci]"
+    },
+    {
+     "sha": "85c3342",
+     "subject": "style: springier vote buttons and cards that survive exit copies [skip ci]"
+    },
+    {
+     "sha": "1d81049",
+     "subject": "docs: record thread cards and their verification [skip ci]"
+    },
+    {
+     "sha": "5f4e32a",
+     "subject": "style: thread question and answers become feed-style cards [skip ci]"
+    },
+    {
+     "sha": "9c38261",
+     "subject": "style: light theme surfaces follow the design contract [skip ci]"
+    }
+   ],
+   "createdAt": 1795213313742,
+   "goalIds": [
+    "s06",
+    "s07",
+    "s08"
+   ],
+   "items": [
+    "+ «Yekun» в живой ленте: круглый бот-маскот, по нажатию до трёх цитат из лучших ответов с авторами, без AI",
+    "~ Тред, лента и карточки живого сайта повторяют демо по расположению и анимациям",
+    "+ Одна команда обновляет живой сайт после любой правки",
+    "- Тестовые вопросы скрыты из живой ленты, демо-ответы получили голоса",
+    "! Страница аккаунта говорит «Tənzimləmələr» вместо «oxu rahatlığı»"
+   ],
+   "person": "ruslan",
+   "project": "sual",
+   "shots": [
+    {
+     "id": "3f0d03a16b3707ee3bfc85027a39e40d.png",
+     "type": "image/png"
+    }
+   ],
+   "title": "Живой режим догнал демо, а «Yekun» стал выжимкой с маскотом",
+   "usage": {
+    "activeMin": 276,
+    "allPriced": true,
+    "cost": 82.73,
+    "finishedAt": 1795213223296,
+    "models": [
+     {
+      "cacheRead": 83676314,
+      "cacheWrite": 1266935,
+      "cost": 43.35,
+      "input": 584,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 158579,
+      "priced": true,
+      "purpose": "планирование и живой режим как в демо",
+      "replies": 257,
+      "tokens": 85102412
+     },
+     {
+      "cacheRead": 122031598,
+      "cacheWrite": 1300182,
+      "cost": 39.38,
+      "input": 1160,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 228458,
+      "priced": true,
+      "purpose": "тред, команда sync, чистка данных, «Yekun» и тесты",
+      "replies": 498,
+      "tokens": 123561398
+     }
+    ],
+    "sessionId": "d646f3d6-5d86-4da3-9baf-2aebb2aeb38c",
+    "startedAt": 1795118498678,
+    "tokens": 208663810,
+    "wallMin": 1579
+   },
+   "via": "claude"
+  },
+  "u-toilet-0420": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "04273a592c757217de16fa72aba33ccbd82a846b",
+     "subject": "Fit city orders and the goal tab on short phones, keep notices off buttons",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/04273a592c757217de16fa72aba33ccbd82a846b"
+    }
+   ],
+   "createdAt": 1795210978536,
+   "goalIds": [
+    "t05"
+   ],
+   "group": "ui",
+   "items": [
+    "~ заказ города в две строки: название и оплата отдельно от банок",
+    "~ на экранах 660–700 px сцена уступает место, заказ виден целиком",
+    "~ карточка находки стала ниже: 103×44 вместо 90×75",
+    "+ полоса из пяти сегментов вместо делений заказов",
+    "+ подсказки «Корзины ждут разгрузки.» и «Хватает на улучшение.»",
+    "! сообщение больше не закрывает кнопку справа"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Заказ города на экране 375×667",
+     "id": "00a681badada25194597460e83459d47.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ города на экране 375×667",
+     "id": "ae7b1b5c9d2eedab54931953b5d1f416.png",
+     "marks": [
+      {
+       "h": 10,
+       "w": 98,
+       "x": 50,
+       "y": 73
+      },
+      {
+       "h": 5,
+       "w": 26,
+       "x": 14,
+       "y": 23.5
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Сообщение о выплате и кнопка «Забрать всё», 390×844",
+     "id": "c48350dc7abf86353f56f52e5a924a4a.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Сообщение о выплате и кнопка «Забрать всё», 390×844",
+     "id": "e8bd49ddb27e201bcf5b3a0e233b61dc.png",
+     "marks": [
+      {
+       "h": 6,
+       "w": 30,
+       "x": 84,
+       "y": 67.6
+      },
+      {
+       "h": 4,
+       "w": 18,
+       "x": 10,
+       "y": 20.8
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Критика интерфейса: правки 1–7",
+   "usage": {
+    "activeMin": 31,
+    "allPriced": true,
+    "cost": 8.64,
+    "finishedAt": 1795210978536,
+    "models": [
+     {
+      "cacheRead": 7773581,
+      "cacheWrite": 362739,
+      "cost": 8.64,
+      "input": 54,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 31999,
+      "priced": true,
+      "purpose": "критика и правки интерфейса",
+      "replies": 23,
+      "tokens": 8168373
+     }
+    ],
+    "sessionId": "63559eb0-275b-482b-87eb-db44c90f7762",
+    "startedAt": 1795195449257,
+    "tokens": 8168373,
+    "wallMin": 259
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-buttons": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "83da45267a4f5c051eadfbb6b1b9ac20cb8a60a1",
+     "subject": "Make prices read as buttons, mark tabs with purchases, steady the flush plate",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/83da45267a4f5c051eadfbb6b1b9ac20cb8a60a1"
+    }
+   ],
+   "createdAt": 1795319560000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "+ цена улучшения стала плашкой: цвета воды, когда денег хватает, иначе рамка заполняется по мере накопления",
+    "+ точка на вкладке, внутри которой есть доступная покупка",
+    "~ с реле насоса и чистой чашей служебная полоса в одну строку: видно два ряда улучшений вместо полутора",
+    "~ награда невыполненного заказа стала текстом, а не кнопкой",
+    "~ в «Цехе» доступная покупка выделена цветом воды, крестик закрытия нарисован крупнее"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Поздняя игра с реле насоса, 390×844",
+     "id": "5d698e9da6af662d8d78001e9f77d21a.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Поздняя игра с реле насоса, 390×844",
+     "id": "f99ed0bb895e2fe78eb3bfcaed33268e.png",
+     "marks": [
+      {
+       "h": 8,
+       "w": 96,
+       "x": 50,
+       "y": 72
+      },
+      {
+       "h": 5,
+       "w": 72,
+       "x": 45,
+       "y": 77.6
+      },
+      {
+       "h": 17,
+       "w": 98,
+       "x": 50,
+       "y": 91
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Середина игры, 130 ₵, 390×844",
+     "id": "aeaa1da9cc98a5e130bb7887d07a9e0c.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Середина игры, 130 ₵, 390×844",
+     "id": "9104ef783b9fedd615a492842f593ea4.png",
+     "marks": [
+      {
+       "h": 5,
+       "w": 18,
+       "x": 90,
+       "y": 72.2
+      },
+      {
+       "h": 5,
+       "w": 72,
+       "x": 40,
+       "y": 83.7
+      },
+      {
+       "h": 6,
+       "w": 98,
+       "x": 50,
+       "y": 92.5
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Окно «Цех», 390×844",
+     "id": "3455c0cc5e01ced721520085bcdb2f54.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Окно «Цех», 390×844",
+     "id": "792ab284e49555f1bb9eefb283b30846.png",
+     "marks": [
+      {
+       "h": 6,
+       "w": 12,
+       "x": 87.5,
+       "y": 13.9
+      },
+      {
+       "h": 8,
+       "w": 34,
+       "x": 76,
+       "y": 73.8
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Кнопки: видно, что можно купить, и больше места улучшениям",
+   "usage": {
+    "activeMin": 18,
+    "allPriced": true,
+    "cost": 14.45,
+    "finishedAt": 1795319530424,
+    "models": [
+     {
+      "cacheRead": 21791580,
+      "cacheWrite": 467277,
+      "cost": 13.75,
+      "input": 124,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 47876,
+      "priced": true,
+      "purpose": "разбор интерфейса, правки кнопок и проверки",
+      "replies": 53,
+      "tokens": 22306857
+     },
+     {
+      "cacheRead": 2684846,
+      "cacheWrite": 9387,
+      "cost": 0.7,
+      "input": 18,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 4274,
+      "priced": true,
+      "purpose": "запись прошлого этапа в трекер",
+      "replies": 9,
+      "tokens": 2698525
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795292224892,
+    "tokens": 25005382,
+    "wallMin": 455
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-callout-leaders": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "53b3eddb409e0f5d0e73a6ed3518667a6c031e31",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/53b3eddb409e0f5d0e73a6ed3518667a6c031e31"
+    }
+   ],
+   "createdAt": 1795358960000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "~ Точка на детали крупнее и в тёмном кольце, линия цвета подписи не сливается с рисунком",
+    "! Линии соседних подписей больше не перекрещиваются",
+    "+ Подпись, сдвинутая от детали, ведёт к ней тусклым пунктиром"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "390×844: точки теряются, линии похожи на линии рисунка",
+     "id": "9562787a4c22e9363939ead96e509385.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Точки и линии видны сразу",
+     "id": "13d2e7a276f47dd863757067279be34e.png",
+     "marks": [
+      {
+       "h": 6,
+       "w": 33,
+       "x": 10,
+       "y": 47
+      },
+      {
+       "h": 10,
+       "w": 46,
+       "x": 49,
+       "y": 73
+      },
+      {
+       "h": 6,
+       "w": 34,
+       "x": 9,
+       "y": 84
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Выплата на 375×667: линии сдвинутых подписей перекрещиваются",
+     "id": "1da5912625be5397da94f770c352f5fb.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Подписи поменялись местами, линии пунктиром",
+     "id": "50b1541219d485874fc6708c5f6ee225.png",
+     "marks": [
+      {
+       "h": 25,
+       "w": 38,
+       "x": 51,
+       "y": 57
+      },
+      {
+       "h": 6,
+       "w": 30,
+       "x": 16,
+       "y": 47
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Подписи на полях ясно ведут к своей детали",
+   "usage": {
+    "activeMin": 9,
+    "allPriced": true,
+    "cost": 2.66,
+    "finishedAt": 1795358940562,
+    "models": [
+     {
+      "cacheRead": 5744391,
+      "cacheWrite": 151440,
+      "cost": 2.66,
+      "input": 66,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 14984,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 31,
+      "tokens": 5910881
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795357887648,
+    "tokens": 5910881,
+    "wallMin": 18
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-crit810": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "d81307afb62ef4b74f2317db3b687956e93aeb3b",
+     "subject": "Drop sticky hover on phones, keep grades beside prices, one plate width",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/d81307afb62ef4b74f2317db3b687956e93aeb3b"
+    }
+   ],
+   "createdAt": 1795292257300,
+   "goalIds": [
+    "t06"
+   ],
+   "group": "ui",
+   "items": [
+    "! на телефоне вкладка после нажатия больше не остаётся подсвеченной",
+    "~ уровень улучшения стоит рядом с ценой, названия в одну строку",
+    "~ цены соседних улучшений на одной высоте",
+    "~ таблички на полях сцены одной ширины на всех телефонах"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Вкладка «Труба» после нажатия, 375×667",
+     "id": "d842854d8389b4710129e4628a128a5d.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Вкладка «Труба» после нажатия, 375×667",
+     "id": "559db9538cc032f846d492aa2e5b2447.png",
+     "marks": [
+      {
+       "h": 5,
+       "w": 24,
+       "x": 61,
+       "y": 87.5
+      },
+      {
+       "h": 9,
+       "w": 50,
+       "x": 76,
+       "y": 95
+      },
+      {
+       "h": 14,
+       "w": 22,
+       "x": 10,
+       "y": 21
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Вкладка «Участки», 375×667",
+     "id": "081335f251665160bb2109d47c6c9729.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Вкладка «Участки», 375×667",
+     "id": "9dc6de687c7bd92e77f91bd2c5f5f51c.png",
+     "marks": [
+      {
+       "h": 9,
+       "w": 98,
+       "x": 50,
+       "y": 95
+      },
+      {
+       "h": 22,
+       "w": 22,
+       "x": 89,
+       "y": 17
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Критика интерфейса: правки 8–10",
+   "usage": {
+    "activeMin": 21,
+    "allPriced": true,
+    "cost": 4.94,
+    "finishedAt": 1795292222936,
+    "models": [
+     {
+      "cacheRead": 12188051,
+      "cacheWrite": 244645,
+      "cost": 4.94,
+      "input": 98,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 27332,
+      "priced": true,
+      "purpose": "правки интерфейса, снимки и проверки",
+      "replies": 46,
+      "tokens": 12460126
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795290953016,
+    "tokens": 12460126,
+    "wallMin": 21
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-label-callouts": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "cff94491447d0f504b1cc6dcdfe06899c626bf91",
+     "subject": "Letter small scene labels in the side margins",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/cff94491447d0f504b1cc6dcdfe06899c626bf91"
+    }
+   ],
+   "createdAt": 1795332500000,
+   "goalIds": [
+    "t12"
+   ],
+   "group": "ui",
+   "items": [
+    "~ Мелкие подписи деталей вынесены на тёмные поля сбоку: 9 px, линия и точка на детали",
+    "! Тёмные плашки с подписями больше не закрывают рисунок",
+    "~ «Промывка», «Городской коллектор» и сообщение о продаже растут на месте, без плашки",
+    "~ Число тележек подписано словом: «ТЕЛЕЖКИ 7»",
+    "+ В описании дизайна правило: подписи на рисунке не мельче 8 px"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Поздняя игра, 375×667",
+     "id": "9d6ecc06b47afc1bea7022e2bca3602d.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Поздняя игра, 375×667",
+     "id": "0089399d2972ed0fb6803b4a9098b589.png",
+     "marks": [
+      {
+       "h": 8,
+       "w": 18,
+       "x": 20,
+       "y": 49
+      },
+      {
+       "h": 8,
+       "w": 18,
+       "x": 20,
+       "y": 86
+      },
+      {
+       "h": 15,
+       "w": 22,
+       "x": 82,
+       "y": 78
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №5, 375×667",
+     "id": "65329632afb62f89dc12127686b8e098.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №5, 375×667",
+     "id": "6d559429076e21463cf2c748f7ee6d60.png",
+     "marks": [
+      {
+       "h": 8,
+       "w": 18,
+       "x": 24,
+       "y": 47
+      },
+      {
+       "h": 8,
+       "w": 18,
+       "x": 24,
+       "y": 73
+      },
+      {
+       "h": 11,
+       "w": 20,
+       "x": 78,
+       "y": 65
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Подписи на рисунке читаются на маленьком телефоне и не закрывают его",
+   "usage": {
+    "activeMin": 13,
+    "allPriced": true,
+    "cost": 4.7,
+    "finishedAt": 1795332130788,
+    "models": [
+     {
+      "cacheRead": 11423231,
+      "cacheWrite": 196565,
+      "cost": 4.7,
+      "input": 94,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 42310,
+      "priced": true,
+      "purpose": "реализация, замеры и тесты",
+      "replies": 45,
+      "tokens": 11662200
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795329654755,
+    "tokens": 11662200,
+    "wallMin": 41
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-names-one-look": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "8f8f5fb618af7cb6cae38a99101fb9b304ce969f",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/8f8f5fb618af7cb6cae38a99101fb9b304ce969f"
+    }
+   ],
+   "createdAt": 1795360370000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "~ Подписи на полях, на деталях и в крупном плане одного цвета и одной насыщенности",
+    "! Тёмных плашек поверх рисунка больше нет: название на рисунке получает тёмный контур букв",
+    "~ «Городской коллектор» больше не тусклый, в том же виде"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "375×667: пять оттенков подписей, тусклый коллектор",
+     "id": "df0226e2304a40016df35e3ca8e54607.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Один вид названий везде",
+     "id": "a74eeda1a8c9087a40f312856abae7a9.png",
+     "marks": [
+      {
+       "h": 14,
+       "w": 16,
+       "x": 73,
+       "y": 72
+      },
+      {
+       "h": 6,
+       "w": 16,
+       "x": 12,
+       "y": 77
+      },
+      {
+       "h": 7,
+       "w": 25,
+       "x": 28,
+       "y": 89
+      },
+      {
+       "h": 6,
+       "w": 13,
+       "x": 45,
+       "y": 30
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "390×844: разные цвета и насыщенность подписей",
+     "id": "a4138018e526fa2ea68e2d849445da53.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Подписи одного вида",
+     "id": "2d1c6c59d93992a5a20dce19470203d1.png",
+     "marks": [
+      {
+       "h": 11,
+       "w": 15,
+       "x": 80,
+       "y": 73
+      },
+      {
+       "h": 6,
+       "w": 11,
+       "x": 9,
+       "y": 47
+      },
+      {
+       "h": 5,
+       "w": 11,
+       "x": 8,
+       "y": 85
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Все названия на рисунке в одном виде",
+   "usage": {
+    "activeMin": 11,
+    "allPriced": true,
+    "cost": 1.47,
+    "finishedAt": 1795360351458,
+    "models": [
+     {
+      "cacheRead": 4636154,
+      "cacheWrite": 27433,
+      "cost": 1.47,
+      "input": 44,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 15974,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 20,
+      "tokens": 4679605
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795359712602,
+    "tokens": 4679605,
+    "wallMin": 11
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-order-lens": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "d85b625d48403ff2e051aa29a321310a9c3acf15",
+     "subject": "Keep order close-ups above the controls, title clear of the count",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/d85b625d48403ff2e051aa29a321310a9c3acf15"
+    },
+    {
+     "sha": "b1b9d40649053006e5fce1ed09d55ddc439bc9b9",
+     "subject": "Grow scene labels on phones without covering the press window",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/b1b9d40649053006e5fce1ed09d55ddc439bc9b9"
+    }
+   ],
+   "createdAt": 1795329700000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "! заголовок заказа больше не наезжает на счётчик в заказах №3–5",
+    "! окна «Магнит крупно», «Пресс крупно» и насоса с кнопкой «Свернуть» видны целиком над «Смывом»",
+    "~ окно крупного плана стоит слева, счётчик, подпись и кнопка справа от него",
+    "+ мелкие подписи на рисунке на телефоне вырастают на тёмной плашке",
+    "~ «ПРЕСС» не закрывает окно с банками, счётчик тюка стоит на полу справа",
+    "! подписи в окнах крупного плана больше не раздуваются"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Заказ №5, окно магнита открыто, 375×667",
+     "id": "e00eddcd06c9f53b5023fbc32119cb89.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №5, окно магнита открыто, 375×667",
+     "id": "386e3d5a69d54d618d504757c2a7c714.png",
+     "marks": [
+      {
+       "h": 21,
+       "w": 98,
+       "x": 50,
+       "y": 67.5
+      },
+      {
+       "h": 5,
+       "w": 24,
+       "x": 45,
+       "y": 39
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №4, окно насоса открыто, 375×667",
+     "id": "af06201cfe6b83a4aaa526cb81b3d7ee.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №4, окно насоса открыто, 375×667",
+     "id": "0b5baf9fb4d8d6c027adadb94fb5f929.png",
+     "marks": [
+      {
+       "h": 23,
+       "w": 98,
+       "x": 50,
+       "y": 66.5
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №3, окно пресса открыто, 375×667",
+     "id": "93f412a20b3e6ccb43dd63bba51239da.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ №3, окно пресса открыто, 375×667",
+     "id": "f0d2fdba838d86c008dbcc4dac624439.png",
+     "marks": [
+      {
+       "h": 16,
+       "w": 98,
+       "x": 50,
+       "y": 70
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Окно заказа целиком над «Смывом», подписи на рисунке читаются на телефоне",
+   "usage": {
+    "activeMin": 95,
+    "allPriced": true,
+    "cost": 29.96,
+    "finishedAt": 1795329652708,
+    "models": [
+     {
+      "cacheRead": 48228079,
+      "cacheWrite": 861788,
+      "cost": 22.43,
+      "input": 384,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 294213,
+      "priced": true,
+      "purpose": "разбор подписей, правки строки заказа и проверки",
+      "replies": 178,
+      "tokens": 49384464
+     },
+     {
+      "cacheRead": 22456393,
+      "cacheWrite": 109476,
+      "cost": 7.53,
+      "input": 78,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 32067,
+      "priced": true,
+      "purpose": "разбор дизайна и первые подписи на рисунке",
+      "replies": 35,
+      "tokens": 22598014
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795321190368,
+    "tokens": 71982478,
+    "wallMin": 141
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-payout-callouts": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "6d7c63a72eea3759556416f029e2a3d848ea2d82",
+     "subject": "Keep payout cards off the margin callouts",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/6d7c63a72eea3759556416f029e2a3d848ea2d82"
+    },
+    {
+     "sha": "6c810d701d65548f895b3a4823a9f46b315468de",
+     "subject": "Drop the PRESS stamp from the press body",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/6c810d701d65548f895b3a4823a9f46b315468de"
+    }
+   ],
+   "createdAt": 1795333200000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "! Карточки «Металл» и «Смесь» больше не закрывают подписи на боковых полях",
+    "~ Пока карточка видна, подписи её стороны встают выше или ниже неё",
+    "~ Когда карточку забирают или чек гаснет, подписи возвращаются на место",
+    "- Убран мелкий штамп «ПРЕСС» на корпусе пресса"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Две карточки выплаты, 375×667",
+     "id": "8fd0ec8089a607f3c2f1ccd28938ec12.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Две карточки выплаты, 375×667",
+     "id": "9150b6fb6a7e98bcfb796b5578b89744.png",
+     "marks": [
+      {
+       "h": 13,
+       "w": 24,
+       "x": 82,
+       "y": 53
+      },
+      {
+       "h": 7,
+       "w": 18,
+       "x": 20,
+       "y": 80
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Карточки выплаты больше не закрывают подписи на полях",
+   "usage": {
+    "activeMin": 15,
+    "allPriced": true,
+    "cost": 2.24,
+    "finishedAt": 1795333061881,
+    "models": [
+     {
+      "cacheRead": 7127608,
+      "cacheWrite": 45384,
+      "cost": 2.24,
+      "input": 76,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 22749,
+      "priced": true,
+      "purpose": "реализация, замеры и тесты",
+      "replies": 34,
+      "tokens": 7195817
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795332133025,
+    "tokens": 7195817,
+    "wallMin": 15
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-rinse-rim": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "d8675c9814de37823afa8e00a138f0068d12ee90",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/d8675c9814de37823afa8e00a138f0068d12ee90"
+    }
+   ],
+   "createdAt": 1795359720000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "! Надпись «Промывка» на трубе теперь светлая с тёмным контуром букв и читается на 375×667 и 390×844",
+    "~ Без плашки: рисунок под надписью не закрыт, размер прежний"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "375×667: серо-зелёная надпись сливается с трубой",
+     "id": "680f278b2c401d55e0bc29197cc3f724.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Светлые буквы с тёмным контуром",
+     "id": "df3f2e54d47ad9e1011881a2af11530a.png",
+     "marks": [
+      {
+       "h": 7,
+       "w": 15,
+       "x": 44,
+       "y": 29
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "390×844: надпись едва видна",
+     "id": "20069e6a9f4b22ceceb1f2307aaeda19.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Надпись читается, плашки нет",
+     "id": "2f6a8ce1f06bdcafb694a5f752ab75af.png",
+     "marks": [
+      {
+       "h": 6,
+       "w": 14,
+       "x": 45,
+       "y": 30
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "«Промывка» на трубе читается на телефоне",
+   "usage": {
+    "activeMin": 6,
+    "allPriced": true,
+    "cost": 1.22,
+    "finishedAt": 1795359706576,
+    "models": [
+     {
+      "cacheRead": 4194306,
+      "cacheWrite": 18291,
+      "cost": 1.22,
+      "input": 44,
+      "model": "claude-opus-5-5",
+      "name": "Opus 5.5",
+      "output": 11944,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 20,
+      "tokens": 4224585
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795358943736,
+    "tokens": 4224585,
+    "wallMin": 13
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-strip": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "bc9d7836fe122708f46c86ca1d23671ea21d15a8",
+     "subject": "Keep the service strip to one row",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/bc9d7836fe122708f46c86ca1d23671ea21d15a8"
+    }
+   ],
+   "createdAt": 1795321190201,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "~ «Насос» стал пятой кнопкой в строке с жидкостями, состояние одним словом",
+    "~ загрязнение показано на кнопке «Очиститель»: процент рядом с ценой и шкала по нижнему краю",
+    "~ «Смыв» стоит на 52 px выше, видно два ряда улучшений вместо полутора",
+    "~ во время заказа города окно улучшений 128 px вместо 76",
+    "~ подтверждение залитой жидкости переехало в строку сообщений",
+    "! на 360×740 страница в заказе города больше не вылезает за экран"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Насос без реле, залита моча, 390×844",
+     "id": "32a3b6f061d69238943854a6777f45a9.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Насос без реле, залита моча, 390×844",
+     "id": "63589dfb1ebaefe7969eb12437186bee.png",
+     "marks": [
+      {
+       "h": 7,
+       "w": 98,
+       "x": 50,
+       "y": 55.6
+      },
+      {
+       "h": 7,
+       "w": 96,
+       "x": 50,
+       "y": 72.2
+      },
+      {
+       "h": 20,
+       "w": 98,
+       "x": 50,
+       "y": 88.5
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ города №4, 390×844",
+     "id": "5d677aa3969b29528ae51bca2c596f09.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Заказ города №4, 390×844",
+     "id": "3b353e2538a219c793c7b0cad2d4f844.png",
+     "marks": [
+      {
+       "h": 7,
+       "w": 98,
+       "x": 50,
+       "y": 55.6
+      },
+      {
+       "h": 7,
+       "w": 96,
+       "x": 50,
+       "y": 76
+      },
+      {
+       "h": 15,
+       "w": 98,
+       "x": 50,
+       "y": 92
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Служебная полоса в одну строку: «Смыв» выше, улучшений видно больше",
+   "usage": {
+    "activeMin": 17,
+    "allPriced": true,
+    "cost": 6.49,
+    "finishedAt": 1795321178776,
+    "models": [
+     {
+      "cacheRead": 17969754,
+      "cacheWrite": 99963,
+      "cost": 6.49,
+      "input": 80,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 32338,
+      "priced": true,
+      "purpose": "пересборка служебной полосы, замеры и проверки",
+      "replies": 35,
+      "tokens": 18102135
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795319534435,
+    "tokens": 18102135,
+    "wallMin": 27
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-tags-callouts": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "08d129b6755e5daf341f6f72dd8b0954a4c0a76a",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/08d129b6755e5daf341f6f72dd8b0954a4c0a76a"
+    }
+   ],
+   "createdAt": 1795358000000,
+   "goalIds": [],
+   "group": "ui",
+   "items": [
+    "! Находка, «Убрать засор» и «Грабли в работе» больше не закрывают подписи на полях",
+    "~ Карточка выплаты у корзины в одну строку, только сумма",
+    "+ Бонусы видны на чеке после нажатия, при автосборе чек в одну строку"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [
+    {
+     "caption": "Выплата на 375×667: карточки с бонусами закрывают камеру",
+     "id": "13eb0ee6fafb12ff39967b5788d7ec54.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Карточки в одну строку, подписи справа выше карточки",
+     "id": "e2f0da2bf0b7717e690eea5a25556e4d.png",
+     "marks": [
+      {
+       "h": 15,
+       "w": 34,
+       "x": 6,
+       "y": 62
+      },
+      {
+       "h": 16,
+       "w": 34,
+       "x": 65,
+       "y": 79
+      },
+      {
+       "h": 12,
+       "w": 18,
+       "x": 72,
+       "y": 58
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Засор на 375×667: метки на рисунке закрывают подписи",
+     "id": "0ee453a7890cfea5b4111a6f42c00a6f.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Подписи ушли в свободный участок поля",
+     "id": "65dd38e1bfeaec825638fa67d256ba44.png",
+     "marks": [
+      {
+       "h": 9,
+       "w": 15,
+       "x": 72,
+       "y": 61
+      },
+      {
+       "h": 7,
+       "w": 13,
+       "x": 14,
+       "y": 77
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Карточки выплаты в одну строку, подписи на полях ничто не закрывает",
+   "usage": {
+    "activeMin": 21,
+    "allPriced": true,
+    "cost": 8.03,
+    "finishedAt": 1795357867791,
+    "models": [
+     {
+      "cacheRead": 9683679,
+      "cacheWrite": 394384,
+      "cost": 5.6,
+      "input": 72,
+      "label": "Opus 5.5",
+      "model": "claude-opus-5-5",
+      "output": 25391,
+      "priced": true,
+      "purpose": "основная работа",
+      "replies": 31,
+      "tokens": 10103526
+     },
+     {
+      "cacheRead": 1513064,
+      "cacheWrite": 138891,
+      "cost": 1.22,
+      "input": 20,
+      "label": "Sonnet 4.6",
+      "model": "claude-sonnet-4-6",
+      "output": 16548,
+      "priced": true,
+      "purpose": "субагент: разбор дизайна сцены",
+      "replies": 14,
+      "tokens": 1668523
+     },
+     {
+      "cacheRead": 1394220,
+      "cacheWrite": 141446,
+      "cost": 1.21,
+      "input": 15,
+      "label": "Sonnet 4.6",
+      "model": "claude-sonnet-4-6",
+      "output": 17597,
+      "priced": true,
+      "purpose": "субагент: детектор и замеры",
+      "replies": 13,
+      "tokens": 1553278
+     }
+    ],
+    "sessionId": "9b00e77c-6d52-433a-9ef9-b1722ab796e8",
+    "startedAt": 1795333066023,
+    "tokens": 13325327,
+    "wallMin": 413
+   },
+   "via": "claude",
+   "visual": true
+  },
+  "u-toilet-trap": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "f8b14a1a39dbe379dd514286d1c4e09a192f28db",
+     "subject": "Let the service trap spare the grate",
+     "url": "https://github.com/antropos17/waterworks-idle/commit/f8b14a1a39dbe379dd514286d1c4e09a192f28db"
+    }
+   ],
+   "createdAt": 1795223297086,
+   "goalIds": [
+    "t08"
+   ],
+   "group": "game",
+   "items": [
+    "! салфетки, банки и бутылки после ловушки проходят решётку без засора",
+    "~ счётчик «Устранено засоров» считает только спасённые грузы",
+    "~ с «Прямотоком» решётка ловит такие грузы, как раньше",
+    "~ пока автоочистка не показала первую очистку, ловушка забивающий груз не трогает"
+   ],
+   "person": "ruslan",
+   "project": "toilet",
+   "shots": [],
+   "title": "Ловушка сменной секции спасает решётку от засора",
+   "usage": {
+    "activeMin": 32,
+    "allPriced": true,
+    "cost": 10.42,
+    "finishedAt": 1795222599303,
+    "models": [
+     {
+      "cacheRead": 14880989,
+      "cacheWrite": 398219,
+      "cost": 10.42,
+      "input": 82,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 26798,
+      "priced": true,
+      "purpose": "разбор ловушки, правка и тесты",
+      "replies": 36,
+      "tokens": 15306088
+     }
+    ],
+    "sessionId": "63559eb0-275b-482b-87eb-db44c90f7762",
+    "startedAt": 1795220165709,
+    "tokens": 15306088,
+    "wallMin": 41
+   },
+   "via": "claude",
+   "visual": false
+  },
+  "u-voxel-boxing-b8-look": {
+   "branch": "main",
+   "commits": [
+    {
+     "sha": "74fa541028bf68ff2df75bc546f0aef5b93ef99d",
+     "subject": "Merge remote-tracking branch 'origin/main'",
+     "url": "https://github.com/antropos17/voxel-boxing/commit/74fa541028bf68ff2df75bc546f0aef5b93ef99d"
+    },
+    {
+     "sha": "acc357e661f5d3b4f8ca17f0bc593ba9b3b12cdd",
+     "subject": "Этап B, часть 8: остатки вида — отёк с расстояния боя (шейдер, насыщение до 1,4 см, рост в две ступени), ветки подтёков и пятна у ран без rng, ручейки крови, мышцы культи по 3D-текстуре номеров частей (оттенок, волокна, фасции), упрощённый шейдер ANAT_LITE по умолчанию на телефоне; сценарий seed 77 прежний, тесты 47/0/0; скорость под нагрузкой машины не подтверждена",
+     "url": "https://github.com/antropos17/voxel-boxing/commit/acc357e661f5d3b4f8ca17f0bc593ba9b3b12cdd"
+    },
+    {
+     "sha": "f68c416f71a18d902245d01a182fccc475172d16",
+     "subject": "Часть 7: откат растекания видимости без деления (выигрыша вне разброса нет), перемер",
+     "url": "https://github.com/antropos17/voxel-boxing/commit/f68c416f71a18d902245d01a182fccc475172d16"
+    },
+    {
+     "sha": "3d68ac9a9184a1f2b7bf71883d95528c024b3c0a",
+     "subject": "Этап B, часть 7, доработка: видимость тел в коробке изменений на главном потоке, перестройка только изменённых слоёв чанка головы; кадр удара ≤ 16,7 мс во всех трёх прогонах",
+     "url": "https://github.com/antropos17/voxel-boxing/commit/3d68ac9a9184a1f2b7bf71883d95528c024b3c0a"
+    }
+   ],
+   "createdAt": 1795558720946,
+   "goalIds": [],
+   "group": "g2",
+   "items": [
+    "+ Отёк виден с расстояния боя: щека и область под глазом вздуваются на 5–14 мм и растут со временем",
+    "+ У каждой мышцы на срезе шеи свой оттенок и волокна, между ними светлые прослойки",
+    "+ Упрощённая отрисовка головы для телефона, включается сама",
+    "~ Кровь: пятно вокруг раны и ветки подтёков, струя из носа пока остаётся сплошной полосой",
+    "~ Худший кадр удара после доработки скорости 12,3–14,4 мс при пределе 16,7 мс, замер сделан до нового вида",
+    "~ Скорость с новым видом не подтверждена: компьютер был загружен, нужен перемер"
+   ],
+   "person": "ruslan",
+   "project": "voxel-boxing",
+   "shots": [
+    {
+     "caption": "Лицо спереди, 15 секунд после ударов",
+     "id": "09444385e1d512a874d6d57ecbe90b10.png",
+     "pair": 0,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Лицо спереди, 15 секунд после ударов",
+     "id": "20be4205de5d8427252e8c4963209d97.png",
+     "marks": [
+      {
+       "h": 22,
+       "w": 24,
+       "x": 58,
+       "y": 46
+      }
+     ],
+     "pair": 0,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Рана на брови вблизи, 40 секунд",
+     "id": "e5a90de7b08fb4bb88df080f514109ca.png",
+     "pair": 1,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Рана на брови вблизи, 40 секунд",
+     "id": "de5e6b4376cefad1e4791067aefb9f9d.png",
+     "marks": [
+      {
+       "h": 46,
+       "w": 46,
+       "x": 40,
+       "y": 40
+      }
+     ],
+     "pair": 1,
+     "role": "after",
+     "type": "image/png"
+    },
+    {
+     "caption": "Срез шеи вблизи",
+     "id": "791f5509d3cf0eb9275a954b7f797883.png",
+     "pair": 2,
+     "role": "before",
+     "type": "image/png"
+    },
+    {
+     "caption": "Срез шеи вблизи",
+     "id": "0977e19280a73c6933d057d086d11b12.png",
+     "marks": [
+      {
+       "h": 52,
+       "w": 62,
+       "x": 49,
+       "y": 44
+      }
+     ],
+     "pair": 2,
+     "role": "after",
+     "type": "image/png"
+    }
+   ],
+   "title": "Голова соперника: видимый отёк, мышцы на срезе и лёгкая отрисовка для телефона",
+   "usage": {
+    "activeMin": 24,
+    "allPriced": true,
+    "cost": 7.61,
+    "finishedAt": 1795558690403,
+    "models": [
+     {
+      "cacheRead": 8165092,
+      "cacheWrite": 270524,
+      "cost": 7.61,
+      "input": 132,
+      "model": "claude-fable-5-2",
+      "name": "Fable 5.2",
+      "output": 41076,
+      "priced": true,
+      "purpose": "главный чат: задания исполнителям и приёмка",
+      "replies": 52,
+      "tokens": 8476824
+     }
+    ],
+    "sessionId": "71d686b7-b1e3-48a2-84ad-b01ea3c156ea",
+    "startedAt": 1795509868287,
+    "tokens": 8476824,
+    "wallMin": 814
+   },
+   "via": "claude",
+   "visual": true
+  }
+ }
+}

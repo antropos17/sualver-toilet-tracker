@@ -56,6 +56,15 @@ A change that is visible on screen must have a **before** and an **after** scree
 6. Mark what changed. Look at both shots and add `marks` to the **after** entry of each pair: one to three ellipses over the zones that differ, `[{x, y, w, h}]` in percent of the image (`x`, `y` = centre, `w`, `h` = size). Example: a button at the right edge, two thirds down: `{ "x": 84, "y": 68, "w": 30, "h": 6 }`. Mark only real differences, a little larger than the element.
 7. A stage with nothing visible (tests, server, git, docs) gets no screenshots and `visual: false`.
 
+### Checking the tracker page itself: offline only
+
+The database has a daily read limit (50 000 documents on the free plan), and every opening of `tracker.html` reads the database. So checks of the tracker page (layout, sizes, themes, before and after shots) run **only offline**: `kit/offline/offline.cjs` blocks all of `firestore.googleapis.com` and sign-in, and gives the page data from `kit/offline/fixture.json` (an old export with no personal data). The live page is not changed by it.
+
+- One shot: `node kit/offline/offline.cjs tracker.html out.png --width 390 --height 844 [--dark] [--full]` (set `PLAYWRIGHT_CORE` to a `playwright-core` folder if Playwright is not installed next to it). It prints `firestoreRequests`, which must be `0`.
+- In your own Playwright script: `const net = await require("<kit>/offline/offline.cjs")(context);` before `page.goto`, then check that `net.blocked` is `0`.
+- This applies to every local copy too (`file:///…/tracker.html`, `localhost`, a worktree). Without the wrapper each of them reads the live database.
+- Open the live page (https://antropos17.github.io/sualver-toilet-tracker/) at most once or twice, as the final check after publishing. Never open it in a loop over sizes and themes.
+
 Upload each file with `node "<kit>/tracker.mjs" upload-shot <file>`. It commits the file to `shots/` of this repository through the GitHub API (`gh api`, no clone needed) and prints its name, for example `3a1084c98f69e489bb0ae192957a87f0.png`. The name comes from the file content, so the same file never lands twice. Use that name as `id` in `shots`. It needs write access to the repository; GitHub Pages shows the file about a minute after the upload. `.claude/shots/` of the project is not committed.
 
 ## Who is posting

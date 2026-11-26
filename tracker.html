@@ -481,9 +481,9 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 .pkey code { font: 600 12px ui-monospace, Consolas, monospace; background: var(--sunk); padding: 2px 6px; border-radius: 4px; color: var(--ink); }
 .pkey .x { min-height: 32px; text-decoration: underline; text-underline-offset: 3px; }
 /* Project links (GitHub, playable demo) under a post and in the project edit form. */
-.plinks { display: flex; flex-wrap: wrap; gap: 0 16px; margin-block: -10px; font-size: 13px; }
-.plinks a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; color: var(--muted); font-weight: 500; }
-.plinks a:hover { color: var(--ink); }
+.plinks { display: flex; flex-wrap: wrap; gap: 0 20px; margin-block: -10px; font-size: 15px; }
+.plinks a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 4px; }
+.plinks a:hover { text-decoration-color: var(--ink); }
 .gadd.lform { flex-wrap: wrap; } .lpriv { flex: 1 1 100%; display: flex; align-items: center; gap: 8px; min-height: 44px; } .lform .lpriv input { flex: none; width: 20px; height: 20px; min-height: 0; margin: 0; padding: 0; } .lform input { flex: 1 1 180px; }
 .lform input[aria-invalid="true"] { border-color: var(--rem); }
 .lerr { font-size: 13px; color: var(--rem); margin-top: 4px; } .lerr:empty { display: none; }

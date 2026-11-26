@@ -606,7 +606,9 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 @media (max-width: 480.98px) {
   .phd .link, .rinfo p.small .link, .post p.small a { position: relative; }
   .plinks a { position: relative; z-index: 1; } /* above the commit tap zones next to it */
-  .phd .link::before, .rinfo p.small .link::before, .post p.small a::before { content: ""; position: absolute; inset: -13px -4px; }
+  .phd .link::before, .rinfo p.small .link::before { content: ""; position: absolute; inset: -13px -4px; }
+  .post p.small a { line-height: 32px; } /* commit hashes: wrapped lines sit 32px apart, so tap zones do not overlap */
+  .post p.small a::before { content: ""; position: absolute; inset: -8px -3px; }
   .zoom::before { content: ""; position: absolute; inset: -4px; }
   [data-action="login"] { min-height: 40px; }
   .sc-body h3 { overflow: visible; }

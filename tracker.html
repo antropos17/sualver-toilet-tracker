@@ -605,6 +605,7 @@ body .toast { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); box
 }
 @media (max-width: 480.98px) {
   .phd .link, .rinfo p.small .link, .post p.small a { position: relative; }
+  .plinks a { position: relative; z-index: 1; } /* above the commit tap zones next to it */
   .phd .link::before, .rinfo p.small .link::before, .post p.small a::before { content: ""; position: absolute; inset: -13px -4px; }
   .zoom::before { content: ""; position: absolute; inset: -4px; }
   [data-action="login"] { min-height: 40px; }
@@ -1043,7 +1044,7 @@ function miniHtml(u) {
 }
 function postHtml(u) {
   const us = u.usage || {}, has = (u.shots || []).length > 0, can = S.canWrite && S.db;
-  const commits = (u.commits || []).map((c) => `<a href="${esc(c.url || `https://github.com/${proj(u.project).repo}/commit/${c.sha}`)}" target="_blank" rel="noopener" title="${esc(c.subject || "")}">${esc(String(c.sha).slice(0, 7))}</a>`).join(", ");
+  const commits = (u.commits || []).map((c) => commitHtml(u.project, c)).join(", ");
   const cost = us.finishedAt ? [fmtTokens(us.tokens) + " токенов", fmtUsd(us.cost), (us.models || []).map((m) => m.name || m.model).join(", ")].filter(Boolean).join(" · ") : "";
   const items = u.items || [];
   const mk = u.kind && u.kind !== "claim" && !u.goalId && can, del = u.kind && u.author && u.author === S.me;
@@ -1199,7 +1200,7 @@ function renderFeed() {
 // Reels: every post takes the whole screen, the scroll snaps from one to the next.
 function metaLine(u) {
   const us = u.usage || {};
-  const commits = (u.commits || []).map((c) => `<a href="${esc(c.url || `https://github.com/${proj(u.project).repo}/commit/${c.sha}`)}" target="_blank" rel="noopener" title="${esc(c.subject || "")}">${esc(String(c.sha).slice(0, 7))}</a>`).join(", ");
+  const commits = (u.commits || []).map((c) => commitHtml(u.project, c)).join(", ");
   const cost = us.finishedAt ? [fmtTokens(us.tokens) + " токенов", fmtUsd(us.cost), (us.models || []).map((m) => m.name || m.model).join(", ")].filter(Boolean).join(" · ") : "";
   return commits || cost ? `<p class="small muted">${commits ? `Коммиты на GitHub: ${commits}` : ""}${commits && cost ? " · " : ""}${esc(cost)}</p>` : "";
 }
@@ -1476,6 +1477,13 @@ const cleanRepo = (v) => v.trim().replace(/^https?:\/\/github\.com\//, "").repla
 const demoOf = (p) => { const d = proj(p).demo || ""; return d && webUrl(d) ? d : ""; };
 // A closed repository (repoPrivate) keeps repo for commits but shows no GitHub link: it would open as 404 for others.
 const repoOf = (p) => (proj(p).repoPrivate ? "" : proj(p).repo || "");
+// Same rule for commits: no repository or a closed one gives the hash as plain text, not a link that opens as 404.
+function commitHtml(p, c) {
+  const sha = esc(String(c.sha).slice(0, 7)), url = proj(p).repoPrivate ? "" : c.url || (repoOf(p) ? `https://github.com/${repoOf(p)}/commit/${c.sha}` : "");
+  return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(c.subject || "")}">${sha}</a>` : `<span title="${esc(c.subject || "")}">${sha}</span>`;
+}
+// A showcase card shows no GitHub link when a tracker project marks the same repository closed.
+const shownRepo = (r) => (r && /^[\w.-]+\/[\w.-]+$/.test(r) && !Object.keys(S.projects).some((k) => proj(k).repoPrivate && String(proj(k).repo || "").toLowerCase() === r.toLowerCase()) ? r : "");
 const demoErr = (v) => !v ? "" : !/^https:\/\//i.test(v) ? "Ссылка на демо должна начинаться с https://" : !webUrl(v) ? "Это не похоже на адрес сайта в интернете." : "";
 function linksHtml(p) {
   const repo = /^[\w.-]+\/[\w.-]+$/.test(repoOf(p)) ? repoOf(p) : "", demo = demoOf(p);
@@ -1516,7 +1524,7 @@ function renderShowcase() {
       ? `<button type="button" class="sc-shot" data-action="sdet" data-id="${esc(x.id)}" aria-label="Подробнее: ${esc(x.name)}"><img src="${sh}" alt="" loading="lazy">${who}</button>`
       : `<button type="button" class="sc-shot sc-cover" data-action="sdet" data-id="${esc(x.id)}" aria-label="Подробнее: ${esc(x.name)}" style="--c1:${c[2]};--c2:${c[3]}"><span>${esc(x.name)}</span>${who}</button>`}
       <div class="sc-body"><h3><button type="button" class="sc-t" data-action="sdet" data-id="${esc(x.id)}">${esc(x.name)}</button></h3><p class="sc-note">${esc(x.note || "")}</p>
-      <div class="sc-links">${x.repo && /^[\w.-]+\/[\w.-]+$/.test(x.repo) ? `<a href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub</a>` : ""}${x.url && webUrl(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">Открыть</a>` : ""}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div></div></article>`;
+      <div class="sc-links">${shownRepo(x.repo) ? `<a href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub</a>` : ""}${x.url && webUrl(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">Открыть</a>` : ""}${mine ? `<button type="button" class="sc-edit" data-action="show-edit" data-id="${esc(x.id)}" aria-label="Править: ${esc(x.name)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>` : ""}</div></div></article>`;
   }).join("")}</div>` : `<div class="empty">Проектов пока нет${can ? ". Нажмите «+ Проект», чтобы добавить первый." : ""}</div>`);
 }
 
@@ -1531,7 +1539,7 @@ function renderShowDetail() {
   const sh = x.shot ? shotSrc(x.shot) : "", o = x.owner in PEOPLE ? x.owner : "", work = claimers(x.id);
   const pal = Object.values(PALETTE), c = pal[[...String(x.name)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % pal.length];
   const can = S.canWrite && S.db, me = myPerson(), mine = can && me && (x.owner === me || x.createdBy === me);
-  const links = (x.repo && /^[\w.-]+\/[\w.-]+$/.test(x.repo) ? `<a class="btn" href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub ↗</a>` : "")
+  const links = (shownRepo(x.repo) ? `<a class="btn" href="https://github.com/${esc(x.repo)}" target="_blank" rel="noopener">GitHub ↗</a>` : "")
     + (x.url && webUrl(x.url) ? `<a class="btn" href="${esc(x.url)}" target="_blank" rel="noopener">Открыть ↗</a>` : "");
   const fresh = !$("sdet").firstChild;
   if (fresh) S.retSd = x.id;
